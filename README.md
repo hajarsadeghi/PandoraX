@@ -15,7 +15,7 @@ You just need to install [docker](https://docs.docker.com/install/) & [docker-co
 Just type this command on terminal and everything will be up and running
 
 ```bash
-docker-compoose up
+docker-compose up
 ```
 
 ## Debuging
