@@ -1,0 +1,15 @@
+@import "./utilities/_variables.scss";
+@import "./utilities/_mixins.scss";
+
+.container-fluid {
+    padding: 0;
+    margin: 0;
+}
+
+@media (min-width: 992px) {
+    .container-fluid {
+        .bilino-main {
+            padding-left: $sidebar-width;
+        }
+    }
+}

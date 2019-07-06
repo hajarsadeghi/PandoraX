@@ -1,0 +1,97 @@
+@import "./utilities/_variables.scss";
+@import "./utilities/_mixins.scss";
+
+header {
+    width: 100%;
+    height: $header-height;
+    background-color: $header-bg;
+
+    .dropdown {
+
+        width: $sidebar-width;
+        display: inline-block;
+        button {
+            width: $sidebar-width;
+            height: $header-height;
+            border-radius: 0;
+            border: none;
+
+            &:focus {
+                box-shadow: none;
+            }
+        }
+        .dropdown-menu {
+
+            top: $header-height !important;
+            right: 0 !important;
+            border-radius: 0;
+            margin: 0;
+            &.show {
+                transform: none !important;
+            }
+        }
+    }
+}
+
+@media (max-width: 991.98px) { 
+    header {
+        .menu-collapse {
+            display: inline-block;
+            .menu-collapse-btn {
+                .menu-button {
+                    width: 30px;
+                    height: 3px;
+                    position: absolute;
+                    right: 20px;
+                    background-color: $black;
+                    cursor: pointer;
+        
+                    &::before,&::after {
+                        content: '';
+                        width: 30px;
+                        height: inherit;
+                        background-color: inherit;
+                        position: absolute;
+                        @include transform-origin(0 50%);
+                        @include transition(transform .2s ease-in-out);
+                    }
+        
+                    &::before {
+                        top: -6px;
+                    }
+        
+                    &::after {
+                        top: 6px;
+                    }
+                }
+        
+                &.navbar-is-visible {
+                    .menu-button {
+                        background-color: hsla(0, 0%, 100%, 0);
+                        
+                        &::before, &::after {
+                            background-color: $black;
+    
+                        }
+
+                        &::before {
+                            @include transform(translateX(4px) translateY(-3px) rotate(45deg));
+                        }
+        
+                        &::after {
+                            @include transform(translateX(4px) translateY(6px) rotate(-45deg));
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    header {
+        .menu-collapse {
+            display: none;
+        }
+    }
+}

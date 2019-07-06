@@ -1,0 +1,50 @@
+@import "./utilities/_variables.scss";
+@import "./utilities/_mixins.scss";
+
+nav {
+    background-color: $sidebar-bg;
+    position: fixed;
+    top: $header-height;
+    left: 0;
+    bottom: 0;
+
+    &.bilino-navbar {
+
+        @include transition(all .2s ease-in-out);
+        .navbar-links {
+            ul.navbar-nav {
+                li.nav-item {
+    
+                    &:hover {
+                        background-color: $sidebar-link-hover;
+                    }
+                    a.nav-link {
+                        padding-left: $sidebar-padding;
+                        padding-right: $sidebar-padding;
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 991.98px) { 
+    nav {
+        &.bilino-navbar {
+            width: 0px;
+            opacity: 0;
+        }
+        &.bilino-navbar.bilino-navbar-collapse {
+            width: 100%;
+            opacity: 1;
+            background-color: rgba($color: $sidebar-bg, $alpha: 0.8);
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    nav {
+        width: $sidebar-width;
+    }
+}
