@@ -1,0 +1,39 @@
+@import "./../utilities/variables";
+@import "./../utilities/mixins";
+
+.container-fluid {
+
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+
+    .row,.col {
+        height: 100%;
+    }
+    .row {
+        .login-form {
+            padding: 20px;
+            border: 1px solid lightgray;
+        }
+        .login-animation {
+            background: url("/static/image/login.jpg");
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .container-fluid {
+        .login-form {
+            width: 500px;
+            margin: 0 auto;
+        } 
+    }
+}   
