@@ -1,15 +1,39 @@
-// ... background colors ...
-$header-bg: #ebeeef;
-$sidebar-bg: #236074;
-$sidebar-link-hover: #104151;
+// ... Bilono colors ...
+$main-red-color: #ff3e58;
+$main-blue-color: #1d33b6;
+$main-lightblue-color: #91a6ff;
+$main-darkblue-color: #130655;
 
-// ... colors ...
+$tint-red-color1: #ffecee;
+$tint-red-color2: #ffd8de;
+$tint-red-color3: #ffb2bc;
+$tint-red-color4: #ff8b9b;
+$tint-red-color5: #ff6579;
+
+$tint-blue-color1: #e8ebf8;
+$tint-blue-color2: #d2d6f0;
+$tint-blue-color3: #a5ade2;
+$tint-blue-color4: #7785d3;
+$tint-blue-color5: #4a5cc5;
+
+$shadow-red-color1: #cc3246;
+$shadow-red-color2: #992535;
+$shadow-blue-color1: #172992;
+$shadow-blue-color2: #111f6d;
+
+$text: #AAB6C5;
+$active-text: #26282C;
+
+// ... custom colors ...
 $white: #ffffff;
 $black: #000000;
 
 // ... size ...
 $header-height: 70px;
-$sidebar-width: 200px;
+$bilono-logo-height: 70px;
+$sidebar-width: 250px;
+$sidebar-link-height: 50px;
+$sidebar-active-link-width: 3px;
 
 // ... margin and paddings ...
 $sidebar-padding: 20px;

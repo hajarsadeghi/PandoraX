@@ -1,29 +1,152 @@
 @import "./utilities/variables";
 @import "./utilities/mixins";
 
+%sidebar-devider {
+    content: '';
+    width: calc(100% - 30px);
+    height: 1px;
+    background-color: $tint-blue-color1;
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+}
+
 nav {
-    background-color: $sidebar-bg;
+    background-color: $white;
     position: fixed;
-    top: $header-height;
+    top: 0;
     left: 0;
     bottom: 0;
 
     &.bilino-navbar {
 
         @include transition(all .2s ease-in-out);
+        
+        .navbar-logo {
+
+            width: 100%;
+            height: $bilono-logo-height;
+            line-height: $bilono-logo-height;
+            padding-left: $sidebar-padding;
+            color: $main-red-color;
+            font-size: 150%;
+            font-weight: bold;
+            position: relative;
+            .bilono-logo {
+                max-width: 40px;
+                height: auto;
+            }
+
+            &::after {
+                @extend %sidebar-devider;
+            }
+        }
+
+        .navbar-profile-wrapper {
+
+            position: relative;
+            .navbar-profile {
+
+                height: $bilono-logo-height;
+                padding-left: $sidebar-padding;
+                position: relative;
+                cursor: pointer;
+    
+                .user-logo {
+                    max-width: 40px;
+                    height: auto;
+                    margin: 15px auto;
+                }
+    
+                .user-info {
+    
+                    width: calc(100% - 90px);
+                    position: absolute;
+                    top: 0px;
+                    left: 70px;
+                    margin:  11px auto;
+    
+                    > span {
+                        color: $text;
+                        font-size: 12px;
+                    }
+    
+                    .user-info-credit {
+    
+                        small {
+                            font-size: 14px;
+                            color: $active-text;
+                        }
+    
+                        img {
+                            max-width: 24px;
+                            height: auto;
+                        }
+                    }
+                }
+            }
+
+            #userProfile {
+                padding-left: $sidebar-padding;
+            }
+
+            &::after {
+                @extend %sidebar-devider;
+            }
+        }
+
         .navbar-links {
             ul.navbar-nav {
                 li.nav-item {
-    
-                    &:hover {
-                        background-color: $sidebar-link-hover;
+
+                    height: $sidebar-link-height;
+                    line-height: $sidebar-link-height;
+
+                    ul.navbar-nav {
+                        padding-top: $sidebar-link-height;
+
+                        a.nav-link {
+                            padding: 0 30px;
+                        }
                     }
+
+                    &.active {
+
+                        > a.nav-link {
+                            color: $active-text;
+                        }
+                        &::before {
+                            content: '';
+                            width: $sidebar-active-link-width;
+                            height: 50px;
+                            background-color: $main-blue-color;
+                            position: absolute;
+                        }
+                    }
+
                     a.nav-link {
-                        padding-left: $sidebar-padding;
-                        padding-right: $sidebar-padding;
-                        color: $white;
+                        padding: 0 $sidebar-padding;
+                        color: $text;
+                        position: absolute;
+                        left: $sidebar-active-link-width;
+                        right: 0;
+
+                        &:hover {
+                            color: $active-text !important;
+                        }
+                        
                     }
                 }
+            }
+        }
+
+        .material-icons {
+            float: right;
+            margin-top: 13px;
+            @include transition(transform .2s ease-in-out);
+
+            &.toggle {
+                @include transform(rotate(180deg));
             }
         }
     }
@@ -38,7 +161,7 @@ nav {
         &.bilino-navbar.bilino-navbar-collapse {
             width: 100%;
             opacity: 1;
-            background-color: rgba($color: $sidebar-bg, $alpha: 0.8);
+            background-color: rgba($color: $white, $alpha: 0.8);
         }
     }
 }
