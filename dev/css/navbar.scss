@@ -155,13 +155,14 @@ nav {
 @media (max-width: 991.98px) { 
     nav {
         &.bilino-navbar {
-            width: 0px;
-            opacity: 0;
-        }
-        &.bilino-navbar.bilino-navbar-collapse {
-            width: 100%;
-            opacity: 1;
-            background-color: rgba($color: $white, $alpha: 0.8);
+            &.side-is-visible {
+                width: 250px;
+                opacity: 1;
+            }
+            &.side-is-hidden {
+                width: 0;
+                opacity: 0;
+            }
         }
     }
 }

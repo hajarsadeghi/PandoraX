@@ -12,6 +12,17 @@ $(document).ready(function() {
     // ... responsive sidebar ...
     $('.menu-collapse-btn').click(function() {
         $(this).toggleClass('navbar-is-visible');
-        $('.bilino-navbar').toggleClass('bilino-navbar-collapse');
+        if ($('.bilino-navbar').hasClass('side-is-visible')) {
+            $('.bilino-navbar').removeClass('side-is-visible');
+            $('.bilino-main').removeClass('main-is-partially-visible');
+            $('.bilino-navbar').addClass('side-is-hidden');
+            $('.bilino-main').addClass('main-is-fully-visible');
+        }
+        else {
+            $('.bilino-navbar').removeClass('side-is-hidden');
+            $('.bilino-main').removeClass('main-is-fully-visible');
+            $('.bilino-navbar').addClass('side-is-visible');
+            $('.bilino-main').addClass('main-is-partially-visible');
+        }
     });
 });

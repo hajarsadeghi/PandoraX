@@ -17,9 +17,9 @@
 </head>
 <body>
     <div class="container-fluid">
-        <!-- {% include './header.html' %} -->
         {% include './navbar.html' %}
-        <div class="bilino-main">
+        <div class="bilino-main main-is-partially-visible">
+            {% include './header.html' %}
             {% block body %}{% endblock %}
         </div>
     </div>
