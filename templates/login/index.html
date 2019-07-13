@@ -15,26 +15,50 @@
 <body>
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col login-animation"></div>
+            <div class="col login-animation" id="animation"></div>
             <div class="col login-wrapper align-self-center">
                 <form class="login-form">
                     <div class="login-form-logo text-center">
                         <div class="login-logo">
-                            <img alt="login logo" src="{% static 'image/sign-in.png' %}" />
                         </div>
                         <div>
                             <p>LOG IN</p>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off">
+                    <div class="form-group forms">
+                        <input type="email" class="form-control login-input" id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off">
                         <span class="input-line" data-placeholder="Username"></span>
                     </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                    <div class="form-group forms">
+                        <input type="password" class="form-control login-input" id="exampleInputPassword1">
                         <span class="input-line" data-placeholder="Password"></span>
                     </div>
-                    <button type="submit" class="btn btn-light btn-lg">Submit</button>
+                    <div class="form-group remember-form">
+                        <div>
+                            <label class="remember-me m-0" for="rememberMe">
+                                <input type="checkbox" id="rememberMe" />
+                                Remember me
+                            </label>
+                        </div>
+                        <div>
+                            <a href="#">Forgot Password?</a>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-light btn-block">Login</button>
+                    <div class="social-logins my-3">
+                        <p>or login using</p>
+                        <a href="http://www.google.com" target="_target">
+                            <img class="google-login d-inline-block mx-1" alt="google login" src="{% static 'image/google.svg' %}" />
+                        </a>
+                        <a href="http://www.linkedin.com" target="_target">
+                            <img class="linkedin-login d-inline-block mx-1" alt="linkedin login" src="{% static 'image/linkedin.png' %}" />
+                        </a>
+                    </div>
+                    <div class="sign-up-section">
+                        <div>Not a Member?
+                            <u><a href="#">Sign Up Now</a></u>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -43,5 +67,10 @@
 <script type="text/javascript" src="{% static 'js/lib/jquery.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/lib/popper.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/lib/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/lib/lottie.min.js' %}"></script>
+<script>
+    var anim = "{% static 'js/animation/data.json' %}";
+</script>
+<script type="text/javascript" src="{% static 'js/custom/login.js' %}"></script>
 {% block script %}{% endblock %}
 </html>

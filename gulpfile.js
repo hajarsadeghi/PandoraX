@@ -1,6 +1,7 @@
 const cssnano = require('gulp-cssnano');
 const sass = require('gulp-sass');
-const concat = require('gulp-concat');
+// const concat = require('gulp-concat');
+// const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
 const { src, dest, watch } = require('gulp');
 
@@ -14,6 +15,10 @@ function css() {
 
 function javascript() {
   return src('./dev/js/**/*.js')
+      // .pipe(babel({
+      //   presets: ['@babel/preset-env']
+      // }))
+      // .pipe(concat('script.min.js'))
       .pipe(uglify())
       .pipe(dest('./static/js/custom'));
 }

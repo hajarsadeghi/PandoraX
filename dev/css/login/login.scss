@@ -1,6 +1,21 @@
 @import "./../utilities/variables";
 @import "./../utilities/mixins";
 
+%transform-inputs {
+    border: none;
+    box-shadow: none;
+
+    ~ .input-line {
+        &::before {
+            width: 100%;
+        }
+        &::after {
+            @include transform(translate(-13%, -90%) scale(0.7));
+            color: rgba(255, 255, 255, .60);
+        }
+    }
+}
+
 .container-fluid {
 
     padding: 0;
@@ -23,7 +38,7 @@
 
                 height: 100%;
                 position: relative;
-                background-image: linear-gradient($main-red-color, $main-blue-color);
+                background-image: linear-gradient($login-gradient-start, $login-gradient-end);
 
                 .login-form {
                     vertical-align: middle;
@@ -61,86 +76,126 @@
                     }
 
                     .form-group {
+                        &.forms {
 
-                        width: 100%;
-                        height: 45px;
-                        position: relative;
-                        border-bottom: 2px solid rgba(255, 255, 255, .25);
-
-                        input {
                             width: 100%;
-                            height: 100%;
-                            margin: auto;
-                            background: 0 0; 
-                            color: $white;
-                            border: none;
-
-                            &:focus {
+                            height: 45px;
+                            position: relative;
+                            border-bottom: 2px solid rgba(255, 255, 255, .25);
+    
+                            input {
+                                width: 100%;
+                                height: 100%;
+                                margin: auto;
+                                background: 0 0; 
+                                color: $white;
                                 border: none;
-                                box-shadow: none;
+    
+                                &.has-val {
+                                    @extend %transform-inputs;
+                                }
 
-                                ~ .input-line {
-                                    &::before {
-                                        width: 100%;
-                                    }
-                                    &::after {
-                                        @include transform(translate(-12%, -50%) scale(0.75));
-                                    }
+                                &:focus {
+                                    @extend %transform-inputs;
+                                }
+                            }
+    
+                            .input-line {
+    
+                                position: absolute;
+                                display: block;
+                                width: 100%;
+                                height: 100%;
+                                top: 0;
+                                left: 0;
+                                pointer-events: none;
+    
+                                &::before {
+                                    content: '';
+                                    display: inline-block;
+                                    width: 100%;
+                                    height: 2px;
+                                    position: absolute;
+                                    left: 0;
+                                    bottom: -2px;
+                                    width: 0;
+                                    background-color: $white;
+                                    @include transition(all .4s ease-in);
+                                }
+    
+                                &::after {
+                                    color: $white;
+                                    font-size: 18px;
+                                    content: attr(data-placeholder);
+                                    display: block;
+                                    width: 100%;
+                                    position: absolute;
+                                    top: 6px;
+                                    left: 0;
+                                    padding-left: 5px;
+                                    text-align: left;
+                                    @include transition(all .4s ease-in);
                                 }
                             }
                         }
+                    }
 
-                        .input-line {
+                    .remember-form {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        font-size: 13px;
 
-                            position: absolute;
-                            display: block;
-                            width: 100%;
-                            height: 100%;
-                            top: 0;
-                            left: 0;
-                            pointer-events: none;
-
-                            &::before {
-                                content: '';
-                                display: inline-block;
-                                width: 100%;
-                                height: 2px;
-                                position: absolute;
-                                left: 0;
-                                bottom: -2px;
-                                width: 0;
-                                background-color: $white;
-                                @include transition(all .4s ease-in);
-                            }
-
-                            &::after {
-                                color: $white;
-                                font-size: 18px;
-                                content: attr(data-placeholder);
-                                display: block;
-                                width: 100%;
-                                position: absolute;
-                                top: 6px;
-                                left: 0;
-                                padding-left: 5px;
-                                text-align: left;
-                                @include transition(all .4s ease-in);
-                            }
+                        label {
+                            color: rgba(255, 255, 255, .60);
                         }
+
+                        a {
+                            color: rgba(255, 255, 255, .60);
+                            text-decoration: none;
+                        }
+                    }
+
+                    .social-logins {
+                        p {
+                            color: $white;
+                        }
+
+                        img {
+                            width: 25px;
+                            height: auto;
+                            cursor: pointer;
+                        }
+                    }
+
+                    .remember-me {
+                        color: $white;
                     }
 
                     button {
                         border-radius: 50px;
                     }
+
+                    .sign-up-section {
+                        > div {
+                            position: absolute;
+                            bottom: 0;
+                            width: 100%;
+                            color: $white;
+                            a {
+                                color: $white;
+                            }
+                        }
+                    }
                 }
             }
             
-            &.login-animation {
-                background: url("/static/image/login.jpg");
-                background-position: center center;
-                background-size: cover;
-                background-repeat: no-repeat;
-            }
+            // &.login-animation {
+            //     background: url("/static/image/login.jpg");
+            //     background-position: center center;
+            //     background-size: cover;
+            //     background-repeat: no-repeat;
+            // }
         } 
     }
 } 
