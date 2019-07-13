@@ -6,20 +6,19 @@ const { src, dest, watch } = require('gulp');
 
 
 function css() {
-  return src('static/css/*.scss')
+  return src('./dev/css/**/*.scss')
       .pipe(sass())
       .pipe(cssnano())
-      .pipe(dest('dist/css')); 
+      .pipe(dest('./static/css/custom')); 
 }
 
 function javascript() {
-  return src('static/js/*.js')
-      .pipe(concat('all.js'))
+  return src('./dev/js/**/*.js')
       .pipe(uglify())
-      .pipe(dest('dist/js '));
+      .pipe(dest('./static/js/custom'));
 }
 
 exports.default = function() {
-  watch('static/css/*.scss', { ignoreInitial: false }, css);
-  watch('static/js/*.js', { ignoreInitial: false }, javascript);
+  watch('./dev/css/**/*.scss', { ignoreInitial: false }, css);
+  watch('./dev/js/**/*.js', { ignoreInitial: false }, javascript);
 }

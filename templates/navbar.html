@@ -1,0 +1,71 @@
+{% load static %}
+
+<nav class="bilino-navbar side-is-visible" id="navbar">
+    <div class="navbar-logo" href="#">
+        <img class="img-fluid bilono-logo" alt="bilono logo" src="{% static 'image/bilono-logo.png' %}" />
+        Bilono
+    </div>
+    <div class="navbar-profile-wrapper">
+        <div class="navbar-profile" data-toggle="collapse" data-target="#userProfile" aria-expanded="true"> 
+            <img class="img-fluid user-logo" alt="user-profile" src="{% static 'image/man.png' %}" />
+            <span class="user-info">
+                <span>
+                    Hajar Sadeghi
+                    <i class="material-icons">arrow_drop_down</i>
+                </span>
+                <div class="user-info-credit">
+                    <span>
+                        <img class="img-fluid" alt="earned-points" src="{% static 'image/earned.png' %}" />
+                        <small id="earnedPoints">0</small>
+                    </span>
+                    <span>
+                        <img class="img-fluid" alt="gift-points" src="{% static 'image/gift.png' %}" />
+                        <small id="giftPoints">2000</small>
+                    </span>
+                </div>
+            </span>
+        </div>
+        <div id="userProfile" class="collapse" area-expanded="true">
+            <ul class="navbar-nav">
+                <li class="nav-item sub-nav-item">
+                    <a class="nav-link" href="#">Profile</a>
+                </li>
+                <li class="nav-item sub-nav-item">
+                    <a class="nav-link" href="#">Help</a>
+                </li>
+                <li class="nav-item sub-nav-item">
+                    <a class="nav-link" href="#">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="navbar-links">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#managementMenu">
+                    Manage
+                    <i class="material-icons">arrow_drop_down</i>
+                </a>
+                <div id="managementMenu" class="collapse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item sub-nav-item">
+                            <a class="nav-link" href="#">Employees</a>
+                        </li>
+                        <li class="nav-item sub-nav-item">
+                            <a class="nav-link" href="#">Teams</a>
+                        </li>
+                        <li class="nav-item sub-nav-item">
+                            <a class="nav-link" href="#">Badges</a>
+                        </li>
+                        <li class="nav-item sub-nav-item">
+                            <a class="nav-link" href="#">Budgets</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

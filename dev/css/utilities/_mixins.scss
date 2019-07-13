@@ -1,0 +1,38 @@
+@mixin transform($property) {
+    -webkit-transform: $property;
+    -ms-transform: $property;
+    -moz-transform: $property;
+    -o-transform: $property;
+    transform: $property;
+}
+
+@mixin transform-origin($property) {
+    -webkit-transform-origin: $property;
+    -ms-transform-origin: $property;
+    -moz-transform-origin: $property;
+    -o-transform-origin: $property;
+    transform-origin: $property;
+}
+
+@mixin transition($property) {
+    -webkit-transition: $property;
+    -ms-transition: $property;
+    -moz-transition: $property;
+    -o-transition: $property;
+    transition: $property;
+}
+
+@mixin input-placeholder($color) {
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: $color;
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+        color: $color;
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+        color: $color;
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+        color: $color;
+    }
+}

@@ -1,0 +1,146 @@
+@import "./../utilities/variables";
+@import "./../utilities/mixins";
+
+.container-fluid {
+
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+
+    .row {
+
+        height: 100%;
+        .col {
+
+            height: 100%;
+
+            &.login-wrapper {
+
+                height: 100%;
+                position: relative;
+                background-image: linear-gradient($main-red-color, $main-blue-color);
+
+                .login-form {
+                    vertical-align: middle;
+                    width: 40%;
+                    height: 70%;
+                    position: absolute;
+                    top: 15%;
+                    left: 30%;
+                    margin: auto;
+                    text-align: center;
+
+                    .login-form-logo {
+
+                        margin: 30px auto;
+                        color: $white;
+                        .login-logo {
+                            width: 100px;
+                            height: 100px;
+                            border-radius: 50%;
+                            margin: auto;
+                            background-color: $white;
+
+                            img {
+                                width: 70px;
+                                height: 70px;
+                                margin: 15px;
+                            }
+                        }
+
+                        p {
+                            font-size: 30px;
+                            font-weight: bold;
+                            padding-top: 20px;
+                        }
+                    }
+
+                    .form-group {
+
+                        width: 100%;
+                        height: 45px;
+                        position: relative;
+                        border-bottom: 2px solid rgba(255, 255, 255, .25);
+
+                        input {
+                            width: 100%;
+                            height: 100%;
+                            margin: auto;
+                            background: 0 0; 
+                            color: $white;
+                            border: none;
+
+                            &:focus {
+                                border: none;
+                                box-shadow: none;
+
+                                ~ .input-line {
+                                    &::before {
+                                        width: 100%;
+                                    }
+                                    &::after {
+                                        @include transform(translate(-12%, -50%) scale(0.75));
+                                    }
+                                }
+                            }
+                        }
+
+                        .input-line {
+
+                            position: absolute;
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+                            top: 0;
+                            left: 0;
+                            pointer-events: none;
+
+                            &::before {
+                                content: '';
+                                display: inline-block;
+                                width: 100%;
+                                height: 2px;
+                                position: absolute;
+                                left: 0;
+                                bottom: -2px;
+                                width: 0;
+                                background-color: $white;
+                                @include transition(all .4s ease-in);
+                            }
+
+                            &::after {
+                                color: $white;
+                                font-size: 18px;
+                                content: attr(data-placeholder);
+                                display: block;
+                                width: 100%;
+                                position: absolute;
+                                top: 6px;
+                                left: 0;
+                                padding-left: 5px;
+                                text-align: left;
+                                @include transition(all .4s ease-in);
+                            }
+                        }
+                    }
+
+                    button {
+                        border-radius: 50px;
+                    }
+                }
+            }
+            
+            &.login-animation {
+                background: url("/static/image/login.jpg");
+                background-position: center center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+        } 
+    }
+} 

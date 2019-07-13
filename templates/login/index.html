@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="keywords" content="Recognition" />
+    <meta name="description" content="Recognize your colleagues" />
+    <link rel="stylesheet" href="{% static 'css/lib/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/custom/login/login.css' %}" />
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col login-animation"></div>
+            <div class="col login-wrapper align-self-center">
+                <form class="login-form">
+                    <div class="login-form-logo text-center">
+                        <div class="login-logo">
+                            <img alt="login logo" src="{% static 'image/sign-in.png' %}" />
+                        </div>
+                        <div>
+                            <p>LOG IN</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off">
+                        <span class="input-line" data-placeholder="Username"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                        <span class="input-line" data-placeholder="Password"></span>
+                    </div>
+                    <button type="submit" class="btn btn-light btn-lg">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="{% static 'js/lib/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/lib/popper.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/lib/bootstrap.min.js' %}"></script>
+{% block script %}{% endblock %}
+</html>
