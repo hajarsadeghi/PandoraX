@@ -16,186 +16,190 @@
     }
 }
 
-.container-fluid {
+body {
+    
+    font-family: 'Roboto', sans-serif;
+    .container-fluid {
 
-    padding: 0;
-    margin: 0;
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    height: 100%;
-
-    .row {
-
+        padding: 0;
+        margin: 0;
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
         height: 100%;
-        .col {
-
+    
+        .row {
+    
             height: 100%;
-
-            &.login-wrapper {
-
+            .col {
+    
                 height: 100%;
-                position: relative;
-                background-image: linear-gradient($login-gradient-start, $login-gradient-end);
-
-                .login-form {
-                    vertical-align: middle;
-                    width: 40%;
-                    height: 70%;
-                    position: absolute;
-                    top: 15%;
-                    left: 30%;
-                    margin: auto;
-                    text-align: center;
-
-                    .login-form-logo {
-
-                        margin: 30px auto;
-                        color: $white;
-                        .login-logo {
-                            width: 100px;
-                            height: 100px;
-                            border-radius: 50%;
-                            margin: auto;
-                            background-color: $white;
-
-                            img {
-                                width: 70px;
-                                height: 70px;
-                                margin: 15px;
-                            }
-                        }
-
-                        p {
-                            font-size: 30px;
-                            font-weight: bold;
-                            padding-top: 20px;
-                        }
-                    }
-
-                    .form-group {
-                        &.forms {
-
-                            width: 100%;
-                            height: 45px;
-                            position: relative;
-                            border-bottom: 2px solid rgba(255, 255, 255, .25);
     
-                            input {
-                                width: 100%;
-                                height: 100%;
+                &.login-wrapper {
+    
+                    height: 100%;
+                    position: relative;
+                    background-image: linear-gradient($login-gradient-start, $login-gradient-end);
+    
+                    .login-form {
+                        vertical-align: middle;
+                        width: 40%;
+                        height: 70%;
+                        position: absolute;
+                        top: 15%;
+                        left: 30%;
+                        margin: auto;
+                        text-align: center;
+    
+                        .login-form-logo {
+    
+                            margin: 30px auto;
+                            color: $white;
+                            .login-logo {
+                                width: 100px;
+                                height: 100px;
+                                border-radius: 50%;
                                 margin: auto;
-                                background: 0 0; 
-                                color: $white;
-                                border: none;
+                                background-color: $white;
     
-                                &.has-val {
-                                    @extend %transform-inputs;
-                                }
-
-                                &:focus {
-                                    @extend %transform-inputs;
+                                img {
+                                    width: 70px;
+                                    height: 70px;
+                                    margin: 15px;
                                 }
                             }
     
-                            .input-line {
+                            p {
+                                font-size: 30px;
+                                font-weight: bold;
+                                padding-top: 20px;
+                            }
+                        }
     
-                                position: absolute;
-                                display: block;
+                        .form-group {
+                            &.forms {
+    
                                 width: 100%;
-                                height: 100%;
-                                top: 0;
-                                left: 0;
-                                pointer-events: none;
-    
-                                &::before {
-                                    content: '';
-                                    display: inline-block;
+                                height: 45px;
+                                position: relative;
+                                border-bottom: 2px solid rgba(255, 255, 255, .25);
+        
+                                input {
                                     width: 100%;
-                                    height: 2px;
-                                    position: absolute;
-                                    left: 0;
-                                    bottom: -2px;
-                                    width: 0;
-                                    background-color: $white;
-                                    @include transition(all .4s ease-in);
-                                }
-    
-                                &::after {
+                                    height: 100%;
+                                    margin: auto;
+                                    background: 0 0; 
                                     color: $white;
-                                    font-size: 18px;
-                                    content: attr(data-placeholder);
+                                    border: none;
+        
+                                    &.has-val {
+                                        @extend %transform-inputs;
+                                    }
+    
+                                    &:focus {
+                                        @extend %transform-inputs;
+                                    }
+                                }
+        
+                                .input-line {
+        
+                                    position: absolute;
                                     display: block;
                                     width: 100%;
-                                    position: absolute;
-                                    top: 6px;
+                                    height: 100%;
+                                    top: 0;
                                     left: 0;
-                                    padding-left: 5px;
-                                    text-align: left;
-                                    @include transition(all .4s ease-in);
+                                    pointer-events: none;
+        
+                                    &::before {
+                                        content: '';
+                                        display: inline-block;
+                                        width: 100%;
+                                        height: 2px;
+                                        position: absolute;
+                                        left: 0;
+                                        bottom: -2px;
+                                        width: 0;
+                                        background-color: $white;
+                                        @include transition(all .4s ease-in);
+                                    }
+        
+                                    &::after {
+                                        color: $white;
+                                        font-size: 18px;
+                                        content: attr(data-placeholder);
+                                        display: block;
+                                        width: 100%;
+                                        position: absolute;
+                                        top: 6px;
+                                        left: 0;
+                                        padding-left: 5px;
+                                        text-align: left;
+                                        @include transition(all .4s ease-in);
+                                    }
                                 }
                             }
                         }
-                    }
-
-                    .remember-form {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        font-size: 13px;
-
-                        label {
-                            color: rgba(255, 255, 255, .60);
-                        }
-
-                        a {
-                            color: rgba(255, 255, 255, .60);
-                            text-decoration: none;
-                        }
-                    }
-
-                    .social-logins {
-                        p {
-                            color: $white;
-                        }
-
-                        img {
-                            width: 25px;
-                            height: auto;
-                            cursor: pointer;
-                        }
-                    }
-
-                    .remember-me {
-                        color: $white;
-                    }
-
-                    button {
-                        border-radius: 50px;
-                    }
-
-                    .sign-up-section {
-                        > div {
-                            position: absolute;
-                            bottom: 0;
-                            width: 100%;
-                            color: $white;
+    
+                        .remember-form {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            font-size: 13px;
+    
+                            label {
+                                color: rgba(255, 255, 255, .60);
+                            }
+    
                             a {
+                                color: rgba(255, 255, 255, .60);
+                                text-decoration: none;
+                            }
+                        }
+    
+                        .social-logins {
+                            p {
                                 color: $white;
+                            }
+    
+                            img {
+                                width: 25px;
+                                height: auto;
+                                cursor: pointer;
+                            }
+                        }
+    
+                        .remember-me {
+                            color: $white;
+                        }
+    
+                        button {
+                            border-radius: 50px;
+                        }
+    
+                        .sign-up-section {
+                            > div {
+                                position: absolute;
+                                bottom: 0;
+                                width: 100%;
+                                color: $white;
+                                a {
+                                    color: $white;
+                                }
                             }
                         }
                     }
                 }
-            }
-            
-            // &.login-animation {
-            //     background: url("/static/image/login.jpg");
-            //     background-position: center center;
-            //     background-size: cover;
-            //     background-repeat: no-repeat;
-            // }
-        } 
-    }
-} 
+                
+                // &.login-animation {
+                //     background: url("/static/image/login.jpg");
+                //     background-position: center center;
+                //     background-size: cover;
+                //     background-repeat: no-repeat;
+                // }
+            } 
+        }
+    } 
+}

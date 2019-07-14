@@ -1,3 +1,47 @@
+@import "./../utilities/variables";
+@import "./../utilities/mixins";
+
+
+%transform-inputs-rtl {
+    ~ .input-line {
+        &::after {
+            @include transform(translate(13%, -90%) scale(0.7));
+        }
+    }
+}
+
 body {
     direction: rtl !important;
+
+    .container-fluid {
+        .row {
+            .col {
+                &.login-wrapper {
+                    .login-form {
+                        .form-group {
+                            &.forms {
+                                input {
+    
+                                    direction: ltr;
+                                    &.has-val {
+                                        @extend %transform-inputs-rtl;
+                                    }
+    
+                                    &:focus {
+                                        @extend %transform-inputs-rtl;
+                                    }
+                                }
+    
+                                .input-line {
+                                    &::after {
+                                        text-align: right;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } 
+        }
+    } 
 }
