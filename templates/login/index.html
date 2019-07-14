@@ -1,4 +1,6 @@
+{% load i18n %}
 {% load static %}
+{% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +12,9 @@
     <meta name="description" content="Recognize your colleagues" />
     <link rel="stylesheet" href="{% static 'css/lib/bootstrap.min.css' %}" />
     <link rel="stylesheet" href="{% static 'css/custom/login/login.css' %}" />
+    {% if LANGUAGE_CODE == 'fa' %}
+        <link rel="stylesheet" href="{% static 'css/custom/login/login-rtl.css' %}" /> 
+    {% endif %}
     {% block head %}{% endblock %}
 </head>
 <body>
@@ -22,31 +27,31 @@
                         <div class="login-logo">
                         </div>
                         <div>
-                            <p>LOG IN</p>
+                            <p>{% trans "LOG IN" %}</p>
                         </div>
                     </div>
                     <div class="form-group forms">
                         <input type="email" class="form-control login-input" id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off">
-                        <span class="input-line" data-placeholder="Username"></span>
+                        <span class="input-line" data-placeholder="{% trans 'Username' %}"></span>
                     </div>
                     <div class="form-group forms">
                         <input type="password" class="form-control login-input" id="exampleInputPassword1">
-                        <span class="input-line" data-placeholder="Password"></span>
+                        <span class="input-line" data-placeholder="{% trans 'Password' %}"></span>
                     </div>
                     <div class="form-group remember-form">
                         <div>
                             <label class="remember-me m-0" for="rememberMe">
                                 <input type="checkbox" id="rememberMe" />
-                                Remember me
+                                {% trans "Remember me" %}
                             </label>
                         </div>
                         <div>
-                            <a href="#">Forgot Password?</a>
+                            <a href="#">{% trans "Forgot Password?" %}</a>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-light btn-block">Login</button>
+                    <button type="submit" class="btn btn-light btn-block">{% trans "LOG IN" %}</button>
                     <div class="social-logins my-3">
-                        <p>or login using</p>
+                        <p>{% trans "or login using" %}</p>
                         <a href="http://www.google.com" target="_target">
                             <img class="google-login d-inline-block mx-1" alt="google login" src="{% static 'image/google.svg' %}" />
                         </a>
@@ -55,8 +60,9 @@
                         </a>
                     </div>
                     <div class="sign-up-section">
-                        <div>Not a Member?
-                            <u><a href="#">Sign Up Now</a></u>
+                        <div>
+                            {% trans "Not a Member?" %}
+                            <u><a href="#">{% trans "Sign Up Now" %}</a></u>
                         </div>
                     </div>
                 </form>

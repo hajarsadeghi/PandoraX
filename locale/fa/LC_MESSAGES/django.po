@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-09 14:22+0000\n"
-"PO-Revision-Date: 2019-07-09 19:00+0430\n"
+"POT-Creation-Date: 2019-07-14 07:45+0000\n"
+"PO-Revision-Date: 2019-07-14 12:16+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa\n"
@@ -18,18 +18,58 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 2.2.3\n"
 
-#: pandora_x/settings.py:121
+#: pandora_x/settings.py:115
 msgid "English"
 msgstr "انگلیسی"
 
-#: pandora_x/settings.py:122
+#: pandora_x/settings.py:116
 msgid "Persian"
 msgstr "فارسی"
 
-#: templates/dashboard/index.html:12
+#: templates/login/index.html:30 templates/login/index.html:52
+msgid "LOG IN"
+msgstr "ورود"
+
+#: templates/login/index.html:35
+msgid "Username"
+msgstr "نام کاربری"
+
+#: templates/login/index.html:39
+msgid "Password"
+msgstr "رمز عبور"
+
+#: templates/login/index.html:45
+msgid "Remember me"
+msgstr "مرا به خاطر بسپار"
+
+#: templates/login/index.html:49
+msgid "Forgot Password?"
+msgstr "رمز عبور را فراموش کرده اید؟"
+
+#: templates/login/index.html:54
+msgid "or login using"
+msgstr "یا ورود با استفاده از"
+
+#: templates/login/index.html:64
+msgid "Not a Member?"
+msgstr "عضو نیستید؟"
+
+#: templates/login/index.html:65
+msgid "Sign Up Now"
+msgstr "ثبت نام کنید"
+
+#: templates/multilanguage.html:12
 msgid "Sign Up"
 msgstr "ثبت نام"
 
-#: templates/dashboard/index.html:13
+#: templates/multilanguage.html:13
 msgid "Login"
 msgstr "ورود"
+
+#, fuzzy
+#~| msgid "Login"
+#~ msgid "login"
+#~ msgstr "ورود"
+
+#~ msgid "LOGIN"
+#~ msgstr "ورود"
