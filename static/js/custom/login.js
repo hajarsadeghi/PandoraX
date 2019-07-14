@@ -1,0 +1,1 @@
+$(document).on("keyup",".login-input",function(){$(this).val()?$(this).addClass("has-val"):$(this).removeClass("has-val")}),lottie.loadAnimation({container:document.getElementById("animation"),path:anim,renderer:"svg",autoplay:!0,loop:!0});
