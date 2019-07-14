@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{% static 'css/lib/bootstrap.min.css' %}" />
     <link rel="stylesheet" href="{% static 'css/custom/login/login.css' %}" />
     {% if LANGUAGE_CODE == 'fa' %}
-        <link rel="stylesheet" href="{% static 'css/custom/login/login-rtl.css' %}" /> 
+        <link rel="stylesheet" href="{% static 'css/custom/login/login-rtl.css' %}" />
     {% endif %}
     {% block head %}{% endblock %}
 </head>
@@ -52,10 +52,10 @@
                     <button type="submit" class="btn btn-light btn-block">{% trans "LOG IN" %}</button>
                     <div class="social-logins my-3">
                         <p>{% trans "or login using" %}</p>
-                        <a href="http://www.google.com" target="_target">
+                        <a href="{% url 'social:begin' 'google-oauth2' %}" target="_target">
                             <img class="google-login d-inline-block mx-1" alt="google login" src="{% static 'image/google.svg' %}" />
                         </a>
-                        <a href="http://www.linkedin.com" target="_target">
+                        <a href="{% url 'social:begin' 'linkedin-oauth2' %}" target="_target">
                             <img class="linkedin-login d-inline-block mx-1" alt="linkedin login" src="{% static 'image/linkedin.png' %}" />
                         </a>
                     </div>
