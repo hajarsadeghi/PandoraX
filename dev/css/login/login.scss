@@ -33,7 +33,7 @@ body {
         .row {
     
             height: 100%;
-            .col {
+            .col-sections {
     
                 height: 100%;
     
@@ -46,10 +46,6 @@ body {
                     .login-form {
                         vertical-align: middle;
                         width: 40%;
-                        height: 70%;
-                        position: absolute;
-                        top: 15%;
-                        left: 30%;
                         margin: auto;
                         text-align: center;
     
@@ -181,8 +177,6 @@ body {
     
                         .sign-up-section {
                             > div {
-                                position: absolute;
-                                bottom: 0;
                                 width: 100%;
                                 color: $white;
                                 a {
@@ -192,14 +186,24 @@ body {
                         }
                     }
                 }
-                
-                // &.login-animation {
-                //     background: url("/static/image/login.jpg");
-                //     background-position: center center;
-                //     background-size: cover;
-                //     background-repeat: no-repeat;
-                // }
             } 
         }
     } 
+}
+
+@media (min-width: 1400px) {
+
+    .login-form {
+        height: 70%;
+        position: absolute;
+        top: 15%;
+        left: 30%;
+        .sign-up-section {
+            > div {
+                position: absolute;
+                bottom: 0;
+            }
+        }
+    }
+
 }
