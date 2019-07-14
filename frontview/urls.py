@@ -1,8 +1,8 @@
 from django.urls import path
 from frontview import views
 
-frontview_urlpatterns = [
-    path('', views.dashboard),
-    path('login', views.login),
+urlpatterns = [
+    path('', views.dashboard, name='dashboard'),
+    path('login', views.login, name='login'),
     path('multilanguage', views.multilanguage)
 ]

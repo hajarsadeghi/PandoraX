@@ -6,11 +6,11 @@
         Bilono
     </div>
     <div class="navbar-profile-wrapper">
-        <div class="navbar-profile" data-toggle="collapse" data-target="#userProfile" aria-expanded="true"> 
+        <div class="navbar-profile" data-toggle="collapse" data-target="#userProfile" aria-expanded="true">
             <img class="img-fluid user-logo" alt="user-profile" src="{% static 'image/man.png' %}" />
             <span class="user-info">
                 <span>
-                    Hajar Sadeghi
+                    {{request.user.first_name}} {{request.user.last_name}}
                     <i class="material-icons">arrow_drop_down</i>
                 </span>
                 <div class="user-info-credit">

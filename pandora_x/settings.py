@@ -106,6 +106,36 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+
+
+# SOCIAL AUTH CONFIG
+
+INSTALLED_APPS.append('social_django')
+MIDDLEWARE+=[
+    'social_django.middleware.SocialAuthExceptionMiddleware',
+]
+TEMPLATES[0]['OPTIONS']['context_processors']+= [
+    'social_django.context_processors.backends',
+    'social_django.context_processors.login_redirect',
+]
+AUTHENTICATION_BACKENDS+= [
+    'social_core.backends.linkedin.LinkedinOAuth2',
+    'social_core.backends.google.GoogleOAuth2'
+]
+
+LOGIN_REDIRECT_URL = 'dashboard'
+LOGOUT_REDIRECT_URL = 'login'
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = os.getenv('LINKEDIN_OAUTH_KEY', '')
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = os.getenv('LINKEDIN_OAUTH_SECRET', '')
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('GOOGLE_OAUTH_KEY', '')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv('GOOGLE_OAUTH_SECRET', '')
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
