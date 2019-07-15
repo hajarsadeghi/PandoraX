@@ -205,10 +205,16 @@ body {
 @media (min-width: 768px) {
     .form {
         width: 60%;
+        position: absolute;
+        left: 20%;
+    }
+}
+
+@media (min-width: 1400px) {
+    .form {
         height: 70%;
         position: absolute;
         top: 15%;
-        left: 20%;
     }
 }
 
