@@ -21,3 +21,17 @@ lottie.loadAnimation({
     autoplay: true,
     loop: true
 });
+
+$(document).on('click','.sign-up-link',function() {
+    $('.login-form').removeClass('d-block');
+    $('.login-form').addClass('d-none');
+    $('.register-form').removeClass('d-none');
+    $('.register-form').addClass('d-block');
+});
+
+$(document).on('click','.login-link',function() {
+    $('.register-form').removeClass('d-block');
+    $('.register-form').addClass('d-none');
+    $('.login-form').removeClass('d-none');
+    $('.login-form').addClass('d-block');
+});

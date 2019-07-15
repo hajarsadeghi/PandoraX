@@ -12,6 +12,7 @@
     <meta name="description" content="Recognize your colleagues" />
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/lib/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/lib/animate.css' %}" />
     <link rel="stylesheet" href="{% static 'css/custom/login/login.css' %}" />
     {% if LANGUAGE_CODE == 'fa' %}
         <link rel="stylesheet" href="{% static 'css/custom/login/login-rtl.css' %}" />
@@ -23,7 +24,8 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg col-sections login-animation" id="animation"></div>
             <div class="col-12 col-lg col-sections login-wrapper align-self-center">
-                <form class="login-form">
+                <!-- login form -->
+                <form id="loginForm" class="login-form form animated fadeInLeft">
                     <div class="login-form-logo text-center">
                         <div class="login-logo">
                         </div>
@@ -32,11 +34,11 @@
                         </div>
                     </div>
                     <div class="form-group forms">
-                        <input type="email" class="form-control login-input" id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off">
+                        <input type="email" class="form-control login-input" id="email" aria-describedby="emailHelp" autocomplete="off">
                         <span class="input-line" data-placeholder="{% trans 'Username' %}"></span>
                     </div>
                     <div class="form-group forms">
-                        <input type="password" class="form-control login-input" id="exampleInputPassword1">
+                        <input type="password" class="form-control login-input" id="password">
                         <span class="input-line" data-placeholder="{% trans 'Password' %}"></span>
                     </div>
                     <div class="form-group remember-form">
@@ -63,7 +65,45 @@
                     <div class="sign-up-section">
                         <div>
                             {% trans "Not a Member?" %}
-                            <u><a href="#">{% trans "Sign Up Now" %}</a></u>
+                            <u class="sign-up-link"><a href="#registerForm">{% trans "Sign Up Now" %}</a></u>
+                        </div>
+                    </div>
+                </form>
+                <!-- register form -->
+                <form id="registerForm" class="register-form form animated fadeInLeft d-none">
+                    <div class="login-form-logo text-center">
+                        <div class="login-logo">
+                        </div>
+                        <div>
+                            <p>{% trans "Register" %}</p>
+                        </div>
+                    </div>
+                    <div class="form-group forms">
+                        <input type="email" class="form-control login-input" id="newEmail" aria-describedby="emailHelp" autocomplete="off">
+                        <span class="input-line" data-placeholder="{% trans 'Username' %}"></span>
+                    </div>
+                    <div class="form-group forms">
+                        <input type="password" class="form-control login-input" id="newPass">
+                        <span class="input-line" data-placeholder="{% trans 'Password' %}"></span>
+                    </div>
+                    <div class="form-group forms">
+                        <input type="password" class="form-control login-input" id="repeatPass">
+                        <span class="input-line" data-placeholder="{% trans 'Repeat Password' %}"></span>
+                    </div>
+                    <button type="submit" class="btn btn-light btn-block">{% trans "Register" %}</button>
+                    <div class="social-logins my-3">
+                        <p>{% trans "or login using" %}</p>
+                        <a href="{% url 'social:begin' 'google-oauth2' %}" target="_self">
+                            <img class="google-login d-inline-block mx-1" alt="google login" src="{% static 'image/google.svg' %}" />
+                        </a>
+                        <a href="{% url 'social:begin' 'linkedin-oauth2' %}" target="_self">
+                            <img class="linkedin-login d-inline-block mx-1" alt="linkedin login" src="{% static 'image/linkedin.png' %}" />
+                        </a>
+                    </div>
+                    <div class="sign-up-section">
+                        <div>
+                            {% trans "Already a Member?" %}
+                            <u class="login-link"><a href="#loginForm">{% trans "Login" %}</a></u>
                         </div>
                     </div>
                 </form>

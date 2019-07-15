@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-14 07:45+0000\n"
-"PO-Revision-Date: 2019-07-14 12:16+0430\n"
+"POT-Creation-Date: 2019-07-15 06:41+0000\n"
+"PO-Revision-Date: 2019-07-15 11:12+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa\n"
@@ -18,53 +18,65 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 2.2.3\n"
 
-#: pandora_x/settings.py:115
+#: pandora_x/settings.py:145
 msgid "English"
 msgstr "انگلیسی"
 
-#: pandora_x/settings.py:116
+#: pandora_x/settings.py:146
 msgid "Persian"
 msgstr "فارسی"
 
-#: templates/login/index.html:30 templates/login/index.html:52
+#: templates/login/index.html:33 templates/login/index.html:55
 msgid "LOG IN"
 msgstr "ورود"
 
-#: templates/login/index.html:35
+#: templates/login/index.html:38 templates/login/index.html:83
 msgid "Username"
 msgstr "نام کاربری"
 
-#: templates/login/index.html:39
+#: templates/login/index.html:42 templates/login/index.html:87
 msgid "Password"
 msgstr "رمز عبور"
 
-#: templates/login/index.html:45
+#: templates/login/index.html:48
 msgid "Remember me"
 msgstr "مرا به خاطر بسپار"
 
-#: templates/login/index.html:49
+#: templates/login/index.html:52
 msgid "Forgot Password?"
 msgstr "رمز عبور را فراموش کرده اید؟"
 
-#: templates/login/index.html:54
+#: templates/login/index.html:57 templates/login/index.html:95
 msgid "or login using"
 msgstr "یا ورود با استفاده از"
 
-#: templates/login/index.html:64
+#: templates/login/index.html:67
 msgid "Not a Member?"
 msgstr "عضو نیستید؟"
 
-#: templates/login/index.html:65
+#: templates/login/index.html:68
 msgid "Sign Up Now"
 msgstr "ثبت نام کنید"
+
+#: templates/login/index.html:78 templates/login/index.html:93
+msgid "Register"
+msgstr "ثبت نام"
+
+#: templates/login/index.html:91
+msgid "Repeat Password"
+msgstr "تکرار رمز عبور"
+
+#: templates/login/index.html:105
+msgid "Already a Member?"
+msgstr "قبلا ثبت نام کرده اید؟"
+
+#: templates/login/index.html:106 templates/multilanguage.html:13
+msgid "Login"
+msgstr "ورود"
 
 #: templates/multilanguage.html:12
 msgid "Sign Up"
 msgstr "ثبت نام"
-
-#: templates/multilanguage.html:13
-msgid "Login"
-msgstr "ورود"
 
 #, fuzzy
 #~| msgid "Login"

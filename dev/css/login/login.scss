@@ -43,7 +43,7 @@ body {
                     position: relative;
                     background-image: linear-gradient($login-gradient-start, $login-gradient-end);
     
-                    .login-form {
+                    .form {
                         vertical-align: middle;
                         width: 40%;
                         margin: auto;
@@ -193,7 +193,7 @@ body {
 
 @media (min-width: 1400px) {
 
-    .login-form {
+    .form {
         height: 70%;
         position: absolute;
         top: 15%;
