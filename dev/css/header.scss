@@ -21,15 +21,16 @@ header {
                 cursor: pointer;
                 .menu-button {
                     width: 30px;
-                    height: 3px;
+                    height: 0px;
                     position: absolute;
                     top: 12px;
                     background-color: $black;
         
-                    &::before,&::after {
+                    &::before,&::after
+                    {
                         content: '';
                         width: 30px;
-                        height: inherit;
+                        height: 3px;
                         background-color: inherit;
                         position: absolute;
                         @include transform-origin(0 50%);
@@ -38,27 +39,30 @@ header {
         
                     &::before {
                         top: -6px;
+                        @include transform(translateX(4px) translateY(-3px) rotate(45deg));
                     }
         
                     &::after {
                         top: 6px;
+                        @include transform(translateX(4px) translateY(6px) rotate(-45deg));
                     }
                 }
         
                 &.navbar-is-visible {
                     .menu-button {
-                        background-color: hsla(0, 0%, 100%, 0);
-                        
+
+                        height: 3px;
+                        background-color: hsl(0, 0%, 0%);
                         &::before, &::after {
                             background-color: $black;
                         }
 
                         &::before {
-                            @include transform(translateX(4px) translateY(-3px) rotate(45deg));
+                            @include transform(rotate(0deg));
                         }
         
                         &::after {
-                            @include transform(translateX(4px) translateY(6px) rotate(-45deg));
+                            @include transform(rotate(0deg));
                         }
                     }
                 }
