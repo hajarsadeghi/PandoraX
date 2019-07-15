@@ -55,10 +55,10 @@
                     <button type="submit" class="btn btn-light btn-block">{% trans "LOG IN" %}</button>
                     <div class="social-logins my-3">
                         <p>{% trans "or login using" %}</p>
-                        <a href="{% url 'social:begin' 'google-oauth2' %}" target="_self">
+                        <a class="auth-logins mx-1" href="{% url 'social:begin' 'google-oauth2' %}" target="_self">
                             <img class="google-login d-inline-block mx-1" alt="google login" src="{% static 'image/google.svg' %}" />
                         </a>
-                        <a href="{% url 'social:begin' 'linkedin-oauth2' %}" target="_self">
+                        <a class="auth-logins mx-1" href="{% url 'social:begin' 'linkedin-oauth2' %}" target="_self">
                             <img class="linkedin-login d-inline-block mx-1" alt="linkedin login" src="{% static 'image/linkedin.png' %}" />
                         </a>
                     </div>
@@ -93,11 +93,11 @@
                     <button type="submit" class="btn btn-light btn-block">{% trans "Register" %}</button>
                     <div class="social-logins my-3">
                         <p>{% trans "or login using" %}</p>
-                        <a href="{% url 'social:begin' 'google-oauth2' %}" target="_self">
-                            <img class="google-login d-inline-block mx-1" alt="google login" src="{% static 'image/google.svg' %}" />
+                        <a class="auth-logins mx-1" href="{% url 'social:begin' 'google-oauth2' %}" target="_self">
+                            <img class="google-login d-inline-block" alt="google login" src="{% static 'image/google.svg' %}" />
                         </a>
-                        <a href="{% url 'social:begin' 'linkedin-oauth2' %}" target="_self">
-                            <img class="linkedin-login d-inline-block mx-1" alt="linkedin login" src="{% static 'image/linkedin.png' %}" />
+                        <a class="auth-logins mx-1" href="{% url 'social:begin' 'linkedin-oauth2' %}" target="_self">
+                            <img class="linkedin-login d-inline-block" alt="linkedin login" src="{% static 'image/linkedin.png' %}" />
                         </a>
                     </div>
                     <div class="sign-up-section">

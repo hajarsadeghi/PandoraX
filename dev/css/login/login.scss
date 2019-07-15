@@ -160,10 +160,15 @@ body {
                                 color: $white;
                             }
     
-                            img {
+                            .auth-logins {
                                 width: 25px;
                                 height: auto;
                                 cursor: pointer;
+                                display: inline-block;
+                                img {
+                                    width: 100%;
+                                    height: auto;
+                                }
                             }
                         }
     
