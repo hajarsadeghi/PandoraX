@@ -5,7 +5,7 @@ $(document).ready(function() {
         $(this).addClass('active');
     });
 
-    $('.bilino-navbar').click(function() {
+    $('.navbar-profile-wrapper').click(function() {
         $(this).find('.material-icons').toggleClass('toggle');
     });
 
