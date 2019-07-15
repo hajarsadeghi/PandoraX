@@ -22,7 +22,7 @@
 <body>
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-12 col-lg col-sections login-animation" id="animation"></div>
+            <div class="col-lg col-sections d-none d-lg-inline-block login-animation" id="animation"></div>
             <div class="col-12 col-lg col-sections login-wrapper align-self-center">
                 <!-- login form -->
                 <form id="loginForm" class="login-form form animated fadeInLeft">
@@ -56,10 +56,10 @@
                     <div class="social-logins my-3">
                         <p>{% trans "or login using" %}</p>
                         <a class="auth-logins mx-1" href="{% url 'social:begin' 'google-oauth2' %}" target="_self">
-                            <img class="google-login d-inline-block mx-1" alt="google login" src="{% static 'image/google.svg' %}" />
+                            <img class="google-login d-inline-block" alt="google login" src="{% static 'image/google.svg' %}" />
                         </a>
                         <a class="auth-logins mx-1" href="{% url 'social:begin' 'linkedin-oauth2' %}" target="_self">
-                            <img class="linkedin-login d-inline-block mx-1" alt="linkedin login" src="{% static 'image/linkedin.png' %}" />
+                            <img class="linkedin-login d-inline-block" alt="linkedin login" src="{% static 'image/linkedin.png' %}" />
                         </a>
                     </div>
                     <div class="sign-up-section">
