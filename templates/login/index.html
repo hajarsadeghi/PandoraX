@@ -52,8 +52,8 @@
                             <a href="#">{% trans "Forgot Password?" %}</a>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-light btn-block">{% trans "LOG IN" %}</button>
-                    <div class="social-logins my-3">
+                    <button type="submit" class="btn btn-light login-btn my-4">{% trans "LOG IN" %}</button>
+                    <div class="social-logins my-2">
                         <p>{% trans "or login using" %}</p>
                         <a class="auth-logins mx-1" href="{% url 'social:begin' 'google-oauth2' %}" target="_self">
                             <img class="google-login d-inline-block" alt="google login" src="{% static 'image/google.svg' %}" />
@@ -90,8 +90,8 @@
                         <input type="password" class="form-control login-input" id="repeatPass">
                         <span class="input-line" data-placeholder="{% trans 'Repeat Password' %}"></span>
                     </div>
-                    <button type="submit" class="btn btn-light btn-block">{% trans "Register" %}</button>
-                    <div class="social-logins my-3">
+                    <button type="submit" class="btn btn-light register-btn my-4">{% trans "Register" %}</button>
+                    <div class="social-logins my-2">
                         <p>{% trans "or login using" %}</p>
                         <a class="auth-logins mx-1" href="{% url 'social:begin' 'google-oauth2' %}" target="_self">
                             <img class="google-login d-inline-block" alt="google login" src="{% static 'image/google.svg' %}" />

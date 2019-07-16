@@ -16,9 +16,50 @@
     }
 }
 
+@font-face {
+    font-family: 'regularLoginFont';
+    src: url('/static/fonts/opificio/Opificio_light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'regularLoginFont';
+    src: url('/static/fonts/opificio/Opificio_regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'regularLoginFont';
+    src: url('/static/fonts/opificio/Opificio_Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+
+
+@font-face {
+    font-family: 'roundedLoginFont';
+    src: url('/static/fonts/opificio/Opificio_light_rounded.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'roundedLoginFont';
+    src: url('/static/fonts/opificio/Opificio_rounded.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'roundedLoginFont';
+    src: url('/static/fonts/opificio/Opificio_Bold_rounded.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
 body {
     
-    font-family: 'Roboto', sans-serif;
+    font-family: 'roundedLoginFont', Tahoma, Geneva, sans-serif;
     .container-fluid {
 
         padding: 0;
@@ -68,8 +109,8 @@ body {
     
                             p {
                                 font-size: 30px;
-                                font-weight: bold;
                                 padding-top: 20px;
+                                font-weight: bold;
                             }
                         }
     
@@ -176,6 +217,8 @@ body {
                         }
     
                         button {
+                            width: 80%;
+                            margin: auto;
                             border-radius: 50px;
                         }
     
