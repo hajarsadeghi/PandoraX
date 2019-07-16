@@ -60,6 +60,8 @@
 body {
     
     font-family: 'roundedLoginFont', Tahoma, Geneva, sans-serif;
+    margin: 0;
+    padding: 0;
     .container-fluid {
 
         padding: 0;
@@ -85,13 +87,12 @@ body {
                     background-image: linear-gradient($login-gradient-start, $login-gradient-end);
     
                     .form {
+                        height: 100%;
                         vertical-align: middle;
-                        margin: auto;
                         text-align: center;
     
                         .login-form-logo {
-    
-                            margin: 30px auto;
+                            
                             color: $white;
                             .login-logo {
                                 width: 100px;
@@ -107,8 +108,7 @@ body {
                                 }
                             }
     
-                            p {
-                                font-size: 30px;
+                            h3 {
                                 padding-top: 20px;
                                 font-weight: bold;
                             }
@@ -164,8 +164,7 @@ body {
         
                                     &::after {
                                         color: $white;
-                                        font-size: 18px;
-                                        content: attr(data-placeholder);
+                                            content: attr(data-placeholder);
                                         display: block;
                                         width: 100%;
                                         position: absolute;
@@ -183,7 +182,6 @@ body {
                             display: flex;
                             justify-content: space-between;
                             align-items: center;
-                            font-size: 13px;
     
                             label {
                                 color: rgba(255, 255, 255, .60);
@@ -223,14 +221,19 @@ body {
                         }
     
                         .sign-up-section {
+
+                            position: absolute;
+                            width: 100%;
+                            text-align: center;
                             > div {
-                                width: 100%;
+                                position: static;
+                                margin: auto;
                                 color: $white;
                                 a {
                                     color: $white;
                                 }
                             }
-                        }
+                        }   
                     }
                 }
             } 
@@ -253,23 +256,23 @@ body {
     }
 }
 
-@media (min-width: 1400px) {
+@media (max-width: 1399.98px) {
     .form {
-        height: 70%;
-        position: absolute;
-        top: 15%;
+        .sign-up-section {
+            bottom: 10px;
+        }  
     }
 }
 
-@media (min-width: 1800px) {
+@media (min-width: 1400px) {
     .form {
-        width: 40%; 
+        width: 40%;
+        position: absolute;
         left: 30%;
+        margin-top: 50px;
+
         .sign-up-section {
-            > div {
-                position: absolute;
-                bottom: 0;
-            }
-        }
+            bottom: 60px;
+        }  
     }
 }
