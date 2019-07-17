@@ -12,8 +12,7 @@
     <meta name="description" content="Recognize your colleagues" />
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/lib/bootstrap.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/lib/animate.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/custom/login/login.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
     {% if LANGUAGE_CODE == 'fa' %}
         <link rel="stylesheet" href="{% static 'css/custom/login/login-rtl.css' %}" />
     {% endif %}
@@ -122,6 +121,6 @@
 <script>
     var anim = "{% static 'js/animation/data.json' %}";
 </script>
-<script type="text/javascript" src="{% static 'js/custom/login.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/login.js' %}"></script>
 {% block script %}{% endblock %}
 </html>

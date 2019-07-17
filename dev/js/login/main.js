@@ -1,8 +1,3 @@
-// import lottie from 'lottie-web';
-// import data from 'data.json';
-
-
-
 // ... login form transition ...
 $(document).on('keyup','.login-input',function() {
     if ($(this).val()) {
