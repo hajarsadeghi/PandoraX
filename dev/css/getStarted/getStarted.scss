@@ -1,0 +1,88 @@
+@import './../utilities/inheritance';
+@import "./../utilities/variables";
+@import "./../utilities/mixins";
+
+body {
+    @extend %no-margin;
+    @extend %no-padding;
+    background-color: $tint-blue-color1;
+
+    header {
+        nav {
+            // width: 100%;
+            // min-height: 40px;
+            background-color: $white;
+            box-shadow: 0px 0px 5px 2px #d9d9d9;
+        }
+    }
+    
+    .container-fluid {
+
+        min-height: 100vh;
+        position: relative;
+        overflow-y: auto;
+
+        .welcome-box {
+            width: 100%;
+            min-height: 300px;
+            background-color: $white;
+            box-shadow: 0px 0px 5px 2px #d9d9d9;
+            border-radius: $radius;
+    
+            .choose-path {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: transparent;
+                border: none;
+                width: 100%;
+                height: 4rem;
+    
+                .path-text {
+
+                    flex-grow: 2;
+                    span {
+                        float: left;
+                    }
+
+                    small {
+                        float: left;
+                        clear: left;
+                    }
+                }
+
+                .material-icons {
+                    &.chevron {
+                        @include transition(transform .2s ease-in);
+                    }
+                }
+
+                &:hover {
+                    .material-icons.chevron {
+                        @include transform(translate(-5px, 0));
+                    }
+                }
+            }
+
+            .digit-confirmation {
+
+                justify-content: center;
+                input {
+                    width: 50px;
+                    height: auto;
+                    border-radius: 0;
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    footer {
+        width: 100%;
+        min-height: 120px;
+        position: fixed;
+        bottom: 0;
+        background-color: $white;
+        box-shadow: 0px 0px 5px 2px #d9d9d9;
+    }
+}
