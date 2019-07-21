@@ -3034,34 +3034,42 @@
     animation-iteration-count: 1 !important;
   }
 }
-body {
+html body {
   margin: 0;
 }
 
-body {
+html body {
   padding: 0;
 }
 
-body {
-  background-color: #e8ebf8;
+html {
+  height: 100%;
 }
-body header nav {
+html body {
+  height: 100%;
+  background-color: #e8ebf8;
+  display: flex;
+  flex-direction: column;
+}
+html body header {
+  margin-bottom: 6rem;
+}
+html body header nav {
+  min-height: 50px;
   background-color: #ffffff;
   box-shadow: 0px 0px 5px 2px #d9d9d9;
 }
-body .container-fluid {
-  min-height: 100vh;
-  position: relative;
-  overflow-y: auto;
+html body .content {
+  height: auto;
 }
-body .container-fluid .welcome-box {
+html body .content .welcome-box {
   width: 100%;
   min-height: 300px;
   background-color: #ffffff;
   box-shadow: 0px 0px 5px 2px #d9d9d9;
   border-radius: 5px;
 }
-body .container-fluid .welcome-box .choose-path {
+html body .content .welcome-box .choose-path {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -3070,44 +3078,42 @@ body .container-fluid .welcome-box .choose-path {
   width: 100%;
   height: 4rem;
 }
-body .container-fluid .welcome-box .choose-path .path-text {
+html body .content .welcome-box .choose-path .path-text {
   flex-grow: 2;
 }
-body .container-fluid .welcome-box .choose-path .path-text span {
+html body .content .welcome-box .choose-path .path-text span {
   float: left;
 }
-body .container-fluid .welcome-box .choose-path .path-text small {
+html body .content .welcome-box .choose-path .path-text small {
   float: left;
   clear: left;
 }
-body .container-fluid .welcome-box .choose-path .material-icons.chevron {
+html body .content .welcome-box .choose-path .material-icons.chevron {
   -webkit-transition: transform 0.2s ease-in;
   -ms-transition: transform 0.2s ease-in;
   -moz-transition: transform 0.2s ease-in;
   -o-transition: transform 0.2s ease-in;
   transition: transform 0.2s ease-in;
 }
-body .container-fluid .welcome-box .choose-path:hover .material-icons.chevron {
+html body .content .welcome-box .choose-path:hover .material-icons.chevron {
   -webkit-transform: translate(-5px, 0);
   -ms-transform: translate(-5px, 0);
   -moz-transform: translate(-5px, 0);
   -o-transform: translate(-5px, 0);
   transform: translate(-5px, 0);
 }
-body .container-fluid .welcome-box .digit-confirmation {
+html body .content .welcome-box .digit-confirmation {
   justify-content: center;
 }
-body .container-fluid .welcome-box .digit-confirmation input {
-  width: 50px;
+html body .content .welcome-box .digit-confirmation input {
+  max-width: 50px;
   height: auto;
   border-radius: 0;
   text-align: center;
 }
-body footer {
+html body footer {
   width: 100%;
   min-height: 120px;
-  position: fixed;
-  bottom: 0;
   background-color: #ffffff;
   box-shadow: 0px 0px 5px 2px #d9d9d9;
 }
