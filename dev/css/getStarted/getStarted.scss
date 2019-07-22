@@ -84,9 +84,23 @@ html {
 
         footer {
             width: 100%;
-            min-height: 120px;
+            height: auto !important;
             background-color: $white;
             box-shadow: 0px 0px 5px 2px #d9d9d9;
+            flex-shrink: 0;
+
+            .footer-list {
+                list-style-type: none;
+                margin: initial;
+                .footer-list-item {
+
+                    color: $text;
+                    cursor: pointer;
+                    &.h6 {
+                        color: $tint-blue-color5;
+                    }
+                }
+            }
         }
     }
 }

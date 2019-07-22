@@ -3114,7 +3114,19 @@ html body .content .get-started-box .digit-confirmation input {
 }
 html body footer {
   width: 100%;
-  min-height: 120px;
+  height: auto !important;
   background-color: #ffffff;
   box-shadow: 0px 0px 5px 2px #d9d9d9;
+  flex-shrink: 0;
+}
+html body footer .footer-list {
+  list-style-type: none;
+  margin: initial;
+}
+html body footer .footer-list .footer-list-item {
+  color: #AAB6C5;
+  cursor: pointer;
+}
+html body footer .footer-list .footer-list-item.h6 {
+  color: #4a5cc5;
 }
