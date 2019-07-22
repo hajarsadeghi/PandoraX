@@ -3062,14 +3062,14 @@ html body header nav {
 html body .content {
   height: auto;
 }
-html body .content .welcome-box {
+html body .content .get-started-box {
   width: 100%;
   min-height: 300px;
   background-color: #ffffff;
   box-shadow: 0px 0px 5px 2px #d9d9d9;
   border-radius: 5px;
 }
-html body .content .welcome-box .choose-path {
+html body .content .get-started-box .choose-path-link {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -3078,34 +3078,35 @@ html body .content .welcome-box .choose-path {
   width: 100%;
   height: 4rem;
 }
-html body .content .welcome-box .choose-path .path-text {
+html body .content .get-started-box .choose-path-link .path-text {
+  text-align: left;
   flex-grow: 2;
 }
-html body .content .welcome-box .choose-path .path-text span {
+html body .content .get-started-box .choose-path-link .path-text span {
   float: left;
 }
-html body .content .welcome-box .choose-path .path-text small {
+html body .content .get-started-box .choose-path-link .path-text small {
   float: left;
   clear: left;
 }
-html body .content .welcome-box .choose-path .material-icons.chevron {
+html body .content .get-started-box .choose-path-link .material-icons.chevron {
   -webkit-transition: transform 0.2s ease-in;
   -ms-transition: transform 0.2s ease-in;
   -moz-transition: transform 0.2s ease-in;
   -o-transition: transform 0.2s ease-in;
   transition: transform 0.2s ease-in;
 }
-html body .content .welcome-box .choose-path:hover .material-icons.chevron {
+html body .content .get-started-box .choose-path-link:hover .material-icons.chevron {
   -webkit-transform: translate(-5px, 0);
   -ms-transform: translate(-5px, 0);
   -moz-transform: translate(-5px, 0);
   -o-transform: translate(-5px, 0);
   transform: translate(-5px, 0);
 }
-html body .content .welcome-box .digit-confirmation {
+html body .content .get-started-box .digit-confirmation {
   justify-content: center;
 }
-html body .content .welcome-box .digit-confirmation input {
+html body .content .get-started-box .digit-confirmation input {
   max-width: 50px;
   height: auto;
   border-radius: 0;

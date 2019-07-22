@@ -1,3 +1,16 @@
+$('.get-started-link').click(function() {
+    $('.get-started-box').removeClass('d-block');
+    $('.get-started-box').addClass('d-none');
+});
+
+$('#newSpaceBtn').click(function() {
+    $('.validate-email-box').addClass('d-block');    
+});
+
+$('#confirmEmailBtn').click(function() {
+    $('.validate-code-box').addClass('d-block');    
+});
+
 var $inputs = $(".digit-cell");
 var intRegex = /^\d+$/;
 
@@ -7,7 +20,6 @@ $inputs.on("input.fromManual", function(){
         $(this).val("");
     }
 });
-
 
 // Prevents pasting non-digits and if value is 6 characters long will parse each character into an individual box.
 $inputs.on("paste", function() {
