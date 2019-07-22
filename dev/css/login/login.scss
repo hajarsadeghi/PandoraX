@@ -1,5 +1,6 @@
 @import "./../utilities/variables";
 @import "./../utilities/mixins";
+@import "./../index.scss";
 
 %transform-inputs {
     border: none;
@@ -14,47 +15,6 @@
             color: rgba(255, 255, 255, .60);
         }
     }
-}
-
-@font-face {
-    font-family: 'regularLoginFont';
-    src: url('/static/fonts/opificio/Opificio_light.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'regularLoginFont';
-    src: url('/static/fonts/opificio/Opificio_regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'regularLoginFont';
-    src: url('/static/fonts/opificio/Opificio_Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-
-
-
-
-@font-face {
-    font-family: 'roundedLoginFont';
-    src: url('/static/fonts/opificio/Opificio_light_rounded.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'roundedLoginFont';
-    src: url('/static/fonts/opificio/Opificio_rounded.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'roundedLoginFont';
-    src: url('/static/fonts/opificio/Opificio_Bold_rounded.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
 }
 
 body {

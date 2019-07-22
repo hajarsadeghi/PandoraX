@@ -3034,22 +3034,6 @@
     animation-iteration-count: 1 !important;
   }
 }
-body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input:focus, body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input.has-val {
-  border: none;
-  box-shadow: none;
-}
-body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input:focus ~ .input-line::before, body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input.has-val ~ .input-line::before {
-  width: 100%;
-}
-body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input:focus ~ .input-line::after, body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input.has-val ~ .input-line::after {
-  -webkit-transform: translate(-13%, -90%) scale(0.7);
-  -ms-transform: translate(-13%, -90%) scale(0.7);
-  -moz-transform: translate(-13%, -90%) scale(0.7);
-  -o-transform: translate(-13%, -90%) scale(0.7);
-  transform: translate(-13%, -90%) scale(0.7);
-  color: rgba(255, 255, 255, 0.6);
-}
-
 @font-face {
   font-family: "regularLoginFont";
   src: url("/static/fonts/opificio/Opificio_light.ttf") format("truetype");
@@ -3086,6 +3070,22 @@ body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms i
   font-weight: bold;
   font-style: normal;
 }
+body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input:focus, body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input.has-val {
+  border: none;
+  box-shadow: none;
+}
+body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input:focus ~ .input-line::before, body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input.has-val ~ .input-line::before {
+  width: 100%;
+}
+body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input:focus ~ .input-line::after, body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input.has-val ~ .input-line::after {
+  -webkit-transform: translate(-13%, -90%) scale(0.7);
+  -ms-transform: translate(-13%, -90%) scale(0.7);
+  -moz-transform: translate(-13%, -90%) scale(0.7);
+  -o-transform: translate(-13%, -90%) scale(0.7);
+  transform: translate(-13%, -90%) scale(0.7);
+  color: rgba(255, 255, 255, 0.6);
+}
+
 body {
   font-family: "roundedLoginFont", Tahoma, Geneva, sans-serif;
   margin: 0;

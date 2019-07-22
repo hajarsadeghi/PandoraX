@@ -1,16 +1,38 @@
-body {
-  font-family: "Roboto", sans-serif;
+@font-face {
+  font-family: "regularLoginFont";
+  src: url("/static/fonts/opificio/Opificio_light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
-body .container-fluid {
-  padding: 0;
-  margin: 0;
+@font-face {
+  font-family: "regularLoginFont";
+  src: url("/static/fonts/opificio/Opificio_regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
-body .container-fluid .bilino-main.main-is-fully-visible {
-  width: 100%;
+@font-face {
+  font-family: "regularLoginFont";
+  src: url("/static/fonts/opificio/Opificio_Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
 }
-body .container-fluid .bilino-main.main-is-partially-visible {
-  width: calc(100% - 250px);
-  padding-left: 250px;
+@font-face {
+  font-family: "roundedLoginFont";
+  src: url("/static/fonts/opificio/Opificio_light_rounded.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "roundedLoginFont";
+  src: url("/static/fonts/opificio/Opificio_rounded.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "roundedLoginFont";
+  src: url("/static/fonts/opificio/Opificio_Bold_rounded.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
 }
 header {
   width: 100%;
@@ -233,6 +255,54 @@ nav.bilino-navbar .material-icons.toggle {
     width: 250px;
   }
 }
+@font-face {
+  font-family: "regularLoginFont";
+  src: url("/static/fonts/opificio/Opificio_light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "regularLoginFont";
+  src: url("/static/fonts/opificio/Opificio_regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "regularLoginFont";
+  src: url("/static/fonts/opificio/Opificio_Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "roundedLoginFont";
+  src: url("/static/fonts/opificio/Opificio_light_rounded.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "roundedLoginFont";
+  src: url("/static/fonts/opificio/Opificio_rounded.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "roundedLoginFont";
+  src: url("/static/fonts/opificio/Opificio_Bold_rounded.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
 body {
+  font-family: "roundedLoginFont", Tahoma, Geneva, sans-serif;
   background-color: #4a5cc5;
+}
+body .container-fluid {
+  padding: 0;
+  margin: 0;
+}
+body .container-fluid .bilino-main.main-is-fully-visible {
+  width: 100%;
+}
+body .container-fluid .bilino-main.main-is-partially-visible {
+  width: calc(100% - 250px);
+  padding-left: 250px;
 }

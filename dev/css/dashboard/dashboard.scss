@@ -1,6 +1,22 @@
 @import "./../utilities/variables";
 @import "./../utilities/mixins";
+@import "./../index.scss";
 
 body {
+    font-family: 'roundedLoginFont', Tahoma, Geneva, sans-serif;
     background-color: $tint-blue-color5;
+    .container-fluid {
+        padding: 0;
+        margin: 0;
+
+        .bilino-main {
+            &.main-is-fully-visible {
+                width: 100%;
+            }
+            &.main-is-partially-visible {
+                width: calc(100% - 250px);
+                padding-left: $sidebar-width;
+            }
+        }
+    }
 }
