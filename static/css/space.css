@@ -3070,14 +3070,14 @@
   font-weight: bold;
   font-style: normal;
 }
-body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input:focus, body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input.has-val {
+body .container-fluid .row .col-sections .form .form-group.forms input:focus, body .container-fluid .row .col-sections .form .form-group.forms input.has-val {
   border: none;
   box-shadow: none;
 }
-body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input:focus ~ .input-line::before, body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input.has-val ~ .input-line::before {
+body .container-fluid .row .col-sections .form .form-group.forms input:focus ~ .input-line::before, body .container-fluid .row .col-sections .form .form-group.forms input.has-val ~ .input-line::before {
   width: 100%;
 }
-body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input:focus ~ .input-line::after, body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input.has-val ~ .input-line::after {
+body .container-fluid .row .col-sections .form .form-group.forms input:focus ~ .input-line::after, body .container-fluid .row .col-sections .form .form-group.forms input.has-val ~ .input-line::after {
   -webkit-transform: translate(-13%, -90%) scale(0.7);
   -ms-transform: translate(-13%, -90%) scale(0.7);
   -moz-transform: translate(-13%, -90%) scale(0.7);
@@ -3114,25 +3114,22 @@ body .container-fluid .row {
 }
 body .container-fluid .row .col-sections {
   height: 100%;
-}
-body .container-fluid .row .col-sections.login-wrapper {
-  height: 100%;
   position: relative;
   background-color: #e8ebf8;
 }
-body .container-fluid .row .col-sections.login-wrapper .form {
+body .container-fluid .row .col-sections .form {
   height: auto;
   vertical-align: middle;
   text-align: center;
   margin-top: 25vh;
 }
-body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms {
+body .container-fluid .row .col-sections .form .form-group.forms {
   width: 100%;
   height: 45px;
   position: relative;
   border-bottom: 2px solid rgba(170, 182, 197, 0.25);
 }
-body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input {
+body .container-fluid .row .col-sections .form .form-group.forms input {
   width: 100%;
   height: 100%;
   margin: auto;
@@ -3140,7 +3137,7 @@ body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms i
   color: #ffffff;
   border: none;
 }
-body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms .input-line {
+body .container-fluid .row .col-sections .form .form-group.forms .input-line {
   position: absolute;
   display: block;
   width: 100%;
@@ -3149,7 +3146,7 @@ body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms .
   left: 0;
   pointer-events: none;
 }
-body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms .input-line::before {
+body .container-fluid .row .col-sections .form .form-group.forms .input-line::before {
   content: "";
   display: inline-block;
   width: 100%;
@@ -3165,7 +3162,7 @@ body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms .
   -o-transition: all 0.4s ease-in;
   transition: all 0.4s ease-in;
 }
-body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms .input-line::after {
+body .container-fluid .row .col-sections .form .form-group.forms .input-line::after {
   color: #AAB6C5;
   content: attr(data-placeholder);
   display: block;
@@ -3181,7 +3178,10 @@ body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms .
   -o-transition: all 0.4s ease-in;
   transition: all 0.4s ease-in;
 }
-body .container-fluid .row .col-sections.login-wrapper .form button {
+body .container-fluid .row .col-sections .form .add-teammate-link {
+  color: #007bff;
+}
+body .container-fluid .row .col-sections .form button {
   margin: auto;
   background-color: #4a5cc5;
   color: #ffffff;
