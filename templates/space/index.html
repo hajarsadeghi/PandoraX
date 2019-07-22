@@ -1,0 +1,53 @@
+{% load i18n %}
+{% load static %}
+{% get_current_language as LANGUAGE_CODE %}
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="keywords" content="Recognition" />
+    <meta name="description" content="Recognize your colleagues" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/lib/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/space.css' %}" />
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <header>
+        <nav class="fixed-top text-center">
+            <a class="navbar-brand" href="www.bilono.com">
+                Bilono logo
+            </a>
+        </nav>
+    </header>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg col-sections login-wrapper align-self-center">
+                <!-- login form -->
+                <form id="companyName" class="company-name form animated fadeInLeft">
+                    <h3 class="mb-4">What's the name of your company or team?</h3>
+                    <div class="form-group forms">
+                        <input type="text" class="form-control form-input" aria-describedby="team" autocomplete="off">
+                        <span class="input-line" data-placeholder="Ex. Arianalabs"></span>
+                    </div>
+                    <button type="submit" class="btn btn-block login-btn my-3">Next</button>
+                    <small class="text-muted">By continiuing you're agreeing to our <a href="#">Customer Terms of Service</a>,<a href="#">Privacy Policy</a>, and <a href="#">Cookie Policy</a>.</small>
+                </form>
+            </div>
+            <div class="col-lg col-sections d-none d-lg-inline-block login-animation" id="animation"></div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="{% static 'js/lib/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/lib/popper.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/lib/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/lib/lottie.min.js' %}"></script>
+<script>
+    var anim = "{% static 'js/animation/data.json' %}";
+</script>
+<script type="text/javascript" src="{% static 'js/space.js' %}"></script>
+{% block script %}{% endblock %}
+</html>
