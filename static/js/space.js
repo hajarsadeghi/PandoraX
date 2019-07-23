@@ -116,7 +116,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _nod
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\n\n//# sourceURL=webpack:///./dev/js/space/main.js?");
+eval("$('.space-btn').click(function () {\n  $('.space-box').removeClass('d-block');\n  $('.space-box').addClass('d-none');\n});\n$('#spaceNameBtn').click(function () {\n  $('#spaceInfoBox').addClass('d-block');\n});\n$('#spaceInfoBtn').click(function () {\n  $('#spaceTeammatesBox').addClass('d-block');\n});\n$('#addTeammatesBtn').click(function () {\n  $('#spaceAlertBox').addClass('d-block');\n});\n\n//# sourceURL=webpack:///./dev/js/space/main.js?");
 
 /***/ }),
 
