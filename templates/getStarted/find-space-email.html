@@ -1,0 +1,14 @@
+{% load static %}
+<div class="get-started-box find-space-email-box pt-5 pl-5 pr-5 pb-0 d-none animated fadeInLeft">
+    <h4>Find your Bilono space</h4>
+    <small class="text-muted">
+        We’ll send you an email to confirm your address and find existing workspaces you’ve joined or can join.
+    </small>
+    <form class="mt-3">
+        <div class="form-group">
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="name@example.com">
+        </div>
+        <button type="button" class="btn btn-block btn-secondary get-started-link" id="checkEmailBtn">Confirm</button>
+    </form>
+    <img class="img-fluid" src="{% static 'image/create-space.png' %}" />
+</div>

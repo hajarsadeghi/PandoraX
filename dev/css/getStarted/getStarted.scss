@@ -9,6 +9,7 @@ html {
     body {
         @extend %no-margin;
         @extend %no-padding;
+        font-family: 'roundedLoginFont', Tahoma, Geneva, sans-serif;
         height: 100%;
         background-color: $tint-blue-color1;
         display: flex;
@@ -34,6 +35,11 @@ html {
                 background-color: $white;
                 box-shadow: 0px 0px 5px 2px #d9d9d9;
                 border-radius: $radius;
+
+                h4,button {
+                    font-weight: bold;
+                }
+                
         
                 .choose-path-link {
                     display: flex;
@@ -48,8 +54,9 @@ html {
     
                         text-align: left;
                         flex-grow: 2;
-                        span {
+                        h6 {
                             float: left;
+                            font-weight: bold;
                         }
     
                         small {

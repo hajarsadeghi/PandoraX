@@ -11,6 +11,14 @@ $('#confirmEmailBtn').click(function() {
     $('.validate-code-box').addClass('d-block');    
 });
 
+$('.find-space-btn').click(function() {
+    $('.find-space-email-box').addClass('d-block');    
+});
+
+$('#checkEmailBtn').click(function() {
+    $('.check-inbox-box').addClass('d-block');    
+});
+
 var $inputs = $(".digit-cell");
 var intRegex = /^\d+$/;
 
