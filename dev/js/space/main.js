@@ -15,3 +15,10 @@ $('#addTeammatesBtn').click(function() {
     $('#spaceAlertBox').addClass('d-block');    
 });
 
+// ... dropdown ...
+$('.industry').on('keyup',(e) => {
+    if ($('.industry').is(':focus')) {
+        
+    }
+});
+

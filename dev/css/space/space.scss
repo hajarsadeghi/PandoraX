@@ -51,9 +51,21 @@ body {
                        color: #007bff;
                     }
 
-                    .dropdown {
+                    .industry {
+                        &:focus {
+                            ~ .industry-dropdown {
+                                display: block;
+                            }
+                        }
+                    }
+                    .industry-dropdown {
 
+                        background-color: $white;
+                        border-radius: 0 0 $radius $radius;
                         text-align: left;
+                        position: relative;
+                        z-index: 99999;
+                        display: none;
                         button {
                             background-color: transparent;
                             color: $text;

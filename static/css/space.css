@@ -3184,16 +3184,24 @@ body .container-fluid .row .col-sections .form h3, body .container-fluid .row .c
 body .container-fluid .row .col-sections .form .add-teammate-link {
   color: #007bff;
 }
-body .container-fluid .row .col-sections .form .dropdown {
-  text-align: left;
+body .container-fluid .row .col-sections .form .industry:focus ~ .industry-dropdown {
+  display: block;
 }
-body .container-fluid .row .col-sections .form .dropdown button {
+body .container-fluid .row .col-sections .form .industry-dropdown {
+  background-color: #ffffff;
+  border-radius: 0 0 5px 5px;
+  text-align: left;
+  position: relative;
+  z-index: 99999;
+  display: none;
+}
+body .container-fluid .row .col-sections .form .industry-dropdown button {
   background-color: transparent;
   color: #AAB6C5;
   border: none;
   height: 100%;
 }
-body .container-fluid .row .col-sections .form .dropdown button:focus {
+body .container-fluid .row .col-sections .form .industry-dropdown button:focus {
   box-shadow: none;
 }
 body .container-fluid .row .col-sections .form button.space-btn {
