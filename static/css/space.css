@@ -3034,14 +3034,14 @@
     animation-iteration-count: 1 !important;
   }
 }
-.form-group.forms input:focus, .form-group.forms input.has-val {
+body .container-fluid .row .col-sections .form .industry:focus, body .container-fluid .row .col-sections .form .industry.has-val, .form-group.forms input:focus, .form-group.forms input.has-val {
   border: none;
   box-shadow: none;
 }
-.form-group.forms input:focus ~ .input-line::before, .form-group.forms input.has-val ~ .input-line::before {
+body .container-fluid .row .col-sections .form .industry:focus ~ .input-line::before, body .container-fluid .row .col-sections .form .industry.has-val ~ .input-line::before, .form-group.forms input:focus ~ .input-line::before, .form-group.forms input.has-val ~ .input-line::before {
   width: 100%;
 }
-.form-group.forms input:focus ~ .input-line::after, .form-group.forms input.has-val ~ .input-line::after {
+body .container-fluid .row .col-sections .form .industry:focus ~ .input-line::after, body .container-fluid .row .col-sections .form .industry.has-val ~ .input-line::after, .form-group.forms input:focus ~ .input-line::after, .form-group.forms input.has-val ~ .input-line::after {
   -webkit-transform: translate(-13%, -90%) scale(0.7);
   -ms-transform: translate(-13%, -90%) scale(0.7);
   -moz-transform: translate(-13%, -90%) scale(0.7);
@@ -3183,9 +3183,6 @@ body .container-fluid .row .col-sections .form h3, body .container-fluid .row .c
 }
 body .container-fluid .row .col-sections .form .add-teammate-link {
   color: #007bff;
-}
-body .container-fluid .row .col-sections .form .industry:focus ~ .industry-dropdown {
-  display: block;
 }
 body .container-fluid .row .col-sections .form .industry-dropdown {
   background-color: #ffffff;

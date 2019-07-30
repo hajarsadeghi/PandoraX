@@ -52,10 +52,12 @@ body {
                     }
 
                     .industry {
+                        &.has-val {
+                            @extend %transform-inputs;
+                        }
+
                         &:focus {
-                            ~ .industry-dropdown {
-                                display: block;
-                            }
+                            @extend %transform-inputs;
                         }
                     }
                     .industry-dropdown {

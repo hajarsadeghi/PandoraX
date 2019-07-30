@@ -1,3 +1,7 @@
+import Dropdown from './../helper/dropdown.js';
+
+
+
 $('.space-btn').click(function() {
     $('.space-box').removeClass('d-block');
     $('.space-box').addClass('d-none');
@@ -16,9 +20,5 @@ $('#addTeammatesBtn').click(function() {
 });
 
 // ... dropdown ...
-$('.industry').on('keyup',(e) => {
-    if ($('.industry').is(':focus')) {
-        
-    }
-});
+const dropdown = new Dropdown({root: '.dropdown-container'});
 
