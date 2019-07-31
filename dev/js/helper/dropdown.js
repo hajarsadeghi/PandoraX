@@ -32,11 +32,11 @@ class Dropdown {
 
     _onKeyup(ev) {
         ev.stopPropagation();
+
         if (ev.key == 'Enter') {
-            this.dropdownInput.val(this.target.text());
-            this.dropdownInput.attr('id', this.target.attr('id'))
-            
+            this.setValue(this.target);
         }
+        
         // ... search
         let arr = this.search(ev.target.value);
         // ... keyup & keydown navigation
@@ -108,8 +108,12 @@ class Dropdown {
 
     _handleClick(ev) {
         this.dropdownInput.addClass('has-val');
-        this.dropdownInput.val($(ev.target).text());
-        this.dropdownInput.attr('id', $(ev.target).attr('id'))
+        this.setValue($(ev.target));
+    }
+
+    setValue(target) {
+        this.dropdownInput.val(target.text());
+        this.dropdownInput.attr('id', target.attr('id'))
     }
 }
 
