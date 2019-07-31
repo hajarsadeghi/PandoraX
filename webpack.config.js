@@ -6,7 +6,8 @@ module.exports = {
       login: './dev/js/login/index.js',
       getStarted: './dev/js/getStarted/index.js',
       space: './dev/js/space/index.js',
-      dashboard: './dev/js/dashboard/index.js'
+      dashboard: './dev/js/dashboard/index.js',
+      budget: './dev/js/dashboard/budget/index.js'
   },
   output: {
     filename: '../js/[name].js',

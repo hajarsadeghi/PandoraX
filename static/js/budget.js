@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./dev/js/dashboard/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./dev/js/dashboard/budget/index.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -130,26 +130,26 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./dev/
 
 /***/ }),
 
-/***/ "./dev/js/dashboard/index.js":
-/*!***********************************!*\
-  !*** ./dev/js/dashboard/index.js ***!
-  \***********************************/
+/***/ "./dev/js/dashboard/budget/index.js":
+/*!******************************************!*\
+  !*** ./dev/js/dashboard/budget/index.js ***!
+  \******************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../css/index.scss */ \"./dev/css/index.scss\");\n/* harmony import */ var _css_index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_index_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _css_header_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../css/header.scss */ \"./dev/css/header.scss\");\n/* harmony import */ var _css_header_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_header_scss__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _css_navbar_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../css/navbar.scss */ \"./dev/css/navbar.scss\");\n/* harmony import */ var _css_navbar_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_css_navbar_scss__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _css_dashboard_index_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../css/dashboard/index.scss */ \"./dev/css/dashboard/index.scss\");\n/* harmony import */ var _css_dashboard_index_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_css_dashboard_index_scss__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _main_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./main.js */ \"./dev/js/dashboard/main.js\");\n/* harmony import */ var _main_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_main_js__WEBPACK_IMPORTED_MODULE_4__);\n\n\n\n\n\n\n//# sourceURL=webpack:///./dev/js/dashboard/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../css/index.scss */ \"./dev/css/index.scss\");\n/* harmony import */ var _css_index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_index_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _css_header_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../css/header.scss */ \"./dev/css/header.scss\");\n/* harmony import */ var _css_header_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_header_scss__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _css_navbar_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../css/navbar.scss */ \"./dev/css/navbar.scss\");\n/* harmony import */ var _css_navbar_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_css_navbar_scss__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _css_dashboard_index_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../css/dashboard/index.scss */ \"./dev/css/dashboard/index.scss\");\n/* harmony import */ var _css_dashboard_index_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_css_dashboard_index_scss__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _main_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./main.js */ \"./dev/js/dashboard/budget/main.js\");\n/* harmony import */ var _main_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_main_js__WEBPACK_IMPORTED_MODULE_4__);\n\n\n\n\n\n\n//# sourceURL=webpack:///./dev/js/dashboard/budget/index.js?");
 
 /***/ }),
 
-/***/ "./dev/js/dashboard/main.js":
-/*!**********************************!*\
-  !*** ./dev/js/dashboard/main.js ***!
-  \**********************************/
+/***/ "./dev/js/dashboard/budget/main.js":
+/*!*****************************************!*\
+  !*** ./dev/js/dashboard/budget/main.js ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("$(document).ready(function () {\n  // ... toggle active link in sidebar ...\n  $('.nav-item').click(function () {\n    $('nav .nav-item').removeClass('active');\n    $(this).addClass('active');\n  });\n  $('.navbar-profile-wrapper').click(function () {\n    $(this).find('.material-icons').toggleClass('toggle');\n  }); // ... responsive sidebar ...\n\n  $('.menu-collapse-btn').click(function () {\n    $(this).toggleClass('navbar-is-visible');\n\n    if ($('.bilino-navbar').hasClass('side-is-visible')) {\n      $('.bilino-navbar').removeClass('side-is-visible');\n      $('.bilino-main').removeClass('main-is-partially-visible');\n      $('.bilino-navbar').addClass('side-is-hidden');\n      $('.bilino-main').addClass('main-is-fully-visible');\n    } else {\n      $('.bilino-navbar').removeClass('side-is-hidden');\n      $('.bilino-main').removeClass('main-is-fully-visible');\n      $('.bilino-navbar').addClass('side-is-visible');\n      $('.bilino-main').addClass('main-is-partially-visible');\n    }\n  });\n});\n\n//# sourceURL=webpack:///./dev/js/dashboard/main.js?");
+eval("\n\n//# sourceURL=webpack:///./dev/js/dashboard/budget/main.js?");
 
 /***/ })
 

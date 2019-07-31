@@ -3,11 +3,13 @@
 
 header {
     width: 100%;
+    display: none;
     height: $header-height;
 }
 
 @media (max-width: 991.98px) { 
     header {
+        display: block;
         .menu-collapse {
             
             display: inline-block;
