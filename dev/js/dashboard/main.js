@@ -1,9 +1,11 @@
+import HighlightSidebar from './../helper/highlightSidebar';
+
+
+
 $(document).ready(function() {
-    // ... toggle active link in sidebar ...
-    $('.nav-item').click(function() {
-        $('nav .nav-item').removeClass('active');
-        $(this).addClass('active');
-    });
+    // ... hightlight active sidebar 
+    const sidebar = new HighlightSidebar({root: '.navbar-nav'});
+    sidebar.hightlight();
 
     $('.navbar-profile-wrapper').click(function() {
         $(this).find('.material-icons').toggleClass('toggle');
