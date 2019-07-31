@@ -1,0 +1,28 @@
+@import "./../../utilities/variables";
+@import "./../../utilities/mixins";
+
+
+
+.container {
+    button {
+        background-color: $tint-blue-color5;
+        color: $white;
+
+        &:hover, &:focus {
+            color: $white;
+        }
+    }
+
+    .budget-table {
+        .table-head {
+            margin-bottom: 1rem;
+        }
+        .table-body {
+            background-color: $white;
+            border-radius: $radius;
+            margin-bottom: 1rem;
+            min-height: 70px;
+            box-shadow: 1px 1px 5px 1px $tint-blue-color4;
+        }
+    }
+}

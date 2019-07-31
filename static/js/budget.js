@@ -86,47 +86,14 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./dev/css/dashboard/index.scss":
-/*!**************************************!*\
-  !*** ./dev/css/dashboard/index.scss ***!
-  \**************************************/
+/***/ "./dev/css/dashboard/budget/index.scss":
+/*!*********************************************!*\
+  !*** ./dev/css/dashboard/budget/index.scss ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./dev/css/dashboard/index.scss?");
-
-/***/ }),
-
-/***/ "./dev/css/header.scss":
-/*!*****************************!*\
-  !*** ./dev/css/header.scss ***!
-  \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./dev/css/header.scss?");
-
-/***/ }),
-
-/***/ "./dev/css/index.scss":
-/*!****************************!*\
-  !*** ./dev/css/index.scss ***!
-  \****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./dev/css/index.scss?");
-
-/***/ }),
-
-/***/ "./dev/css/navbar.scss":
-/*!*****************************!*\
-  !*** ./dev/css/navbar.scss ***!
-  \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./dev/css/navbar.scss?");
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./dev/css/dashboard/budget/index.scss?");
 
 /***/ }),
 
@@ -138,7 +105,7 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./dev/
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../css/index.scss */ \"./dev/css/index.scss\");\n/* harmony import */ var _css_index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_index_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _css_header_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../css/header.scss */ \"./dev/css/header.scss\");\n/* harmony import */ var _css_header_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_header_scss__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _css_navbar_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../css/navbar.scss */ \"./dev/css/navbar.scss\");\n/* harmony import */ var _css_navbar_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_css_navbar_scss__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _css_dashboard_index_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../css/dashboard/index.scss */ \"./dev/css/dashboard/index.scss\");\n/* harmony import */ var _css_dashboard_index_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_css_dashboard_index_scss__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _main_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./main.js */ \"./dev/js/dashboard/budget/main.js\");\n/* harmony import */ var _main_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_main_js__WEBPACK_IMPORTED_MODULE_4__);\n\n\n\n\n\n\n//# sourceURL=webpack:///./dev/js/dashboard/budget/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_dashboard_budget_index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../css/dashboard/budget/index.scss */ \"./dev/css/dashboard/budget/index.scss\");\n/* harmony import */ var _css_dashboard_budget_index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_dashboard_budget_index_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _main_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./main.js */ \"./dev/js/dashboard/budget/main.js\");\n/* harmony import */ var _main_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_main_js__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\n//# sourceURL=webpack:///./dev/js/dashboard/budget/index.js?");
 
 /***/ }),
 

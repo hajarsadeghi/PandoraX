@@ -448,6 +448,6 @@ body .container-fluid .bilino-main.main-is-fully-visible {
   width: 100%;
 }
 body .container-fluid .bilino-main.main-is-partially-visible {
-  width: calc(100% - 250px);
+  width: 100%;
   padding-left: 250px;
 }

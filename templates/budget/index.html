@@ -3,11 +3,52 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />  
+    <link rel="stylesheet" href="{% static 'css/budget.css' %}" />  
     <title>Budget</title>
 {% endblock %}
 
 {% block body %}
-    Budget
+    <div class="container mt-3 p-3">
+        <div class="row align-items-center clearfix">
+            <div class="col">
+                <h4 class="font-weight-bold d-inline">Budget List</h4>
+            </div>
+            <div class="col">
+                <button type="button" class="btn font-weight-bold float-right">Create Badge</button>
+            </div>
+        </div>
+        <div class="container budget-table mt-5">
+            <div class="row table-head align-items-center">
+                <div class="col font-weight-bold">Name</div>
+                <div class="col font-weight-bold">RECIPIENTS</div>
+                <div class="col font-weight-bold">POINTS PER MONTH</div>
+            </div>
+            <div class="row table-body align-items-center">
+                <div class="col">
+                    Hajar
+                    <small class="d-block text-muted">Created by Hajar Sadeghi</small>
+                </div>
+                <div class="col">all</div>
+                <div class="col">hajar@arianatech.ir</div>
+            </div>
+            <div class="row table-body align-items-center">
+                <div class="col">
+                    Hamid
+                    <small class="d-block text-muted">Created by Hamid Atefi</small>
+                </div>
+                <div class="col">all</div>
+                <div class="col">hamid@arianatech.ir</div>
+            </div>
+            <div class="row table-body align-items-center">
+                <div class="col">
+                    Haniyeh
+                    <small class="d-block text-muted">Created by Haniyeh</small>
+                </div>
+                <div class="col">all</div>
+                <div class="col">haniyeh@arianatech.ir</div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block script %}

@@ -14,7 +14,7 @@ body {
                 width: 100%;
             }
             &.main-is-partially-visible {
-                width: calc(100% - 250px);
+                width: 100%;
                 padding-left: $sidebar-width;
             }
         }
