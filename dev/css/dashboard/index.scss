@@ -1,6 +1,8 @@
 @import "./../utilities/variables";
 @import "./../utilities/mixins";
-@import "./../index.scss";
+@import "../../css/index.scss";
+@import "../../css/header.scss";
+@import "../../css/navbar.scss";
 
 body {
     font-family: 'roundedLoginFont', Tahoma, Geneva, sans-serif;

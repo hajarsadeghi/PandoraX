@@ -3141,6 +3141,10 @@ body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms i
   transition: all 0.4s ease-in;
 }
 
+.bilono-logo {
+  max-width: 100px;
+}
+
 body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input:focus, body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input.has-val, .form-group.forms input.has-val, .form-group.forms input:focus {
   border: none;
   box-shadow: none;

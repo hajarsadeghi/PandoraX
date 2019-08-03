@@ -3149,6 +3149,10 @@ html body {
   transition: all 0.4s ease-in;
 }
 
+.bilono-logo {
+  max-width: 100px;
+}
+
 html {
   height: 100%;
 }

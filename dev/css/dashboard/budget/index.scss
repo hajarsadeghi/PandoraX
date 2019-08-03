@@ -3,13 +3,17 @@
 
 
 
+
 .container {
-    button {
+    button.standard-btn {
         background-color: $tint-blue-color5;
         color: $white;
+        border: none;
 
         &:hover, &:focus {
             color: $white;
+            background-color: $tint-blue-color5;
+            --box-shadow-color: $tint-blue-color5;
         }
     }
 
@@ -23,6 +27,12 @@
             margin-bottom: 1rem;
             min-height: 70px;
             box-shadow: 1px 1px 5px 1px $tint-blue-color4;
+        }
+    }
+    
+    .modal {
+        button.standard-btn {
+            max-width: 200px;
         }
     }
 }
