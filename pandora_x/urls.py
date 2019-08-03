@@ -21,12 +21,12 @@ from django.conf.urls.static import static
 from django.views.i18n import JavaScriptCatalog
 
 api_urls = [
-    path('user/', include(('user.api.urls', 'api'), namespace='user'))
+    path('user/', include(('user.api.urls', 'django'), namespace='user'))
 ]
 
 urlpatterns = [
     path('', include(('frontview.urls', 'django'), namespace='frontview')),
-    path('api/', include((api_urls, 'django'), namespace='api')),
+    path('api/', include(api_urls)),
 
     path('admin/', admin.site.urls),
 
