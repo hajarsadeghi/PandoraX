@@ -1,3 +1,8 @@
+// import verify_email from './../api.js';
+const API = require('./../api.js');
+
+
+
 $('.get-started-link').click(function() {
     $('.get-started-box').removeClass('d-block');
     $('.get-started-box').addClass('d-none');
@@ -70,3 +75,18 @@ function pasteValues(element) {
         $inputBox.val(values[index])
     });
 };
+
+// ... verify email ...
+$('#confirmEmailBtn').on('click',() => {
+    console.log('clicked')
+    API.verify_email({
+        "user_email": "sadeghi.hjr@gmail.com"
+    },(status) => {
+        if (status, res) {
+            console.log('callback success')
+        }
+        else {
+            console.log('callback error')
+        }
+    })
+})

@@ -97,6 +97,18 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./dev/
 
 /***/ }),
 
+/***/ "./dev/js/api.js":
+/*!***********************!*\
+  !*** ./dev/js/api.js ***!
+  \***********************/
+/*! exports provided: verify_email */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"verify_email\", function() { return verify_email; });\nvar verify_email = function verify_email(params, callback) {\n  return fetch(\"api/user/login/otp/request/\", {\n    method: \"POST\",\n    body: JSON.stringify(params)\n  }).then(function (response) {\n    if (response.status >= 200 && response.status <= 299) {\n      response.json().then(function (res) {\n        callback(true, res);\n      });\n    } else {\n      callback(false, res);\n    }\n  });\n};\n\n//# sourceURL=webpack:///./dev/js/api.js?");
+
+/***/ }),
+
 /***/ "./dev/js/getStarted/index.js":
 /*!************************************!*\
   !*** ./dev/js/getStarted/index.js ***!
@@ -114,9 +126,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _nod
   !*** ./dev/js/getStarted/main.js ***!
   \***********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("$('.get-started-link').click(function () {\n  $('.get-started-box').removeClass('d-block');\n  $('.get-started-box').addClass('d-none');\n});\n$('#newSpaceBtn').click(function () {\n  $('.validate-email-box').addClass('d-block');\n});\n$('#confirmEmailBtn').click(function () {\n  $('.validate-code-box').addClass('d-block');\n});\n$('.find-space-btn').click(function () {\n  $('.find-space-email-box').addClass('d-block');\n});\n$('#checkEmailBtn').click(function () {\n  $('.check-inbox-box').addClass('d-block');\n});\nvar $inputs = $(\".digit-cell\");\nvar intRegex = /^\\d+$/; // Prevents user from manually entering non-digits.\n\n$inputs.on(\"input.fromManual\", function () {\n  if (!intRegex.test($(this).val())) {\n    $(this).val(\"\");\n  }\n}); // Prevents pasting non-digits and if value is 6 characters long will parse each character into an individual box.\n\n$inputs.on(\"paste\", function () {\n  var $this = $(this);\n  var originalValue = $this.val();\n  $this.val(\"\");\n  $this.one(\"input.fromPaste\", function () {\n    $currentInputBox = $(this);\n    var pastedValue = $currentInputBox.val();\n\n    if (pastedValue.length == 6 && intRegex.test(pastedValue)) {\n      pasteValues(pastedValue);\n    } else {\n      $this.val(originalValue);\n    }\n\n    $inputs.attr(\"maxlength\", 1);\n  });\n  $inputs.attr(\"maxlength\", 6);\n});\n$inputs.on(\"keydown\", function (e) {\n  var $this = $(this);\n\n  if (e.keyCode == 8 && $this.is(\":focus\")) {\n    $('.digit-cell').val('');\n  }\n}); // Parses the individual digits into the individual boxes.\n\nfunction pasteValues(element) {\n  var values = element.split(\"\");\n  $(values).each(function (index) {\n    var $inputBox = $('.digit-cell[name=\"char[' + (index + 1) + ']\"]');\n    $inputBox.val(values[index]);\n  });\n}\n\n;\n\n//# sourceURL=webpack:///./dev/js/getStarted/main.js?");
+eval("// import verify_email from './../api.js';\nvar API = __webpack_require__(/*! ./../api.js */ \"./dev/js/api.js\");\n\n$('.get-started-link').click(function () {\n  $('.get-started-box').removeClass('d-block');\n  $('.get-started-box').addClass('d-none');\n});\n$('#newSpaceBtn').click(function () {\n  $('.validate-email-box').addClass('d-block');\n});\n$('#confirmEmailBtn').click(function () {\n  $('.validate-code-box').addClass('d-block');\n});\n$('.find-space-btn').click(function () {\n  $('.find-space-email-box').addClass('d-block');\n});\n$('#checkEmailBtn').click(function () {\n  $('.check-inbox-box').addClass('d-block');\n});\nvar $inputs = $(\".digit-cell\");\nvar intRegex = /^\\d+$/; // Prevents user from manually entering non-digits.\n\n$inputs.on(\"input.fromManual\", function () {\n  if (!intRegex.test($(this).val())) {\n    $(this).val(\"\");\n  }\n}); // Prevents pasting non-digits and if value is 6 characters long will parse each character into an individual box.\n\n$inputs.on(\"paste\", function () {\n  var $this = $(this);\n  var originalValue = $this.val();\n  $this.val(\"\");\n  $this.one(\"input.fromPaste\", function () {\n    $currentInputBox = $(this);\n    var pastedValue = $currentInputBox.val();\n\n    if (pastedValue.length == 6 && intRegex.test(pastedValue)) {\n      pasteValues(pastedValue);\n    } else {\n      $this.val(originalValue);\n    }\n\n    $inputs.attr(\"maxlength\", 1);\n  });\n  $inputs.attr(\"maxlength\", 6);\n});\n$inputs.on(\"keydown\", function (e) {\n  var $this = $(this);\n\n  if (e.keyCode == 8 && $this.is(\":focus\")) {\n    $('.digit-cell').val('');\n  }\n}); // Parses the individual digits into the individual boxes.\n\nfunction pasteValues(element) {\n  var values = element.split(\"\");\n  $(values).each(function (index) {\n    var $inputBox = $('.digit-cell[name=\"char[' + (index + 1) + ']\"]');\n    $inputBox.val(values[index]);\n  });\n}\n\n; // ... verify email ...\n\n$('#confirmEmailBtn').on('click', function () {\n  console.log('clicked');\n  API.verify_email({\n    \"user_email\": \"sadeghi.hjr@gmail.com\"\n  }, function (status) {\n    if (status, res) {\n      console.log('callback success');\n    } else {\n      console.log('callback error');\n    }\n  });\n});\n\n//# sourceURL=webpack:///./dev/js/getStarted/main.js?");
 
 /***/ }),
 
