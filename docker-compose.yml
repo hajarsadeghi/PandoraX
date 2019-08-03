@@ -24,6 +24,8 @@ services:
     depends_on:
       db:
         condition: service_healthy
+      redis:
+        condition: service_started
     environment:
         - LINKEDIN_OAUTH_KEY=772wb269hjt4pw
         - LINKEDIN_OAUTH_SECRET=ihpH92PHWrvns60y
@@ -52,3 +54,7 @@ services:
         test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
         timeout: 5s
         retries: 10
+
+  redis:
+    container_name: pandora_redis
+    image: redis:latest
