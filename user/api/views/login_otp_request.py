@@ -15,7 +15,7 @@ def login_otp_request(request):
     except (KeyError, ValueError, TypeError):
         return JsonResponse({"message": "bad request"}, status=400)
 
-    user = User.objects.get_or_create(email=user_email)[0]
+    user = User.objects.get_or_create(defaults={'email':user_email, 'username':user_email}, email__exact=user_email)[0]
 
     # generate random 6 digit otp
     otp = str(randint(100000, 999999))
@@ -27,5 +27,5 @@ def login_otp_request(request):
     print(f"OTP for user {user_email} is: {otp}")
     print()
     print()
-    
+
     return JsonResponse({'expire': OTP_EXPIRE}, status=200)

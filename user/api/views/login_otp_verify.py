@@ -15,7 +15,10 @@ def login_otp_verify(request):
         user_otp = request_json['user_otp']
     except (KeyError, ValueError, TypeError):
         return JsonResponse({"message": "bad request"}, status=400)
-    user = User.objects.get_or_create(email__exact=user_email)[0]
+    try:
+        user = User.objects.get(email__exact=user_email)
+    except User.DoesNotExist:
+        return JsonResponse({'message': 'invalid otp'}, status=400)
 
     cache_key = f"login_otp_{user_email}"
     cache_otp = cache.get(key=cache_key)
