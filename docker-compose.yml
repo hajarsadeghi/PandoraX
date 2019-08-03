@@ -8,7 +8,7 @@ services:
       - '80:80'
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./media:/usr/share/nginx/html/media:ro
+      - ./media:/usr/share/nginx/html/media:rw
       - ./static:/usr/share/nginx/html/static:ro
     depends_on:
       - app
@@ -29,6 +29,17 @@ services:
         - LINKEDIN_OAUTH_SECRET=ihpH92PHWrvns60y
         - GOOGLE_OAUTH_KEY=300053737638-h1rhiev4aqvbd0rha4ckohi2cem1vqoq.apps.googleusercontent.com
         - GOOGLE_OAUTH_SECRET=e31iQBtrk48oH64N33K2Nq2H
+
+  webpack:
+    build:
+      context: .
+      dockerfile: node.Dockerfile
+    container_name: pandora_webpack
+    command: npx webpack
+    volumes:
+      - ./webpack.config.js:/data/project/webpack.config.js:ro
+      - ./dev:/data/project/dev:ro
+      - ./static:/data/project/static:rw
 
   db:
     image: mysql:5.7
