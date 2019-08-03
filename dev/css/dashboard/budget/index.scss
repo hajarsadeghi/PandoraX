@@ -36,3 +36,32 @@
         }
     }
 }
+
+@media (min-width: 576px){
+    .modal {
+        .modal-dialog {
+            max-width: 700px;
+            .modal-body {
+                padding: 1rem 6rem;
+
+                select {
+                    -webkit-appearance: none;
+                    -webkit-border-radius: 0px;
+
+                    -moz-appearance: none;
+                    -moz-border-radius: 0px;
+                }
+
+                .collapse {
+
+                    max-height: 300px;
+                    overflow: scroll;
+                    .search-item {
+                        border: 1px solid #ced4da;
+                        border-radius: $radius;
+                    }
+                }
+            }
+        }
+    }
+}

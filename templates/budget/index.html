@@ -14,7 +14,7 @@
                 <h4 class="font-weight-bold d-inline">Budget List</h4>
             </div>
             <div class="col">
-                <button type="button" class="btn font-weight-bold float-right">Create Badge</button>
+                <button type="button" class="btn font-weight-bold float-right standard-btn" data-toggle="modal" data-target="#budgetModal">Create Badge</button>
             </div>
         </div>
         <div class="container budget-table mt-5">
@@ -42,10 +42,110 @@
             <div class="row table-body align-items-center">
                 <div class="col">
                     Haniyeh
-                    <small class="d-block text-muted">Created by Haniyeh</small>
+                    <small class="d-block text-muted">Created by Haniyeh Bagheri</small>
                 </div>
                 <div class="col">all</div>
                 <div class="col">haniyeh@arianatech.ir</div>
+            </div>
+        </div>
+        <!-- modal -->
+        <div class="modal fade mt-5" id="budgetModal" tabindex="-1" role="dialog" aria-labelledby="budgetModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="budgetModalLabel">create a custome budget</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                          <label for="budgetName">Budget Name</label>
+                          <input type="text" class="form-control" id="budgetName" aria-describedby="budgetName" placeholder="Enter a descriptive name for your budget">
+                        </div>
+                        <div class="accordion form-group" id="search">
+                            <label for="budgetRecipients">Select recipients</label>
+                            <div class="input-group">
+                                <select class="form-control rounded-left" id="budgetRecipients">
+                                    <option>all</option>
+                                    <option>team members</option>
+                                    <option>Team members of</option>
+                                    <option>Team leaders of</option>
+                                </select>
+                                <input type="text" aria-label="Last name" class="form-control" placeholder="select one or more recepients" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            </div>
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#search">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="search-item p-2 m-1">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <label class="form-check-label" for="exampleCheck1">Hajar Sadeghi</label>
+                                            </div>
+                                        </div>
+                                        <div class="search-item p-2 m-1">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <label class="form-check-label" for="exampleCheck1">Hajar Sadeghi</label>
+                                            </div>
+                                        </div>
+                                        <div class="search-item p-2 m-1">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <label class="form-check-label" for="exampleCheck1">Hajar Sadeghi</label>
+                                            </div>
+                                        </div>
+                                        <div class="search-item p-2 m-1">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <label class="form-check-label" for="exampleCheck1">Hajar Sadeghi</label>
+                                            </div>
+                                        </div>
+                                        <div class="search-item p-2 m-1">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <label class="form-check-label" for="exampleCheck1">Hajar Sadeghi</label>
+                                            </div>
+                                        </div>
+                                        <div class="search-item p-2 m-1">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <label class="form-check-label" for="exampleCheck1">Hajar Sadeghi</label>
+                                            </div>
+                                        </div>
+                                        <div class="search-item p-2 m-1">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <label class="form-check-label" for="exampleCheck1">Hajar Sadeghi</label>
+                                            </div>
+                                        </div>
+                                        <div class="search-item p-2 m-1">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <label class="form-check-label" for="exampleCheck1">Hajar Sadeghi</label>
+                                            </div>
+                                        </div>
+                                        <div class="search-item test p-2 m-1">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <label class="form-check-label" for="exampleCheck1">Hajar Sadeghi</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="budgetPoints">Give points amount</label>
+                            <input type="number" class="form-control" id="budgetPoints" aria-describedby="budgetPoints" placeholder="Enter a descriptive name for your budget">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-center">
+                  <button type="button" class="btn btn-primary standard-btn">Create Budget</button>
+                </div>
+              </div>
             </div>
         </div>
     </div>
