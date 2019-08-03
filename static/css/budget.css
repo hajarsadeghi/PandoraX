@@ -1,9 +1,12 @@
-.container button {
+.container button.standard-btn {
   background-color: #4a5cc5;
   color: #ffffff;
+  border: none;
 }
-.container button:hover, .container button:focus {
+.container button.standard-btn:hover, .container button.standard-btn:focus {
   color: #ffffff;
+  background-color: #4a5cc5;
+  --box-shadow-color: $tint-blue-color5;
 }
 .container .budget-table .table-head {
   margin-bottom: 1rem;
@@ -14,4 +17,7 @@
   margin-bottom: 1rem;
   min-height: 70px;
   box-shadow: 1px 1px 5px 1px #7785d3;
+}
+.container .modal button.standard-btn {
+  max-width: 200px;
 }
