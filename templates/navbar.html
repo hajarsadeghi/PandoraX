@@ -2,27 +2,30 @@
 
 <nav class="bilino-navbar side-is-visible" id="navbar">
     <div class="navbar-logo" href="#">
-        <img class="img-fluid bilono-logo" alt="bilono logo" src="{% static 'image/bilono_logo2.svg' %}" />
+        <img class="img-fluid bilono-logo" alt="bilono logo" src="{% static 'image/bilono_logo.svg' %}" />
     </div>
     <div class="navbar-profile-wrapper">
-        <div class="navbar-profile" data-toggle="collapse" data-target="#userProfile" aria-expanded="true">
-            <img class="img-fluid user-logo" alt="user-profile" src="{% static 'image/man.png' %}" />
-            <span class="user-info">
-                <span>
+        <div class="navbar-profile align-items-center" data-toggle="collapse" data-target="#userProfile" aria-expanded="true">
+            <div class="user-info">
+                <div class="username mt-1 mb-2">
+                    Hajar Sadeghi
                     {{request.user.first_name}} {{request.user.last_name}}
-                    <i class="material-icons">arrow_drop_down</i>
-                </span>
-                <div class="user-info-credit">
-                    <span>
-                        <img class="img-fluid" alt="earned-points" src="{% static 'image/earned_points.svg' %}" />
-                        <small id="earnedPoints">0</small>
-                    </span>
-                    <span>
-                        <img class="img-fluid" alt="gift-points" src="{% static 'image/gift_points.svg' %}" />
-                        <small id="giftPoints">2000</small>
-                    </span>
                 </div>
-            </span>
+                <div class="user-info-credit">
+                    <div class="user-logo">HS</div>
+                    <div class="points-container">
+                        <img class="img-fluid" alt="earned-points" src="{% static 'image/earned_points.svg' %}" />
+                        <span class="points m-1">999000000</span>
+                    </div>
+                    <div class="points-container">
+                        <img class="img-fluid" alt="gift-points" src="{% static 'image/gift_points.svg' %}" />
+                        <span class="points m-1">100000000</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <i class="material-icons">arrow_drop_down</i>
+            </div>
         </div>
         <div id="userProfile" class="collapse" area-expanded="true">
             <ul class="navbar-nav">
