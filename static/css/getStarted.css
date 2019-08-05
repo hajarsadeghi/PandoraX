@@ -3185,6 +3185,10 @@ html body .content .get-started-box {
 html body .content .get-started-box h4, html body .content .get-started-box button {
   font-weight: bold;
 }
+html body .content .get-started-box h4#confirmEmailBtn, html body .content .get-started-box button#confirmEmailBtn {
+  background-color: #4a5cc5;
+  color: #ffffff;
+}
 html body .content .get-started-box .choose-path-link {
   display: flex;
   justify-content: center;
@@ -3228,6 +3232,19 @@ html body .content .get-started-box .digit-confirmation input {
   height: auto;
   border-radius: 0;
   text-align: center;
+}
+html body .content .get-started-box .countdown {
+  text-align: center;
+}
+html body .content .get-started-box .countdown .timer div {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  background-color: #4a5cc5;
+  color: #ffffff;
 }
 html body footer {
   width: 100%;

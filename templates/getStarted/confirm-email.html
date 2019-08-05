@@ -5,7 +5,7 @@
     <small class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam asperiores perspiciatis vero quam, quo aspernatur suscipit sunt dolorem qui molestiae illo fugit porro nihil, corporis aperiam ipsa recusandae. Quia, corporis.</small>
     <form class="my-4">
         <div class="d-flex digit-confirmation mb-2">
-            <input type="text" index="1" name="char[1]" id="test" class="digit-cell form-control d-inline-block border-right-0 rounded-left">
+            <input type="text" index="1" name="char[1]" class="digit-cell form-control d-inline-block border-right-0 rounded-left">
             <input type="text" index="2" name="char[2]" class="digit-cell form-control d-inline-block border-right-0 rounded-0">
             <input type="text" index="3" name="char[3]" class="digit-cell form-control d-inline-block rounded-right">
             <span class="mx-2">_</span>
@@ -13,7 +13,17 @@
             <input type="text" index="5" name="char[5]" class="digit-cell form-control d-inline-block border-right-0 rounded-0">
             <input type="text" index="6" name="char[6]" class="digit-cell form-control d-inline-block rounded-right">
         </div>
-        <small class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis recusandae reprehenderit perspiciatis, et ex nihil ad hic eius, maxime, temporibus voluptates ducimus soluta aperiam vitae tempora. Repellat voluptatibus illum temporibus.</small>
+        <div class="countdown mt-4 fadeIn">
+            <div class="timer">
+                <div class="minutes d-inline-block"></div>
+                :
+                <div class="seconds d-inline-block"></div>
+            </div>
+            <div class="resend-email d-none">
+                <a href="#" id="resendEmail">Resend Email</a>
+            </div>
+        </div>
+        <!-- <small class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis recusandae reprehenderit perspiciatis, et ex nihil ad hic eius, maxime, temporibus voluptates ducimus soluta aperiam vitae tempora. Repellat voluptatibus illum temporibus.</small> -->
     </form>
     <div class="text-center">
         <img class="img-fluid mx-auto" src="{% static 'image/confirm-digit.png' %}" />

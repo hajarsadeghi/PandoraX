@@ -1,4 +1,4 @@
-// import verify_email from './../api.js';
+import CountDown from './../helper/countdown';
 const API = require('./../api.js');
 
 
@@ -51,10 +51,8 @@ $inputs.on("paste", function() {
     $this.val("");
 
     $this.one("input.fromPaste", function(){
-        $currentInputBox = $(this);
-        
-        var pastedValue = $currentInputBox.val();
-        
+
+        var pastedValue = $(this).val();
         if (pastedValue.length == 6 && intRegex.test(pastedValue)) {
             pasteValues(pastedValue);
         }
@@ -85,7 +83,31 @@ $inputs.on("keydown", function(e) {
             $('input[name="char['+ (Number(cellIndex) + 1) +']"]').focus();
         },100);
     }
+    // ... check verification
+    setTimeout(() => {
+        const otp = $('input[name="char[1]"]').val() + $('input[name="char[2]"]').val() + $('input[name="char[3]"]').val() + $('input[name="char[4]"]').val() + $('input[name="char[5]"]').val() + $('input[name="char[6]"]').val();
+        if (otp.length == 6) {
+            checkVerification(otp);
+        }
+    },200);
 });
+
+function checkVerification(otp) {
+    API.verify_email(
+        'api/user/login/otp/verify/',
+        {
+            "user_email": $('.validate-email-box').find('#adminEmail').val(),
+            "user_otp": otp
+        },(status, res) => {
+            if (status) {
+                window.location.replace('space');
+            }
+            else {
+                console.log('error')
+            }
+        }
+    );
+}
 
 
 // Parses the individual digits into the individual boxes.
@@ -98,15 +120,20 @@ function pasteValues(element) {
 };
 
 // ... verify email ...
-$('#confirmEmailBtn').on('click',() => {
-    API.verify_email({
-        "user_email": $('.validate-email-box').find('#adminEmail').val()
-    },(status) => {
-        if (status, res) {
-            console.log('callback success')
-        }
-        else {
-            console.log('callback error')
-        }
-    })
+$('#confirmEmailBtn, #resendEmail').on('click',() => {
+    
+    $('.digit-confirmation').find('input').val('');
+    API.verify_email(
+        'api/user/login/otp/request/',
+        {
+            "user_email": $('.validate-email-box').find('#adminEmail').val()
+        },(status, res) => {
+            if (status) {
+                const countdown = new CountDown();
+                countdown.startTimer(res.expire, $('.countdown'));
+            }
+            else {
+                console.log('error')
+            }
+        })
 })

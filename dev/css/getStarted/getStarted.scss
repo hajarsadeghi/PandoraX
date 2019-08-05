@@ -37,8 +37,12 @@ html {
 
                 h4,button {
                     font-weight: bold;
+
+                    &#confirmEmailBtn {
+                        background-color: $tint-blue-color5;
+                        color: $white;
+                    }
                 }
-                
         
                 .choose-path-link {
                     display: flex;
@@ -85,6 +89,21 @@ html {
                         height: auto;
                         border-radius: 0;
                         text-align: center;
+                    }
+                }
+
+                .countdown {
+
+                    text-align: center;
+                    .timer div {
+                        width: 40px;
+                        height: 40px;
+                        line-height: 40px;
+                        border-radius: $radius;
+                        text-align: center;
+                        font-weight: bold;
+                        background-color: $tint-blue-color5;
+                        color: $white;
                     }
                 }
             }
