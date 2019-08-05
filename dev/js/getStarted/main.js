@@ -29,6 +29,15 @@ var intRegex = /^\d+$/;
 
 // Prevents user from manually entering non-digits.
 $inputs.on("input.fromManual", function(){
+    // ... change focus on type
+    const cellIndex = $(this).attr('index');
+    if ($(this).val().length == 1) {
+        $(this).blur();
+        setTimeout(() => {
+            $('input[name="char['+ (Number(cellIndex) + 1) +']"]').focus();
+        },100);
+    }
+    // ... check for NaN
     if(!intRegex.test($(this).val())){
         $(this).val("");
     }
@@ -61,8 +70,20 @@ $inputs.on("paste", function() {
 
 $inputs.on("keydown", function(e) {
     var $this = $(this);
-    if (e.keyCode == 8 && $this.is(":focus")) {
-        $('.digit-cell').val('');
+    const cellIndex = $this.attr('index');
+    // ... arrowLeft
+    if (e.keyCode == 37) {
+        $this.blur();
+        setTimeout(() => {
+            $('input[name="char['+ (Number(cellIndex) - 1) +']"]').focus();
+        },100);
+    }
+    // ... arrowRight
+    if (e.keyCode == 39) {
+        $this.blur();
+        setTimeout(() => {
+            $('input[name="char['+ (Number(cellIndex) + 1) +']"]').focus();
+        },100);
     }
 });
 
@@ -78,9 +99,8 @@ function pasteValues(element) {
 
 // ... verify email ...
 $('#confirmEmailBtn').on('click',() => {
-    console.log('clicked')
     API.verify_email({
-        "user_email": "sadeghi.hjr@gmail.com"
+        "user_email": $('.validate-email-box').find('#adminEmail').val()
     },(status) => {
         if (status, res) {
             console.log('callback success')
