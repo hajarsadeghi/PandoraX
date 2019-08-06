@@ -140,19 +140,17 @@ nav {
 
         .navbar-links {
             ul.navbar-nav {
-                li.nav-item {
 
+                li.nav-item {
                     height: $sidebar-link-height;
                     line-height: $sidebar-link-height;
+                    // ul.navbar-nav {
+                    //     padding-top: $sidebar-link-height;
 
-                    ul.navbar-nav {
-                        padding-top: $sidebar-link-height;
-
-                        a.nav-link {
-                            padding: 0 30px;
-                        }
-                    }
-
+                    //     a.nav-link {
+                    //         padding: 0 30px;
+                    //     }
+                    // }
                     &.active {
 
                         > a.nav-link {
@@ -171,14 +169,13 @@ nav {
                     a.nav-link {
                         padding: 0 $sidebar-padding;
                         color: $text;
-                        position: absolute;
-                        left: $sidebar-active-link-width;
-                        right: 0;
-
                         &:hover {
                             color: $active-text !important;
                         }
-                        
+                        img {
+                            max-width: 30px;
+                            height: auto;
+                        }
                     }
                 }
             }

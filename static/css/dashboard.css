@@ -314,12 +314,6 @@ nav.bilino-navbar .navbar-links ul.navbar-nav li.nav-item {
   height: 50px;
   line-height: 50px;
 }
-nav.bilino-navbar .navbar-links ul.navbar-nav li.nav-item ul.navbar-nav {
-  padding-top: 50px;
-}
-nav.bilino-navbar .navbar-links ul.navbar-nav li.nav-item ul.navbar-nav a.nav-link {
-  padding: 0 30px;
-}
 nav.bilino-navbar .navbar-links ul.navbar-nav li.nav-item.active > a.nav-link {
   color: #26282C;
 }
@@ -334,12 +328,13 @@ nav.bilino-navbar .navbar-links ul.navbar-nav li.nav-item.active::before {
 nav.bilino-navbar .navbar-links ul.navbar-nav li.nav-item a.nav-link {
   padding: 0 20px;
   color: #AAB6C5;
-  position: absolute;
-  left: 3px;
-  right: 0;
 }
 nav.bilino-navbar .navbar-links ul.navbar-nav li.nav-item a.nav-link:hover {
   color: #26282C !important;
+}
+nav.bilino-navbar .navbar-links ul.navbar-nav li.nav-item a.nav-link img {
+  max-width: 30px;
+  height: auto;
 }
 nav.bilino-navbar .material-icons {
   -webkit-transition: transform 0.2s ease-in-out;
