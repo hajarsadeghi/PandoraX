@@ -58,10 +58,10 @@
                     <button type="submit" class="btn btn-light login-btn my-3">{% trans "LOG IN" %}</button>
                     <div class="social-logins my-1">
                         <p>{% trans "or login using" %}</p>
-                        <a class="auth-logins mx-1" href="{% url 'user:login:oauth:begin' 'google-oauth2' %}" target="_self">
+                        <a class="auth-logins mx-1" href="{% url 'user:oauth:begin' 'google-oauth2' %}" target="_self">
                             <img class="google-login d-inline-block" alt="google login" src="{% static 'image/google.svg' %}" />
                         </a>
-                        <a class="auth-logins mx-1" href="{% url 'user:login:oauth:begin' 'linkedin-oauth2' %}" target="_self">
+                        <a class="auth-logins mx-1" href="{% url 'user:oauth:begin' 'linkedin-oauth2' %}" target="_self">
                             <img class="linkedin-login d-inline-block" alt="linkedin login" src="{% static 'image/linkedin.png' %}" />
                         </a>
                     </div>
@@ -96,10 +96,10 @@
                     <button type="submit" class="btn btn-light register-btn my-3">{% trans "Register" %}</button>
                     <div class="social-logins my-1">
                         <p>{% trans "or login using" %}</p>
-                        <a class="auth-logins mx-1" href="{% url 'user:login:oauth:begin' 'google-oauth2' %}" target="_self">
+                        <a class="auth-logins mx-1" href="{% url 'user:oauth:begin' 'google-oauth2' %}" target="_self">
                             <img class="google-login d-inline-block" alt="google login" src="{% static 'image/google.svg' %}" />
                         </a>
-                        <a class="auth-logins mx-1" href="{% url 'user:login:oauth:begin' 'linkedin-oauth2' %}" target="_self">
+                        <a class="auth-logins mx-1" href="{% url 'user:oauth:begin' 'linkedin-oauth2' %}" target="_self">
                             <img class="linkedin-login d-inline-block" alt="linkedin login" src="{% static 'image/linkedin.png' %}" />
                         </a>
                     </div>
