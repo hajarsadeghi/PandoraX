@@ -250,16 +250,9 @@ nav.bilino-navbar .navbar-profile-wrapper .navbar-profile .user-info {
   width: 100%;
   flex-grow: 1;
   text-align: center;
-}
-nav.bilino-navbar .navbar-profile-wrapper .navbar-profile .user-info .username {
-  font-weight: bold;
-}
-nav.bilino-navbar .navbar-profile-wrapper .navbar-profile .user-info .user-info-credit {
-  width: 100%;
-  text-align: center;
   display: flex;
 }
-nav.bilino-navbar .navbar-profile-wrapper .navbar-profile .user-info .user-info-credit .user-logo {
+nav.bilino-navbar .navbar-profile-wrapper .navbar-profile .user-info .user-logo {
   width: 35px;
   background: #4a5cc5;
   color: #ffffff;
@@ -269,20 +262,26 @@ nav.bilino-navbar .navbar-profile-wrapper .navbar-profile .user-info .user-info-
   text-align: center;
   font-weight: bold;
 }
-nav.bilino-navbar .navbar-profile-wrapper .navbar-profile .user-info .user-info-credit .points-container {
-  width: 40%;
+nav.bilino-navbar .navbar-profile-wrapper .navbar-profile .user-info .user-info-credit {
+  width: 100%;
+  text-align: left;
   display: inline-block;
+  display: flex;
+  flex-direction: column;
 }
 nav.bilino-navbar .navbar-profile-wrapper .navbar-profile .user-info .user-info-credit .points-container .points {
   background-color: #ff3e58;
-  display: block;
+  display: inline-block;
   border-radius: 5px;
   color: #ffffff;
   font-weight: bold;
-  font-size: 10px;
+  font-size: 0.8em;
+  min-width: 40px;
+  padding: 0 5px;
+  text-align: center;
 }
 nav.bilino-navbar .navbar-profile-wrapper .navbar-profile .user-info .user-info-credit .points-container img {
-  max-width: 32px;
+  max-width: 18px;
   height: auto;
 }
 nav.bilino-navbar .navbar-profile-wrapper #userProfile {
@@ -290,6 +289,26 @@ nav.bilino-navbar .navbar-profile-wrapper #userProfile {
 }
 nav.bilino-navbar .navbar-profile-wrapper #userProfile a {
   color: #26282C;
+  font-size: 0.9rem;
+}
+nav.bilino-navbar .navbar-profile-wrapper #userProfile .username {
+  position: relative;
+  font-weight: bold !important;
+  color: #4a5cc5;
+}
+nav.bilino-navbar .navbar-profile-wrapper #userProfile .username::after, nav.bilino-navbar .navbar-profile-wrapper #userProfile .username::before {
+  content: "";
+  width: calc(100% - 15px);
+  height: 1px;
+  background-color: #e8ebf8;
+  position: absolute;
+  right: 15px;
+}
+nav.bilino-navbar .navbar-profile-wrapper #userProfile .username::after {
+  bottom: 0;
+}
+nav.bilino-navbar .navbar-profile-wrapper #userProfile .username::before {
+  top: 0;
 }
 nav.bilino-navbar .navbar-links ul.navbar-nav li.nav-item {
   height: 50px;
