@@ -240,47 +240,79 @@ nav.bilino-navbar .navbar-profile-wrapper {
   position: relative;
 }
 nav.bilino-navbar .navbar-profile-wrapper .navbar-profile {
-  height: 70px;
+  height: 100px;
   padding-left: 20px;
   position: relative;
   cursor: pointer;
-}
-nav.bilino-navbar .navbar-profile-wrapper .navbar-profile .user-logo {
-  max-width: 40px;
-  height: auto;
-  margin: 15px auto;
+  display: flex;
 }
 nav.bilino-navbar .navbar-profile-wrapper .navbar-profile .user-info {
-  width: calc(100% - 90px);
-  position: absolute;
-  top: 0px;
-  left: 70px;
-  margin: 10px auto;
+  width: 100%;
+  flex-grow: 1;
+  text-align: center;
+  display: flex;
 }
-nav.bilino-navbar .navbar-profile-wrapper .navbar-profile .user-info > span {
-  color: #AAB6C5;
-  font-size: 12px;
+nav.bilino-navbar .navbar-profile-wrapper .navbar-profile .user-info .user-logo {
+  width: 35px;
+  background: #4a5cc5;
+  color: #ffffff;
+  height: 35px;
+  border-radius: 50%;
+  line-height: 35px;
+  text-align: center;
+  font-weight: bold;
 }
-nav.bilino-navbar .navbar-profile-wrapper .navbar-profile .user-info .user-info-credit small {
-  font-size: 14px;
-  color: #26282C;
+nav.bilino-navbar .navbar-profile-wrapper .navbar-profile .user-info .user-info-credit {
+  width: 100%;
+  text-align: left;
+  display: inline-block;
+  display: flex;
+  flex-direction: column;
 }
-nav.bilino-navbar .navbar-profile-wrapper .navbar-profile .user-info .user-info-credit img {
-  max-width: 24px;
+nav.bilino-navbar .navbar-profile-wrapper .navbar-profile .user-info .user-info-credit .points-container .points {
+  background-color: #ff3e58;
+  display: inline-block;
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 0.8em;
+  min-width: 40px;
+  padding: 0 5px;
+  text-align: center;
+}
+nav.bilino-navbar .navbar-profile-wrapper .navbar-profile .user-info .user-info-credit .points-container img {
+  max-width: 18px;
   height: auto;
 }
 nav.bilino-navbar .navbar-profile-wrapper #userProfile {
   padding-left: 20px;
 }
+nav.bilino-navbar .navbar-profile-wrapper #userProfile a {
+  color: #26282C;
+  font-size: 0.9rem;
+}
+nav.bilino-navbar .navbar-profile-wrapper #userProfile .username {
+  position: relative;
+  font-weight: bold !important;
+  color: #4a5cc5;
+}
+nav.bilino-navbar .navbar-profile-wrapper #userProfile .username::after, nav.bilino-navbar .navbar-profile-wrapper #userProfile .username::before {
+  content: "";
+  width: calc(100% - 15px);
+  height: 1px;
+  background-color: #e8ebf8;
+  position: absolute;
+  right: 15px;
+}
+nav.bilino-navbar .navbar-profile-wrapper #userProfile .username::after {
+  bottom: 0;
+}
+nav.bilino-navbar .navbar-profile-wrapper #userProfile .username::before {
+  top: 0;
+}
 nav.bilino-navbar .navbar-links ul.navbar-nav li.nav-item {
   height: 50px;
   line-height: 50px;
-}
-nav.bilino-navbar .navbar-links ul.navbar-nav li.nav-item ul.navbar-nav {
-  padding-top: 50px;
-}
-nav.bilino-navbar .navbar-links ul.navbar-nav li.nav-item ul.navbar-nav a.nav-link {
-  padding: 0 30px;
 }
 nav.bilino-navbar .navbar-links ul.navbar-nav li.nav-item.active > a.nav-link {
   color: #26282C;
@@ -296,16 +328,15 @@ nav.bilino-navbar .navbar-links ul.navbar-nav li.nav-item.active::before {
 nav.bilino-navbar .navbar-links ul.navbar-nav li.nav-item a.nav-link {
   padding: 0 20px;
   color: #AAB6C5;
-  position: absolute;
-  left: 3px;
-  right: 0;
 }
 nav.bilino-navbar .navbar-links ul.navbar-nav li.nav-item a.nav-link:hover {
   color: #26282C !important;
 }
+nav.bilino-navbar .navbar-links ul.navbar-nav li.nav-item a.nav-link img {
+  max-width: 30px;
+  height: auto;
+}
 nav.bilino-navbar .material-icons {
-  float: right;
-  margin-top: 13px;
   -webkit-transition: transform 0.2s ease-in-out;
   -ms-transition: transform 0.2s ease-in-out;
   -moz-transition: transform 0.2s ease-in-out;
@@ -336,8 +367,8 @@ nav.bilino-navbar .material-icons.toggle {
   }
 }
 body {
-  font-family: "roundedLoginFont", Tahoma, Geneva, sans-serif;
-  background-color: #a5ade2;
+  font-family: "Roboto", sans-serif;
+  background-color: #e8ebf8;
 }
 body .container-fluid {
   padding: 0;

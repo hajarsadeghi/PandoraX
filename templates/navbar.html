@@ -2,30 +2,35 @@
 
 <nav class="bilino-navbar side-is-visible" id="navbar">
     <div class="navbar-logo" href="#">
-        <img class="img-fluid bilono-logo" alt="bilono logo" src="{% static 'image/bilono_logo.png' %}" />
+        <img class="img-fluid bilono-logo" alt="bilono logo" src="{% static 'image/bilono_logo.svg' %}" />
     </div>
     <div class="navbar-profile-wrapper">
-        <div class="navbar-profile" data-toggle="collapse" data-target="#userProfile" aria-expanded="true">
-            <img class="img-fluid user-logo" alt="user-profile" src="{% static 'image/man.png' %}" />
-            <span class="user-info">
-                <span>
-                    {{request.user.first_name}} {{request.user.last_name}}
-                    <i class="material-icons">arrow_drop_down</i>
-                </span>
-                <div class="user-info-credit">
-                    <span>
-                        <img class="img-fluid" alt="earned-points" src="{% static 'image/earned.png' %}" />
-                        <small id="earnedPoints">0</small>
-                    </span>
-                    <span>
-                        <img class="img-fluid" alt="gift-points" src="{% static 'image/gift.png' %}" />
-                        <small id="giftPoints">2000</small>
-                    </span>
+        <div class="navbar-profile align-items-center" data-toggle="collapse" data-target="#userProfile" aria-expanded="true">
+            <div class="user-info">
+                <div class="user-logo-container align-self-center">
+                    <div class="user-logo">HS</div>
                 </div>
-            </span>
+                <div class="user-info-credit pl-3">
+                    <div class="points-container mb-1">
+                        <img class="img-fluid" alt="earned-points" src="{% static 'image/earned_points.svg' %}" />
+                        <span class="points m-1">100</span>
+                    </div>
+                    <div class="points-container">
+                        <img class="img-fluid" alt="gift-points" src="{% static 'image/gift_points.svg' %}" />
+                        <span class="points m-1">1000</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <i class="material-icons">arrow_drop_down</i>
+            </div>
         </div>
         <div id="userProfile" class="collapse" area-expanded="true">
             <ul class="navbar-nav">
+                <div class="username py-2">
+                    Hajar Sadeghi
+                    {{request.user.first_name}} {{request.user.last_name}}
+                </div>
                 <li class="nav-item sub-nav-item">
                     <a class="nav-link" href="#">Profile</a>
                 </li>
@@ -41,10 +46,22 @@
     <div class="navbar-links">
         <ul class="navbar-nav">
             <li class="nav-item" url="/">
-                <a class="nav-link" href="{% url 'frontview:home' %}">Home</a>
+                <a class="nav-link" href="{% url 'frontview:home' %}">
+                    <img class="img-fluid d-inline-block pb-2" alt="gift-points" src="{% static 'image/feed.svg' %}" />
+                    <span class="pl-3">Feed</span>
+                </a>
             </li>
             <li class="nav-item" url="/budget">
-                <a class="nav-link" href="{% url 'frontview:budget' %}">Budgets</a>
+                <a class="nav-link" href="{% url 'frontview:budget' %}">
+                    <img class="img-fluid d-inline-block" al2="gift-points" src="{% static 'image/budget.svg' %}" />
+                    <span class="pl-3">Budgets</span>
+                </a>
+            </li>
+            <li class="nav-item" url="/badge">
+                <a class="nav-link" href="{% url 'frontview:budget' %}">
+                    <img class="img-fluid d-inline-block" al2="gift-points" src="{% static 'image/badge.svg' %}" />
+                    <span class="pl-3">Badges</span>
+                </a>
             </li>
             <!-- <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#managementMenu">
