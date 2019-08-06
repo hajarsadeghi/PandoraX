@@ -3185,7 +3185,7 @@ html body .content .get-started-box {
 html body .content .get-started-box h4, html body .content .get-started-box button {
   font-weight: bold;
 }
-html body .content .get-started-box h4#confirmEmailBtn, html body .content .get-started-box button#confirmEmailBtn {
+html body .content .get-started-box h4#confirmEmailBtn, html body .content .get-started-box h4#checkEmailBtn, html body .content .get-started-box button#confirmEmailBtn, html body .content .get-started-box button#checkEmailBtn {
   background-color: #4a5cc5;
   color: #ffffff;
 }

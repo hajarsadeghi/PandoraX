@@ -21,7 +21,7 @@ $('.find-space-btn').click(function() {
 });
 
 $('#checkEmailBtn').click(function() {
-    $('.check-inbox-box').addClass('d-block');    
+    $('.validate-code-box2').addClass('d-block');    
 });
 
 var $inputs = $(".digit-cell");
