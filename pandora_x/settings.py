@@ -151,8 +151,7 @@ SOCIAL_AUTH_LINKEDIN_OAUTH2_FIELD_SELECTORS = ['emailAddress', 'profilePicture(d
 # Arrange to add the fields to UserSocialAuth.extra_data
 SOCIAL_AUTH_LINKEDIN_OAUTH2_EXTRA_DATA = [
     ('emailAddress', 'email'),
-    ('emailAddress', 'username'),
-    ('profilePicture.displayImage~', 'profile_picture'),
+    ('profilePicture', 'profile_picture'),
 ]
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',

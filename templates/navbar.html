@@ -8,7 +8,9 @@
         <div class="navbar-profile align-items-center" data-toggle="collapse" data-target="#userProfile" aria-expanded="true">
             <div class="user-info">
                 <div class="user-logo-container align-self-center">
-                    <div class="user-logo">HS</div>
+                    <div class="user-logo">
+                        {{request.user.first_name.0}}{{request.user.last_name.0}}
+                    </div>
                 </div>
                 <div class="user-info-credit pl-3">
                     <div class="points-container mb-1">
@@ -28,8 +30,7 @@
         <div id="userProfile" class="collapse" area-expanded="true">
             <ul class="navbar-nav">
                 <div class="username py-2">
-                    Hajar Sadeghi
-                    {{request.user.first_name}} {{request.user.last_name}}
+                    {{request.user.get_full_name}}
                 </div>
                 <li class="nav-item sub-nav-item">
                     <a class="nav-link" href="#">Profile</a>
