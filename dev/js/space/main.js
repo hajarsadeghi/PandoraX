@@ -16,20 +16,27 @@ $('.form-input').on('keyup',function() {
 });
 
 $('.space-btn').click(function() {
-    $('.space-box').removeClass('d-block');
-    $('.space-box').addClass('d-none');
+    $('.space-row').removeClass('d-flex');
+    $('.space-row').addClass('d-none');
 });
 
 $('#spaceNameBtn').click(function() {
-    $('#spaceInfoBox').addClass('d-block');    
+    $('.space-info-container').removeClass('d-none');
+    $('.space-info-container').addClass('d-flex');    
 });
 
 $('#spaceInfoBtn').click(function() {
-    $('#spaceTeammatesBox').addClass('d-block');    
+    $('.space-teammates-container').removeClass('d-none'); 
+    $('.space-teammates-container').addClass('d-flex');    
 });
 
 $('#addTeammatesBtn').click(function() {
-    $('#spaceAlertBox').addClass('d-block');    
+    $('.space-alert-container').removeClass('d-none');  
+    $('.space-alert-container').addClass('d-flex');    
+});
+
+$('#tadaBtn').click(function() {
+    window.location.replace('');  
 });
 
 

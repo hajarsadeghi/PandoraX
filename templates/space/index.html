@@ -25,12 +25,21 @@
         </nav>
     </header>
     <div class="container-fluid">
-        <div class="row justify-content-center">
+        <div class="row space-row">
             <!-- space form -->
             {% include './space-name.html' %}
+        </div>
+        <div class="row space-row space-info-container d-none">
+            <!-- space form -->
             {% include './space-info.html' %}
+        </div>
+        <div class="row space-row space-teammates-container d-none">
+            <!-- space form -->
             {% include './space-teammates.html' %}
-            {% include './space-alert.html' %}
+        </div>
+        <div class="row space-row space-alert-container d-none">
+            <!-- space form -->
+            {% include './tada.html' %}
         </div>
     </div>
 </body>

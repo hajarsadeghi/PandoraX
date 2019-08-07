@@ -3170,19 +3170,15 @@ body .container-fluid {
 }
 body .container-fluid .row {
   height: 100%;
+  background-color: #e8ebf8;
 }
 body .container-fluid .row .col-sections {
   height: 100%;
-  position: relative;
-  background-color: #e8ebf8;
 }
 body .container-fluid .row .col-sections .form {
-  height: auto;
-  vertical-align: middle;
   text-align: center;
-  margin-top: 35vh;
 }
-body .container-fluid .row .col-sections .form h3, body .container-fluid .row .col-sections .form button {
+body .container-fluid .row .col-sections .form h4, body .container-fluid .row .col-sections .form button {
   font-weight: bold;
 }
 body .container-fluid .row .col-sections .form .add-teammate-link {
@@ -3209,31 +3205,4 @@ body .container-fluid .row .col-sections .form button.space-btn {
   margin: auto;
   background-color: #4a5cc5;
   color: #ffffff;
-}
-
-@media (max-width: 767.98px) {
-  .form {
-    width: 90%;
-    margin: auto;
-  }
-}
-@media (min-width: 768px) {
-  .form {
-    width: 60%;
-    position: absolute;
-    left: 20%;
-  }
-}
-@media (max-width: 1399.98px) {
-  .form .sign-up-section {
-    bottom: 10px;
-  }
-}
-@media (min-width: 1400px) {
-  .form {
-    width: 40%;
-    position: absolute;
-    left: 30%;
-    margin-top: 50px;
-  }
 }

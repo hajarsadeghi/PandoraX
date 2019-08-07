@@ -1,24 +1,37 @@
 {% load static %}
 
-<form id="spaceInfoBox" class="space-box form animated fadeInLeft d-none">
-    <h3 class="mb-4">Please tell us more about your company?</h3>
-    <div class="form-group forms dropdown-container">
-      <input type="text" class="form-control form-input dropdown-input industry" aria-describedby="Industry" autocomplete="off">
-      <span class="input-line" data-placeholder="Industry"></span>
-      <div class="industry-dropdown dropdown-custom-menu animated fadeIn">
-        <a class="dropdown-item" id="1" href="#">Software</a>
-        <a class="dropdown-item" id="2" href="#">Restaurant & Cafe</a>
-        <a class="dropdown-item" id="3" href="#">Legal</a>
-        <a class="dropdown-item" id="4" href="#">Hardware Store</a>
-        <a class="dropdown-item" id="5" href="#">Hospital</a>
-        <a class="dropdown-item" id="6" href="#">Beauty Salon</a>
-        <a class="dropdown-item" id="7" href="#">School</a>
-      </div>
+<div class="col-12 col-lg col-sections align-self-center">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-12 col-sm-10 col-md-8 col-xl-6">
+            <form id="spaceInfoBox" class="space-box form animated fadeInLeft">
+                <h3 class="mb-4">Please tell us more about your company?</h3>
+                <div class="form-group forms dropdown-container">
+                  <input type="text" class="form-control form-input dropdown-input industry" aria-describedby="Industry" autocomplete="off">
+                  <span class="input-line" data-placeholder="Industry"></span>
+                  <div class="industry-dropdown dropdown-custom-menu animated fadeIn">
+                    <a class="dropdown-item" id="1" href="#">Software</a>
+                    <a class="dropdown-item" id="2" href="#">Restaurant & Cafe</a>
+                    <a class="dropdown-item" id="3" href="#">Legal</a>
+                    <a class="dropdown-item" id="4" href="#">Hardware Store</a>
+                    <a class="dropdown-item" id="5" href="#">Hospital</a>
+                    <a class="dropdown-item" id="6" href="#">Beauty Salon</a>
+                    <a class="dropdown-item" id="7" href="#">School</a>
+                  </div>
+                </div>
+                <div class="form-group forms">
+                    <input type="text" class="form-control form-input" aria-describedby="team" autocomplete="off">
+                    <span class="input-line" data-placeholder="number of team members"></span>
+                </div>
+                <button type="button" class="btn btn-block login-btn my-3 space-btn" id="spaceInfoBtn">Next</button>
+                <small class="text-muted">By continiuing you're agreeing to our <a href="#">Customer Terms of Service</a>,<a href="#">Privacy Policy</a>, and <a href="#">Cookie Policy</a>.</small>
+            </form>
+        </div>
+    </div>               
+</div>
+<div class="col-lg col-sections d-none d-lg-inline-block">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-12 col-sm-10 col-md-8 col-xl-6">
+            <img class="img-fluid" src="{% static 'image/about_company.svg' %}" />
+        </div>
     </div>
-    <div class="form-group forms">
-        <input type="text" class="form-control form-input" aria-describedby="team" autocomplete="off">
-        <span class="input-line" data-placeholder="number of team members"></span>
-    </div>
-    <button type="button" class="btn btn-block login-btn my-3 space-btn" id="spaceInfoBtn">Next</button>
-    <small class="text-muted">By continiuing you're agreeing to our <a href="#">Customer Terms of Service</a>,<a href="#">Privacy Policy</a>, and <a href="#">Cookie Policy</a>.</small>
-</form>
+</div>
