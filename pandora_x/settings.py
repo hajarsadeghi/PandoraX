@@ -134,25 +134,10 @@ TEMPLATES[0]['OPTIONS']['context_processors']+= [
     'social_django.context_processors.login_redirect',
 ]
 AUTHENTICATION_BACKENDS+= [
-    'social_core.backends.linkedin.LinkedinOAuth2',
+    'custom_oauth.backends.linkedin.LinkedinOAuth2',
     'social_core.backends.google.GoogleOAuth2'
 ]
 
-LOGIN_REDIRECT_URL = 'frontview:home'
-LOGOUT_REDIRECT_URL = 'frontview:login'
-SOCIAL_AUTH_URL_NAMESPACE = 'user:oauth'
-
-SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = os.getenv('LINKEDIN_OAUTH_KEY', '')
-SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = os.getenv('LINKEDIN_OAUTH_SECRET', '')
-# Add email to requested authorizations.
-SOCIAL_AUTH_LINKEDIN_OAUTH2_SCOPE = ['r_liteprofile', 'r_emailaddress']
-# Add the fields so they will be requested from linkedin.
-SOCIAL_AUTH_LINKEDIN_OAUTH2_FIELD_SELECTORS = ['emailAddress', 'profilePicture(displayImage~:playableStreams)']
-# Arrange to add the fields to UserSocialAuth.extra_data
-SOCIAL_AUTH_LINKEDIN_OAUTH2_EXTRA_DATA = [
-    ('emailAddress', 'email'),
-    ('profilePicture', 'profile_picture'),
-]
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',
     'social_core.pipeline.social_auth.social_uid',
@@ -164,9 +149,26 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.load_extra_data',
     'social_core.pipeline.user.user_details',
 )
+
+LOGIN_REDIRECT_URL = 'frontview:home'
+LOGOUT_REDIRECT_URL = 'frontview:login'
+SOCIAL_AUTH_URL_NAMESPACE = 'user:oauth'
+
+SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = os.getenv('LINKEDIN_OAUTH_KEY', '')
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = os.getenv('LINKEDIN_OAUTH_SECRET', '')
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SCOPE = ['r_liteprofile', 'r_emailaddress']
+SOCIAL_AUTH_LINKEDIN_OAUTH2_FIELD_SELECTORS = ['emailAddress', 'profilePicture(displayImage~:playableStreams)']
+SOCIAL_AUTH_LINKEDIN_OAUTH2_EXTRA_DATA = [
+    ('emailAddress', 'email'),
+    ('profilePicture.displayImage~.elements.3.identifiers.0.identifier', 'profile_picture'),
+]
+
+
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('GOOGLE_OAUTH_KEY', '')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv('GOOGLE_OAUTH_SECRET', '')
-
+SOCIAL_AUTH_GOOGLE_OAUTH2_EXTRA_DATA = [
+    ('picture', 'profile_picture'),
+]
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
