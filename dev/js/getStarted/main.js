@@ -43,6 +43,10 @@ $inputs.on("input.fromManual", function(){
     }
 });
 
+$inputs.on('contextmenu', function() {
+    console.log('on context menu')
+})
+
 // Prevents pasting non-digits and if value is 6 characters long will parse each character into an individual box.
 $inputs.on("paste", function() {
     var $this = $(this);
@@ -87,20 +91,39 @@ $inputs.on("keydown", function(e) {
     setTimeout(() => {
         const otp = $('input[name="char[1]"]').val() + $('input[name="char[2]"]').val() + $('input[name="char[3]"]').val() + $('input[name="char[4]"]').val() + $('input[name="char[5]"]').val() + $('input[name="char[6]"]').val();
         if (otp.length == 6) {
-            checkVerification(otp);
+            if ($this.closest('.get-started-box').hasClass('validate-code-box')) {
+                checkVerification(
+                    {
+                        "user_email": $('.validate-email-box').find('#adminEmail').val(),
+                        "user_otp": otp
+                    },
+                    () => {
+                        window.location.replace('space');
+                    }
+                );
+            }
+            else if ($this.closest('.get-started-box').hasClass('validate-code-box2')) {
+                checkVerification(
+                    {
+                        "user_email": $('.find-space-email-box').find('#userEmail').val(),
+                        "user_otp": otp
+                    },
+                    () => {
+                        window.location.replace('/');
+                    }
+                );
+            }
         }
     },200);
 });
 
-function checkVerification(otp) {
+function checkVerification(params, callback) {
     API.verify_email(
         'api/user/login/otp/verify/',
-        {
-            "user_email": $('.validate-email-box').find('#adminEmail').val(),
-            "user_otp": otp
-        },(status, res) => {
+        params,
+        (status, res) => {
             if (status) {
-                window.location.replace('space');
+                callback();
             }
             else {
                 console.log('error')
@@ -121,19 +144,32 @@ function pasteValues(element) {
 
 // ... verify email ...
 $('#confirmEmailBtn, #resendEmail').on('click',() => {
-    
     $('.digit-confirmation').find('input').val('');
+    RequestOtp(
+        {"user_email": $('.validate-email-box').find('#adminEmail').val() },
+        $('.validate-code-box').find('.countdown')
+    );
+});
+
+$('#checkEmailBtn').on('click',() => {
+    $('.digit-confirmation').find('input').val('');
+    RequestOtp(
+        {"user_email": $('.find-space-email-box').find('#userEmail').val()},
+        $('.validate-code-box2').find('.countdown')
+    );
+});
+
+function RequestOtp(params,countdownElement) {
     API.verify_email(
         'api/user/login/otp/request/',
-        {
-            "user_email": $('.validate-email-box').find('#adminEmail').val()
-        },(status, res) => {
+        params,
+        (status, res) => {
             if (status) {
                 const countdown = new CountDown();
-                countdown.startTimer(res.expire, $('.countdown'));
+                countdown.startTimer(res.expire, countdownElement);
             }
             else {
                 console.log('error')
             }
         })
-})
+}

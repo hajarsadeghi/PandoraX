@@ -44,6 +44,21 @@ nav {
             }
         }
 
+        .bilono-space-wrapper {
+            padding-left: $sidebar-padding;
+            position: relative;
+            
+            > div {
+                height: $sidebar-link-height;
+                line-height: $sidebar-link-height;
+                font-weight: bold;
+            }
+
+            &::after {
+                @extend %sidebar-devider;
+            }
+        }
+
         .navbar-profile-wrapper {
 
             position: relative;

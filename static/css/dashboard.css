@@ -197,7 +197,7 @@ header {
     display: none;
   }
 }
-nav.bilino-navbar .navbar-profile-wrapper::after, nav.bilino-navbar .navbar-logo::after {
+nav.bilino-navbar .navbar-profile-wrapper::after, nav.bilino-navbar .bilono-space-wrapper::after, nav.bilino-navbar .navbar-logo::after {
   content: "";
   width: calc(100% - 30px);
   height: 1px;
@@ -235,6 +235,15 @@ nav.bilino-navbar .navbar-logo .bilono-logo {
   height: 100%;
   width: auto;
   padding: 10px 0;
+}
+nav.bilino-navbar .bilono-space-wrapper {
+  padding-left: 20px;
+  position: relative;
+}
+nav.bilino-navbar .bilono-space-wrapper > div {
+  height: 50px;
+  line-height: 50px;
+  font-weight: bold;
 }
 nav.bilino-navbar .navbar-profile-wrapper {
   position: relative;

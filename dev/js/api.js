@@ -1,6 +1,5 @@
 export const verify_email = (url, params, callback) => {
     return fetch(
-                // "api/user/login/otp/request/",
                 url,
                 {
                     method: "POST",

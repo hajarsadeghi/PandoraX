@@ -36,7 +36,7 @@ $('#addTeammatesBtn').click(function() {
 });
 
 $('#tadaBtn').click(function() {
-    window.location.replace('');  
+    window.location.replace('/');  
 });
 
 
