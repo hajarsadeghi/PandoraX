@@ -13,9 +13,8 @@
         <div class="navbar-profile align-items-center" data-toggle="collapse" data-target="#userProfile" aria-expanded="true">
             <div class="user-info">
                 <div class="user-logo-container align-self-center">
-                        <div class="user-logo">
-                            <span>{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
-                            <!-- <img class="img-fluid" src="{% static 'image/photo.jpg' %}" alt="profile picture" /> -->
+                    <div class="user-logo">
+                        {% if request.user.profile_picture %}<img class="img-fluid" src="{{request.user.profile_picture.url}}" alt="profile picture" />{% else %}<span>{{request.user.first_name.0}}{{request.user.last_name.0}}</span>{% endif %}
                     </div>
                 </div>
                 <div class="user-info-credit pl-3">
