@@ -39,10 +39,7 @@ body {
                 
 
                 .form {
-                    // height: auto;
-                    // vertical-align: middle;
                     text-align: center;
-                    // margin-top: 35vh;
 
                     h4,button {
                         font-weight: bold;
@@ -63,20 +60,19 @@ body {
                     }
                     .industry-dropdown {
 
-                        background-color: $white;
+                        background-color: $main-blue-color;
                         border-radius: 0 0 $radius $radius;
                         text-align: left;
                         position: relative;
                         z-index: 99999;
                         display: none;
-                        button {
-                            background-color: transparent;
-                            color: $text;
-                            border: none;
-                            height: 100%;
 
-                            &:focus {
-                                box-shadow: none;
+                        .dropdown-item {
+                            color: $white;
+
+                            &:hover {
+                                background-color: $tint-blue-color2;
+                                color: inherit;
                             }
                         }
                     }

@@ -3153,6 +3153,10 @@ html body {
   max-width: 100px;
 }
 
+button, a {
+  outline: none !important;
+}
+
 html {
   height: 100%;
 }

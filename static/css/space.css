@@ -3145,6 +3145,10 @@ body .container-fluid .row .col-sections .form .industry:focus ~ .input-line::af
   max-width: 100px;
 }
 
+button, a {
+  outline: none !important;
+}
+
 body {
   font-family: "roundedLoginFont", Tahoma, Geneva, sans-serif;
   margin: 0;
@@ -3185,21 +3189,19 @@ body .container-fluid .row .col-sections .form .add-teammate-link {
   color: #007bff;
 }
 body .container-fluid .row .col-sections .form .industry-dropdown {
-  background-color: #ffffff;
+  background-color: #1d33b6;
   border-radius: 0 0 5px 5px;
   text-align: left;
   position: relative;
   z-index: 99999;
   display: none;
 }
-body .container-fluid .row .col-sections .form .industry-dropdown button {
-  background-color: transparent;
-  color: #AAB6C5;
-  border: none;
-  height: 100%;
+body .container-fluid .row .col-sections .form .industry-dropdown .dropdown-item {
+  color: #ffffff;
 }
-body .container-fluid .row .col-sections .form .industry-dropdown button:focus {
-  box-shadow: none;
+body .container-fluid .row .col-sections .form .industry-dropdown .dropdown-item:hover {
+  background-color: #d2d6f0;
+  color: inherit;
 }
 body .container-fluid .row .col-sections .form button.space-btn {
   margin: auto;
