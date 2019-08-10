@@ -8,23 +8,14 @@
         <div class="flex-grow-1" data-toggle="collapse" data-target="#bilonoSpace" aria-expanded="true">
             <div>Ariana</div>
         </div>
-        <!-- <div>
-            <i class="material-icons">arrow_drop_down</i>
-        </div> -->
     </div>
-    <!-- <div id="bilonoSpace" class="collapse" area-expanded="true">
-        <ul class="navbar-nav">
-            <li class="nav-item sub-nav-item">
-                <a class="nav-link" href="#">Log out from Space</a>
-            </li>
-        </ul>
-    </div> -->
     <div class="navbar-profile-wrapper">
         <div class="navbar-profile align-items-center" data-toggle="collapse" data-target="#userProfile" aria-expanded="true">
             <div class="user-info">
                 <div class="user-logo-container align-self-center">
-                    <div class="user-logo">
-                        {{request.user.first_name.0}}{{request.user.last_name.0}}
+                        <div class="user-logo">
+                            <span>{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
+                            <!-- <img class="img-fluid" src="{% static 'image/photo.jpg' %}" alt="profile picture" /> -->
                     </div>
                 </div>
                 <div class="user-info-credit pl-3">
