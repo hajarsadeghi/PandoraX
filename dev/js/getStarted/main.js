@@ -1,31 +1,18 @@
 import CountDown from './../helper/countdown';
+
+
+
 const API = require('./../api.js');
-
-
-
-$('.get-started-link').click(function() {
-    $('.get-started-box').removeClass('d-block');
-    $('.get-started-box').addClass('d-none');
-});
-
-$('#newSpaceBtn').click(function() {
-    $('.validate-email-box').addClass('d-block');    
-});
-
-$('#confirmEmailBtn').click(function() {
-    $('.validate-code-box').addClass('d-block');    
-});
-
-$('.find-space-btn').click(function() {
-    $('.find-space-email-box').addClass('d-block');    
-});
-
-$('#checkEmailBtn').click(function() {
-    $('.validate-code-box2').addClass('d-block');    
-});
-
 var $inputs = $(".digit-cell");
 var intRegex = /^\d+$/;
+
+// ... navigate through get started boxes
+$('.get-started-link').click(function() {
+    const box = '.' + $(this).attr('box');
+    $('.get-started-box').removeClass('d-block');
+    $('.get-started-box').addClass('d-none');
+    $(box).addClass('d-block');
+});
 
 // Prevents user from manually entering non-digits.
 $inputs.on("input.fromManual", function(){
@@ -91,24 +78,24 @@ $inputs.on("keydown", function(e) {
     setTimeout(() => {
         const otp = $('input[name="char[1]"]').val() + $('input[name="char[2]"]').val() + $('input[name="char[3]"]').val() + $('input[name="char[4]"]').val() + $('input[name="char[5]"]').val() + $('input[name="char[6]"]').val();
         if (otp.length == 6) {
-            if ($this.closest('.get-started-box').hasClass('validate-code-box')) {
+            if ($this.closest('.get-started-box').hasClass('new-email-code-box')) {
                 checkVerification(
                     {
-                        "user_email": $('.validate-email-box').find('#adminEmail').val(),
+                        "user_email": $('.new-space-email-box').find('#adminEmail').val(),
                         "user_otp": otp
                     },
-                    () => {
+                    (res) => {
                         window.location.replace('space');
                     }
                 );
             }
-            else if ($this.closest('.get-started-box').hasClass('validate-code-box2')) {
+            else if ($this.closest('.get-started-box').hasClass('find-space-code-box')) {
                 checkVerification(
                     {
                         "user_email": $('.find-space-email-box').find('#userEmail').val(),
                         "user_otp": otp
                     },
-                    () => {
+                    (res) => {
                         window.location.replace('/');
                     }
                 );
@@ -117,21 +104,15 @@ $inputs.on("keydown", function(e) {
     },200);
 });
 
-function checkVerification(params, callback) {
-    API.verify_email(
-        'api/user/login/otp/verify/',
-        params,
-        (status, res) => {
-            if (status) {
-                callback();
-            }
-            else {
-                console.log('error')
-            }
-        }
+// ... verify email ...
+$('.send-otp, #resendEmail').on('click', function() {
+    const temp = $(this);
+    $('.' + $(this).attr('box')).find('input').val('');
+    RequestOtp(
+        {"user_email": $(this).closest('form').find('[type="email"]').val() },
+        $('.' + $(this).attr('box')).find('.countdown')
     );
-}
-
+});
 
 // Parses the individual digits into the individual boxes.
 function pasteValues(element) {
@@ -141,24 +122,7 @@ function pasteValues(element) {
         $inputBox.val(values[index])
     });
 };
-
-// ... verify email ...
-$('#confirmEmailBtn, #resendEmail').on('click',() => {
-    $('.digit-confirmation').find('input').val('');
-    RequestOtp(
-        {"user_email": $('.validate-email-box').find('#adminEmail').val() },
-        $('.validate-code-box').find('.countdown')
-    );
-});
-
-$('#checkEmailBtn').on('click',() => {
-    $('.digit-confirmation').find('input').val('');
-    RequestOtp(
-        {"user_email": $('.find-space-email-box').find('#userEmail').val()},
-        $('.validate-code-box2').find('.countdown')
-    );
-});
-
+// ... request otp
 function RequestOtp(params,countdownElement) {
     API.verify_email(
         'api/user/login/otp/request/',
@@ -172,4 +136,19 @@ function RequestOtp(params,countdownElement) {
                 console.log('error')
             }
         })
+}
+// ... verify otp
+function checkVerification(params, callback) {
+    API.verify_email(
+        'api/user/login/otp/verify/',
+        params,
+        (status, res) => {
+            if (status, res) {
+                callback(res);
+            }
+            else {
+                console.log('error')
+            }
+        }
+    );
 }

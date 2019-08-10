@@ -38,7 +38,7 @@ html {
                 h4,button {
                     font-weight: bold;
 
-                    &#confirmEmailBtn, &#checkEmailBtn {
+                    &.send-otp {
                         background-color: $tint-blue-color5;
                         color: $white;
                     }
