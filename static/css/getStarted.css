@@ -3149,6 +3149,20 @@ html body {
   transition: all 0.4s ease-in;
 }
 
+.social-logins p {
+  color: #ffffff;
+}
+.social-logins .auth-logins {
+  width: 25px;
+  height: auto;
+  cursor: pointer;
+  display: inline-block;
+}
+.social-logins .auth-logins img {
+  width: 100%;
+  height: auto;
+}
+
 .bilono-logo {
   max-width: 100px;
 }
@@ -3236,6 +3250,10 @@ html body .content .get-started-box .digit-confirmation input {
   height: auto;
   border-radius: 0;
   text-align: center;
+}
+html body .content .get-started-box .digit-confirmation input:focus {
+  box-shadow: none !important;
+  border: 1px solid inherit !important;
 }
 html body .content .get-started-box .countdown {
   text-align: center;

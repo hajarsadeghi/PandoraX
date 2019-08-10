@@ -3141,6 +3141,20 @@ body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms i
   transition: all 0.4s ease-in;
 }
 
+.social-logins p {
+  color: #ffffff;
+}
+.social-logins .auth-logins {
+  width: 25px;
+  height: auto;
+  cursor: pointer;
+  display: inline-block;
+}
+.social-logins .auth-logins img {
+  width: 100%;
+  height: auto;
+}
+
 .bilono-logo {
   max-width: 100px;
 }
@@ -3281,19 +3295,6 @@ body .container-fluid .row .col-sections.login-wrapper .form .remember-form labe
 body .container-fluid .row .col-sections.login-wrapper .form .remember-form a {
   color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
-}
-body .container-fluid .row .col-sections.login-wrapper .form .social-logins p {
-  color: #ffffff;
-}
-body .container-fluid .row .col-sections.login-wrapper .form .social-logins .auth-logins {
-  width: 25px;
-  height: auto;
-  cursor: pointer;
-  display: inline-block;
-}
-body .container-fluid .row .col-sections.login-wrapper .form .social-logins .auth-logins img {
-  width: 100%;
-  height: auto;
 }
 body .container-fluid .row .col-sections.login-wrapper .form .remember-me {
   color: #ffffff;

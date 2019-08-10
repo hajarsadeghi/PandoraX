@@ -89,6 +89,11 @@ html {
                         height: auto;
                         border-radius: 0;
                         text-align: center;
+                        &:focus {
+                            // outline: none !important;
+                            box-shadow: none !important;
+                            border: 1px solid inherit !important;
+                        }
                     }
                 }
 
