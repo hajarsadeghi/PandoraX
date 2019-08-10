@@ -1,6 +1,6 @@
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
-from django.contrib.auth.models import User
+from user.models import User
 from django.contrib.auth import login
 from django.core.cache import cache
 import json
