@@ -3259,8 +3259,15 @@ html body footer .footer-list {
 }
 html body footer .footer-list .footer-list-item {
   color: #AAB6C5;
+  font-size: 0.8rem;
   cursor: pointer;
+}
+html body footer .footer-list .footer-list-item:hover:not(.h6) {
+  color: #26282C;
 }
 html body footer .footer-list .footer-list-item.h6 {
   color: #4a5cc5;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: default;
 }
