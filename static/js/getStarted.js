@@ -101,11 +101,11 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./dev/
 /*!***********************!*\
   !*** ./dev/js/api.js ***!
   \***********************/
-/*! exports provided: verify_email */
+/*! exports provided: verify_email, create_space */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"verify_email\", function() { return verify_email; });\nvar verify_email = function verify_email(url, params, callback) {\n  return fetch(url, {\n    method: \"POST\",\n    body: JSON.stringify(params)\n  }).then(function (response) {\n    if (response.status >= 200 && response.status <= 299) {\n      response.json().then(function (res) {\n        callback(true, res);\n      });\n    } else {\n      callback(false, res);\n    }\n  });\n};\n\n//# sourceURL=webpack:///./dev/js/api.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"verify_email\", function() { return verify_email; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"create_space\", function() { return create_space; });\nvar verify_email = function verify_email(url, params, callback) {\n  return fetch(url, {\n    method: \"POST\",\n    body: JSON.stringify(params)\n  }).then(function (response) {\n    if (response.status >= 200 && response.status <= 299) {\n      response.json().then(function (res) {\n        callback(true, res);\n      });\n    } else {\n      callback(false, res);\n    }\n  });\n}; // ... check company slug, create space, add teammates\n\nvar create_space = function create_space(url, params, callback) {\n  return fetch(url, {\n    method: \"POST\",\n    body: JSON.stringify(params)\n  }).then(function (response) {\n    if (response.status >= 200 && response.status <= 299) {\n      response.json().then(function (res) {\n        callback(true, res);\n      });\n    } else {\n      callback(false, res);\n    }\n  });\n};\n\n//# sourceURL=webpack:///./dev/js/api.js?");
 
 /***/ }),
 
