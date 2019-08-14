@@ -5,7 +5,7 @@ const API = require('./../api.js');
 // ... initialize dropdown ...
 new Dropdown({root: '.dropdown-container'});
 
-$('.space-btn').attr('disabled', true);
+$('#spaceNameBtn').attr('disabled', true);
 
 // ... login form transition ...
 $('.form-input').on('keyup',function() {
