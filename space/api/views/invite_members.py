@@ -8,7 +8,7 @@ import json
 
 @require_http_methods(['POST'])
 @is_authenticated
-def create_space(request):
+def invite_members(request):
     try:
         request_json = json.loads(request.body)
         space = Space.objects.get(id=request_json['space_id'], owner=request.user)
