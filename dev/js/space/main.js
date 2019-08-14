@@ -5,6 +5,8 @@ const API = require('./../api.js');
 // ... initialize dropdown ...
 new Dropdown({root: '.dropdown-container'});
 
+$('#spaceNameBtn').attr('disabled', true);
+
 // ... login form transition ...
 $('.form-input').on('keyup',function() {
     if ($(this).val()) {
@@ -15,39 +17,49 @@ $('.form-input').on('keyup',function() {
     }
 });
 
+let check_slug;
 $('#companyName').on('keyup', function() {
-    if ($(this).val()) {
-        $('#companySlug').val($(this).val().toLowerCase() + '.bilono.com');
+
+    $('#spaceNameBtn').attr('disabled', true);
+
+    let slug_value = $(this).val().toLowerCase();
+    if (/^[a-zA-Z0-9-_ ]*$/.test(slug_value)) {
+        $('#companySlug').val(slug_value.replace(/ +/g, ""));
     }
+    
+    clearTimeout(check_slug);
+
+    if (slug_value) {
+        $('#companySlug').addClass('has-val');
+    }
+    else {
+        $('#companySlug').removeClass('has-val');        
+    }
+
+    let slug = $('#companySlug').val();
+    check_slug = setTimeout(() => {
+        if (slug.length > 0) {
+            API.create_space(
+                '/api/space/check_slug/',
+                {slug: slug},
+                (status, res) => {
+                    if (status) {
+                        if (res.valid) {
+                            $('#spaceNameBtn').attr('disabled', false);
+                            $('.red-border').addClass('d-none');
+                        }
+                        else {
+                            $('.red-border').removeClass('d-none');
+                        }
+                    }
+                }
+            );
+        }
+    }, 750)
 })
 // ... check company slug
 $('#spaceNameBtn').on('click', function() {
-
-    let slug = $('#companyName').val();
-
-    if (slug.length > 0) {
-        API.create_space(
-            '/api/space/check_slug/',
-            {slug: slug},
-            (status, res) => {
-                if (status) {
-                    if (res.valid) {
-                        ToggleSpaceBoxes($(this));
-                    }
-                    else {
-                        alert("Please change your company's slug");
-                    }
-                }
-                else {
-                    console.log('error')
-                }
-            }
-        );
-    }
-    else {
-        Notif('Please enter the name of your company');
-    }
-    
+    ToggleSpaceBoxes($(this));
 });
 // ... create slug
 $('#createSpaceBtn').on('click', function() {
