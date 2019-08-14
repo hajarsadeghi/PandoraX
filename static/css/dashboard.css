@@ -127,94 +127,16 @@ button, a {
   outline: none !important;
 }
 
-header {
-  width: 100%;
-  display: none;
-  height: 70px;
+.navbar-vertical.navbar-expand-md .navbar-nav .nav-link.active:before {
+  left: auto !important;
+  right: 0 !important;
 }
 
-@media (max-width: 991.98px) {
-  header {
-    display: block;
-  }
-  header .menu-collapse {
-    display: inline-block;
-    position: relative;
-    left: 20px;
-    top: 15px;
-  }
-  header .menu-collapse .menu-collapse-btn {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-  }
-  header .menu-collapse .menu-collapse-btn .menu-button {
-    width: 30px;
-    height: 0px;
-    position: absolute;
-    top: 12px;
-    background-color: #000000;
-  }
-  header .menu-collapse .menu-collapse-btn .menu-button::before, header .menu-collapse .menu-collapse-btn .menu-button::after {
-    content: "";
-    width: 30px;
-    height: 3px;
-    background-color: inherit;
-    position: absolute;
-    -webkit-transform-origin: 0 50%;
-    -ms-transform-origin: 0 50%;
-    -moz-transform-origin: 0 50%;
-    -o-transform-origin: 0 50%;
-    transform-origin: 0 50%;
-    -webkit-transition: transform 0.2s ease-in-out;
-    -ms-transition: transform 0.2s ease-in-out;
-    -moz-transition: transform 0.2s ease-in-out;
-    -o-transition: transform 0.2s ease-in-out;
-    transition: transform 0.2s ease-in-out;
-  }
-  header .menu-collapse .menu-collapse-btn .menu-button::before {
-    top: -6px;
-    -webkit-transform: translateX(4px) translateY(-3px) rotate(45deg);
-    -ms-transform: translateX(4px) translateY(-3px) rotate(45deg);
-    -moz-transform: translateX(4px) translateY(-3px) rotate(45deg);
-    -o-transform: translateX(4px) translateY(-3px) rotate(45deg);
-    transform: translateX(4px) translateY(-3px) rotate(45deg);
-  }
-  header .menu-collapse .menu-collapse-btn .menu-button::after {
-    top: 6px;
-    -webkit-transform: translateX(4px) translateY(6px) rotate(-45deg);
-    -ms-transform: translateX(4px) translateY(6px) rotate(-45deg);
-    -moz-transform: translateX(4px) translateY(6px) rotate(-45deg);
-    -o-transform: translateX(4px) translateY(6px) rotate(-45deg);
-    transform: translateX(4px) translateY(6px) rotate(-45deg);
-  }
-  header .menu-collapse .menu-collapse-btn.navbar-is-visible .menu-button {
-    height: 3px;
-    background-color: black;
-  }
-  header .menu-collapse .menu-collapse-btn.navbar-is-visible .menu-button::before, header .menu-collapse .menu-collapse-btn.navbar-is-visible .menu-button::after {
-    background-color: #000000;
-  }
-  header .menu-collapse .menu-collapse-btn.navbar-is-visible .menu-button::before {
-    -webkit-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  header .menu-collapse .menu-collapse-btn.navbar-is-visible .menu-button::after {
-    -webkit-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
+.header {
+  background: #ff3e58 !important;
+  box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15) !important;
 }
-@media (min-width: 992px) {
-  header .menu-collapse {
-    display: none;
-  }
-}
+
 nav.bilino-navbar .navbar-profile-wrapper::after, nav.bilino-navbar .bilono-space-wrapper::after, nav.bilino-navbar .navbar-logo::after {
   content: "";
   width: calc(100% - 30px);
@@ -398,6 +320,51 @@ nav.bilino-navbar .material-icons.toggle {
     width: 250px;
   }
 }
+.user-info {
+  width: 100%;
+  flex-grow: 1;
+  text-align: center;
+  display: flex;
+}
+.user-info .user-logo {
+  width: 35px;
+  background: #4a5cc5;
+  color: #ffffff;
+  height: 35px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  display: inline-block;
+}
+.user-info .user-logo span {
+  line-height: 35px;
+}
+.user-info .user-logo img {
+  border-radius: 50%;
+}
+.user-info .user-info-credit {
+  width: 100%;
+  text-align: left;
+  display: inline-block;
+  display: flex;
+  flex-direction: column;
+}
+.user-info .user-info-credit .points-container .points {
+  background-color: #ff3e58;
+  display: inline-block;
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 0.8em;
+  min-width: 40px;
+  padding: 0 5px;
+  text-align: center;
+}
+.user-info .user-info-credit .points-container img {
+  max-width: 18px;
+  height: auto;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   background-color: #e8ebf8;

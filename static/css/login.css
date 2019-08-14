@@ -3163,6 +3163,11 @@ button, a {
   outline: none !important;
 }
 
+.navbar-vertical.navbar-expand-md .navbar-nav .nav-link.active:before {
+  left: auto !important;
+  right: 0 !important;
+}
+
 body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input:focus, body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input.has-val, .form-group.forms input.has-val, .form-group.forms input:focus {
   border: none;
   box-shadow: none;
