@@ -10,6 +10,8 @@ export const verify_email = (url, params, callback) => {
             response.json().then(res => {
                 callback(true, res);
             });
+        }
+    })
 }
 // ... check company slug, create space, add teammates
 export const create_space = (url, params, callback) => {
@@ -27,5 +29,5 @@ export const create_space = (url, params, callback) => {
                 } else {
                     callback(false, res);
                 }
-            });
+            })
 }
