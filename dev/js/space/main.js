@@ -5,7 +5,7 @@ const API = require('./../api.js');
 // ... initialize dropdown ...
 new Dropdown({root: '.dropdown-container'});
 
-$('#spaceNameBtn').attr('disabled', true);
+$('.space-btn').attr('disabled', true);
 
 // ... login form transition ...
 $('.form-input').on('keyup',function() {
@@ -17,24 +17,44 @@ $('.form-input').on('keyup',function() {
     }
 });
 
-let check_slug;
+let check_slug,
+    is_slug_changed_manually = false;
 $('#companyName').on('keyup', function() {
+    if (!is_slug_changed_manually) {
+        let slug_value = $(this).val().toLowerCase();
+        if (/^[a-zA-Z0-9-_ ]*$/.test(slug_value)) {
+            $('#companySlug').val(slug_value.replace(/ +/g, ""));
+        }
+        
+        checkSlug(slug_value.replace(/ +/g, ""));   
+    }
+});
+
+$('#companySlug').on('keydown', function (e) {
+    let key_arr = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','-','_','Backspace','Shift','ArrowRight','ArrowLeft','Delete'];
+    if (!key_arr.includes(e.key)) {
+        return false;
+    }
+    else {
+        is_slug_changed_manually = true;
+    }
+});
+
+$('#companySlug').on('keyup', function () {
+    checkSlug($(this).val().toLowerCase());
+});
+
+function checkSlug(slug_value) {
 
     $('#spaceNameBtn').attr('disabled', true);
-
-    let slug_value = $(this).val().toLowerCase();
-    if (/^[a-zA-Z0-9-_ ]*$/.test(slug_value)) {
-        $('#companySlug').val(slug_value.replace(/ +/g, ""));
-    }
-    
-    clearTimeout(check_slug);
-
     if (slug_value) {
         $('#companySlug').addClass('has-val');
     }
     else {
         $('#companySlug').removeClass('has-val');        
     }
+
+    clearTimeout(check_slug);
 
     let slug = $('#companySlug').val();
     check_slug = setTimeout(() => {
@@ -56,7 +76,7 @@ $('#companyName').on('keyup', function() {
             );
         }
     }, 750)
-})
+}
 // ... check company slug
 $('#spaceNameBtn').on('click', function() {
     ToggleSpaceBoxes($(this));
