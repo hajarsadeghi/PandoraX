@@ -3141,6 +3141,20 @@ body .container-fluid .row .col-sections .form .industry:focus ~ .input-line::af
   transition: all 0.4s ease-in;
 }
 
+.social-logins p {
+  color: #ffffff;
+}
+.social-logins .auth-logins {
+  width: 25px;
+  height: auto;
+  cursor: pointer;
+  display: inline-block;
+}
+.social-logins .auth-logins img {
+  width: 100%;
+  height: auto;
+}
+
 .bilono-logo {
   max-width: 100px;
 }

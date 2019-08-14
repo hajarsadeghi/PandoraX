@@ -108,6 +108,23 @@
     }
 }
 
+.social-logins {
+    p {
+        color: $white;
+    }
+
+    .auth-logins {
+        width: 25px;
+        height: auto;
+        cursor: pointer;
+        display: inline-block;
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
 .bilono-logo {
     max-width: 100px;
 }
@@ -116,3 +133,7 @@ button, a {
     outline: none !important;
 }
 
+.navbar-vertical.navbar-expand-md .navbar-nav .nav-link.active:before {
+    left: auto !important;
+    right: 0 !important;
+}

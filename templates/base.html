@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,14 +11,15 @@
     <meta name="description" content="Recognize your colleagues" />
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/lib/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/lib/argon-dashboard.min.css' %}" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     {% block head %}{% endblock %}
 </head>
+
 <body>
     <div class="container-fluid">
         {% include './navbar.html' %}
-        <div class="bilino-main main-is-partially-visible">
-            {% include './header.html' %}
+        <div class="main-content">
             {% block body %}{% endblock %}
         </div>
     </div>
@@ -25,5 +27,7 @@
 <script type="text/javascript" src="{% static 'js/lib/jquery.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/lib/popper.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/lib/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/lib/argon-dashboard.min.js' %}"></script>
 {% block script %}{% endblock %}
+
 </html>

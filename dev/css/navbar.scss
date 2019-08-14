@@ -233,3 +233,59 @@ nav {
         width: $sidebar-width;
     }
 }
+
+
+.user-info {
+    
+    width: 100%;
+    flex-grow: 1;
+    text-align: center;
+    display: flex;
+
+    .user-logo {
+        width: 35px;
+        background: $tint-blue-color5;
+        color: $white;
+        height: 35px;
+        border-radius: 50%;
+        text-align: center;
+        font-weight: bold;
+        display: inline-block;
+
+        span {
+            line-height: 35px;
+        }
+
+        img {
+            border-radius: 50%;
+        }
+    }
+
+    .user-info-credit {
+
+        width: 100%;
+        text-align: left;
+        display: inline-block;
+        display: flex;
+        flex-direction: column;
+        
+        .points-container {
+            .points {
+                background-color: $main-red-color;
+                display: inline-block;
+                border-radius: $radius;
+                color: $white;
+                font-weight: bold;
+                font-size: 0.8em;
+                min-width: 40px;
+                padding: 0 5px;
+                text-align: center;
+            }
+
+            img {
+                max-width: 18px;
+                height: auto;
+            }
+        }
+    }
+}

@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load static %}
 <div class="get-started-box find-space-email-box pt-5 pl-5 pr-5 pb-0 d-none animated fadeInLeft">
     <h4>Find your Bilono space</h4>
@@ -9,6 +10,14 @@
             <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="name@example.com">
         </div>
         <button type="button" class="btn btn-block btn-secondary get-started-link send-otp" box="find-space-code-box">Confirm</button>
+        <div class="social-logins text-center mt-4">
+            <a class="auth-logins mx-1" href="{% url 'user:oauth:begin' 'google-oauth2' %}" target="_self">
+                <img class="google-login d-inline-block" alt="google login" src="{% static 'image/google.svg' %}" />
+            </a>
+            <a class="auth-logins mx-1" href="{% url 'user:oauth:begin' 'linkedin-oauth2' %}" target="_self">
+                <img class="linkedin-login d-inline-block" alt="linkedin login" src="{% static 'image/linkedin.png' %}" />
+            </a>
+        </div>
     </form>
     <img class="img-fluid" src="{% static 'image/find_your_space.svg' %}" />
 </div>
