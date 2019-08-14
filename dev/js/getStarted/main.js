@@ -7,7 +7,7 @@ var $inputs = $(".digit-cell");
 var intRegex = /^\d+$/;
 
 // ... navigate through get started boxes
-$('.get-started-link').click(function() {
+$('.get-started-link').click(function () {
     const box = '.' + $(this).attr('box');
     $('.get-started-box').removeClass('d-block');
     $('.get-started-box').addClass('d-none');
@@ -15,33 +15,33 @@ $('.get-started-link').click(function() {
 });
 
 // Prevents user from manually entering non-digits.
-$inputs.on("input.fromManual", function(){
+$inputs.on("input.fromManual", function () {
     // ... change focus on type
     const cellIndex = $(this).attr('index');
     if ($(this).val().length == 1) {
         $(this).blur();
         setTimeout(() => {
-            $('input[name="char['+ (Number(cellIndex) + 1) +']"]').focus();
-        },100);
+            $('input[name="char[' + (Number(cellIndex) + 1) + ']"]').focus();
+        }, 100);
     }
     // ... check for NaN
-    if(!intRegex.test($(this).val())){
+    if (!intRegex.test($(this).val())) {
         $(this).val("");
     }
 });
 
-$inputs.on('contextmenu', function() {
+$inputs.on('contextmenu', function () {
     console.log('on context menu')
 })
 
 // Prevents pasting non-digits and if value is 6 characters long will parse each character into an individual box.
-$inputs.on("paste", function() {
+$inputs.on("paste", function () {
     var $this = $(this);
     var originalValue = $this.val();
-    
+
     $this.val("");
 
-    $this.one("input.fromPaste", function(){
+    $this.one("input.fromPaste", function () {
 
         var pastedValue = $(this).val();
         if (pastedValue.length == 6 && intRegex.test(pastedValue)) {
@@ -53,26 +53,26 @@ $inputs.on("paste", function() {
 
         $inputs.attr("maxlength", 1);
     });
-    
+
     $inputs.attr("maxlength", 6);
 });
 
-$inputs.on("keydown", function(e) {
+$inputs.on("keydown", function (e) {
     var $this = $(this);
     const cellIndex = $this.attr('index');
     // ... arrowLeft
     if (e.keyCode == 37) {
         $this.blur();
         setTimeout(() => {
-            $('input[name="char['+ (Number(cellIndex) - 1) +']"]').focus();
-        },100);
+            $('input[name="char[' + (Number(cellIndex) - 1) + ']"]').focus();
+        }, 100);
     }
     // ... arrowRight
     if (e.keyCode == 39) {
         $this.blur();
         setTimeout(() => {
-            $('input[name="char['+ (Number(cellIndex) + 1) +']"]').focus();
-        },100);
+            $('input[name="char[' + (Number(cellIndex) + 1) + ']"]').focus();
+        }, 100);
     }
     // ... check verification
     setTimeout(() => {
@@ -101,15 +101,15 @@ $inputs.on("keydown", function(e) {
                 );
             }
         }
-    },200);
+    }, 200);
 });
 
 // ... verify email ...
-$('.send-otp, #resendEmail').on('click', function() {
+$('.send-otp, #resendEmail').on('click', function () {
     const temp = $(this);
     $('.' + $(this).attr('box')).find('input').val('');
     RequestOtp(
-        {"user_email": $(this).closest('form').find('[type="email"]').val() },
+        { "user_email": $(this).closest('form').find('[type="email"]').val() },
         $('.' + $(this).attr('box')).find('.countdown')
     );
 });
@@ -117,13 +117,13 @@ $('.send-otp, #resendEmail').on('click', function() {
 // Parses the individual digits into the individual boxes.
 function pasteValues(element) {
     var values = element.split("");
-    $(values).each(function(index) {
+    $(values).each(function (index) {
         var $inputBox = $('.digit-cell[name="char[' + (index + 1) + ']"]');
         $inputBox.val(values[index])
     });
 };
 // ... request otp
-function RequestOtp(params,countdownElement) {
+function RequestOtp(params, countdownElement) {
     API.verify_email(
         'api/user/login/otp/request/',
         params,
