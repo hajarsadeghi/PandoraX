@@ -2,10 +2,12 @@ from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
 from user.models import User
 from space.models import Space, Member
+from decorators import is_authenticated
 import json
 
 
 @require_http_methods(['POST'])
+@is_authenticated
 def create_space(request):
     try:
         request_json = json.loads(request.body)

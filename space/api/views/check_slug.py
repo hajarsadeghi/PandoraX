@@ -1,10 +1,12 @@
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
+from decorators import is_authenticated
 from space.models import Space
 import json
 
 
 @require_http_methods(['POST'])
+@is_authenticated
 def check_slug(request):
     try:
         request_json = json.loads(request.body)
