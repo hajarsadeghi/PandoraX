@@ -14,4 +14,4 @@ def check_slug(request):
     except (KeyError, ValueError, TypeError):
         return JsonResponse({"message": "bad request"}, status=400)
     slug_exists = Space.objects.filter(slug__iexact=slug).exists()
-    return JsonResponse({'valid': !slug_exists}, status=200)
+    return JsonResponse({'valid': not slug_exists}, status=200)

@@ -13,6 +13,8 @@ def create_space(request):
         request_json = json.loads(request.body)
         name = request_json['name']
         slug = request_json['slug']
+        if Space.objects.filter(slug__iexact=slug).exists():
+            return JsonResponse({"message": "duplicate slug"}, status=400)
         industry = Industry.objects.get(id=request_json['industry_id'], active=True).id
         members_count = request_json['members_count']
     except (KeyError, ValueError, TypeError):
