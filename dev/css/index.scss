@@ -133,3 +133,7 @@ button, a {
     outline: none !important;
 }
 
+.navbar-vertical.navbar-expand-md .navbar-nav .nav-link.active:before {
+    left: auto !important;
+    right: 0 !important;
+}
