@@ -100,8 +100,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Brand -->
-        <a class="navbar-brand pt-0" href="/">
-            <img class="img-fluid bilono-logo" alt="bilono logo" src="{% static 'image/bilono_logo.svg' %}" />
+        <a class="navbar-brand pt-0 pb-0" href="/">
+            <img width="150" class="img-fluid bilono-logo" alt="bilono logo" src="{% static 'image/bilono_logo.svg' %}" />
         </a>
         <!-- Collapse -->
         <div class="collapse navbar-collapse" id="sidenav-collapse-main">
@@ -145,64 +145,6 @@
                         <img width="25" height="25" class="img-fluid d-inline-block mr-2 mt--1" alt="badges icon"
                             src="{% static 'image/badge2.svg' %}" />
                         Badges
-                    </a>
-                </li>
-            </ul>
-            <!-- Divider -->
-            <hr class="my-3">
-            <!-- Heading -->
-            <h6 class="navbar-heading text-muted">
-                <div class="user-info">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="user-logo-container text-left">
-                                <div class="user-logo mr-2">
-                                    {% if request.user.profile_picture %}<img class="img-fluid" src="{{request.user.profile_picture.url}}"
-                                        alt="profile picture" />{% else %}<span>{{request.user.first_name.0}}{{request.user.last_name.0}}</span>{% endif %}
-                                </div>
-                                {{request.user.get_full_name}}
-                            </div>
-                        </div>
-                        <div class="col-12 mt-2">
-                            <div class="user-info-credit">
-                                <div class="row" style="padding-left: 5px">
-                                    <div class="col-6 pr-0">
-                                        <div class="points-container mb-1">
-                                            <img class="img-fluid" alt="earned-points"
-                                                src="{% static 'image/earned_points.svg' %}" />
-                                            <span class="points m-1">100</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 pl-0">
-                                        <div class="points-container">
-                                            <img class="img-fluid" alt="gift-points" src="{% static 'image/gift_points.svg' %}" />
-                                            <span class="points m-1">1000</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </h6>
-            <!-- Navigation -->
-            <ul class="navbar-nav mb-md-3">
-                <li class="nav-item">
-                    <a class="nav-link"
-                        href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
-                        <i class="ni ni-spaceship"></i> Getting started
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"
-                        href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html">
-                        <i class="ni ni-palette"></i> Foundation
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"
-                        href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html">
-                        <i class="ni ni-ui-04"></i> Components
                     </a>
                 </li>
             </ul>
