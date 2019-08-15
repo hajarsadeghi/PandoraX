@@ -130,7 +130,7 @@ function pasteValues(element) {
 // ... request otp
 function RequestOtp(params, countdownElement) {
     API.verify_email(
-        'api/user/login/otp/request/',
+        '/api/user/login/otp/request/',
         params,
         (status, res) => {
             if (status) {
@@ -145,7 +145,7 @@ function RequestOtp(params, countdownElement) {
 // ... verify otp
 function checkVerification(params, callback) {
     API.verify_email(
-        'api/user/login/otp/verify/',
+        '/api/user/login/otp/verify/',
         params,
         (status, res) => {
             if (status, res) {
