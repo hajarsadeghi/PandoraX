@@ -1,11 +1,23 @@
 {% extends './../base2.html' %}
 {% load static %}
 
-{% block head %}{% endblock %}
-
-{% block body %}
-    {% include './email.html' %}
-    {% include './otp_code.html' %}
+{% block head %}
+	<!-- TODO -->
+	<link rel="stylesheet" href="{% static 'css/getStarted.css' %}" />
 {% endblock %}
 
-{% block script %}{% endblock %}
+{% block body %}
+    <div class="content mb-5">
+        <div class="row no-gutters justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4">
+			    {% include './email.html' %}
+			    {% include './otp_code.html' %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block script %}
+	<!-- TODO -->
+    <script type="text/javascript" src="{% static 'js/getStarted.js' %}"></script>
+{% endblock %}

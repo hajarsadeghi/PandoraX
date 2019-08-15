@@ -1,0 +1,54 @@
+{% extends './../../base2.html' %}
+{% load static %}
+
+{% block head %}
+<!-- TODO -->
+<link rel="stylesheet" href="{% static 'css/getStarted.css' %}" />
+{% endblock %}
+
+{% block body %}
+    <div class="content mb-5">
+        <div class="row no-gutters justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4">
+                <div class="get-started-box choose-path-box pt-5 pl-5 pr-5 pb-0 animated fadeInLeft">
+                    <h4>Find your Bilono space</h4>
+                    <small class="text-muted">find existing workspaces you’ve joined or can join.</small>
+                    <hr />
+                    <div id="spaces"></div>
+                    <img class="img-fluid" src="{% static 'image/find_your_space.svg' %}" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include './../../footer.html' %}
+    
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+    fetch(
+        '/api/space/find/',{
+            method: "GET"
+        }
+    ).then(response => {
+        if (response.status >= 200 && response.status <= 299) {
+            response.json().then(res => {
+                for (var i = 0; i < res.length; i++) {
+                    $('#spaces').append(`
+                        <div class="choose-path-link" data-id="${res[i].id}">
+                            <span class="path-text">
+                                <h2 style="margin: 0;">- ${res[i].name}</h2>
+                            </span>
+                            <span class="material-icons chevron">chevron_right</span>
+                        </div>
+                        <hr />
+                    `)  
+                }
+            });
+        } else {
+            callback(false, res);
+        }
+    })
+</script>
+{% endblock %}
