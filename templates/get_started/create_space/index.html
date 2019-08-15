@@ -1,0 +1,29 @@
+{% extends './../../base2.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/lib/iziToast.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/space.css' %}" />
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row space-row">
+            {% include './space-name.html' %}
+        </div>
+        <div class="row space-row space-info-container d-none">
+            {% include './space-info.html' %}
+        </div>
+        <div class="row space-row space-teammates-container d-none">
+            {% include './space-teammates.html' %}
+        </div>
+        <div class="row space-row space-alert-container d-none">
+            {% include './tada.html' %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript" src="{% static 'js/lib/iziToast.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/space.js' %}"></script>
+{% endblock %}

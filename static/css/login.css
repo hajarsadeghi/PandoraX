@@ -3168,6 +3168,32 @@ button, a {
   right: 0 !important;
 }
 
+footer {
+  width: 100%;
+  height: auto !important;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 5px 2px #d9d9d9;
+  flex-shrink: 0;
+}
+footer .footer-list {
+  list-style-type: none;
+  margin: initial;
+}
+footer .footer-list .footer-list-item {
+  color: #AAB6C5;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+footer .footer-list .footer-list-item:hover:not(.h6) {
+  color: #26282C;
+}
+footer .footer-list .footer-list-item.h6 {
+  color: #4a5cc5;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: default;
+}
+
 body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input:focus, body .container-fluid .row .col-sections.login-wrapper .form .form-group.forms input.has-val, .form-group.forms input.has-val, .form-group.forms input:focus {
   border: none;
   box-shadow: none;
