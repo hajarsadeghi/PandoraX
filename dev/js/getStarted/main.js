@@ -95,11 +95,15 @@ $inputs.on("keydown", function (e) {
                 );
             }
             else if ($this.closest('.get-started-box').hasClass('find-space-code-box')) {
+                let url = new URL(window.location.href);
+                let next = url.searchParams.get("next");
+                let data = {
+                    "user_email": $('.find-space-email-box').find('#userEmail').val(),
+                    "user_otp": otp
+                }
+                data.next = next;
                 checkVerification(
-                    {
-                        "user_email": $('.find-space-email-box').find('#userEmail').val(),
-                        "user_otp": otp
-                    },
+                    data,
                     (res) => {
                         window.location.replace('/');
                     }
