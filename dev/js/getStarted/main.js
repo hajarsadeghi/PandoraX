@@ -9,7 +9,7 @@ var intRegex = /^\d+$/;
 // ... navigate through get started boxes with url change
 $('#findSpaceBtn, #newSpaceBtn').click(function () {
     const location = $(this).attr('location');
-    window.location.href = '/getStarted/' + location;
+    window.location.href = '/get_started/' + location;
 });
 
 // ... navigate through get started boxes
