@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from space.models import Industry
+from django.contrib.auth.decorators import login_required
 
+
+@login_required(login_url='frontview:verify_email')
 def find_space(request):
     context = {}
     user_spaces = request.user.member_set.values('space__name', 'space__slug', 'space__id')
