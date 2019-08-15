@@ -1,8 +1,6 @@
 import CountDown from './../helper/countdown';
-
-
-
 const API = require('./../api.js');
+
 var $inputs = $(".digit-cell");
 var intRegex = /^\d+$/;
 
@@ -83,32 +81,17 @@ $inputs.on("keydown", function (e) {
     setTimeout(() => {
         const otp = $('input[name="char[1]"]').val() + $('input[name="char[2]"]').val() + $('input[name="char[3]"]').val() + $('input[name="char[4]"]').val() + $('input[name="char[5]"]').val() + $('input[name="char[6]"]').val();
         if (otp.length == 6) {
-            if ($this.closest('.get-started-box').hasClass('new-email-code-box')) {
-                checkVerification(
-                    {
-                        "user_email": $('.new-space-email-box').find('#adminEmail').val(),
-                        "user_otp": otp
-                    },
-                    (res) => {
-                        window.location.replace('space');
-                    }
-                );
-            }
-            else if ($this.closest('.get-started-box').hasClass('find-space-code-box')) {
-                let url = new URL(window.location.href);
-                let next = url.searchParams.get("next");
-                let data = {
+            let url = new URL(window.location.href);
+            let next = url.searchParams.get("next");
+            checkVerification(
+                {
                     "user_email": $('.find-space-email-box').find('#userEmail').val(),
                     "user_otp": otp
+                },
+                (res) => {
+                    window.location.href = next;
                 }
-                data.next = next;
-                checkVerification(
-                    data,
-                    (res) => {
-                        window.location.replace('/');
-                    }
-                );
-            }
+            );
         }
     }, 200);
 });

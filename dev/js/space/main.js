@@ -1,7 +1,7 @@
 import Dropdown from './../helper/dropdown.js';
 import Notif from './../helper/index.js';
-
 const API = require('./../api.js');
+
 // ... initialize dropdown ...
 new Dropdown({root: '.dropdown-container'});
 
@@ -86,7 +86,7 @@ $('#createSpaceBtn').on('click', function() {
     
     let space = {
         name: $('#companyName').val(),
-        slug: $('#companyName').val(),
+        slug: $('#companySlug').val(),
         industry_id: $('.industry').attr('id'),
         members_count: $('.members-count').val()
     }
@@ -124,7 +124,7 @@ $('#addTeammatesBtn').on('click', function() {
 
     let forms = $('#spaceTeammatesBox').find('.form-input');
     for (let i = 0; i < forms.length; i++) {
-        if ($(forms[i]).val()) {
+        if ($(forms[i]).val().trim()) {
             teammates.members.push($(forms[i]).val());
         }
     }
@@ -163,5 +163,12 @@ function ToggleSpaceBoxes($this) {
     $(box).addClass('d-flex');
 }
 
-
+$('#addAnother').click(function(event) {
+    $('#spaceTeammatesBox').find('.form-group.forms').last().after(`
+        <div class="form-group forms">
+            <input type="email" class="form-control form-input" aria-describedby="email" autocomplete="off">
+            <span class="input-line" data-placeholder="Ex. name@example.com"></span>
+        </div>
+    `);
+});
 
