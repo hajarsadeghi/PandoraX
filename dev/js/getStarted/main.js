@@ -6,6 +6,12 @@ const API = require('./../api.js');
 var $inputs = $(".digit-cell");
 var intRegex = /^\d+$/;
 
+// ... navigate through get started boxes with url change
+$('#findSpaceBtn, #newSpaceBtn').click(function () {
+    const location = $(this).attr('location');
+    window.location.href = '/getStarted/' + location;
+});
+
 // ... navigate through get started boxes
 $('.get-started-link').click(function () {
     const box = '.' + $(this).attr('box');
@@ -13,7 +19,6 @@ $('.get-started-link').click(function () {
     $('.get-started-box').addClass('d-none');
     $(box).addClass('d-block');
 });
-
 // Prevents user from manually entering non-digits.
 $inputs.on("input.fromManual", function () {
     // ... change focus on type

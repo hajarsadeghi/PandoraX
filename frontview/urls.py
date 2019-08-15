@@ -6,6 +6,7 @@ urlpatterns = [
     path('budget', views.budget, name='budget'),
     path('login', views.login, name='login'),
     path('getStarted', views.getStarted, name='getStarted'),
+    path('getStarted/findSpace', views.findSpace, name='findSpace'),
     path('space', views.space, name='space'),
     path('multilanguage', views.multilanguage)
 ]
