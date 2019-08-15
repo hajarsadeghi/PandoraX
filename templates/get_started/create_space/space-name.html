@@ -6,10 +6,16 @@
             <form id="spaceNameBox" class="space-box form animated fadeInLeft">
                 <h4 class="mb-4">What's the name of your company or team?</h4>
                 <div class="form-group forms">
-                    <input type="text" class="form-control form-input" aria-describedby="team" autocomplete="off">
+                    <input type="text" class="form-control form-input" id="companyName" aria-describedby="name" autocomplete="off">
                     <span class="input-line" data-placeholder="Ex. Arianalabs"></span>
                 </div>
-                <button type="button" class="btn btn-block login-btn my-3 space-btn" id="spaceNameBtn">Next</button>
+                <div class="form-group forms slug-form">
+                    <input type="text" class="form-control form-input" id="companySlug" aria-describedby="slug" autocomplete="off" >
+                    <span class="bilono-slug">.bilono.com</span>
+                    <span class="input-line" data-placeholder="Ex. arianalabs"></span>
+                    <span class="red-border d-none"></span>
+                </div>
+                <button type="button" class="btn btn-block login-btn my-3 space-btn" id="spaceNameBtn" box="space-info-container ">Next</button>
                 <small class="text-muted">By continiuing you're agreeing to our <a href="#">Customer Terms of Service</a>,<a href="#">Privacy Policy</a>, and <a href="#">Cookie Policy</a>.</small>
             </form> 
         </div>

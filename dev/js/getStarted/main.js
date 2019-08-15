@@ -6,6 +6,12 @@ const API = require('./../api.js');
 var $inputs = $(".digit-cell");
 var intRegex = /^\d+$/;
 
+// ... navigate through get started boxes with url change
+$('#findSpaceBtn, #newSpaceBtn').click(function () {
+    const location = $(this).attr('location');
+    window.location.href = '/get_started/' + location;
+});
+
 // ... navigate through get started boxes
 $('.get-started-link').click(function () {
     const box = '.' + $(this).attr('box');
@@ -13,7 +19,6 @@ $('.get-started-link').click(function () {
     $('.get-started-box').addClass('d-none');
     $(box).addClass('d-block');
 });
-
 // Prevents user from manually entering non-digits.
 $inputs.on("input.fromManual", function () {
     // ... change focus on type
@@ -125,7 +130,7 @@ function pasteValues(element) {
 // ... request otp
 function RequestOtp(params, countdownElement) {
     API.verify_email(
-        'api/user/login/otp/request/',
+        '/api/user/login/otp/request/',
         params,
         (status, res) => {
             if (status) {
@@ -140,7 +145,7 @@ function RequestOtp(params, countdownElement) {
 // ... verify otp
 function checkVerification(params, callback) {
     API.verify_email(
-        'api/user/login/otp/verify/',
+        '/api/user/login/otp/verify/',
         params,
         (status, res) => {
             if (status, res) {

@@ -3034,14 +3034,14 @@
     animation-iteration-count: 1 !important;
   }
 }
-body .container-fluid .row .col-sections .form .industry:focus, body .container-fluid .row .col-sections .form .industry.has-val, .form-group.forms input:focus, .form-group.forms input.has-val {
+body .container-fluid .row .col-sections .form .forms input:focus, body .container-fluid .row .col-sections .form .forms input.has-val, .form-group.forms input:focus, .form-group.forms input.has-val {
   border: none;
   box-shadow: none;
 }
-body .container-fluid .row .col-sections .form .industry:focus ~ .input-line::before, body .container-fluid .row .col-sections .form .industry.has-val ~ .input-line::before, .form-group.forms input:focus ~ .input-line::before, .form-group.forms input.has-val ~ .input-line::before {
+body .container-fluid .row .col-sections .form .forms input:focus ~ .input-line::before, body .container-fluid .row .col-sections .form .forms input.has-val ~ .input-line::before, .form-group.forms input:focus ~ .input-line::before, .form-group.forms input.has-val ~ .input-line::before {
   width: 100%;
 }
-body .container-fluid .row .col-sections .form .industry:focus ~ .input-line::after, body .container-fluid .row .col-sections .form .industry.has-val ~ .input-line::after, .form-group.forms input:focus ~ .input-line::after, .form-group.forms input.has-val ~ .input-line::after {
+body .container-fluid .row .col-sections .form .forms input:focus ~ .input-line::after, body .container-fluid .row .col-sections .form .forms input.has-val ~ .input-line::after, .form-group.forms input:focus ~ .input-line::after, .form-group.forms input.has-val ~ .input-line::after {
   -webkit-transform: translate(-13%, -90%) scale(0.7);
   -ms-transform: translate(-13%, -90%) scale(0.7);
   -moz-transform: translate(-13%, -90%) scale(0.7);
@@ -3168,6 +3168,32 @@ button, a {
   right: 0 !important;
 }
 
+footer {
+  width: 100%;
+  height: auto !important;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 5px 2px #d9d9d9;
+  flex-shrink: 0;
+}
+footer .footer-list {
+  list-style-type: none;
+  margin: initial;
+}
+footer .footer-list .footer-list-item {
+  color: #AAB6C5;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+footer .footer-list .footer-list-item:hover:not(.h6) {
+  color: #26282C;
+}
+footer .footer-list .footer-list-item.h6 {
+  color: #4a5cc5;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: default;
+}
+
 body {
   font-family: "roundedLoginFont", Tahoma, Geneva, sans-serif;
   margin: 0;
@@ -3201,13 +3227,7 @@ body .container-fluid .row .col-sections {
 body .container-fluid .row .col-sections .form {
   text-align: center;
 }
-body .container-fluid .row .col-sections .form h4, body .container-fluid .row .col-sections .form button {
-  font-weight: bold;
-}
-body .container-fluid .row .col-sections .form .add-teammate-link {
-  color: #007bff;
-}
-body .container-fluid .row .col-sections .form .industry-dropdown {
+body .container-fluid .row .col-sections .form .forms .industry-dropdown {
   background-color: #1d33b6;
   border-radius: 0 0 5px 5px;
   text-align: left;
@@ -3215,12 +3235,36 @@ body .container-fluid .row .col-sections .form .industry-dropdown {
   z-index: 99999;
   display: none;
 }
-body .container-fluid .row .col-sections .form .industry-dropdown .dropdown-item {
+body .container-fluid .row .col-sections .form .forms .industry-dropdown .dropdown-item {
   color: #ffffff;
 }
-body .container-fluid .row .col-sections .form .industry-dropdown .dropdown-item:hover {
+body .container-fluid .row .col-sections .form .forms .industry-dropdown .dropdown-item:hover {
   background-color: #d2d6f0;
   color: inherit;
+}
+body .container-fluid .row .col-sections .form .forms.slug-form input {
+  padding-right: 100px;
+}
+body .container-fluid .row .col-sections .form .forms.slug-form .bilono-slug {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  color: #AAB6C5;
+  font-size: 0.8rem;
+}
+body .container-fluid .row .col-sections .form .forms.slug-form .red-border {
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  background-color: red;
+}
+body .container-fluid .row .col-sections .form h4, body .container-fluid .row .col-sections .form button {
+  font-weight: bold;
+}
+body .container-fluid .row .col-sections .form .add-teammate-link {
+  color: #007bff;
 }
 body .container-fluid .row .col-sections .form button.space-btn {
   margin: auto;

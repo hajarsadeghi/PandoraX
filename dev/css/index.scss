@@ -137,3 +137,33 @@ button, a {
     left: auto !important;
     right: 0 !important;
 }
+
+footer {
+    width: 100%;
+    height: auto !important;
+    background-color: $white;
+    box-shadow: 0px 0px 5px 2px #d9d9d9;
+    flex-shrink: 0;
+
+    .footer-list {
+        list-style-type: none;
+        margin: initial;
+        .footer-list-item {
+
+            color: $text;
+            font-size: .8rem;
+            cursor: pointer;
+
+            &:hover:not(.h6) {
+                color: $active-text;
+            }
+
+            &.h6 {
+                color: $tint-blue-color5;
+                font-size: 1rem;
+                font-weight: bold;
+                cursor: default;
+            }
+        }
+    }
+}

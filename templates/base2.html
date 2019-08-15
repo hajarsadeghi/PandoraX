@@ -2,7 +2,7 @@
 {% load static %}
 {% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html>
-
+<html>
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,11 +11,11 @@
     <meta name="keywords" content="Recognition" />
     <meta name="description" content="Recognize your colleagues" />
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/lib/bootstrap.min.css' %}" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/space.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/lib/bootstrap.min.css' %}" />
     {% block head %}{% endblock %}
 </head>
+
 <body>
     <header>
         <nav class="fixed-top text-center">
@@ -24,28 +24,10 @@
             </a>
         </nav>
     </header>
-    <div class="container-fluid">
-        <div class="row space-row">
-            <!-- space form -->
-            {% include './space-name.html' %}
-        </div>
-        <div class="row space-row space-info-container d-none">
-            <!-- space form -->
-            {% include './space-info.html' %}
-        </div>
-        <div class="row space-row space-teammates-container d-none">
-            <!-- space form -->
-            {% include './space-teammates.html' %}
-        </div>
-        <div class="row space-row space-alert-container d-none">
-            <!-- space form -->
-            {% include './tada.html' %}
-        </div>
-    </div>
+    {% block body %}{% endblock %}
 </body>
 <script type="text/javascript" src="{% static 'js/lib/jquery.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/lib/popper.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/lib/bootstrap.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/space.js' %}"></script>
 {% block script %}{% endblock %}
 </html>
