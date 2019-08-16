@@ -5,5 +5,5 @@ from decorators import get_space
 
 @login_required
 @get_space
-def budget(request):
-    return render(request, 'budget/index.html', context={"space":request.space})
+def feed(request):
+    return render(request, 'home/index.html', context={"space":request.space})

@@ -155,10 +155,10 @@ SOCIAL_AUTH_PIPELINE = (
     'custom_oauth.pipeline.get_profile_picture',
 )
 
-LOGIN_REDIRECT_URL = 'frontview:space'
+LOGIN_REDIRECT_URL = 'frontview:landing'
 LOGOUT_REDIRECT_URL = 'frontview:login'
 SOCIAL_AUTH_URL_NAMESPACE = 'user:oauth'
-SOCIAL_AUTH_LOGIN_ERROR_URL = 'frontview:login'
+SOCIAL_AUTH_LOGIN_ERROR_URL = 'frontview:landing'
 
 SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = os.getenv('LINKEDIN_OAUTH_KEY', '')
 SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = os.getenv('LINKEDIN_OAUTH_SECRET', '')

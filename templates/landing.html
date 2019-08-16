@@ -1,0 +1,20 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block head %}
+<!-- TODO -->
+<link rel="stylesheet" href="{% static 'css/getStarted.css' %}" />
+{% endblock %}
+
+{% block body %}
+    <div class="content mb-5">
+        <div class="row no-gutters justify-content-center">
+                    <h4>landing page</h4>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+
+{% endblock %}
+
+{% block script %}{% endblock %}
