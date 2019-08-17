@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-15 06:41+0000\n"
-"PO-Revision-Date: 2019-07-15 11:12+0430\n"
+"POT-Creation-Date: 2019-08-16 02:33+0000\n"
+"PO-Revision-Date: 2019-08-16 06:57+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa\n"
@@ -18,65 +18,273 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 2.2.3\n"
 
-#: pandora_x/settings.py:145
+#: pandora_x/settings.py:183
 msgid "English"
 msgstr "انگلیسی"
 
-#: pandora_x/settings.py:146
+#: pandora_x/settings.py:184
 msgid "Persian"
 msgstr "فارسی"
 
-#: templates/login/index.html:33 templates/login/index.html:55
+#: templates/budget/index.html:9
+msgid "Budget"
+msgstr "بودجه"
+
+#: templates/budget/index.html:16
+msgid "Budget List"
+msgstr "لیست بودجه ها"
+
+#: templates/budget/index.html:66
+msgid "Budget Name"
+msgstr "نام بودجه"
+
+#: templates/budget/index.html:67
+msgid "Enter a descriptive name for your budget"
+msgstr "یک نام توصیفی برا بودجه خود وارد کنید"
+
+#: templates/budget/index.html:70
+msgid "Select Recipients"
+msgstr "انتخاب دریافت کنندگان"
+
+#: templates/budget/index.html:142
+msgid "Give points amount"
+msgstr "مقدار امتیاز را وارد کن"
+
+#: templates/get_started/create_space/space-info.html:9
+msgid "Please tell us more about your company?"
+msgstr "لطفا بیشتر درباره شرکت خود به ما بگید"
+
+#: templates/get_started/create_space/space-info.html:11
+msgid "Industry"
+msgstr ""
+
+#: templates/get_started/create_space/space-info.html:21
+msgid "Number of team members"
+msgstr ""
+
+#: templates/get_started/create_space/space-info.html:23
+#: templates/get_started/create_space/space-name.html:20
+msgid "Next"
+msgstr "بعدی"
+
+#: templates/get_started/create_space/space-info.html:24
+#: templates/get_started/create_space/space-name.html:21
+msgid "By continiuing you're agreeing to our"
+msgstr ""
+
+#: templates/get_started/create_space/space-info.html:24
+#: templates/get_started/create_space/space-name.html:21
+msgid "Customer Terms of Service"
+msgstr ""
+
+#: templates/get_started/create_space/space-info.html:24
+#: templates/get_started/create_space/space-name.html:21
+msgid "Privacy Policy"
+msgstr ""
+
+#: templates/get_started/create_space/space-info.html:24
+#: templates/get_started/create_space/space-name.html:21
+msgid "and"
+msgstr ""
+
+#: templates/get_started/create_space/space-info.html:24
+#: templates/get_started/create_space/space-name.html:21
+msgid "Cookie Policy"
+msgstr ""
+
+#: templates/get_started/create_space/space-name.html:9
+msgid "What's the name of your company or team?"
+msgstr "نام شرکت یا تیم شما چیست؟"
+
+#: templates/get_started/create_space/space-teammates.html:9
+msgid "Who is on your team?"
+msgstr "تیم شما کیست؟"
+
+#: templates/get_started/create_space/space-teammates.html:23
+msgid "add another"
+msgstr "افزودن یکی دیگر"
+
+#: templates/get_started/create_space/space-teammates.html:27
+msgid "Add Teammates"
+msgstr "افزودن هم تیمی"
+
+#: templates/get_started/create_space/space-teammates.html:34
+msgid "Or"
+msgstr "یا"
+
+#: templates/get_started/create_space/space-teammates.html:34
+msgid "Skip for now"
+msgstr "فعلا بیخیال شو"
+
+#: templates/get_started/create_space/tada.html:9
+msgid "TADA! Visit your space!"
+msgstr "تادا! فضای کار خود را ببینید!"
+
+#: templates/get_started/create_space/tada.html:10
+msgid ""
+"A space is a safe enviornment for your and your team. Everyone can "
+"appreciate another teammate for the work they've done in a fun and happy "
+"way:) More importantly you can encourage another by giving points so they "
+"can do a lot of cool stuff!"
+msgstr ""
+
+#: templates/get_started/create_space/tada.html:11
+msgid "See your space in Bilono"
+msgstr "فضای کار خود را در بیلونو ببینید"
+
+#: templates/get_started/find_space/index.html:17
+msgid "Find your Bilono space"
+msgstr "فضای بیلونوی خود را پیدا کنید"
+
+#: templates/get_started/find_space/index.html:18
+msgid "find existing workspaces you’ve joined or can join."
+msgstr "فضاهای کاری فعلی که عضو هستید یا میتوانید عضو شوید را پیدا کنید"
+
+#: templates/get_started/find_space/index.html:30
+msgid "You dont have any active space !"
+msgstr "شما فضای کار فعالی ندارید !"
+
+#: templates/get_started/index.html:16
+msgid "Start with a space"
+msgstr "با یک فضا شروع کنید"
+
+#: templates/get_started/index.html:17
+msgid ""
+"In Bilono, everything happens in a space. Like a virtual office building, a "
+"space is where your team can gather in Bilono to recognize eachother and "
+"have fun."
+msgstr ""
+"در بیلونو، همه چیز در فضای کاری اتفاق میوفته. مثل یک ساختمان اداری مجازی، "
+"فضای کاری جاییه که تیم شما میتونه در بیلونو جمع بشن و از هم قدردانی کنن و "
+"شاد باشن."
+
+#: templates/get_started/index.html:22
+msgid "Find your Bilono Space"
+msgstr "فضای بیلونوی خود را پیدا کنید"
+
+#: templates/get_started/index.html:23
+msgid "join or sign in to existing spaces"
+msgstr "عضویت یا ورود به فضاهای کاری فعلی"
+
+#: templates/get_started/index.html:31
+msgid "Create a new Space"
+msgstr "ساخت فضای جدید"
+
+#: templates/get_started/index.html:32
+msgid "Get your company or organization on Bilono"
+msgstr "شرکت یا سازمان خود را به بیلونو بیاورید"
+
+#: templates/header.html:16
+msgid "Search"
+msgstr "جستجو"
+
+#: templates/header.html:42
+msgid "Welcome"
+msgstr "خوش آمدید"
+
+#: templates/header.html:46
+msgid "My profile"
+msgstr "پروفایل من"
+
+#: templates/header.html:50
+msgid "Help"
+msgstr "کمک"
+
+#: templates/header.html:54
+msgid "Logout"
+msgstr "خروج"
+
+#: templates/home/index.html:8
+msgid "Dashboard"
+msgstr "داشبورد"
+
+#: templates/login/index.html:32 templates/login/index.html:58
 msgid "LOG IN"
 msgstr "ورود"
 
-#: templates/login/index.html:38 templates/login/index.html:83
+#: templates/login/index.html:37 templates/login/index.html:86
 msgid "Username"
 msgstr "نام کاربری"
 
-#: templates/login/index.html:42 templates/login/index.html:87
+#: templates/login/index.html:41 templates/login/index.html:90
 msgid "Password"
 msgstr "رمز عبور"
 
-#: templates/login/index.html:48
+#: templates/login/index.html:47
 msgid "Remember me"
 msgstr "مرا به خاطر بسپار"
 
-#: templates/login/index.html:52
+#: templates/login/index.html:53
 msgid "Forgot Password?"
 msgstr "رمز عبور را فراموش کرده اید؟"
 
-#: templates/login/index.html:57 templates/login/index.html:95
+#: templates/login/index.html:60 templates/login/index.html:98
 msgid "or login using"
 msgstr "یا ورود با استفاده از"
 
-#: templates/login/index.html:67
+#: templates/login/index.html:70
 msgid "Not a Member?"
 msgstr "عضو نیستید؟"
 
-#: templates/login/index.html:68
+#: templates/login/index.html:71
 msgid "Sign Up Now"
 msgstr "ثبت نام کنید"
 
-#: templates/login/index.html:78 templates/login/index.html:93
+#: templates/login/index.html:81 templates/login/index.html:96
 msgid "Register"
 msgstr "ثبت نام"
 
-#: templates/login/index.html:91
+#: templates/login/index.html:94
 msgid "Repeat Password"
 msgstr "تکرار رمز عبور"
 
-#: templates/login/index.html:105
+#: templates/login/index.html:108
 msgid "Already a Member?"
 msgstr "قبلا ثبت نام کرده اید؟"
 
-#: templates/login/index.html:106 templates/multilanguage.html:13
+#: templates/login/index.html:109 templates/multilanguage.html:13
 msgid "Login"
 msgstr "ورود"
 
 #: templates/multilanguage.html:12
 msgid "Sign Up"
 msgstr "ثبت نام"
+
+#: templates/navbar.html:135
+msgid "Feed"
+msgstr ""
+
+#: templates/navbar.html:142
+msgid "Budgets"
+msgstr ""
+
+#: templates/navbar.html:149
+msgid "Badges"
+msgstr ""
+
+#: templates/verify_email/email.html:7
+msgid "Verify your email"
+msgstr "ایمیل خود را تایید کنید"
+
+#: templates/verify_email/email.html:8
+msgid "We’ll send you an email to confirm your address"
+msgstr "ما یک ایمیل برای تایید آدرس ایمیل شما ارسال کردیم"
+
+#: templates/verify_email/email.html:13
+msgid "Confirm"
+msgstr "تایید"
+
+#: templates/verify_email/otp_code.html:6
+msgid "Check your email!"
+msgstr "ایمیل خود را چک کنید"
+
+#: templates/verify_email/otp_code.html:7
+msgid "Please check your inbox and enter the six digit code below to continue."
+msgstr "لطفا برای ادامه ایمیل خود را چک کنید و کد ۶ رقمی را پایین وارد کنید"
+
+#: templates/verify_email/otp_code.html:25
+msgid "Resend Email"
+msgstr "ارسال دوباره ایمیل"
 
 #, fuzzy
 #~| msgid "Login"

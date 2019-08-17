@@ -1,13 +1,15 @@
 {% extends './../base.html' %}
 {% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block head %}
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />  
-    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+    <title>{% trans "Dashboard" %}</title>
 {% endblock %}
 
 {% block body %}
-    
+
 {% endblock %}
 
 {% block script %}
