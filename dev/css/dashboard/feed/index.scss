@@ -1,7 +1,28 @@
-@import "./../utilities/variables";
-@import "./../utilities/mixins";
+@import "./../../utilities/variables";
+@import "./../../utilities/mixins";
 
 
-header {
-    box-shadow: none !important;
+
+
+.feed-container {
+    .card {
+        min-height: 120px !important;
+        color: red;
+    }
+}   
+// Small to Large devices (desktops, 992px and up)
+@media (max-width: 1199.8px) { 
+    .feed-container {
+        width: 100%;
+        margin: auto;
+    }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { 
+    .feed-container {
+        width: 85% !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+    }
 }

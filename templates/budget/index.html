@@ -4,8 +4,8 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block head %}
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/budget.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/dashboard.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/budget.min.css' %}" />
     <title>{% trans "Budget" %}</title>
 {% endblock %}
 
@@ -154,6 +154,6 @@
 {% endblock %}
 
 {% block script %}
-<script type="text/javascript" src="{% static 'js/dashboard.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/budget.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/dashboard.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/budget.min.js' %}"></script>
 {% endblock %}

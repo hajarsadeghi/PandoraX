@@ -48,3 +48,7 @@ db/*
 
 media/
 node_modules/
+
+
+static/js/*.min.js
+static/css/*.min.css
