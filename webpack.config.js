@@ -3,15 +3,15 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: {
-      login:      './dev/js/login/index.js',
-      getStarted: './dev/js/getStarted/index.js',
-      space:      './dev/js/space/index.js',
-      dashboard:  './dev/js/dashboard/index.js',
-      feed:       './dev/js/dashboard/feed/index.js',
-      budget:     './dev/js/dashboard/budget/index.js'
+      login:        './dev/js/login/index.js',
+      get_started:  './dev/js/get_started/index.js',
+      space:        './dev/js/space/index.js',
+      dashboard:    './dev/js/dashboard/index.js',
+      feed:         './dev/js/dashboard/feed/index.js',
+      budget:       './dev/js/dashboard/budget/index.js'
   },
   output: {
-    filename:     '../js/[name].js',
+    filename:     '../js/[name].min.js',
     path: path.resolve(__dirname, 'static', 'css')
   },
   watch: true,
@@ -45,7 +45,7 @@ module.exports = {
     },
   plugins: [
       new MiniCssExtractPlugin({
-          filename: "[name].css"
+          filename: "[name].min.css"
       }),
       // require('autoprefixer'),
       // require('cssnano'),

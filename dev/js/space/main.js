@@ -1,6 +1,6 @@
 import Dropdown from './../helper/dropdown.js';
 import Notif from './../helper/index.js';
-const API = require('./../api.js');
+import {create_space} from './../api.js';
 
 // ... initialize dropdown ...
 new Dropdown({root: '.dropdown-container'});
@@ -59,7 +59,7 @@ function checkSlug(slug_value) {
     let slug = $('#companySlug').val();
     check_slug = setTimeout(() => {
         if (slug.length > 0) {
-            API.create_space(
+            create_space(
                 '/api/space/check_slug/',
                 {slug: slug},
                 (status, res) => {
@@ -92,7 +92,7 @@ $('#createSpaceBtn').on('click', function() {
     }
 
     if (space.name && space.slug && space.industry_id && space.members_count) {
-        API.create_space(
+        create_space(
             '/api/space/create/',
             space,
             (status, res) => {
@@ -130,7 +130,7 @@ $('#addTeammatesBtn').on('click', function() {
     }
     
     if (teammates.space_id && teammates.members.length) {
-        API.create_space(
+        create_space(
             '/api/space/invite/',
             teammates,
             (status) => {
