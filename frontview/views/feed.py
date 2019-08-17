@@ -6,4 +6,4 @@ from decorators import get_space
 @login_required
 @get_space
 def feed(request):
-    return render(request, 'home/index.html', context={"space":request.space})
+    return render(request, 'feed/index.html', context={"space":request.space})
