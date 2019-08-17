@@ -161,6 +161,12 @@ footer .footer-list .footer-list-item.h6 {
 .header {
   background: #ff3e58 !important;
 }
+.header .dropdown-menu-right {
+  right: -6px;
+}
+.header .h3 {
+  color: white;
+}
 
 nav.bilino-navbar .navbar-profile-wrapper::after, nav.bilino-navbar .bilono-space-wrapper::after, nav.bilino-navbar .navbar-logo::after {
   content: "";

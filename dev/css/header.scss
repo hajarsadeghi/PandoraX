@@ -3,4 +3,10 @@
 
 .header {
     background: $main-red-color !important;
+    .dropdown-menu-right{
+        right: -6px;
+    }
+    .h3{
+        color: white;
+    }
 }

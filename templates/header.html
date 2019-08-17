@@ -5,8 +5,39 @@
 <nav class="navbar navbar-top navbar-expand-md navbar-dark header" style="height: 70px">
     <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{% url 'frontview:dashboard:feed' space.slug %}">{{space.name}}</a>
-        <!-- Form -->
+
+        <ul class="navbar-nav align-items-center d-none d-md-flex">
+            <li class="nav-item dropdown">
+                <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <div class="media align-items-center h3">
+                        {% if space_list|length > 1 %}
+                            <span>{{space.name}}</span>
+                            <i class="material-icons">arrow_drop_down</i>
+                        {% else %}
+                            <span style="cursor:text">{{space.name}}</span>
+                        {% endif %}
+                        
+                    </div>
+                </a>
+                {% if space_list|length > 1 %}
+                    <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+                        <div class=" dropdown-header noti-title">
+                            <h6 class="text-overflow m-0">{% trans "Other spaces" %}!</h6>
+                        </div>
+                        {% for tmp_space in space_list %}
+                            {% if tmp_space.slug != space.slug %}
+                                <a href="{% url 'frontview:dashboard:feed' tmp_space.slug %}" class="dropdown-item">
+                                    <i class="ni ni-single-02"></i>
+                                    <span>{{ tmp_space.name }}</span>
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </li>
+        </ul>
+
         <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
             <div class="form-group mb-0">
                 <div class="input-group input-group-alternative">
