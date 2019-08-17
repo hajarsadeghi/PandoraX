@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{% static 'css/lib/bootstrap.min.css' %}" />
     <link rel="stylesheet" href="{% static 'css/lib/argon-dashboard.min.css' %}" />
     <link rel="stylesheet" href="{% static 'css/lib/iziToast.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/lib/animate.css' %}" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     {% block head %}{% endblock %}
 </head>
@@ -25,6 +26,7 @@
             {% block body %}{% endblock %}
         </div>
     </div>
+    <div class="tinted animated fadeIn d-none"></div>
 </body>
 <script type="text/javascript" src="{% static 'js/lib/jquery.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/lib/popper.min.js' %}"></script>
