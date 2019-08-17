@@ -1,5 +1,7 @@
 {% extends './../../base2.html' %}
 {% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block head %}
 <!-- TODO -->
@@ -12,8 +14,8 @@
             <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4">
                 <div class="get-started-box choose-path-box pt-5 pl-5 pr-5 pb-0 animated fadeInLeft">
                     {% if spaces %}
-                        <h4>Find your Bilono space</h4>
-                        <small class="text-muted">find existing workspaces you’ve joined or can join.</small>
+                        <h4>{% trans "Find your Bilono space" %}</h4>
+                        <small class="text-muted">{% trans "find existing workspaces you’ve joined or can join." %}</small>
                         <hr />
                         {% for space in spaces %}
                             <a style="text-decoration: none;color: rgb(0, 0, 0);" class="choose-path-link" data-id="{{ space.id }}" href="{% url 'frontview:dashboard:feed' space.slug %}">
@@ -25,7 +27,7 @@
                             <hr />
                         {% endfor %}
                     {% else %}
-                        <h4>You dont have any active space !</h4>
+                        <h4>{% trans "You dont have any active space !" %}</h4>
                     {% endif %}
                     <img class="img-fluid" src="{% static 'image/find_your_space.svg' %}" />
                 </div>

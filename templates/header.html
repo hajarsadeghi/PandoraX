@@ -1,4 +1,7 @@
 {% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
 <nav class="navbar navbar-top navbar-expand-md navbar-dark header" style="height: 70px">
     <div class="container-fluid">
         <!-- Brand -->
@@ -10,7 +13,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-search"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Search" type="text">
+                    <input class="form-control" placeholder="{% trans 'Search' %}" type="text">
                 </div>
             </div>
         </form>
@@ -36,19 +39,19 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
                     <div class=" dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">Welcome!</h6>
+                        <h6 class="text-overflow m-0">{% trans "Welcome" %}!</h6>
                     </div>
                     <a href="/" class="dropdown-item">
                         <i class="ni ni-single-02"></i>
-                        <span>My profile</span>
+                        <span>{% trans "My profile" %}</span>
                     </a>
                     <a href="/" class="dropdown-item">
                         <i class="ni ni-settings-gear-65"></i>
-                        <span>Help</span>
+                        <span>{% trans "Help" %}</span>
                     </a>
                     <div class="dropdown-divider"></div>
                     <a href="{% url 'user:logout' %}" class="dropdown-item">
-                        <span class="ml-3">Logout</span>
+                        <span class="ml-3">{% trans "Logout" %}</span>
                     </a>
                 </div>
             </li>

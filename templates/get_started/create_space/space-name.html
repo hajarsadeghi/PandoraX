@@ -1,10 +1,12 @@
 {% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 <div class="col-12 col-lg col-sections align-self-center">
     <div class="row justify-content-center align-items-center">
         <div class="col-12 col-sm-10 col-md-8 col-xl-6">
             <div id="spaceNameBox" class="space-box form animated fadeInLeft">
-                <h4 class="mb-4">What's the name of your company or team?</h4>
+                <h4 class="mb-4">{% trans "What's the name of your company or team?" %}</h4>
                 <div class="form-group forms">
                     <input type="text" class="form-control form-input" id="companyName" aria-describedby="name" autocomplete="off">
                     <span class="input-line" data-placeholder="Ex. Arianalabs"></span>
@@ -15,11 +17,12 @@
                     <span class="input-line" data-placeholder="Ex. arianalabs"></span>
                     <span class="red-border d-none"></span>
                 </div>
-                <button type="button" class="btn btn-block login-btn my-3 space-btn" id="spaceNameBtn" box="space-info-container ">Next</button>
-                <small class="text-muted">By continiuing you're agreeing to our <a href="#">Customer Terms of Service</a>,<a href="#">Privacy Policy</a>, and <a href="#">Cookie Policy</a>.</small>
-            </div> 
+                <button type="button" class="btn btn-block login-btn my-3 space-btn" id="spaceNameBtn" box="space-info-container ">{% trans "Next" %}</button>
+                <small class="text-muted">{% trans "By continiuing you're agreeing to our" %} <a href="#">{% trans "Customer Terms of Service" %}</a>,<a href="#">{% trans "Privacy Policy" %}</a>, {% trans "and" %} <a href="#">{% trans "Cookie Policy" %}</a>.</small>
+
+            </div>
         </div>
-    </div>               
+    </div>
 </div>
 <div class="col-lg col-sections d-none d-lg-inline-block">
     <div class="row justify-content-center align-items-center">

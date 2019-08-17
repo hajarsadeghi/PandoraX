@@ -1,4 +1,6 @@
 {% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 <!--
 <nav class="bilino-navbar side-is-visible" id="navbar">
     <div class="navbar-logo" href="#">
@@ -130,21 +132,21 @@
                     <a class=" nav-link {% if request.resolver_match.url_name == 'feed' %}active{% endif %}" href="{% url 'frontview:dashboard:feed' space.slug %}">
                         <img width="25" height="25" class="img-fluid d-inline-block mr-2 mt--1" alt="feed icon"
                             src="{% static 'image/feed2.svg' %}" />
-                        Feed
+                        {% trans "Feed" %}
                     </a>
                 </li>
                 <li class="nav-item mt-1">
                     <a class=" nav-link {% if request.resolver_match.url_name == 'budget' %}active{% endif %}" href="{% url 'frontview:dashboard:budget' space.slug %}">
                         <img width="25" height="25" class="img-fluid d-inline-block mr-2 mt--1" al2="budget icon"
                             src="{% static 'image/budget2.svg' %}" />
-                        Budgets
+                        {% trans "Budgets" %}
                     </a>
                 </li>
                 <li class="nav-item mt-1">
                     <a class=" nav-link " href="{% url 'frontview:landing' %}">
                         <img width="25" height="25" class="img-fluid d-inline-block mr-2 mt--1" alt="badges icon"
                             src="{% static 'image/badge2.svg' %}" />
-                        Badges
+                        {% trans "Badges" %}
                     </a>
                 </li>
             </ul>
