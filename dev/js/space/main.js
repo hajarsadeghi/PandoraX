@@ -149,11 +149,12 @@ $('#addTeammatesBtn').on('click', function() {
     
 });
 
-$('#skipTeammates').on('click', function() {
+$('#skipTeammates').on('click', function() {    
     ToggleSpaceBoxes($(this));
 });
+
 $('#tadaBtn').click(function() {
-    window.location.replace('/');  
+    window.location.href = '/dashboard/' + $('#companySlug').val();
 });
 
 function ToggleSpaceBoxes($this) {
