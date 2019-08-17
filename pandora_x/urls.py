@@ -23,6 +23,7 @@ from django.views.i18n import JavaScriptCatalog
 api_urls = [
     path('user/', include(('user.api.urls', 'django'), namespace='user')),
     path('space/', include(('space.api.urls', 'django'), namespace='space')),
+    path('budget/', include(('budget.api.urls', 'django'), namespace='budget')),
 ]
 
 urlpatterns = [
