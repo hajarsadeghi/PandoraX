@@ -22,7 +22,7 @@ $("#create_budget_submit").click(function(){
             }
         )
     }
-})  
+})
 
 function get_budget_list(){
     API.get_created_budget(
@@ -37,6 +37,8 @@ function get_budget_list(){
                 }
                 if (res.length>0){
                     $("#created_budget_list_keeper").css("display","block");
+                    $("#no_budget_animation").css("display","none");
+                    $(".no-budget-desc").css("display","none");
                     for (let i=0;i<res.length;i++){
                         let date = new Date(res[i].created_date);
                         let element = $("#created_budget_list_keeper .source").clone();
@@ -60,7 +62,7 @@ function get_budget_list(){
                         loop: true
                     });
                 }
-                
+
             }
             else {
                 console.log('error')
