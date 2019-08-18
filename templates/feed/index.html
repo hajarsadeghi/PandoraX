@@ -4,8 +4,8 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block head %}
-    <link rel="stylesheet" href="{% static 'css/dashboard.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/feed.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'webpack:dashboard.css' %}" />
+    <link rel="stylesheet" href="{% static 'webpack:feed.css' %}" />
     <title>{% trans "Dashboard" %}</title>
 {% endblock %}
 
@@ -182,6 +182,6 @@
 {% endblock %}
 
 {% block script %}
-<script type="text/javascript" src="{% static 'js/dashboard.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/feed.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'webpack:dashboard.js' %}"></script>
+<script type="text/javascript" src="{% static 'webpack:feed.js' %}"></script>
 {% endblock %}

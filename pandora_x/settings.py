@@ -205,6 +205,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
+STATICFILES_STORAGE = 'utils.WebpackHashStorage'
+WEBPACK_ASSETS_FILE = os.path.join(BASE_DIR, "static", "webpack-assets.json")
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")

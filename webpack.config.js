@@ -1,5 +1,8 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const AssetsPlugin = require('assets-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+
 
 module.exports = {
   entry: {
@@ -11,8 +14,9 @@ module.exports = {
       budget:       './dev/js/dashboard/budget/index.js'
   },
   output: {
-    filename:     '../js/[name].min.js',
-    path: path.resolve(__dirname, 'static', 'css')
+    filename: "./js/[name].[hash].min.js",
+    chunkFilename: "./js/[id].[chunkhash].min.js",
+    path: path.resolve(__dirname, 'static'),
   },
   watch: true,
   mode: 'development',
@@ -45,7 +49,12 @@ module.exports = {
     },
   plugins: [
       new MiniCssExtractPlugin({
-          filename: "[name].min.css"
+          filename: "./css/[name].[hash].min.css",
+          chunkFilename: "./css/[id].[chunkhash].min.css",
+      }),
+      new AssetsPlugin({useCompilerPath: true}),
+      new CleanWebpackPlugin({
+          cleanOnceBeforeBuildPatterns: ['js/*.min.js', 'css/*.min.css'],
       }),
       // require('autoprefixer'),
       // require('cssnano'),

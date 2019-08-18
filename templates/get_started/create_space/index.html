@@ -3,7 +3,7 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/lib/iziToast.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/space.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'webpack:space.css' %}" />
 {% endblock %}
 
 {% block body %}
@@ -25,5 +25,5 @@
 
 {% block script %}
     <script type="text/javascript" src="{% static 'js/lib/iziToast.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/space.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'webpack:space.js' %}"></script>
 {% endblock %}

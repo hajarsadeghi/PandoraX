@@ -1,0 +1,1 @@
+from .webpack_hash_storage import WebpackHashStorage
