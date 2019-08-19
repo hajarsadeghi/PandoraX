@@ -12,16 +12,66 @@
 .feed-container {
     .post {
 
-        z-index: 9000;
+        z-index: 80;
         cursor: pointer;
         img {
             width: 50px;
             height: 50px;
             border-radius: 50%;
         }
+
+        .contentWrapper {
+
+            width: calc(100% - 50px);
+            #postContent {
+
+                @include transition(all .4s ease-in);
+                &:empty:before {
+                    content: attr(data-placeholder);
+                }
+
+                &:focus {
+                    outline: 0 !important;
+                }
+            }
+
+            .emojionearea {
+
+                background-color: $white;
+                border: 0 !important;
+                box-shadow: none !important;
+                min-height: 50px;
+                &.emojionearea-disable {
+                    
+                    background-color: $white;
+                    &:before {
+                        background-color: $white;
+                        line-height: 100%;
+                    }
+                }
+
+                .emojionearea-editor {
+
+                    min-height: 50px;
+                    &:empty:before {
+                        color: $text !important;
+                        line-height: 100%;
+                    }
+
+                    &:before {
+
+                        color: $text !important;
+                        font-size: 1rem;
+                        line-height: 100%;
+                        &:empty:before {
+                            color: $text !important;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
-
 
 // Small to Large devices (desktops, 992px and up)
 @media (max-width: 1199.8px) { 

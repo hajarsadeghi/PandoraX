@@ -1,0 +1,76 @@
+{% load static %}
+
+
+<div class="card shadow post">
+  <div class="card-body">
+    <div id="postToggled" data-target="#postExpanded" aria-expanded="false" aria-controls="postExpanded">
+      <div class="my-1" id="sharePost">
+        <div id="postLink" class="align-items-center d-flex flex-row">
+          <div class="d-flex flex-column">
+            <img class="img-fluid" src="{{request.user.profile_picture.url}}" alt="profile picture" />
+          </div>
+          <div class="d-flex flex-column contentWrapper">
+              <div id="postContent" class="px-3" contenteditable="true" data-placeholder="Whats on your mind today? :)"></div>
+          </div>
+        </div>
+        <hr />
+        <div class="row align-items-center mt-3">
+          <div class="col">
+            <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
+              <div class="row no-gutters align-items-center">
+                <div class="col pr-1">
+                  <i class="material-icons">
+                    add_a_photo
+                  </i>
+                </div>
+                <div class="col">
+                  Photo
+                </div>
+              </div>
+            </a>
+            <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
+              <div class="row no-gutters align-items-center">
+                <div class="col pr-1">
+                  <i class="material-icons">
+                      video_call
+                  </i>
+                </div>
+                <div class="col">
+                  Video
+                </div>
+              </div>
+            </a>
+            <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
+              <div class="row no-gutters align-items-center">
+                <div class="col pr-1">
+                  <i class="material-icons">
+                    face
+                  </i>
+                </div>
+                <div class="col">
+                  Tag Friends
+                </div>
+              </div>
+            </a>
+            <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
+              <div class="row no-gutters align-items-center">
+                <div class="col pr-1">
+                  <i class="material-icons">
+                    add_location
+                  </i>
+                </div>
+                <div class="col">
+                  Location
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div id="postExpanded" class="collapse">
+        <hr />
+        expanded
+      </div>
+    </div>
+  </div>
+</div>

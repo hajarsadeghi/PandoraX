@@ -4,184 +4,31 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block head %}
+
+    <link rel="stylesheet" href="{% static 'css/lib/emojionearea.min.css' %}" />
     <link rel="stylesheet" href="{% static 'webpack:dashboard.css' %}" />
     <link rel="stylesheet" href="{% static 'webpack:feed.css' %}" />
     <title>{% trans "Dashboard" %}</title>
 {% endblock %}
 
 {% block body %}
-  <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
-    <div class="container-fluid">
-      <div class="header-body">
-        <!-- Card stats -->
-        <div class="row">
-          <div class="col-xl-3 col-lg-6">
-            <div class="card card-stats mb-4 mb-xl-0">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col">
-                    <h5 class="card-title text-uppercase text-muted mb-0">Monthly Budget</h5>
-                    <span class="h2 font-weight-bold mb-0">350,897</span>
-                  </div>
-                  <div class="col-auto">
-                    <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                      <i class="fas fa-chart-bar"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-6">
-            <div class="card card-stats mb-4 mb-xl-0">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col">
-                    <h5 class="card-title text-uppercase text-muted mb-0">Earned Budget</h5>
-                    <span class="h2 font-weight-bold mb-0">2,356</span>
-                  </div>
-                  <div class="col-auto">
-                    <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                      <i class="fas fa-chart-pie"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-6">
-            <div class="card card-stats mb-4 mb-xl-0">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col">
-                    <h5 class="card-title text-uppercase text-muted mb-0">{{request.user.first_name}} 's Rank</h5>
-                    <span class="h2 font-weight-bold mb-0">25</span>
-                  </div>
-                  <div class="col-auto">
-                    <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                      <i class="fas fa-users"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-6">
-            <div class="card card-stats mb-4 mb-xl-0">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col">
-                    <h5 class="card-title text-uppercase text-muted mb-0">Latest Badge</h5>
-                    <span class="h2 font-weight-bold mb-0">49,65%</span>
-                  </div>
-                  <div class="col-auto">
-                    <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                      <i class="fas fa-percent"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  {% include 'feed/_header.html' %}
   <div class="container-fluid feed-container mt--7">
     <div class="row">
       <div class="col-12 col-lg-6 col-xl-7 mb-5 mb-xl-0">
-        <div class="card shadow post">
-          <div class="card-body">
-            <div id="postToggled" data-toggle="collapse" data-target="#postExpanded" aria-expanded="false" aria-controls="postExpanded">
-              <div id="postLink" class="row align-items-center">
-                <div class="col">
-                  <img class="img-fluid" src="{{request.user.profile_picture.url}}" alt="profile picture" />
-                  <span class="pl-3">Whats on your mind today? :)</span>
-                </div>
-              </div>
-              <!-- <div id="postInput" class="row align-items-center d-none">
-                <div class="col">
-                  <div class="form-group">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                  </div>
-                </div>
-              </div> -->
-              <div class="row align-items-center mt-3">
-                <div class="col">
-                  <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col pr-1">
-                        <i class="material-icons">
-                          add_a_photo
-                        </i>
-                      </div>
-                      <div class="col">
-                        Photo
-                      </div>
-                    </div>
-                  </a>
-                  <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col pr-1">
-                        <i class="material-icons">
-                            video_call
-                        </i>
-                      </div>
-                      <div class="col">
-                        Video
-                      </div>
-                    </div>
-                  </a>
-                  <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col pr-1">
-                        <i class="material-icons">
-                          face
-                        </i>
-                      </div>
-                      <div class="col">
-                        Tag Friends
-                      </div>
-                    </div>
-                  </a>
-                  <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col pr-1">
-                        <i class="material-icons">
-                          add_location
-                        </i>
-                      </div>
-                      <div class="col">
-                        Location
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div id="postExpanded" class="collapse">
-              <hr />
-              expanded
-            </div>
-          </div>
-        </div>
+        {% include 'feed/_post.html' %}
       </div>
       <div class="col-12 col-lg-6 col-xl-5">
-        <div class="card shadow">
-          <div class="card-header border-0">
-            <div class="row align-items-center">
-              <div class="col">
-                <h3 class="mb-0">Top Ten Ranks</h3>
-              </div>
-            </div>
-          </div>
-        </div>
+          {% include 'feed/_leaderboard.html' %}
       </div>
     </div>
   </div>
 {% endblock %}
 
 {% block script %}
+
+<script type="text/javascript" src="{% static 'js/lib/emojione.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/lib/emojionearea.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'webpack:dashboard.js' %}"></script>
 <script type="text/javascript" src="{% static 'webpack:feed.js' %}"></script>
 {% endblock %}
