@@ -12,6 +12,17 @@
 .feed-container {
     .post {
 
+        .nav-tabs {
+            border: 0;
+
+            .nav-link {
+                border: 0;
+            }
+        }
+
+        button {
+            background-color: $main-blue-color;
+        }
         z-index: 80;
         cursor: pointer;
         img {
@@ -70,6 +81,48 @@
                 }
             }
         }
+
+        .badge {
+            &.badge-primary {
+                background-color: $tint-blue-color2;
+                color: $main-blue-color;
+                &:hover {
+                    background-color: $main-blue-color;
+                    color: $white;
+                }
+            }
+        }
+
+        // .custom-checkbox {
+
+        //     .custom-control-label  {
+        //         &:before, &:after {
+        //             border-radius: 50%;
+        //         }
+        //     }
+        //     .custom-control-input:checked~.custom-control-label:before {
+        //         background-color: $main-blue-color;
+        //     }
+            
+        // }
+    }
+}
+
+.post-border-bottom {
+    // border-bottom: 2px solid $tint-blue-color5 !important;
+    &:after {
+        content: '';
+        width: 0px;
+        height: 2px;
+        display: block;
+        background-color: $tint-blue-color5;
+        @include transition(width .4s cubic-bezier(0.7, .1, .6, .1));
+    }
+}
+
+.post-border-bottom.active {
+    &:after {
+        width: 100%;
     }
 }
 
