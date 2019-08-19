@@ -51,7 +51,6 @@ function get_budget_list(){
                         element.insertAfter($("#created_budget_list_keeper .source"))
                     }
                 }else{
-                    console.log("here i")
                     $("#no_budget_animation").css("display","block");
                     $(".no-budget-desc").css("display","block");
                     lottie.loadAnimation({
@@ -72,6 +71,36 @@ function get_budget_list(){
 }
 
 
+$('#budgetModal').on('hide.bs.modal', function (e) {
+    $("#budgetName").val("")
+    $("#budgetPoints").val("")
+})
+
 function create_budget_validation(){
-    return true;
+    let is_valid = true;
+    let name = $("#budgetName").val();
+    let point_amount = Number($("#budgetPoints").val());
+    let name_error = $("#budgetName").siblings(".text-danger");
+    let amount_error = $("#budgetPoints").siblings(".text-danger");
+    if (name.length < 1){
+        is_valid = false;
+        name_error.text(gettext("Please enter budget name!"));
+        name_error.css("display","block");
+        $("#budgetName").addClass("error-field");
+        $("#budgetName").keyup(function(){
+            name_error.css("display","none");
+            $("#budgetName").removeClass("error-field");
+        })
+    }
+    if (point_amount < 1){
+        is_valid = false;
+        amount_error.text(gettext("Please enter budget name!"));
+        amount_error.css("display","block");
+        $("#budgetPoints").addClass("error-field");
+        $("#budgetPoints").keyup(function(){
+            amount_error.css("display","none");
+            $("#budgetPoints").removeClass("error-field");
+        })
+    }
+    return is_valid;
 }

@@ -30,6 +30,15 @@
         }
     }
     
+    .form-group{
+        p {
+            font-size: 12px;
+        }
+        .error-field {
+            box-shadow: 0 0 0.05rem 0.1rem rgba(255,62,88,0.7);
+        }
+    }
+
     .modal {
         button.standard-btn {
             max-width: 200px;

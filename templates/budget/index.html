@@ -16,10 +16,10 @@
                 <h4 class="font-weight-bold d-inline">{% trans "Budget List" %}</h4>
             </div>
             <div class="col">
-                <button id="openAddBudgetModal" type="button" class="btn font-weight-bold float-right standard-btn" data-toggle="modal" data-target="#budgetModal">Create Badge</button>
+                <button id="openAddBudgetModal" type="button" class="btn font-weight-bold float-right standard-btn" data-toggle="modal" data-target="#budgetModal">Create Budget</button>
             </div>
         </div>
-        <div style="display:none;height: 500px;margin-top: 150px;" id="no_budget_animation">
+        <div style="display:none;height: 500px;margin-top: 10vh;" id="no_budget_animation">
         </div>
         <p style="display:none;margin-top:20px;text-align:center" class="no-budget-desc">{% trans "There is no created budget, create now ..." %}</p>
         <div style="display:none" id="created_budget_list_keeper" class="container budget-table mt-5">
@@ -54,6 +54,7 @@
                         <div class="form-group">
                           <label for="budgetName">{% trans "Budget Name" %}</label>
                           <input type="text" class="form-control" id="budgetName" aria-describedby="budgetName" placeholder="{% trans 'Enter a descriptive name for your budget' %}">
+                          <p class="text-danger"></p>
                         </div>
                         <!-- <div class="accordion form-group" id="search">
                             <label for="budgetRecipients">{% trans "Select Recipients" %}</label>
@@ -129,7 +130,8 @@
                         </div> -->
                         <div class="form-group">
                             <label for="budgetPoints">{% trans "Give points amount" %}</label>
-                            <input type="number" class="form-control" id="budgetPoints" aria-describedby="budgetPoints" placeholder="Enter a descriptive name for your budget">
+                            <input type="number" class="form-control" id="budgetPoints" min=1 aria-describedby="budgetPoints" placeholder="Enter a descriptive name for your budget">
+                            <p class="text-danger"></p> 
                         </div>
                     </form>
                 </div>
