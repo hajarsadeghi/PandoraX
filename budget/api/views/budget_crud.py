@@ -10,7 +10,7 @@ import json
 @method_decorator(get_space, name='dispatch')
 class Budget(View):
     def get(self, request):
-        budgets = BudgetModel.objects.filter(space=request.space).values('id', 'name', 'creator__id', 'creator__first_name', 'creator__last_name', 'creator__id', 'point_amount', 'created_date')
+        budgets = BudgetModel.objects.filter(space=request.space).values('id', 'name', 'creator__id', 'creator__first_name', 'creator__last_name', 'creator__id', 'point_amount', 'active', 'created_date')
         resp = []
         for budget in budgets:
             tmp_budget = {
@@ -21,6 +21,7 @@ class Budget(View):
                     "full_name":f"{'' if not budget['creator__first_name'] else budget['creator__first_name']} {'' if not budget['creator__last_name'] else budget['creator__last_name']}".strip()
                 },
                 "point_amount": budget['point_amount'],
+                "active": budget['active'],
                 "created_date":budget['created_date'].strftime('%Y/%m/%d %H:%M:%S')
             }
             resp.append(tmp_budget)
