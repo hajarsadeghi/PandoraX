@@ -34,6 +34,15 @@
         button.standard-btn {
             max-width: 200px;
         }
+        #create_budget_submit{
+            &:hover, &:focus {
+                color: $white;
+                background-color: $tint-red-color5;
+                --box-shadow-color: $tint-red-color5;
+                outline: none;
+                border: none;
+            }
+        }
     }
 }
 

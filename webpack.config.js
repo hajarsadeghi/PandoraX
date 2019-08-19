@@ -11,7 +11,8 @@ module.exports = {
       space:        './dev/js/space/index.js',
       dashboard:    './dev/js/dashboard/index.js',
       feed:         './dev/js/dashboard/feed/index.js',
-      budget:       './dev/js/dashboard/budget/index.js'
+      budget:       './dev/js/dashboard/budget/index.js',
+      badge:        './dev/js/dashboard/badge/index.js'
   },
   output: {
     filename: "./js/[name].[hash].min.js",

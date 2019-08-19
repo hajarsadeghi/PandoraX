@@ -12,6 +12,7 @@ get_started_urls = [
 dashboard_urls = [
     path('', views.feed, name='feed'),
     path('budget/', views.budget, name='budget'),
+    path('badge/', views.badge, name='badge'),
 
 ]
 
