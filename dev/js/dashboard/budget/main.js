@@ -44,6 +44,12 @@ function get_budget_list(){
                         let element = $("#created_budget_list_keeper .source").clone();
                         element.removeClass("source");
                         element.css("display","flex");
+                        if (!res[i].active){
+                            element.css("background-color","rgba(255,255,255,0.35)");
+                            element.find("div[type='status'] i").text("cancel").css("color","#63636354");
+                        }else{
+                            element.find("div[type='status'] i").text("check_circle").css("color","#63636354");
+                        }
                         element.find("span").text(res[i].name);
                         element.find("small").text("Created by "+res[i].creator.full_name);
                         element.find("div[type='points']").text(res[i].point_amount);
@@ -73,7 +79,11 @@ function get_budget_list(){
 
 $('#budgetModal').on('hide.bs.modal', function (e) {
     $("#budgetName").val("")
-    $("#budgetPoints").val("")
+    $("#budgetPoints").val("");
+    $("#budgetName").siblings(".text-danger").css("display","none");
+    $("#budgetName").removeClass("error-field");
+    $("#budgetPoints").siblings(".text-danger").css("display","none");
+    $("#budgetPoints").removeClass("error-field");
 })
 
 function create_budget_validation(){
