@@ -2,6 +2,7 @@ $(document).ready(function() {
     // ... initialize emoji
     $("#postContent").emojioneArea();
     $("#postContent").data("emojioneArea").enable();
+    $('.point-recognition').attr('is-input-visible', false);
 
     $('#postToggled').on('click', () => {
         if (!$('#postToggled').attr('area-expanded')) {
@@ -18,4 +19,20 @@ $(document).ready(function() {
             $('.tinted').css({'visibility':'hidden', 'opacity': '0'});
         }
     });
+
+    
+
+    $('body').on('click',() => {
+        if ($('.point-recognition').find('#pointRecognitionInput').val()) {
+            $('#pointRecognitionBadge').text($('.point-recognition').find('#pointRecognitionInput').val());
+        }
+        else {
+            $('#pointRecognitionBadge').text('Recognize via Points');
+            
+        }
+    });
+
+    // $('#pointRecognition').click( () => {
+    //     $('#pointRecognitionBadge').text('Recognize via Points');
+    // });
 });

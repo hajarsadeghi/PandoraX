@@ -15,75 +15,103 @@
             </div>
         </div>
         <div id="postExpanded" class="collapse">
-            <hr />
+            <hr class="my-3" />
             <form>
-                <div class="row align-items-center mt-3">
+                <div class="row align-items-center">
                     <div class="col">
-                        <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col pr-1">
-                            <i class="material-icons">
-                                add_a_photo
-                            </i>
+                        <a href="#"class="badge badge-pill badge-primary mx-1 py-1" data-toggle="collapse" data-target="#badgeExpanded" aria-expanded="false" aria-controls="BadgeExpanded">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col pr-1">
+                                    <i class="material-icons md-18">
+                                        sentiment_satisfied_alt
+                                    </i>
+                                </div>
+                                <div class="col">
+                                    Recognize via Badge
+                                </div>
                             </div>
-                            <div class="col">
-                            Photo
+                        </a>
+                        <a href="#"class="badge badge-pill badge-primary mx-1 py-1 point-recognition" id="pointRecognition">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col pr-1">
+                                    <i class="material-icons md-18">
+                                        monetization_on
+                                    </i>
+                                </div>
+                                <div class="col">
+                                    <span id="pointRecognitionBadge">Recognize via Points</span>
+                                    <input type="number" class="mx-1 py-1" id="pointRecognitionInput" placeholder="Ex. 100" />
+                                </div>
                             </div>
-                        </div>
+                        </a>
+                        <!-- <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col pr-1">
+                                <i class="material-icons md-18">
+                                    add_a_photo
+                                </i>
+                                </div>
+                                <div class="col">
+                                Photo
+                                </div>
+                            </div>
                         </a>
                         <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col pr-1">
-                            <i class="material-icons">
-                                video_call
-                            </i>
+                            <div class="row no-gutters align-items-center">
+                                <div class="col pr-1">
+                                <i class="material-icons md-18">
+                                    video_call
+                                </i>
+                                </div>
+                                <div class="col">
+                                Video
+                                </div>
                             </div>
-                            <div class="col">
-                            Video
-                            </div>
-                        </div>
                         </a>
                         <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col pr-1">
-                            <i class="material-icons">
-                                face
-                            </i>
+                            <div class="row no-gutters align-items-center">
+                                <div class="col pr-1">
+                                <i class="material-icons md-18">
+                                    face
+                                </i>
+                                </div>
+                                <div class="col">
+                                Tag Friends
+                                </div>
                             </div>
-                            <div class="col">
-                            Tag Friends
-                            </div>
-                        </div>
                         </a>
                         <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col pr-1">
-                            <i class="material-icons">
-                                add_location
-                            </i>
+                            <div class="row no-gutters align-items-center">
+                                <div class="col pr-1">
+                                <i class="material-icons md-18">
+                                    add_location
+                                </i>
+                                </div>
+                                <div class="col">
+                                Location
+                                </div>
                             </div>
-                            <div class="col">
-                            Location
-                            </div>
+                        </a> -->
+                        <div id="badgeExpanded" class="collapse">
+                            <hr class="my-3" />
+                            list of badges
                         </div>
-                        </a>
                     </div>
                 </div>
-                <hr />
+                <hr class="my-3" />
                 <div class="row">
-                    <div class="col">
-                        <button class="btn btn-primary float-right mx-1" type="button">Post</button>
-                        <!-- Example single danger button -->
-                        <div class="btn-group float-right mx-1">
+                    <div class="col text-right">
+                        <div class="btn-group mx-1">
                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Privacy
                             </button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#">Public</a>
-                                <a class="dropdown-item" href="#">Colleagues except</a>
-                                <a class="dropdown-item" href="#">Specific colleagues</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#privacyModal">Colleagues except</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#privacyModal">Specific colleagues</a>
                             </div>
                         </div>
+                        <button class="btn btn-primary mx-1" type="button">Post</button>
                     </div>
                 </div>
             </form>
