@@ -19,12 +19,10 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        {% include './navbar.html' %}
-        <div class="main-content">
-            {% include './header.html' %}
-            {% block body %}{% endblock %}
-        </div>
+    {% include './navbar.html' %}
+    <div class="main-content">
+        {% include './header.html' %}
+        {% block body %}{% endblock %}
     </div>
     <div class="tinted"></div>
 </body>

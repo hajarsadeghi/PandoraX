@@ -2,7 +2,7 @@
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 
-<nav class="navbar navbar-top navbar-expand-md navbar-dark header" style="height: 70px">
+<nav class="navbar navbar-top navbar-expand-md navbar-dark header d-none d-md-block" style="height: 70px">
     <div class="container-fluid">
         <!-- Brand -->
 
@@ -44,7 +44,11 @@
             <div class="form-group mb-0">
                 <div class="input-group input-group-alternative">
                     <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                        <span class="input-group-text">
+                            <i class="material-icons">
+                                search
+                            </i>
+                        </span>
                     </div>
                     <input class="form-control" placeholder="{% trans 'Search' %}" type="text">
                 </div>
