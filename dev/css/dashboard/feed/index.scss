@@ -9,6 +9,7 @@
         height: 120px !important;
     }
 }   
+
 .feed-container {
     .post {
 
@@ -130,6 +131,20 @@
         //     }
             
         // }
+    }
+}
+
+#privacyModal {
+    .avatar {
+        img {
+            border-radius: $radius;
+        }
+    }
+
+    button {
+        &.btn-primary {
+            background-color: $main-blue-color; 
+        }
     }
 }
 

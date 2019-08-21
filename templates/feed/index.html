@@ -4,7 +4,6 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block head %}
-
     <link rel="stylesheet" href="{% static 'css/lib/emojionearea.min.css' %}" />
     <link rel="stylesheet" href="{% static 'webpack:dashboard.css' %}" />
     <link rel="stylesheet" href="{% static 'webpack:feed.css' %}" />
@@ -23,12 +22,12 @@
       </div>
     </div>
   </div>
+  {% include 'feed/_privacy-modal.html' %}
 {% endblock %}
 
 {% block script %}
-
-<script type="text/javascript" src="{% static 'js/lib/emojione.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/lib/emojionearea.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'webpack:dashboard.js' %}"></script>
-<script type="text/javascript" src="{% static 'webpack:feed.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/lib/emojione.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/lib/emojionearea.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'webpack:dashboard.js' %}"></script>
+  <script type="text/javascript" src="{% static 'webpack:feed.js' %}"></script>
 {% endblock %}
