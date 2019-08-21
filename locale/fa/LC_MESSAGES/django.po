@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-16 02:33+0000\n"
-"PO-Revision-Date: 2019-08-16 06:57+0430\n"
+"POT-Creation-Date: 2019-08-21 14:47+0000\n"
+"PO-Revision-Date: 2019-08-21 19:11+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa\n"
@@ -18,37 +18,49 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 2.2.3\n"
 
-#: pandora_x/settings.py:183
+#: pandora_x/settings.py:184
 msgid "English"
 msgstr "انگلیسی"
 
-#: pandora_x/settings.py:184
+#: pandora_x/settings.py:185
 msgid "Persian"
 msgstr "فارسی"
+
+#: templates/badge/index.html:9 templates/navbar.html:200
+msgid "Badges"
+msgstr "نشان ها"
+
+#: templates/badge/index.html:16 templates/budget/index.html:16
+msgid "Budget List"
+msgstr "لیست بودجه ها"
+
+#: templates/badge/index.html:24 templates/budget/index.html:24
+msgid "There is no created budget, create now ..."
+msgstr "بودجه ای ایجاد نشده است ، اکنون ایجاد کنید..."
+
+#: templates/badge/index.html:55 templates/budget/index.html:57
+msgid "Budget Name"
+msgstr "نام بودجه"
+
+#: templates/badge/index.html:56 templates/budget/index.html:58
+msgid "Enter a descriptive name for your budget"
+msgstr "یک نام توصیفی برا بودجه خود وارد کنید"
+
+#: templates/badge/index.html:59 templates/budget/index.html:134
+msgid "Give points amount"
+msgstr "مقدار امتیاز را وارد کن"
 
 #: templates/budget/index.html:9
 msgid "Budget"
 msgstr "بودجه"
 
-#: templates/budget/index.html:16
-msgid "Budget List"
-msgstr "لیست بودجه ها"
-
-#: templates/budget/index.html:66
-msgid "Budget Name"
-msgstr "نام بودجه"
-
-#: templates/budget/index.html:67
-msgid "Enter a descriptive name for your budget"
-msgstr "یک نام توصیفی برا بودجه خود وارد کنید"
-
-#: templates/budget/index.html:70
+#: templates/budget/index.html:62
 msgid "Select Recipients"
 msgstr "انتخاب دریافت کنندگان"
 
-#: templates/budget/index.html:142
-msgid "Give points amount"
-msgstr "مقدار امتیاز را وارد کن"
+#: templates/feed/index.html:10
+msgid "Dashboard"
+msgstr "داشبورد"
 
 #: templates/get_started/create_space/space-info.html:9
 msgid "Please tell us more about your company?"
@@ -56,11 +68,11 @@ msgstr "لطفا بیشتر درباره شرکت خود به ما بگید"
 
 #: templates/get_started/create_space/space-info.html:11
 msgid "Industry"
-msgstr ""
+msgstr "صنعت"
 
 #: templates/get_started/create_space/space-info.html:21
 msgid "Number of team members"
-msgstr ""
+msgstr "تعداد اعضای تیم"
 
 #: templates/get_started/create_space/space-info.html:23
 #: templates/get_started/create_space/space-name.html:20
@@ -75,22 +87,22 @@ msgstr ""
 #: templates/get_started/create_space/space-info.html:24
 #: templates/get_started/create_space/space-name.html:21
 msgid "Customer Terms of Service"
-msgstr ""
+msgstr "شرایط سرویس مشتری"
 
 #: templates/get_started/create_space/space-info.html:24
 #: templates/get_started/create_space/space-name.html:21
 msgid "Privacy Policy"
-msgstr ""
+msgstr "سیاست حفظ حریم خصوصی"
 
 #: templates/get_started/create_space/space-info.html:24
 #: templates/get_started/create_space/space-name.html:21
 msgid "and"
-msgstr ""
+msgstr "و"
 
 #: templates/get_started/create_space/space-info.html:24
 #: templates/get_started/create_space/space-name.html:21
 msgid "Cookie Policy"
-msgstr ""
+msgstr "سیاست کوکی"
 
 #: templates/get_started/create_space/space-name.html:9
 msgid "What's the name of your company or team?"
@@ -174,29 +186,29 @@ msgstr "ساخت فضای جدید"
 msgid "Get your company or organization on Bilono"
 msgstr "شرکت یا سازمان خود را به بیلونو بیاورید"
 
-#: templates/header.html:16
+#: templates/header.html:28
+msgid "Other spaces"
+msgstr "فضاهای دیگر"
+
+#: templates/header.html:53
 msgid "Search"
 msgstr "جستجو"
 
-#: templates/header.html:42
+#: templates/header.html:79 templates/navbar.html:129
 msgid "Welcome"
 msgstr "خوش آمدید"
 
-#: templates/header.html:46
+#: templates/header.html:83 templates/navbar.html:133
 msgid "My profile"
 msgstr "پروفایل من"
 
-#: templates/header.html:50
+#: templates/header.html:87 templates/navbar.html:137
 msgid "Help"
 msgstr "کمک"
 
-#: templates/header.html:54
+#: templates/header.html:91 templates/navbar.html:141
 msgid "Logout"
 msgstr "خروج"
-
-#: templates/home/index.html:8
-msgid "Dashboard"
-msgstr "داشبورد"
 
 #: templates/login/index.html:32 templates/login/index.html:58
 msgid "LOG IN"
@@ -250,17 +262,13 @@ msgstr "ورود"
 msgid "Sign Up"
 msgstr "ثبت نام"
 
-#: templates/navbar.html:135
+#: templates/navbar.html:186
 msgid "Feed"
-msgstr ""
+msgstr "فید"
 
-#: templates/navbar.html:142
+#: templates/navbar.html:193
 msgid "Budgets"
-msgstr ""
-
-#: templates/navbar.html:149
-msgid "Badges"
-msgstr ""
+msgstr "بودجه ها"
 
 #: templates/verify_email/email.html:7
 msgid "Verify your email"
