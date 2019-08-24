@@ -137,7 +137,7 @@
 #privacyModal {
     .avatar {
         img {
-            border-radius: $radius;
+            border-radius: 0;
         }
     }
 
@@ -145,6 +145,19 @@
         &.btn-primary {
             background-color: $main-blue-color; 
         }
+    }
+
+    .material-icons {
+        cursor: pointer;
+    }
+
+    .modal-search-box {
+        padding: 0 1.25rem;
+    }
+
+    .modal-body {
+        max-height: 400px;
+        overflow-y: scroll;
     }
 }
 

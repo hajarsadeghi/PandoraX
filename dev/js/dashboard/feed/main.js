@@ -32,7 +32,9 @@ $(document).ready(function() {
         }
     });
 
-    // $('#pointRecognition').click( () => {
-    //     $('#pointRecognitionBadge').text('Recognize via Points');
-    // });
+    $('#privacyModal .modal-body').on('scroll',() => {
+        if ($('.modal-body').scrollTop() + $('.modal-body').innerHeight() >= $('#privacyModal .modal-body')[0].scrollHeight) {
+            console.log('end of the scroll')    
+        }
+    })
 });
