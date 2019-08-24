@@ -16,35 +16,35 @@
                 <h4 class="font-weight-bold d-inline">{% trans "Budget List" %}</h4>
             </div>
             <div class="col">
-                <button id="openAddBudgetModal" type="button" class="btn font-weight-bold float-right standard-btn" data-toggle="modal" data-target="#budgetModal">Create Badge</button>
+                <button id="openAddBudgetModal" type="button" class="btn font-weight-bold float-right standard-btn" data-toggle="modal" data-target="#badgeModal">Create Badge</button>
             </div>
         </div>
         <div style="display:none;height: 500px;margin-top: 10vh;" id="no_budget_animation">
         </div>
         <p style="display:none;margin-top:20px;text-align:center" class="no-budget-desc">{% trans "There is no created budget, create now ..." %}</p>
-        <div style="display:none" id="created_budget_list_keeper" class="container budget-table mt-5">
-            <div class="row table-head align-items-center">
-                <div class="col-4 font-weight-bold">Name</div>
-                <div class="col font-weight-bold">Recipients</div>
-                <div class="col font-weight-bold">Pointes per month</div>
-                <div class="col font-weight-bold">Creation Date</div>
-            </div>
-            <div style="display:none" class="row table-body align-items-center source">
-                <div class="col-4">
-                    <span>Hajar</span>
-                    <small class="d-block text-muted">Created by Hajar Sadeghi</small>
+        <div id="created_badge_table_keeper" class="container mt-5">
+            <div class="card card-stats mb-4 mb-xl-0 badge-card source">
+                <img src="data:image/png;base64,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" alt="badge icon">
+                <div class="badge-label">
+                  <h5 class="card-title text-uppercase text-muted mb-0">Hero</h5>
+                  <span class="h2 font-weight-bold mb-0">1,000</span>
                 </div>
-                <div class="col">all</div>
-                <div type="points" class="col">hajar@arianatech.ir</div>
-                <div type="date" class="col">hajar@arianatech.ir</div>
+                <div class="hover-part pr-2 pl-2">
+                  <p class="mt-3 mb-1 text-white text-md description"> some description for badge heare, there is limitation for it</p>
+                  <span class="hover-down">
+                    <div class="down-details"><i class="material-icons text-muted text-sm text-white">account_circle</i><span class="mt-0 mb-0 text-muted text-sm text-white" > Mohammad </span></div>
+                    <div class="down-details"><i class="material-icons  text-light text-sm">event</i><span class="text-muted text-sm text-white">2019/02/04</span></div>
+                  </span>
+                </div>
             </div>
         </div>
+
         <!-- modal -->
-        <div class="modal fade mt-5" id="budgetModal" tabindex="-1" role="dialog" aria-labelledby="budgetModalLabel" aria-hidden="true">
+        <div class="modal fade mt-5" id="badgeModal" tabindex="-1" role="dialog" aria-labelledby="badgeModalLable" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="budgetModalLabel">create a custome budget</h5>
+                  <h5 class="modal-title" id="badgeModalLable">create a custome budget</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
