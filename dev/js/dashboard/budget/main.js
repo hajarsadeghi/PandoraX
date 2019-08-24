@@ -14,7 +14,7 @@ $("#create_budget_submit").click(function(){
             (status, res) => {
                 if (status) {
                     get_budget_list();
-                    $("#budgetModal").modal('hide');
+                    $("#addBudgetCollapse").collapse('hide');
                 }
                 else {
                     console.log('error')
@@ -31,7 +31,7 @@ function get_budget_list(){
         (status, res) => {
             console.log(status,res)
             if (status) {
-                sibs = $("#created_budget_list_keeper .source").siblings(".table-body");
+                sibs = $("#created_budget_list_keeper .source").siblings();
                 for (let i=0;i<sibs.length;i++){
                     sibs[i].remove();
                 }
@@ -43,17 +43,18 @@ function get_budget_list(){
                         let date = new Date(res[i].created_date);
                         let element = $("#created_budget_list_keeper .source").clone();
                         element.removeClass("source");
-                        element.css("display","flex");
+                        element.css("display","table-row");
                         if (!res[i].active){
                             element.css("background-color","rgba(255,255,255,0.35)");
-                            element.find("div[type='status'] i").text("cancel").css("color","#63636354");
+                            element.css("background-color","rgb(224,224,224)");
+                            element.find("td[type='status'] i").text("cancel").css("color","#63636354");
                         }else{
-                            element.find("div[type='status'] i").text("check_circle").css("color","#63636354");
+                            element.find("td[type='status'] i").text("check_circle").css("color","#63636354");
                         }
                         element.find("span").text(res[i].name);
                         element.find("small").text("Created by "+res[i].creator.full_name);
-                        element.find("div[type='points']").text(res[i].point_amount);
-                        element.find("div[type='date']").text(date.getFullYear()+"/"+(date.getMonth()+1)+"/"+date.getDate());
+                        element.find("td[type='points']").text(res[i].point_amount);
+                        element.find("td[type='date']").text(date.getFullYear()+"/"+(date.getMonth()+1)+"/"+date.getDate());
                         element.insertAfter($("#created_budget_list_keeper .source"))
                     }
                 }else{
@@ -77,14 +78,25 @@ function get_budget_list(){
 }
 
 
-$('#budgetModal').on('hide.bs.modal', function (e) {
+$('#addBudgetCollapse').on('hidden.bs.collapse', function (e) {
+    if ($("#created_budget_list_keeper").css("display")=="none"){
+        $("#no_budget_animation").css("display","block");
+        $(".no-budget-desc").css("display","block");  
+    }
     $("#budgetName").val("")
     $("#budgetPoints").val("");
     $("#budgetName").siblings(".text-danger").css("display","none");
     $("#budgetName").removeClass("error-field");
     $("#budgetPoints").siblings(".text-danger").css("display","none");
     $("#budgetPoints").removeClass("error-field");
+    $("#addBudgetForm i.material-icons").text("add_circle_outline");
 })
+
+$('#addBudgetCollapse').on('shown.bs.collapse', function (e) {
+    $("#no_budget_animation").css("display","none");
+    $(".no-budget-desc").css("display","none");  
+    $("#addBudgetForm i.material-icons").text("remove_circle_outline");  
+});
 
 function create_budget_validation(){
     let is_valid = true;
@@ -104,7 +116,7 @@ function create_budget_validation(){
     }
     if (point_amount < 1){
         is_valid = false;
-        amount_error.text(gettext("Please enter budget name!"));
+        amount_error.text(gettext("Please enter positive point amount!"));
         amount_error.css("display","block");
         $("#budgetPoints").addClass("error-field");
         $("#budgetPoints").keyup(function(){

@@ -15,48 +15,22 @@
             <div class="col">
                 <h4 class="font-weight-bold d-inline">{% trans "Budget List" %}</h4>
             </div>
-            <div class="col">
+            <!-- <div class="col">
                 <button id="openAddBudgetModal" type="button" class="btn font-weight-bold float-right standard-btn" data-toggle="modal" data-target="#budgetModal">Create Budget</button>
-            </div>
+            </div> -->
         </div>
-        <div style="display:none;height: 500px;margin-top: 10vh;" id="no_budget_animation">
-        </div>
-        <p style="display:none;margin-top:20px;text-align:center" class="no-budget-desc">{% trans "There is no created budget, create now ..." %}</p>
-        <div style="display:none" id="created_budget_list_keeper" class="container budget-table mt-5">
-            <div class="row table-head align-items-center">
-                <div class="col-4 font-weight-bold">Name</div>
-                <div class="col font-weight-bold">Recipients</div>
-                <div class="col font-weight-bold">Pointes per month</div>
-                <div class="col font-weight-bold">Creation Date</div>
-                <div style="text-align:center" class="col-1 font-weight-bold">Active</div>
+            <div id="addBudgetForm" class="card mt-2 shadow">
+            <div class="card-body pr-0 row align-items-center" data-toggle="collapse" data-target="#addBudgetCollapse" aria-expanded="false" aria-controls="addBudgetCollapse">
+                <p class="text-sm mb-0 col"> {% trans "Create new budget. Fill form and add new one" %} </p>
+                <i style="color:#aaa" class="material-icons text-md text-xl col-1 text-center">add_circle_outline</i>
             </div>
-            <div style="display:none" class="row table-body align-items-center source">
-                <div class="col-4">
-                    <span>Hajar</span>
-                    <small class="d-block text-muted">Created by Hajar Sadeghi</small>
-                </div>
-                <div class="col">all</div>
-                <div type="points" class="col">hajar@arianatech.ir</div>
-                <div type="date" class="col">hajar@arianatech.ir</div>
-                <div style="display:flex;justify-content:center" type="status" class="col-1"><i class="material-icons"></i></div>
-            </div>
-        </div>
-        <!-- modal -->
-        <div class="modal fade mt-5" id="budgetModal" tabindex="-1" role="dialog" aria-labelledby="budgetModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="budgetModalLabel">create a custome budget</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
+            <div class="collapse" id="addBudgetCollapse">
+                <div class="card card-body">
                     <form>
                         <div class="form-group">
-                          <label for="budgetName">{% trans "Budget Name" %}</label>
-                          <input type="text" class="form-control" id="budgetName" aria-describedby="budgetName" placeholder="{% trans 'Enter a descriptive name for your budget' %}">
-                          <p class="text-danger"></p>
+                            <label for="budgetName">{% trans "Budget Name" %}</label>
+                            <input type="text" class="form-control" id="budgetName" aria-describedby="budgetName" placeholder="{% trans 'Enter a descriptive name for your budget' %}">
+                            <p class="text-danger"></p>
                         </div>
                         <!-- <div class="accordion form-group" id="search">
                             <label for="budgetRecipients">{% trans "Select Recipients" %}</label>
@@ -135,10 +109,95 @@
                             <input type="number" class="form-control" id="budgetPoints" min=1 aria-describedby="budgetPoints" placeholder="Enter a descriptive name for your budget">
                             <p class="text-danger"></p> 
                         </div>
+                        <button id="create_budget_submit" type="button" class="btn btn-primary standard-btn">Create Budget</button>
                     </form>
                 </div>
+            </div>
+        </div>
+        <div style="display:none;height: 500px;margin-top: 10vh;" id="no_budget_animation">
+        </div>
+        <p style="display:none;margin-top:20px;text-align:center" class="no-budget-desc">{% trans "There is no created budget, create now ..." %}</p>
+
+
+
+        <div style="display:none" id="created_budget_list_keeper" class="card shadow mt-5">
+                <div class="card-header border-0">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <h3 class="mb-0">{% trans "List of created budgets" %}</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="table-responsive">
+                  <!-- Projects table -->
+                  <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col-4">{% trans "Name" %}</th>
+                        <th scope="col">{% trans "Recipients" %}</th>
+                        <th scope="col">{% trans "Pointes per month" %}</th>
+                        <th scope="col">{% trans "Creation Date" %}</th>
+                        <th scope="col">{% trans "Active" %}</th>                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr style="display:none" class="source">
+                        <th >
+                            <span>Hajar</span>
+                            <small class="d-block text-muted">Created by Hajar Sadeghi</small>
+                        </th>
+                        <td >
+                          all
+                        </td>
+                        <td type="points" >
+                        </td>
+                        <td type="date" >
+                        </td>
+                        <td type="status" >
+                            <i class="material-icons">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+
+
+
+        <!-- <div style="display:none" id="created_budget_list_keeper" class="container budget-table mt-5">
+            <div class="row table-head align-items-center">
+                <div class="col-4 font-weight-bold">Name</div>
+                <div class="col font-weight-bold">Recipients</div>
+                <div class="col font-weight-bold">Pointes per month</div>
+                <div class="col font-weight-bold">Creation Date</div>
+                <div style="text-align:center" class="col-1 font-weight-bold">Active</div>
+            </div>
+            <div style="display:none" class="row table-body align-items-center source">
+                <div class="col-4">
+                    <span>Hajar</span>
+                    <small class="d-block text-muted">Created by Hajar Sadeghi</small>
+                </div>
+                <div class="col">all</div>
+                <div type="points" class="col">hajar@arianatech.ir</div>
+                <div type="date" class="col">hajar@arianatech.ir</div>
+                <div style="display:flex;justify-content:center" type="status" class="col-1"><i class="material-icons"></i></div>
+            </div>
+        </div> -->
+        <!-- modal -->
+        <div class="modal fade mt-5" id="budgetModal" tabindex="-1" role="dialog" aria-labelledby="budgetModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="budgetModalLabel">create a custome budget</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    
+                </div>
                 <div class="modal-footer justify-content-center">
-                  <button id="create_budget_submit" type="button" class="btn btn-primary standard-btn">Create Budget</button>
                 </div>
               </div>
             </div>
