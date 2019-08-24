@@ -20,21 +20,31 @@ $(document).ready(function() {
         }
     });
 
-    
-
-    $('body').on('click',() => {
-        if ($('.point-recognition').find('#pointRecognitionInput').val()) {
-            $('#pointRecognitionBadge').text($('.point-recognition').find('#pointRecognitionInput').val());
-        }
-        else {
-            $('#pointRecognitionBadge').text('Recognize via Points');
-            
-        }
-    });
+    // cloneUser();
+    // function cloneUser() {
+    //     for (var i = 0;i < 20;i++){
+    //         let user = $(".select-privacy").clone();
+    //         $(".select-privacy").append(user);
+    //     }
+    // }
 
     $('#privacyModal .modal-body').on('scroll',() => {
         if ($('.modal-body').scrollTop() + $('.modal-body').innerHeight() >= $('#privacyModal .modal-body')[0].scrollHeight) {
             console.log('end of the scroll')    
         }
-    })
+    });
+
+    $('.recognition-btn').on('click',() => {
+        $('.recognition-container,.recognition-btn').toggleClass('d-none');
+    });
+
+    // $('body').on('click',() => {
+    //     if ($('.point-recognition').find('#pointRecognitionInput').val()) {
+    //         $('#pointRecognitionBadge').text($('.point-recognition').find('#pointRecognitionInput').val());
+    //     }
+    //     else {
+    //         $('#pointRecognitionBadge').text('Recognize via Points');
+            
+    //     }
+    // });
 });
