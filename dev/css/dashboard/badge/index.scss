@@ -14,14 +14,13 @@ button.standard-btn {
 }
 
 #created_badge_table_keeper {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    justify-content: center;
+    grid-gap: 15px;
     
     .badge-card {
         width:200px !important;
-        margin-bottom: 20px !important;
         position: relative !important;
         overflow: hidden !important;
         img {
@@ -46,9 +45,16 @@ button.standard-btn {
             transition: top 1s;
             .hover-down {
                 position: absolute;
-                bottom: 0;
+                bottom: 12px;
                 .down-details{
-                    i{}
+                    display: flex;
+                    align-items: center;
+                    margin-top: 6px;
+                    i{
+                        font-size: 16px !important;
+                        margin-right: 12px;
+                        color: white !important;
+                    }
                 }
             }
         }

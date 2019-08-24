@@ -68,6 +68,16 @@ let badges = [
         src: "https://images.vexels.com/media/users/3/137485/isolated/preview/1e81e1076e981b2f03c3f6b65dbaca6e-ribbon-badge-label-by-vexels.png",
         name:"Gold",
         point: "800"
+    },
+    {
+        src:"http://www.pngmart.com/files/9/Award-Badge-PNG-Picture.png",
+        name:"Star",
+        point:"400"
+    },
+    {
+        src: "https://images.vexels.com/media/users/3/137485/isolated/preview/1e81e1076e981b2f03c3f6b65dbaca6e-ribbon-badge-label-by-vexels.png",
+        name:"Gold",
+        point: "800"
     }
 ];
 
@@ -77,7 +87,7 @@ $(".card img").hover(function(){
     $(this).siblings(".hover-part").css("top","0")
 })
 $(".card").mouseleave(function(){
-    // $(this).find(".hover-part").css("top","-200px")
+    $(this).find(".hover-part").css("top","-200px")
 })
 
 function init_badges() {
