@@ -19,7 +19,7 @@
             <form>
                 <div class="row align-items-center">
                     <div class="col">
-                        <a href="#"class="badge badge-pill badge-primary mx-1 py-1" data-toggle="collapse" data-target="#badgeExpanded" aria-expanded="false" aria-controls="BadgeExpanded">
+                        <a href="#"class="badge badge-pill badge-primary mx-1 py-1" data-toggle="modal" data-target="#recognitionModal">
                             <div class="row no-gutters align-items-center">
                                 <div class="col pr-1">
                                     <i class="material-icons md-18">
@@ -31,7 +31,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="#"class="badge badge-pill badge-primary mx-1 py-1 point-recognition" id="pointRecognition">
+                        <!-- <a href="#"class="badge badge-pill badge-primary mx-1 py-1 point-recognition" id="pointRecognition">
                             <div class="row no-gutters align-items-center">
                                 <div class="col pr-1">
                                     <i class="material-icons md-18">
@@ -43,68 +43,11 @@
                                     <input type="number" class="mx-1 py-1" id="pointRecognitionInput" placeholder="Ex. 100" />
                                 </div>
                             </div>
-                        </a>
-                        <!-- <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col pr-1">
-                                <i class="material-icons md-18">
-                                    add_a_photo
-                                </i>
-                                </div>
-                                <div class="col">
-                                Photo
-                                </div>
-                            </div>
-                        </a>
-                        <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col pr-1">
-                                <i class="material-icons md-18">
-                                    video_call
-                                </i>
-                                </div>
-                                <div class="col">
-                                Video
-                                </div>
-                            </div>
-                        </a>
-                        <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col pr-1">
-                                <i class="material-icons md-18">
-                                    face
-                                </i>
-                                </div>
-                                <div class="col">
-                                Tag Friends
-                                </div>
-                            </div>
-                        </a>
-                        <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col pr-1">
-                                <i class="material-icons md-18">
-                                    add_location
-                                </i>
-                                </div>
-                                <div class="col">
-                                Location
-                                </div>
-                            </div>
                         </a> -->
-                        <div id="badgeExpanded" class="collapse">
-                            <hr class="my-3" />
-                            list of badges
-                        </div>
                     </div>
-                </div>
-                <hr class="my-3" />
-                <div class="row">
                     <div class="col text-right">
                         <div class="btn-group mx-1">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Privacy
-                            </button>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Privacy</button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#">Public</a>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#privacyModal">Colleagues except</a>

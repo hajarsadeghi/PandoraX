@@ -134,7 +134,7 @@
     }
 }
 
-#privacyModal {
+.modal {
     .avatar {
         img {
             border-radius: 0;
@@ -155,9 +155,11 @@
         padding: 0 1.25rem;
     }
 
-    .modal-body {
-        max-height: 400px;
-        overflow-y: scroll;
+    &#privacyModal {
+        .modal-body {
+            max-height: 400px;
+            overflow-y: scroll;
+        }
     }
 }
 
