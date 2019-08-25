@@ -132,7 +132,7 @@ msgstr "بعدی"
 #, fuzzy
 #| msgid "Who is on your team?"
 msgid "Whats on your mind today? :)"
-msgstr "تیم شما کیست؟"
+msgstr "جی تو ذهنت میگذره؟"
 
 #: templates/feed/_recognition.html:35
 #, fuzzy
