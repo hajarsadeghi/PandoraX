@@ -38,6 +38,10 @@ $(document).ready(function() {
         $('.recognition-container,.recognition-btn').toggleClass('d-none');
     });
 
+    $('.card-stats').on('click', () => {
+        $(this).closest('.card-stats').toggleClass('selected-badge-border');
+    });
+
     // $('body').on('click',() => {
     //     if ($('.point-recognition').find('#pointRecognitionInput').val()) {
     //         $('#pointRecognitionBadge').text($('.point-recognition').find('#pointRecognitionInput').val());

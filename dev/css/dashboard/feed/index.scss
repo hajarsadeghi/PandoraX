@@ -37,6 +37,10 @@
                 box-shadow: none !important;
             }
 
+            &.dropdown-toggle {
+                background-color: $tint-blue-color1;
+            }
+
             &#useBadgeBtn {
                 background-color: $main-red-color;
                 color: $white;
@@ -179,8 +183,12 @@
         }
     }
 
-    &#giveBadge {
-        
+    &#recognitionModal {
+        #giveBadge {
+            .card-stats {
+                cursor: pointer;
+            }
+        }
     }
 }
 
@@ -200,6 +208,10 @@
     &:after {
         width: 100%;
     }
+}
+
+.selected-badge-border {
+    border: 1px solid $main-blue-color !important;
 }
 
 // Small to Large devices (desktops, 992px and up)
