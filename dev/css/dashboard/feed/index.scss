@@ -1,5 +1,6 @@
 @import "./../../utilities/variables";
 @import "./../../utilities/mixins";
+@import "./../badge/index.scss";
 
 
 
@@ -160,6 +161,10 @@
             max-height: 400px;
             overflow-y: scroll;
         }
+    }
+
+    &#giveBadge {
+        
     }
 }
 

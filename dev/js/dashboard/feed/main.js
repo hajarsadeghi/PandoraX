@@ -20,13 +20,13 @@ $(document).ready(function() {
         }
     });
 
-    // cloneUser();
-    // function cloneUser() {
-    //     for (var i = 0;i < 20;i++){
-    //         let user = $(".select-privacy").clone();
-    //         $(".select-privacy").append(user);
-    //     }
-    // }
+    cloneUser();
+    function cloneUser() {
+        for (var i = 0;i < 20;i++){
+            let user = $('#privacyModal').find(".select-privacy:last-child").clone(true);
+            user.insertAfter($('#privacyModal').find('.select-privacy:last-child'));
+        }
+    }
 
     $('#privacyModal .modal-body').on('scroll',() => {
         if ($('.modal-body').scrollTop() + $('.modal-body').innerHeight() >= $('#privacyModal .modal-body')[0].scrollHeight) {
