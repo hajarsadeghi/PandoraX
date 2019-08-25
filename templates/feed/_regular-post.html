@@ -32,7 +32,7 @@
                                     </i>
                                 </div>
                                 <div class="col">
-                                    Photo/Video
+                                    {% trans 'Photo/Video' %}
                                 </div>
                             </div>
                         </a>
@@ -44,7 +44,7 @@
                                     </i>
                                 </div>
                                 <div class="col">
-                                    Location
+                                    {% trans 'Location' %}
                                 </div>
                             </div>
                         </a>
@@ -56,7 +56,7 @@
                                     </i>
                                 </div>
                                 <div class="col">
-                                    Tag Friends
+                                    {% trans 'Tag Friends' %}
                                 </div>
                             </div>
                         </a>
@@ -78,16 +78,16 @@
                 <div class="d-none">
                     <div class="flex-shrink-1">
                         <div class="btn-group mx-1">
-                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Privacy</button>
+                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans 'Privacy' %}</button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Public</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#privacyModal">Colleagues except</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#privacyModal">Specific colleagues</a>
+                                <a class="dropdown-item" href="#">{% trans 'Public' %}</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#privacyModal">{% trans 'Colleagues except' %}</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#privacyModal">{% trans 'Specific colleagues' %}</a>
                             </div>
                         </div>
                     </div>
                     <div class="flex-grow-1">
-                        <button id="postBtn" class="btn btn-block mx-1" type="button">Post</button>
+                        <button id="postBtn" class="btn btn-block mx-1" type="button">{% trans 'Post' %}</button>
                     </div>
                 </div>
             </form>
