@@ -1,21 +1,21 @@
 $(document).ready(function() {
     // ... initialize emoji
-    $("#postContent").emojioneArea();
-    $("#postContent").data("emojioneArea").enable();
+    $(".post-content").emojioneArea();
+    $(".post-content").data("emojioneArea").enable();
     $('.point-recognition').attr('is-input-visible', false);
 
-    $('#postToggled').on('click', () => {
-        if (!$('#postToggled').attr('area-expanded')) {
-            $('#postToggled').attr('aria-expanded', 'true');
-            $('#postExpanded').collapse('show');
+    $('.post-toggled').on('click', () => {
+        if (!$(this).attr('area-expanded')) {
+            $(this).attr('aria-expanded', 'true');
+            $(this).find('.post-expanded').collapse('show');
             $('.tinted').css({'visibility':'visible', 'opacity': '1'});
         }
     });
 
     $('.tinted').on('click', () => {
-        if ($('#postToggled').attr('aria-expanded')) {
-            $('#postToggled').attr('aria-expanded', 'false');
-            $('#postExpanded').collapse('hide');
+        if ($(this).attr('aria-expanded')) {
+            $(this).attr('aria-expanded', 'false');
+            $(this).find('.post-expanded').collapse('hide');
             $('.tinted').css({'visibility':'hidden', 'opacity': '0'});
         }
     });

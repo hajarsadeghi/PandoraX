@@ -1,15 +1,28 @@
 @import "./utilities/variables";
 @import "./utilities/mixins";
 
+
 .header {
-    background: $main-red-color !important;
+
+    background: $tint-blue-color5 !important;
     .dropdown-menu-right{
         right: -6px;
     }
+
     .h3{
         color: white;
     }
+
     .light-on-hover:hover {
         color: $tint-red-color3
+    }
+    
+    .navbar-search {
+        .search-input {
+            @include transition(all .4s cubic-bezier(.68,-.55,.265,1.55));
+            &:focus {
+                width: 360px;
+            }
+        }
     }
 }

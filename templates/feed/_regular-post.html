@@ -1,0 +1,96 @@
+{% load static %}
+{% load i18n %}
+
+
+
+<div class="card-body">
+    <div id="postToggled" class="post-toggled" data-target="#postExpanded" aria-expanded="false" aria-controls="postExpanded">
+        <div class="my-1" id="sharePost">
+            <div id="postLink" class="align-items-center d-flex flex-row">
+            <div class="d-flex flex-column">
+                {% if request.user.profile_picture %}
+                    <img class="img-fluid" src="{{request.user.profile_picture.url}}" alt="profile picture" />
+                {% else %}
+                    <span class="text-dark">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
+                {% endif %}
+            </div>
+            <div class="d-flex flex-column contentWrapper">
+                <div id="RegularPostContent" class="post-content px-3" contenteditable="true" data-placeholder="Whats on your mind today? :)"></div>
+            </div>
+            </div>
+        </div>
+        <div id="postExpanded" class="collapse post-expanded">
+            <hr class="my-3" />
+            <form>
+                <div class="row align-items-center mb-2">
+                    <div class="col">
+                        <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col pr-1">
+                                    <i class="material-icons md-18">
+                                        photo
+                                    </i>
+                                </div>
+                                <div class="col">
+                                    Photo/Video
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col pr-1">
+                                    <i class="material-icons md-18">
+                                        my_location
+                                    </i>
+                                </div>
+                                <div class="col">
+                                    Location
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col pr-1">
+                                    <i class="material-icons md-18">
+                                        tag_faces
+                                    </i>
+                                </div>
+                                <div class="col">
+                                    Tag Friends
+                                </div>
+                            </div>
+                        </a>
+                        <!-- <a href="#"class="badge badge-pill badge-primary mx-1 py-1 point-recognition" id="pointRecognition">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col pr-1">
+                                    <i class="material-icons md-18">
+                                        monetization_on
+                                    </i>
+                                </div>
+                                <div class="col">
+                                    <span id="pointRecognitionBadge">Recognize via Points</span>
+                                    <input type="number" class="mx-1 py-1" id="pointRecognitionInput" placeholder="Ex. 100" />
+                                </div>
+                            </div>
+                        </a> -->
+                    </div>
+                </div>
+                <div class="d-none">
+                    <div class="flex-shrink-1">
+                        <div class="btn-group mx-1">
+                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Privacy</button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Public</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#privacyModal">Colleagues except</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#privacyModal">Specific colleagues</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-grow-1">
+                        <button id="postBtn" class="btn btn-block mx-1" type="button">Post</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

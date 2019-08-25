@@ -5,9 +5,12 @@
 
 
 
-.header {
+.cards-stats {
     .card {
-        height: 120px !important;
+        min-height: 120px !important;
+        img {
+            width: 120px;
+        }
     }
 }   
 
@@ -29,7 +32,20 @@
         }
         
         button {
-            background-color: $main-blue-color;
+
+            &:focus {
+                box-shadow: none !important;
+            }
+
+            &#useBadgeBtn {
+                background-color: $main-red-color;
+                color: $white;
+            }
+
+            &#postBtn {
+                background-color: $main-blue-color;   
+                color: $white;
+            }
         }
 
         img {

@@ -1,21 +1,22 @@
 {% load static %}
+{% load i18n %}
 
 
 <div class="card shadow post">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item m-1">
-      <a class="nav-link post-border-bottom active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Recognition</a>
+      <a class="nav-link post-border-bottom active" id="recognition-tab" data-toggle="tab" href="#recognition" role="tab" aria-controls="recognition" aria-selected="true">Recognition</a>
     </li>
     <li class="nav-item m-1">
-      <a class="nav-link post-border-bottom" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Post</a>
+      <a class="nav-link post-border-bottom" id="regular-post-tab" data-toggle="tab" href="#regularPost" role="tab" aria-controls="regularPost" aria-selected="false">Post</a>
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <div class="tab-pane fade show active" id="recognition" role="tabpanel" aria-labelledby="recognition-tab">
       {% include 'feed/_recognition.html' %}
     </div>
-    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-        post
+    <div class="tab-pane fade" id="regularPost" role="tabpanel" aria-labelledby="regular-post-tab">
+      {% include 'feed/_regular-post.html' %} 
     </div>
   </div>
 </div>
