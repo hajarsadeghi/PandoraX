@@ -9,7 +9,7 @@
             <div id="postLink" class="align-items-center d-flex flex-row">
             <div class="d-flex flex-column">
                 {% if request.user.profile_picture %}
-                    <img class="img-fluid" src="{{request.user.profile_picture.url}}" alt="profile picture" />
+                    <img class="img-fluid profile-pic" src="{{request.user.profile_picture.url}}" alt="profile picture" />
                 {% else %}
                     <span class="text-dark">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
                 {% endif %}
