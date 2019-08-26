@@ -9,7 +9,7 @@
             <div id="postLink" class="align-items-center d-flex flex-row">
             <div class="d-flex flex-column">
                 {% if request.user.profile_picture %}
-                    <img class="img-fluid" src="{{request.user.profile_picture.url}}" alt="profile picture" />
+                    <img class="img-fluid profile-pic" src="{{request.user.profile_picture.url}}" alt="profile picture" />
                 {% else %}
                     <span class="text-dark">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
                 {% endif %}
@@ -20,37 +20,43 @@
             </div>
         </div>
         <div id="recognitionExpanded" class="collapse post-expanded">
-            <hr class="my-3" />
+            <div class="selected-badge-container"></div>
             <form>
-                <div class="row align-items-center mb-2">
-                    <div class="col">
-                        <button id="useBadgeBtn" class="btn mx-1" type="button" data-toggle="modal" data-target="#recognitionModal">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col pr-1">
-                                    <i class="material-icons md-18">
-                                        sentiment_satisfied_alt
-                                    </i>
+                <div class="use-badge-section">
+                    <hr class="my-3" />
+                    <div class="row align-items-center mb-2">
+                        <div class="col">
+                            <button id="useBadgeBtn" class="btn mx-1" type="button" data-toggle="modal" data-target="#recognitionModal">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col pr-1">
+                                        <i class="material-icons md-18">
+                                            sentiment_satisfied_alt
+                                        </i>
+                                    </div>
+                                    <div class="col">
+                                        {% trans 'Use Badge' %}
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    {% trans 'Use Badge' %}
-                                </div>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-                <div class="d-none">
-                    <div class="flex-shrink-1">
-                        <div class="btn-group mx-1">
-                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans 'Privacy' %}</button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">{% trans 'Public' %}</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#privacyModal">{% trans 'Colleagues except' %}</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#privacyModal">{% trans 'Specific colleagues' %}</a>
-                            </div>
+                            </button>
                         </div>
                     </div>
-                    <div class="flex-grow-1">
-                        <button id="postBtn" class="btn btn-block mx-1" type="button">{% trans 'Post' %}</button>
+                </div>
+                <div class="post-recognition d-none">
+                    <hr class="my-3" />
+                    <div class="d-flex">
+                        <div class="flex-shrink-1">
+                            <div class="btn-group mx-1">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans 'Privacy' %}</button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">{% trans 'Public' %}</a>
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#privacyModal">{% trans 'Colleagues except' %}</a>
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#privacyModal">{% trans 'Specific colleagues' %}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1">
+                            <button id="postBtn" class="btn btn-block mx-1" type="button">{% trans 'Post' %}</button>
+                        </div>
                     </div>
                 </div>
             </form>
