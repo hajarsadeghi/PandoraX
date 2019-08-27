@@ -6,10 +6,126 @@ button.standard-btn {
     color: $white;
     border: none;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         color: $white;
         background-color: $tint-red-color5;
         --box-shadow-color: $tint-red-color5;
+    }
+}
+
+#addBadgeCollapse {
+    .badge-icon {
+        height: 300px;
+        width: calc( 100% - 224px);
+        border: 1px solid #cad1d7;
+
+        padding: 0;
+        overflow: hidden;
+        .badge-icon-tabs {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            .nav-item {
+                height: 50%;
+            }
+            #v-pills-tab {
+                height: 100%;
+                width: 40px;
+                .active {
+                    background-color: $tint-blue-color4;
+                }
+                a {
+                    padding: 0;
+                    width: 100%;
+                    border: #cad1d7 solid 1px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-top: none;
+                    border-bottom: none;
+                    border-left: none;
+                    box-shadow: none;
+                    border-radius: 0 0.5rem 0.5rem 0;
+                    height: 50%;
+                }
+            }
+        }
+
+        // display: flex;
+        // @media only screen and (max-width: 576px){
+        //     &{
+        //         height: 600px;
+        //         margin: 0;
+        //         margin-bottom: 20px;
+        //     }
+        // }
+        // display: flex;
+        // background-color: red
+        #badgeFileUploader {
+            width: 100%;
+            height: 100%;
+            border: 1px dashed #cad1d7;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            @media only screen and (max-width: 576px) {
+                & {
+                    height: calc(50% - 6px);
+                    margin: 0;
+                    width: 100%;
+                }
+            }
+            i {
+                font-size: 5rem;
+            }
+        }
+        #badgeAlbume {
+            height: 100%;
+            width: 100%;
+            // margin-left: 12px;
+            padding-right: 12px;
+            padding-left: 12px;
+            overflow: scroll;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            // border: 1px solid #cad1d7;
+            @media only screen and (max-width: 576px) {
+                & {
+                    height: calc(50% - 6px);
+                    margin: 0;
+                    margin-top: 12px;
+                    width: 300px;
+                }
+            }
+            .search {
+                overflow: hidden;
+                position: relative;
+                input {
+                    border: none;
+                    outline: none;
+                    width: 100%;
+                    border-bottom: #cad1d7 solid 1px;
+                    &:focus {
+                        border-bottom: $main-red-color solid 1px;
+                    }
+                }
+            }
+            .albume {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, 100px);
+                justify-content: center;
+                grid-gap: 15px;
+                img {
+                    width: 100px;
+                    height: 100px;
+                }
+            }
+        }
     }
 }
 
@@ -18,43 +134,85 @@ button.standard-btn {
     grid-template-columns: repeat(auto-fill, 200px);
     justify-content: center;
     grid-gap: 15px;
-    
+
     .badge-card {
-        width:200px !important;
+        width: 200px !important;
         position: relative !important;
         overflow: hidden !important;
         img {
             padding: 25px;
             background-color: white;
-            width:100%;
-            height:200px;
+            width: 100%;
+            height: 200px;
         }
         .badge-label {
-            background-color:white;
-            padding:5px;
-            padding-left:15px
+            background-color: white;
+            padding: 5px;
+            padding-left: 15px;
         }
         .hover-part {
             display: flex;
             flex-direction: column;
-            width:200px;
-            height:200px;
-            position:absolute;
-            top:-200px;
-            background-color:rgba(0, 0, 0, 0.6);
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: -200px;
+            background-color: rgba(0, 0, 0, 0.6);
             transition: top 1s;
             .hover-down {
                 position: absolute;
                 bottom: 12px;
-                .down-details{
+                .down-details {
                     display: flex;
                     align-items: center;
                     margin-top: 6px;
-                    i{
+                    i {
                         font-size: 16px !important;
                         margin-right: 12px;
                         color: white !important;
                     }
+                }
+            }
+        }
+    }
+}
+
+.form-group .badge-card {
+    width: 200px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    margin-left: 24px;
+    img {
+        padding: 25px;
+        background-color: white;
+        width: 100%;
+        height: 200px;
+    }
+    .badge-label {
+        background-color: white;
+        padding: 5px;
+        padding-left: 15px;
+    }
+    .hover-part {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top: -200px;
+        background-color: rgba(0, 0, 0, 0.6);
+        transition: top 1s;
+        .hover-down {
+            position: absolute;
+            bottom: 12px;
+            .down-details {
+                display: flex;
+                align-items: center;
+                margin-top: 6px;
+                i {
+                    font-size: 16px !important;
+                    margin-right: 12px;
+                    color: white !important;
                 }
             }
         }

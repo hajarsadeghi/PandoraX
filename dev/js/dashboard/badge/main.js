@@ -82,6 +82,7 @@ let badges = [
 ];
 
 init_badges();
+init_albume();
 
 $(".card img").hover(function(){
     $(this).siblings(".hover-part").css("top","0")
@@ -93,12 +94,44 @@ $(".card").mouseleave(function(){
 function init_badges() {
     // let card = $(".badge_card");
     for (var i = 0;i<badges.length;i++){
-        console.log("now")
         let card = $("#created_badge_table_keeper .source").clone();
         card.removeClass("source");
         card.find(".card-title").text(badges[i].name);
         card.find("img").attr("src",badges[i].src);
         card.find(".font-weight-bold").text(badges[i].point);
-        card.insertAfter($(".source"));
+        card.insertAfter($("#created_badge_table_keeper .source"));
     }
 }
+
+
+function init_albume() {
+    for (var i = 0;i<badges.length;i++){
+        let card = $("#badgeAlbume .source").clone();
+        card.removeClass("source");
+        card.css("display","block")
+        card.attr("src",badges[i].src);
+        card.insertAfter($("#badgeAlbume .source"));
+    }
+}
+
+
+
+$('#addBadgeCollapse').on('hidden.bs.collapse', function (e) {
+    if ($("#created_badge_list_keeper").css("display")=="none"){
+        $("#no_badge_animation").css("display","block");
+        $(".no-badge-desc").css("display","block");  
+    }
+    $("#badgeName").val("")
+    $("#badgePoints").val("");
+    $("#badgeName").siblings(".text-danger").css("display","none");
+    $("#badgeName").removeClass("error-field");
+    $("#badgePoints").siblings(".text-danger").css("display","none");
+    $("#badgePoints").removeClass("error-field");
+    $("#addBadgeForm i.collaping-icon").text("add_circle_outline");
+})
+
+$('#addBadgeCollapse').on('shown.bs.collapse', function (e) {
+    $("#no_badge_animation").css("display","none");
+    $(".no-badge-desc").css("display","none");  
+    $("#addBadgeForm i.collaping-icon").text("remove_circle_outline");  
+});
