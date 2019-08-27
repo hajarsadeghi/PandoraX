@@ -12,38 +12,63 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <div class="modal-search-box">
+        <div class="modal-search-box p-3">
             <div class="form-group">
                 <div class="input-group input-group-alternative mb-4">
                     <input class="form-control form-control-alternative" placeholder="Search" type="text">
                 </div>
             </div>
-        </div>
-        <div class="modal-body">
-            <div class="d-flex align-items-center select-privacy mb-2">
-                <div class="px-3">
-                    <div class="media align-items-center">
-                        <span class="avatar avatar-sm rounded-circle bg-white shadow-sm">
-                            {% if request.user.profile_picture %}
-                                <img class="img-fluid" src="{{request.user.profile_picture.url}}" alt="profile picture" />
-                            {% else %}
-                                <span class="text-dark">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
-                            {% endif %}
-                        </span>
-                        <div class="media-body ml-2 d-none d-lg-block">
-                            <span class="mb-0 text-sm font-weight-bold">
-                                {{request.user.get_full_name}}
+            <div class="selected-privacy" img-profile-src="{{request.user.profile_picture.url}}" username="{{request.user.get_full_name}}" occupation="Web Developer" >
+                <div class="d-flex align-items-center select-privacy mb-2">
+                    <div class="px-3">
+                        <div class="media align-items-center">
+                            <span class="avatar avatar-sm rounded-circle bg-white shadow-sm">
+                                {% if request.user.profile_picture %}
+                                    <img class="img-fluid" src="{{request.user.profile_picture.url}}" alt="profile picture" />
+                                {% else %}
+                                    <span class="text-dark">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
+                                {% endif %}
                             </span>
-                            <small class="text-muted d-block">Front-End develoer</small>
+                            <div class="media-body ml-2 d-none d-lg-block">
+                                <span class="mb-0 text-sm font-weight-bold">
+                                    {{request.user.get_full_name}}
+                                </span>
+                                <small class="text-muted d-block">Front-End develoer</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-grow-1 align-self-center mt-2 px-3">
+                        <div class="text-right">
+                            <span class="remove-row-radio"></span>
                         </div>
                     </div>
                 </div>
-                <div class="flex-grow-1">
-                    <div class="align-items-center">
-                        <div class="col text-right">
-                            <i class="material-icons">
-                                add_circle_outline
-                            </i>
+                <hr class="my-3" />
+            </div>
+        </div>
+        <div class="modal-body p-3">
+            <div class="select-privacy-container">
+                <div class="d-flex select-privacy align-items-center mb-2">
+                    <div class="px-3">
+                        <div class="media align-items-center">
+                            <span class="avatar avatar-sm rounded-circle bg-white shadow-sm">
+                                {% if request.user.profile_picture %}
+                                    <img class="img-fluid" src="{{request.user.profile_picture.url}}" alt="profile picture" />
+                                {% else %}
+                                    <span class="text-dark">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
+                                {% endif %}
+                            </span>
+                            <div class="media-body ml-2 d-none d-lg-block">
+                                <span class="mb-0 text-sm font-weight-bold">
+                                    {{request.user.get_full_name}}
+                                </span>
+                                <small class="text-muted d-block">Front-End develoer</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-grow-1 align-self-center mt-2">
+                        <div class="text-right">
+                            <span class="select-row-radio"></span>
                         </div>
                     </div>
                 </div>

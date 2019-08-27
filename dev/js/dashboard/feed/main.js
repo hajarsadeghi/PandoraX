@@ -40,8 +40,9 @@ $(document).ready(function() {
     });
 
     // ... generate mock badges & users
-    clone($('#privacyModal').find(".select-privacy:last-child"), 19);
-    clone($('#recognitionModal').find(".who-to-recognize-row:last-child"), 8);
+    // clone($('#privacyModal').find(".select-privacy:last-child"), 19);
+    // clone($('#recognitionModal').find(".who-to-recognize-row:last-child"), 8);
+    clone($('#recognitionModal #giveBadge').find(".card-stats:last-child"), 40);
 
     $('.recognition-btn').on('click',() => {
         $('.recognition-container,.recognition-btn').toggleClass('d-none');
@@ -70,13 +71,11 @@ $(document).ready(function() {
         let selected_user_obj = {
             id: 6,
             name: selected_user.attr('username'),
-            img: selected_user.attr('img-profile-src'),
-            // occupation: selected_user.attr('occupation')
+            img: selected_user.attr('img-profile-src')
         }
         $('.selected-badge-container').find('.user-card').attr('id', selected_user_obj.id);
         $('.selected-badge-container').find('.user-card img').attr('src', selected_user_obj.img);
         $('.selected-badge-container').find('.user-card .card-title').text(selected_user_obj.name);
-        // $('.selected-badge-container').find('.user-card small').text(selected_user_obj.occupation);
         $('.selected-badge-container').removeClass('d-none');
 
         let selected_badge = $('#giveBadge').find('.selected-badge-border');
@@ -97,6 +96,19 @@ $(document).ready(function() {
         $('.post-recognition').removeClass('d-none');
         $('#recognitionModal').modal('hide');
     });
+});
+
+// ... privacy setting 
+
+$('.selected-privacy').on('click', (e) => {
+    $(e.target).closest('.selected-privacy').addClass('d-none');
+    $('.select-privacy-container').find('.select-row-radio').removeClass('selected');
+});
+
+$('#privacyModal .select-privacy').on('click', (e) => {
+    $('.select-privacy-container').find('.select-row-radio').removeClass('selected');
+    $('.selected-privacy').removeClass('d-none');
+    $(e.target).closest('.select-privacy').find('.select-row-radio').toggleClass('selected');
 });
 
 // ... custom functions

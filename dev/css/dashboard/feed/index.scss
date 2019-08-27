@@ -2,17 +2,7 @@
 @import "./../../utilities/mixins";
 @import "./../badge/index.scss";
 
-
-
-
-.cards-stats {
-    .card {
-        min-height: 120px !important;
-        img {
-            width: 120px;
-        }
-    }
-}   
+ 
 
 .feed-container {
     .post {
@@ -166,6 +156,15 @@
                 height: auto;
             }
         }
+
+        .cards-stats {
+            .card {
+                min-height: 120px !important;
+                img {
+                    width: 120px;
+                }
+            }
+        }  
 
         // .custom-checkbox {
 
@@ -426,5 +425,8 @@
         width: 85% !important;
         margin-right: auto !important;
         margin-left: auto !important;
+    }
+    .modal-xl {
+        max-width: 70% !important;
     }
 }
