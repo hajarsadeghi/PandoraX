@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-21 14:47+0000\n"
+"POT-Creation-Date: 2019-08-25 11:24+0000\n"
 "PO-Revision-Date: 2019-08-21 19:11+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -34,29 +34,141 @@ msgstr "نشان ها"
 msgid "Budget List"
 msgstr "لیست بودجه ها"
 
-#: templates/badge/index.html:24 templates/budget/index.html:24
+#: templates/badge/index.html:24 templates/budget/index.html:119
 msgid "There is no created budget, create now ..."
 msgstr "بودجه ای ایجاد نشده است ، اکنون ایجاد کنید..."
 
-#: templates/badge/index.html:55 templates/budget/index.html:57
+#: templates/badge/index.html:55 templates/budget/index.html:31
 msgid "Budget Name"
 msgstr "نام بودجه"
 
-#: templates/badge/index.html:56 templates/budget/index.html:58
+#: templates/badge/index.html:56 templates/budget/index.html:32
 msgid "Enter a descriptive name for your budget"
 msgstr "یک نام توصیفی برا بودجه خود وارد کنید"
 
-#: templates/badge/index.html:59 templates/budget/index.html:134
+#: templates/badge/index.html:59 templates/budget/index.html:108
 msgid "Give points amount"
 msgstr "مقدار امتیاز را وارد کن"
 
-#: templates/budget/index.html:9
+#: templates/budget/index.html:9 templates/feed/_cards.html:13
 msgid "Budget"
 msgstr "بودجه"
 
-#: templates/budget/index.html:62
+#: templates/budget/index.html:24
+msgid "Create new budget. Fill form and add new one"
+msgstr ""
+
+#: templates/budget/index.html:36
 msgid "Select Recipients"
 msgstr "انتخاب دریافت کنندگان"
+
+#: templates/budget/index.html:127
+msgid "List of created budgets"
+msgstr "لیست بودجه های ایجاد شده"
+
+#: templates/budget/index.html:136
+msgid "Name"
+msgstr "نام"
+
+#: templates/budget/index.html:137
+#, fuzzy
+#| msgid "Select Recipients"
+msgid "Recipients"
+msgstr "انتخاب دریافت کنندگان"
+
+#: templates/budget/index.html:138
+msgid "Pointes per month"
+msgstr "امتیاز ماهانه"
+
+#: templates/budget/index.html:139
+msgid "Creation Date"
+msgstr "تاریخ ایجاد"
+
+#: templates/budget/index.html:140
+msgid "Active"
+msgstr "فعال"
+
+#: templates/feed/_cards.html:28
+msgid "Earned Points"
+msgstr "امتیاز دریافتی"
+
+#: templates/feed/_leaderboard.html:10
+msgid "Top Ten Ranks"
+msgstr "ده رتبه برتر"
+
+#: templates/feed/_post.html:8 templates/feed/_recognition-modal.html:10
+msgid "Recognition"
+msgstr "تشویق"
+
+#: templates/feed/_post.html:11 templates/feed/_recognition.html:53
+#: templates/feed/_regular-post.html:90
+msgid "Post"
+msgstr "پست"
+
+#: templates/feed/_privacy-modal.html:10
+msgid "Friends"
+msgstr "دوستان"
+
+#: templates/feed/_privacy-modal.html:53
+#: templates/feed/_recognition-modal.html:82
+msgid "Close"
+msgstr "بستن"
+
+#: templates/feed/_privacy-modal.html:54
+msgid "Save changes"
+msgstr "ثبت تغییرات"
+
+#: templates/feed/_recognition-modal.html:83
+msgid "Previouse"
+msgstr "قبلی"
+
+#: templates/feed/_recognition-modal.html:84
+#: templates/get_started/create_space/space-info.html:23
+#: templates/get_started/create_space/space-name.html:20
+msgid "Next"
+msgstr "بعدی"
+
+#: templates/feed/_recognition.html:18
+#, fuzzy
+#| msgid "Who is on your team?"
+msgid "Whats on your mind today? :)"
+msgstr "جی تو ذهنت میگذره؟"
+
+#: templates/feed/_recognition.html:35
+#, fuzzy
+#| msgid "Badges"
+msgid "Use Badge"
+msgstr "نشان ها"
+
+#: templates/feed/_recognition.html:44 templates/feed/_regular-post.html:81
+#, fuzzy
+#| msgid "Privacy Policy"
+msgid "Privacy"
+msgstr "سیاست حفظ حریم خصوصی"
+
+#: templates/feed/_recognition.html:46 templates/feed/_regular-post.html:83
+msgid "Public"
+msgstr "عمومی"
+
+#: templates/feed/_recognition.html:47 templates/feed/_regular-post.html:84
+msgid "Colleagues except"
+msgstr "همکاران به جز"
+
+#: templates/feed/_recognition.html:48 templates/feed/_regular-post.html:85
+msgid "Specific colleagues"
+msgstr "همکاران خاص"
+
+#: templates/feed/_regular-post.html:35
+msgid "Photo/Video"
+msgstr ""
+
+#: templates/feed/_regular-post.html:47
+msgid "Location"
+msgstr "محل"
+
+#: templates/feed/_regular-post.html:59
+msgid "Tag Friends"
+msgstr "برچسب زدن دوستان"
 
 #: templates/feed/index.html:10
 msgid "Dashboard"
@@ -74,15 +186,10 @@ msgstr "صنعت"
 msgid "Number of team members"
 msgstr "تعداد اعضای تیم"
 
-#: templates/get_started/create_space/space-info.html:23
-#: templates/get_started/create_space/space-name.html:20
-msgid "Next"
-msgstr "بعدی"
-
 #: templates/get_started/create_space/space-info.html:24
 #: templates/get_started/create_space/space-name.html:21
 msgid "By continiuing you're agreeing to our"
-msgstr ""
+msgstr "با ادامه دادن شما موافقت می کنید به"
 
 #: templates/get_started/create_space/space-info.html:24
 #: templates/get_started/create_space/space-name.html:21
@@ -186,27 +293,27 @@ msgstr "ساخت فضای جدید"
 msgid "Get your company or organization on Bilono"
 msgstr "شرکت یا سازمان خود را به بیلونو بیاورید"
 
-#: templates/header.html:28
+#: templates/header.html:26
 msgid "Other spaces"
 msgstr "فضاهای دیگر"
 
-#: templates/header.html:53
+#: templates/header.html:50
 msgid "Search"
 msgstr "جستجو"
 
-#: templates/header.html:79 templates/navbar.html:129
+#: templates/header.html:76 templates/navbar.html:129
 msgid "Welcome"
 msgstr "خوش آمدید"
 
-#: templates/header.html:83 templates/navbar.html:133
+#: templates/header.html:80 templates/navbar.html:133
 msgid "My profile"
 msgstr "پروفایل من"
 
-#: templates/header.html:87 templates/navbar.html:137
+#: templates/header.html:84 templates/navbar.html:137
 msgid "Help"
 msgstr "کمک"
 
-#: templates/header.html:91 templates/navbar.html:141
+#: templates/header.html:88 templates/navbar.html:141
 msgid "Logout"
 msgstr "خروج"
 

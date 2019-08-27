@@ -50,6 +50,12 @@
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
 
+.modal {
+    .h5, h5 {
+        font-size: 1.25rem;
+    }
+}
+
 // .. default btn style
 .btn {
     padding: .375rem .75rem;
@@ -176,5 +182,17 @@ footer {
                 cursor: default;
             }
         }
+    }
+}
+
+@media (min-width: 992px) {
+    .modal-lg, .modal-xl {
+        max-width: 800px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .modal-xl {
+        max-width: 1140px;
     }
 }

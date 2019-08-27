@@ -1,12 +1,16 @@
 @import "./../../utilities/variables";
 @import "./../../utilities/mixins";
+@import "./../badge/index.scss";
 
 
 
 
-.header {
+.cards-stats {
     .card {
-        height: 120px !important;
+        min-height: 120px !important;
+        img {
+            width: 120px;
+        }
     }
 }   
 
@@ -28,10 +32,27 @@
         }
         
         button {
-            background-color: $main-blue-color;
+
+            &:focus {
+                box-shadow: none !important;
+            }
+
+            &.dropdown-toggle {
+                background-color: $tint-blue-color1;
+            }
+
+            &#useBadgeBtn {
+                background-color: $main-red-color;
+                color: $white;
+            }
+
+            &#postBtn {
+                background-color: $main-blue-color;   
+                color: $white;
+            }
         }
 
-        img {
+        img.profile-pic {
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -88,6 +109,11 @@
             }
         }
 
+        .selected-badge-card {
+            width: 100px;
+            height: auto;
+        }
+
         .badge {
             &.badge-primary {
                 background-color: $tint-blue-color2;
@@ -134,16 +160,39 @@
     }
 }
 
-#privacyModal {
+.modal {
     .avatar {
         img {
-            border-radius: $radius;
+            border-radius: 0;
         }
     }
 
     button {
         &.btn-primary {
             background-color: $main-blue-color; 
+        }
+    }
+
+    .material-icons {
+        cursor: pointer;
+    }
+
+    .modal-search-box {
+        padding: 0 1.25rem;
+    }
+
+    &#privacyModal {
+        .modal-body {
+            max-height: 400px;
+            overflow-y: scroll;
+        }
+    }
+
+    &#recognitionModal {
+        #giveBadge {
+            .card-stats {
+                cursor: pointer;
+            }
         }
     }
 }
@@ -166,11 +215,115 @@
     }
 }
 
+.selected-badge-border {
+    border: 2px solid $main-blue-color;
+}
+
+// .card {
+
+//     &.card-stats {
+//         border: 0;
+//     }
+//     &.card-stats {
+    
+//         &.selected-badge-border {
+//             border: 2px sold $main-red-color !important;
+//             &:before, &:after {
+//                 width: 200px;
+//             }
+//             .curtain {
+//                 &:before, &:after {
+//                     height: 270px;
+//                 }
+//             }
+//         }
+    
+//         &:before, &:after {
+//             content: '';
+//             width: 0px;
+//             height: 2px;
+//             position: absolute;
+//             left: 0;
+//             background-color: $main-red-color;
+//             @include transition(all .6s ease);
+//         }
+    
+//         &:before {
+//             top: 0;
+//         }
+    
+//         &:after {
+//             bottom: 0;
+//         }
+    
+//         &:hover:before {
+//             width: 200px;
+//         }
+    
+//         &:hover:after {
+//             width: 200px;
+//         }
+        
+//         .curtain {
+//             position: absolute;
+//             top: 0;
+//             left: 0;
+//             width: 200px;
+//             height: 270px;
+//             // z-index: -10;
+    
+//             &:before, &:after {
+//                 content: '';
+//                 width: 2px;
+//                 height: 0px;
+//                 position: absolute;
+//                 top: 0;
+//                 background-color: $main-red-color;
+//                 @include transition(all .4s ease);
+//                 // z-index: 10;
+//             }
+    
+//             &:before {
+//                 left: 0;
+//             }
+        
+//             &:after {
+//                 right: 0;
+//             }
+    
+//             &:hover:before {
+//                 height: 270px;
+//             }
+    
+//             &:hover:after {
+//                 height: 270px;
+//             }
+//         }
+//     }
+// }
+
+
+
 // Small to Large devices (desktops, 992px and up)
 @media (max-width: 1199.8px) { 
     .feed-container {
         width: 100%;
         margin: auto;
+    }
+}
+
+@media (min-width: 992px) { 
+    .card {
+        &.card-stats {
+            box-shadow: 0px 0px 5px 2px rgba($color: #d3d3d3, $alpha: .80);
+            @include transition(box-shadow .4s);
+            @include transition(transform .4s);
+            &:hover {
+                box-shadow: 1px 1px 11px 3px rgba(79, 77, 77, .3);
+                transform: scale(1.02,1.02);
+                z-index: 9999;
+            }
+        }
     }
 }
 

@@ -1,0 +1,38 @@
+{% load static %}
+{% load i18n %}
+
+
+
+<!-- Card stats -->
+<div class="row cards-stats">
+    <div class="col-6 col-lg-12">
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div class="flex-grow-1">
+                        <h4 class="card-title text-uppercase text-muted mb-0">{% trans 'Budget' %}</h4>
+                        <span class="h3 font-weight-bold mb-0">350,897</span>
+                    </div>
+                    <div class="d-none d-lg-block">
+                        <img class="img-fluid" src="{% static 'image/tada.svg' %}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-12">
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div class="flex-grow-1">
+                        <h4 class="card-title text-uppercase text-muted mb-0">{% trans 'Earned Points' %}</h4>
+                        <span class="h3 font-weight-bold mb-0">2,356</span>
+                    </div>
+                    <div class="d-none d-lg-block">
+                        <img class="img-fluid" src="{% static 'image/member_team.svg' %}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
