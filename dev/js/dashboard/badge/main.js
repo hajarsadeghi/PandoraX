@@ -128,10 +128,38 @@ $('#addBadgeCollapse').on('hidden.bs.collapse', function (e) {
     $("#badgePoints").siblings(".text-danger").css("display","none");
     $("#badgePoints").removeClass("error-field");
     $("#addBadgeForm i.collaping-icon").text("add_circle_outline");
+});
+
+$("#badgeName").on('input',function(e){
+    $(".preview h5").text($("#badgeName").val());
+    if ($("#badgeName").val().length < 1){
+        console.log($("#badgeName").val().length)
+        $(".preview h5").text("Badge name ...");
+    }
 })
+$("#badgeDescription").on('input',function(e){
+    $(".preview .description").text($("#badgeDescription").val());
+    if ($("#badgeDescription").val().length < 1){
+        console.log($("#badgeDescription").val().length)
+        $(".preview .description").text(" description ... ");
+    }
+})
+
+$("#badgePoints").on('input',function(e){
+    $(".preview .badge-label span").text($("#badgePoints").val());
+    if ($("#badgePoints").val().length<1){
+        $(".preview .badge-label span").text("Badge points ...");
+    }
+})
+$("#badgePoints").val("");
 
 $('#addBadgeCollapse').on('shown.bs.collapse', function (e) {
     $("#no_badge_animation").css("display","none");
     $(".no-badge-desc").css("display","none");  
     $("#addBadgeForm i.collaping-icon").text("remove_circle_outline");  
 });
+
+
+$("#badgeAlbume img").click(function(){
+    $(".preview img").attr( "src",$(this).attr("src"))
+})
