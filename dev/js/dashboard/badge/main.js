@@ -119,7 +119,7 @@ function init_albume() {
 $('#addBadgeCollapse').on('hidden.bs.collapse', function (e) {
     if ($("#created_badge_list_keeper").css("display")=="none"){
         $("#no_badge_animation").css("display","block");
-        $(".no-badge-desc").css("display","block");  
+        $(".no-badge-desc").css("display","block");
     }
     $("#badgeName").val("")
     $("#badgePoints").val("");
