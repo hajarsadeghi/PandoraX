@@ -40,8 +40,8 @@ $(document).ready(function() {
     });
 
     // ... generate mock badges & users
-    // clone($('#privacyModal').find(".select-privacy:last-child"), 19);
-    // clone($('#recognitionModal').find(".who-to-recognize-row:last-child"), 8);
+    clone($('#privacyModal').find(".select-privacy:last-child"), 19);
+    clone($('#recognitionModal').find(".who-to-recognize-row:last-child"), 8);
     clone($('#recognitionModal #giveBadge').find(".card-stats:last-child"), 40);
 
     $('.recognition-btn').on('click',() => {
