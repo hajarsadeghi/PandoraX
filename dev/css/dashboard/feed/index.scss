@@ -2,17 +2,7 @@
 @import "./../../utilities/mixins";
 @import "./../badge/index.scss";
 
-
-
-
-.cards-stats {
-    .card {
-        min-height: 120px !important;
-        img {
-            width: 120px;
-        }
-    }
-}   
+ 
 
 .feed-container {
     .post {
@@ -110,7 +100,7 @@
         }
 
         .selected-badge-card {
-            width: 100px;
+            min-width: 100px;
             height: auto;
         }
 
@@ -145,6 +135,37 @@
             }
         }
 
+        #recognitionExpanded {
+            .user-card {
+                img {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                }
+            }
+
+            .badge-card {
+                img {
+                    width: 50px;
+                    height: auto;
+                }
+            }
+
+            #rewardBadge {
+                width: 100px;
+                height: auto;
+            }
+        }
+
+        .cards-stats {
+            .card {
+                min-height: 120px !important;
+                img {
+                    width: 120px;
+                }
+            }
+        }  
+
         // .custom-checkbox {
 
         //     .custom-control-label  {
@@ -177,14 +198,22 @@
         cursor: pointer;
     }
 
-    .modal-search-box {
-        padding: 0 1.25rem;
-    }
-
     &#privacyModal {
         .modal-body {
             max-height: 400px;
             overflow-y: scroll;
+        }
+    }
+
+
+    &#recognitionModal {
+        .modal-body {
+            max-height: 600px;
+            overflow-y: scroll;
+            .who-to-recognize-row {
+                cursor: pointer;
+
+            }
         }
     }
 
@@ -217,6 +246,65 @@
 
 .selected-badge-border {
     border: 2px solid $main-blue-color;
+}
+
+.recognized-person {
+    cursor: pointer;
+    .material-icons {
+        color: $main-red-color;
+    }
+}
+
+.select-row-radio {
+
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 1px solid $tint-blue-color5;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+
+    &.selected {
+        &:after {
+            display: inline-block;
+        }
+    }
+
+    &:after {
+        content: '';
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        position: absolute;
+        left: 3px;
+        top: 3px;
+        background-color: $tint-blue-color5;
+        border: 1px solid $tint-blue-color5;
+        display: none;
+    }
+}
+
+.remove-row-radio {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid $main-red-color;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+
+    &:after {
+        content: '';
+        width: 8px;
+        height: 3px;
+        border-radius: 50%;
+        position: absolute;
+        left: 3px;
+        top: 6px;
+        background-color: $main-red-color;
+        border: 1px solid $main-red-color;
+    }
 }
 
 // .card {
@@ -333,5 +421,8 @@
         width: 85% !important;
         margin-right: auto !important;
         margin-left: auto !important;
+    }
+    .modal-xl {
+        max-width: 70% !important;
     }
 }

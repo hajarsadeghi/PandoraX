@@ -2,6 +2,7 @@
 {% load i18n %}
 
 
+
 <div class="card shadow post">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item m-1">
@@ -20,3 +21,9 @@
     </div>
   </div>
 </div>
+{% block script %}
+  <script type="text/javascript" src="{% static 'js/lib/lottie.min.js' %}"></script>
+  <script>
+      const reward_badge = "{% static 'js/animation/reward.json' %}";
+  </script>
+{% endblock %}
