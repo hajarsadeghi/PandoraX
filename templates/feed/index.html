@@ -20,6 +20,7 @@
       </div>
       <div class="col-12 col-lg-7 mb-5 mb-xl-0">
         {% include 'feed/_post.html' %}
+        {% include 'feed/_feed_activity.html' %}
       </div>
       <div class="col-12 col-lg-5">
           <div class="row d-none d-lg-block">
@@ -36,8 +37,14 @@
 {% endblock %}
 
 {% block script %}
+  <script>
+      const reward_badge = "{% static 'js/animation/reward.json' %}";
+  </script>
   <script type="text/javascript" src="{% static 'js/lib/emojione.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/lib/emojionearea.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/lib/lottie.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'webpack:dashboard.js' %}"></script>
   <script type="text/javascript" src="{% static 'webpack:feed.js' %}"></script>
+
 {% endblock %}
+

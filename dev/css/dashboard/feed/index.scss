@@ -5,6 +5,34 @@
  
 
 .feed-container {
+
+    img.profile-pic {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    .lottie-animation {
+        width: 100px;
+        height: auto;
+    }
+
+    .selected-badge-card {
+
+        min-width: 100px;
+        height: auto;
+        img {
+            width: 50px;
+            height: auto;
+        }
+    }
+
+    .feed-cards {
+        img {
+            max-width: 7rem;
+        }
+    }
+    
     .post {
 
         z-index: 80;
@@ -20,7 +48,6 @@
                 }
 
                 &.post-border-bottom {
-                    // border-bottom: 2px solid $tint-blue-color5 !important;
                     &:after {
                         content: '';
                         width: 0px;
@@ -58,12 +85,6 @@
                 background-color: $main-blue-color;   
                 color: $white;
             }
-        }
-
-        img.profile-pic {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
         }
 
         .contentWrapper {
@@ -117,11 +138,6 @@
             }
         }
 
-        .selected-badge-card {
-            min-width: 100px;
-            height: auto;
-        }
-
         .badge {
             &.badge-primary {
                 background-color: $tint-blue-color2;
@@ -161,18 +177,6 @@
                     border-radius: 50%;
                 }
             }
-
-            .badge-card {
-                img {
-                    width: 50px;
-                    height: auto;
-                }
-            }
-
-            #rewardBadge {
-                width: 100px;
-                height: auto;
-            }
         }
 
         .cards-stats {
@@ -183,24 +187,42 @@
                 }
             }
         }  
-
-        // .custom-checkbox {
-
-        //     .custom-control-label  {
-        //         &:before, &:after {
-        //             border-radius: 50%;
-        //         }
-        //     }
-        //     .custom-control-input:checked~.custom-control-label:before {
-        //         background-color: $main-blue-color;
-        //     }
-            
-        // }
     }
 
-    .feed-cards {
-        img {
-            max-width: 7rem;
+    .feed-activity {
+        .feed {
+            .card-body {
+                .card-title {
+                    h4 {
+                        color: $main-blue-color;
+                    }
+                }
+                .card-text {
+                    .post-context {
+
+                    }
+                    .post-recognition-container {
+                        .post-recognition {
+                            background-color: $tint-blue-color1;
+                            min-height: 150px;
+                        }
+
+                        .likes-and-comments {
+
+                            a {
+                                color: $text;
+                            }
+                            .mutual-likes {
+                                img {
+                                    width: 25px;
+                                    height: 25px;
+                                    margin: 0 .01rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

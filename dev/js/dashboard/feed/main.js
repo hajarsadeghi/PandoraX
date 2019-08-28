@@ -1,3 +1,7 @@
+// import {LottieAnimation} from './../../helper/index';
+
+
+
 $(document).ready(function() {
     // ... initialize emoji
     $(".post-content").emojioneArea();
@@ -31,14 +35,8 @@ $(document).ready(function() {
     // ... recognition modal
 
     // ... load animation using lottie ...
-    lottie.loadAnimation({
-        container: document.getElementById('rewardBadge'),
-        path: reward_badge,
-        renderer: 'svg',
-        autoplay: true,
-        loop: true
-    });
-
+    LottieAnimation(['rewardBadge', 'rewardBadge1'])
+    
     // ... generate mock badges & users
     clone($('#privacyModal').find(".select-privacy:last-child"), 19);
     clone($('#recognitionModal').find(".who-to-recognize-row:last-child"), 8);
@@ -117,4 +115,16 @@ function clone(target, count) {
         let user = target.clone(true);
         user.insertAfter(target);
     }
+}
+
+function LottieAnimation(array) {
+    for (let i = 0; i < array.length; i++) {
+        lottie.loadAnimation({
+            container: document.getElementById(array[i]),
+            path: reward_badge,
+            renderer: 'svg',
+            autoplay: true,
+            loop: true
+        }); 
+    }   
 }

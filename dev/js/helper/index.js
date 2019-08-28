@@ -7,3 +7,15 @@ export default function Notif(msg) {
         position: 'topRight'
     });
 }
+
+// export function LottieAnimation(arr, badge) {
+//     for (let i = 0; i < arr.length; i++) {
+//         lottie.loadAnimation({
+//             container: document.getElementById(arr[i]),
+//             path: badge,
+//             renderer: 'svg',
+//             autoplay: true,
+//             loop: true
+//         });   
+//     }
+// }
