@@ -3,15 +3,15 @@
 
 
 
-<div class="feed-activity">
-    <div class="card shadow feed mt-3">
+<div class="feed-activity my-3">
+    <div class="card shadow feed mb-3">
         <div class="card-body p-0">
           <div class="card-title d-flex mb-0 p-3">
               <div>
                   {% if request.user.profile_picture %}
                       <img class="img-fluid profile-pic" src="{{request.user.profile_picture.url}}" alt="profile picture" />
                   {% else %}
-                      <span class="text-dark">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
+                      <span class="text-dark profile-pic-text border">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
                   {% endif %}
               </div>
               <div class="flex-grow-1 px-2">
@@ -54,9 +54,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="row likes-and-comments border-bottom mx-3 py-2">
+            </div>
+            <div class="likes-and-comments">
+                <div class="row border-bottom mx-3 py-2">
                     <div class="col">
-                        <small  data-toggle="tooltip" data-html="true" title="<span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br> <span>and 23 more ...</span><br>">
+                        <small data-toggle="tooltip" data-html="true" title="<span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br> <span>and 23 more ...</span><br>">
                             <a href="#">
                                 303 likes
                             </a>
@@ -69,7 +71,7 @@
                     </div>
                     <div class="col text-right">
                         <small class="cmts" data-toggle="tooltip" data-html="true" title="<span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br> <span>and 23 more ...</span><br>"> 
-                            <a href="#">
+                            <a href="#" data-toggle="collapse" data-target="#commentsContainer" aria-expanded="false" aria-controls="commentsContainer">
                                 30 comments
                             </a>
                         </small>
@@ -85,12 +87,69 @@
                         </a>
                     </div>
                     <div class="col">
-                        <a class="float-right" href="#">
+                        <a class="float-right" href="#" data-toggle="collapse" data-target="#commentsContainer" aria-expanded="false" aria-controls="commentsContainer">
                             <span class="material-icons float-left">
                                 insert_comment
                             </span>
                             <span class="px-1">Comment</span>
                         </a>
+                    </div>
+                </div>
+                <div class="collapse" id="commentsContainer">
+                    <hr class="my-3" />
+                    <div class="comment-row d-flex align-items-center mx-3 pb-3">
+                        <div>
+                            {% if request.user.profile_picture %}
+                                <img class="img-fluid profile-pic" src="{{request.user.profile_picture.url}}" alt="profile picture" />
+                            {% else %}
+                                <span class="text-dark profile-pic-text border">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
+                            {% endif %}
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="add-comment post-content border ml-2" contenteditable="true" data-placeholder="{% trans 'Write a comment...' %}"></div>
+                        </div>
+                    </div>
+                    <div class="comment-row pb-3">
+                        <div class="d-flex align-items-center mx-3">
+                            <div>
+                                <span class="text-dark profile-pic-text border">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
+                            </div>
+                            <div class="ml-2">
+                                <div class="comment-text border p-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi sequi provident nemo at quas error ipsum obcaecati vero minima eaque explicabo hic, porro ab! Dolorum minus sunt impedit aliquid dignissimos.</div>
+                                <small>
+                                    <a class="pr-2" href="#">Like</a>
+                                    <a class="pr-2" href="#">Reply</a>
+                                    <span class="text-muted">15h</span>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment-row pb-3">
+                        <div class="d-flex align-items-center mx-3">
+                            <div>
+                                <span class="text-dark profile-pic-text border">HB</span>
+                            </div>
+                            <div class="ml-2">
+                                <div class="comment-text border p-2">this is a test!</div>
+                                <small>
+                                    <a class="pr-2" href="#">Like</a>
+                                    <a class="pr-2" href="#">Reply</a>
+                                    <span class="text-muted">15h</span>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="m-0" />
+                    <div class="d-flex view-more-comments align-items-center px-3 py-1">
+                        <div>
+                            <a class="view-more-comments-link" href="#">View more comments</a>
+                        </div>
+                        <div class="flex-grow-1">
+                            <img class="d-none" src="{% static 'image/load_more_comments2.gif' %}" />
+                        </div>
+                    </div>
+                    <div class="write-a-comment align-items-center px-3 py-1">
+                        <a class="write-a-comment-link" href="#">Write a comment</a>
                     </div>
                 </div>
             </div>

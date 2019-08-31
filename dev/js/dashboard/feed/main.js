@@ -41,6 +41,7 @@ $(document).ready(function() {
     clone($('#privacyModal').find(".select-privacy:last-child"), 19);
     clone($('#recognitionModal').find(".who-to-recognize-row:last-child"), 8);
     clone($('#recognitionModal #giveBadge').find(".card-stats:last-child"), 40);
+    clone($('.feed-activity').find(".feed:last-child"), 4);
 
     $('.recognition-btn').on('click',() => {
         $('.recognition-container,.recognition-btn').toggleClass('d-none');

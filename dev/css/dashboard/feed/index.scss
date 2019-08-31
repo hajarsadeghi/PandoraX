@@ -6,10 +6,27 @@
 
 .feed-container {
 
-    img.profile-pic {
+    a {
+        color: $main-blue-color;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .emojionearea {
+        box-shadow: none;
+    }
+
+    img.profile-pic, .profile-pic-text {
         width: 50px;
         height: 50px;
         border-radius: 50%;
+    }
+
+    .profile-pic-text {
+        display: inline-block;
+        text-align: center;
+        line-height: 50px;
     }
 
     .lottie-animation {
@@ -31,6 +48,10 @@
         img {
             max-width: 7rem;
         }
+    }
+
+    .emojionearea.focused {
+        box-shadow: none !important;
     }
     
     .post {
@@ -201,22 +222,58 @@
                     .post-context {
 
                     }
+
                     .post-recognition-container {
                         .post-recognition {
-                            background-color: $tint-blue-color1;
+                            background-color: $tint-blue-color2;
                             min-height: 150px;
                         }
+                    }
 
-                        .likes-and-comments {
-
+                    .likes-and-comments {
+                        small {
                             a {
                                 color: $text;
                             }
-                            .mutual-likes {
+                        }
+                        .mutual-likes {
+                            img {
+                                width: 25px;
+                                height: 25px;
+                                margin: 0 .01rem;
+                            }
+                        }
+                        #commentsContainer {
+                            .comment-row {
+                                .profile-pic {
+                                    width:30px;
+                                    height:30px;
+                                }
+                                .profile-pic-text {
+                                    width: 30px;
+                                    height: 30px;
+                                    line-height: 30px;
+                                }
+                                .add-comment, .comment-text {
+                                    min-height: 35px;
+                                    border-radius: 20px;
+                                    background-color: #f6f7fc;
+                                }
+                                .comment-text {
+                                    width: auto;
+                                }
+                                .emojionearea-editor {
+                                    min-height: 35px;
+                                }
+                                small {
+                                    a {
+                                        color: $main-blue-color;
+                                    }
+                                }
+                            }
+                            .view-more-comments {
                                 img {
-                                    width: 25px;
-                                    height: 25px;
-                                    margin: 0 .01rem;
+                                    width: 40px;
                                 }
                             }
                         }
