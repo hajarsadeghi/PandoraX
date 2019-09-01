@@ -1,8 +1,8 @@
 // ... Bilono colors ...
 $main-red-color: #ff3e58;
 $main-blue-color: #1d33b6;
-$main-lightblue-color: #91a6ff;
 $main-darkblue-color: #130655;
+$main-lightblue-color: #91a6ff;
 
 $tint-red-color1: #ffecee;
 $tint-red-color2: #ffd8de;
@@ -21,25 +21,28 @@ $shadow-red-color2: #992535;
 $shadow-blue-color1: #172992;
 $shadow-blue-color2: #111f6d;
 
-$login-gradient-start: #FF8090;
 $login-gradient-end: #91A6FF;
+$login-gradient-start: #FF8090;
 
 $text: #AAB6C5;
 $active-text: #26282C;
 
 // ... custom colors ...
+$gold: #ffdd53;
 $white: #ffffff;
 $black: #000000;
+$silver: #d7d9c8;
+$bronze: #fba86b;
 
 $radius: 5px;
 
 // ... size ...
 $header-height: 70px;
-$bilono-logo-height: 70px;
-$bilono-user-info-height: 100px;
 $sidebar-width: 250px;
+$bilono-logo-height: 70px;
 $sidebar-link-height: 50px;
 $sidebar-active-link-width: 3px;
+$bilono-user-info-height: 100px;
 
 // ... margin and paddings ...
 $sidebar-padding: 20px;

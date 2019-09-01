@@ -3,12 +3,37 @@
 
 
 
-<div class="card shadow mb-3">
-    <div class="card-header border-0">
-        <div class="row align-items-center">
-        <div class="col">
-            <h3 class="mb-0">{% trans 'Top Ten Ranks' %}</h3>
+<div class="card shadow mb-3 border-0" id="leaderboard">
+    <div data-toggle="collapse" data-target="#topTen" aria-expanded="true" aria-controls="topTen">
+        <div class="row no-gutters align-items-center">
+            <div class="col-12 col-lg-8 top-three-container">
+                <div class="row no-gutters pt-3">
+                    <div class="col text-center px-3 py-4">
+                        <div class="top top-three border d-inline-block">MB</div>
+                        <div class="d-inline-block position-relative mx-3 mx-lg-0">
+                            <img class="img-fluid crown" src="{% static 'image/crown.png' %}" alt="number one" />
+                            {% if request.user.profile_picture %}
+                                <img class="img-fluid top top-one" src="{{request.user.profile_picture.url}}" alt="profile picture" />
+                            {% else %}
+                                <div class="top top-one border d-inline-block">{{request.user.first_name.0}}{{request.user.last_name.0}}</div>
+                            {% endif %}
+                        </div>
+                        <div class="top top-two border d-inline-block">SM</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4 text-center p-3 top-u-container">
+                {% if request.user.profile_picture %}
+                    <img class="img-fluid top top-u" src="{{request.user.profile_picture.url}}" alt="profile picture" />
+                {% else %}
+                    <div class="text-dark top top-u border d-inline-block">{{request.user.first_name.0}}{{request.user.last_name.0}}</div>
+                {% endif %}
+                <small class="d-block pt-1 top-u-points">1000</small>
+                <div class="font-weight-bold top-u-rank">#35</div>
+            </div>
         </div>
-        </div>
+    </div>
+    <div id="topTen" class="collapse">
+        <div class="top-ten-container p-3"></div>
     </div>
 </div>
