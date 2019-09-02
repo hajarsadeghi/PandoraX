@@ -44,7 +44,7 @@
                     <div class="selected-badge-info mx-2">
                         <div class="card user-card selected-badge-card border-1 p-1">
                             {% if request.user.profile_picture %}
-                                <img class="img-fluid mx-auto profile-pic" src="{{request.user.profile_picture.url}}" alt="profile picture" />
+                                <img class="img-fluid mx-auto profile-pic" src="{% if request.user.profile_picture %} ? {{request.user.profile_picture.url}} {% else %} {% endif %}" alt="profile picture" />
                             {% else %}
                                 <span class="text-dark mx-auto my-1">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
                             {% endif %}
@@ -63,10 +63,16 @@
                                 303 likes
                             </a>
                         </small>
-                        <span class="mutual-likes">
-                            <img class="img-fluid profile-pic d-inline-block" src="{{request.user.profile_picture.url}}" alt="profile picture" />
-                            <img class="img-fluid profile-pic d-inline-block" src="{{request.user.profile_picture.url}}" alt="profile picture" />
-                            <img class="img-fluid profile-pic d-inline-block" src="{{request.user.profile_picture.url}}" alt="profile picture" />
+                        <span class="mutual-likes d-none d-lg-inline-block">
+                            {% if request.user.profile_picture %}
+                                <img class="img-fluid profile-pic" src="{{request.user.profile_picture.url}}" alt="profile picture" />
+                                <img class="img-fluid profile-pic d-inline-block" src="{{request.user.profile_picture.url}}" alt="profile picture" />
+                                <img class="img-fluid profile-pic d-inline-block" src="{{request.user.profile_picture.url}}" alt="profile picture" />
+                            {% else %}
+                                <span class="text-dark mx-auto my-1">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
+                                <span class="text-dark profile-pic-text border">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
+                                <span class="text-dark profile-pic-text border">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
+                            {% endif %}
                         </span>
                     </div>
                     <div class="col text-right">
@@ -122,12 +128,31 @@
                                     <span class="text-muted">15h</span>
                                 </small>
                                 <div class="replies">
-                                    <!-- <div class="d-flex">
-                                        <div class="text-dark profile-pic-text border">{{request.user.first_name.0}}{{request.user.last_name.0}}</div>
-                                        <div class="flex-grow-1">
-                                            <div class="comment-text border p-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi sequi provident nemo at quas error ipsum obcaecati vero minima eaque explicabo hic, porro ab! Dolorum minus sunt impedit aliquid dignissimos.</div>
+                                    <div class="d-flex">
+                                        <div class="mr-1">
+                                            <div class="text-dark profile-pic-text border">{{request.user.first_name.0}}{{request.user.last_name.0}}</div>
                                         </div>
-                                    </div> -->
+                                        <div class="flex-grow-1">
+                                            <div class="comment-text border p-2">This is a test reply for your comment.</div>
+                                            <small>
+                                                <a class="pr-2" href="#">Like</a>
+                                                <a class="pr-2" href="#">Reply</a>
+                                                <span class="text-muted">15h</span>
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="comment-row d-flex align-items-center pb-3">
+                                        <div>
+                                            {% if request.user.profile_picture %}
+                                                <img class="img-fluid profile-pic" src="{{request.user.profile_picture.url}}" alt="profile picture" />
+                                            {% else %}
+                                                <span class="text-dark profile-pic-text border">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
+                                            {% endif %}
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div class="add-comment post-content border ml-2" contenteditable="true" data-placeholder="{% trans 'Write a comment...' %}"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -153,7 +178,7 @@
                             <a class="view-more-comments-link" href="#">View more comments</a>
                         </div>
                         <div class="flex-grow-1">
-                            <img class="d-none" src="{% static 'image/load_more_comments2.gif' %}" />
+                            <img class="d-none" src="{% static 'image/load_more_comments.gif' %}" />
                         </div>
                     </div>
                     <div class="write-a-comment align-items-center px-3 py-1">
