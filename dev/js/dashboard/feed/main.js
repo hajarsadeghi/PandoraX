@@ -70,7 +70,7 @@ $(document).ready(function() {
         let selected_user_obj = {
             id: 6,
             name: selected_user.attr('username'),
-            img: selected_user.attr('img-profile-src')
+            img: selected_user.find('img').attr('src')
         }
         $('.selected-badge-container').find('.user-card').attr('id', selected_user_obj.id);
         $('.selected-badge-container').find('.user-card img').attr('src', selected_user_obj.img);

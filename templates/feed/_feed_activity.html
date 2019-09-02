@@ -44,9 +44,9 @@
                     <div class="selected-badge-info mx-2">
                         <div class="card user-card selected-badge-card border-1 p-1">
                             {% if request.user.profile_picture %}
-                                <img class="img-fluid mx-auto profile-pic" src="{% if request.user.profile_picture %} ? {{request.user.profile_picture.url}} {% else %} {% endif %}" alt="profile picture" />
+                                <img class="img-fluid mx-auto profile-pic" src="{{request.user.profile_picture.url}}" alt="profile picture" />
                             {% else %}
-                                <span class="text-dark mx-auto my-1">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
+                                <span class="text-dark mx-auto my-1">HB</span>
                             {% endif %}
                             <div class="badge-label text-center">
                                 <h5 class="card-title text-muted my-1">Tina Smith</h5>
@@ -69,9 +69,9 @@
                                 <img class="img-fluid profile-pic d-inline-block" src="{{request.user.profile_picture.url}}" alt="profile picture" />
                                 <img class="img-fluid profile-pic d-inline-block" src="{{request.user.profile_picture.url}}" alt="profile picture" />
                             {% else %}
-                                <span class="text-dark mx-auto my-1">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
-                                <span class="text-dark profile-pic-text border">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
-                                <span class="text-dark profile-pic-text border">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
+                                <span class="text-dark profile-pic border">HB</span>
+                                <span class="text-dark profile-pic border">HB</span>
+                                <span class="text-dark profile-pic border">HB</span>
                             {% endif %}
                         </span>
                     </div>
