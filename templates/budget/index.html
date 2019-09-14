@@ -27,10 +27,21 @@
             <div class="collapse" id="addBudgetCollapse">
                 <div class="card card-body">
                     <form>
-                        <div class="form-group">
-                            <label for="budgetName">{% trans "Budget Name" %}</label>
-                            <input type="text" class="form-control" id="budgetName" aria-describedby="budgetName" placeholder="{% trans 'Enter a descriptive name for your budget' %}">
-                            <p class="text-danger"></p>
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="budgetName">{% trans "Budget Name" %}</label>
+                                    <input type="text" class="form-control" id="budgetName" aria-describedby="budgetName" placeholder="{% trans 'Enter a descriptive name for your budget' %}">
+                                    <p class="text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="budgetPoints">{% trans "Give points amount" %}</label>
+                                    <input type="number" class="form-control" id="budgetPoints" min=1 aria-describedby="budgetPoints" placeholder="Enter a descriptive name for your budget">
+                                    <p class="text-danger"></p> 
+                                </div>
+                            </div>
                         </div>
                         <!-- <div class="accordion form-group" id="search">
                             <label for="budgetRecipients">{% trans "Select Recipients" %}</label>
@@ -104,11 +115,7 @@
                                 </div>
                             </div>
                         </div> -->
-                        <div class="form-group">
-                            <label for="budgetPoints">{% trans "Give points amount" %}</label>
-                            <input type="number" class="form-control" id="budgetPoints" min=1 aria-describedby="budgetPoints" placeholder="Enter a descriptive name for your budget">
-                            <p class="text-danger"></p> 
-                        </div>
+                        
                         <button id="create_budget_submit" type="button" class="btn btn-primary standard-btn">Create Budget</button>
                     </form>
                 </div>

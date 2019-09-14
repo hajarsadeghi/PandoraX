@@ -62,10 +62,7 @@ $(document).ready(function() {
         let selectedCard = $(e.target).closest('.card-stats');
         $('.card-stats').not(selectedCard).removeClass('selected-badge-border');
         selectedCard.toggleClass('selected-badge-border');
-    });
-    // ... select badge
-    $('#selectBadgeBtn').on('click', () => {
-        
+
         let selected_user = $('.recognized-person');
         let selected_user_obj = {
             id: 6,
