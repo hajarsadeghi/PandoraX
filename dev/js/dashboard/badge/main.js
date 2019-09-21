@@ -80,6 +80,77 @@ let badges = [
         point: "800"
     }
 ];
+//... dropzone
+Dropzone.autoDiscover = true;
+Dropzone.options.badgeFileDropzone = {
+    url: '/api/badge/icon/',
+    paramName: 'image',
+    headers: {
+        'Space-Id':space_id
+    },
+    dictResponseError: 'Couldnt upload the file!',
+    dictCancelUpload: 'Remove image',
+    acteptedFiles: 'image/*',
+    addRemoveLinks: true,
+    transformFile: function(file, done) {
+         // Create Dropzone reference for use in confirm button click handler
+        var myDropZone = this;
+        // Create the image editor overlay
+        var editor = document.createElement('div');
+        editor.style.position = 'fixed';
+        editor.style.left = 0;
+        editor.style.right = 0;
+        editor.style.top = 0;
+        editor.style.bottom = 0;
+        editor.style.zIndex = 9999;
+        editor.style.backgroundColor = '#000';
+        document.body.appendChild(editor);
+
+        // Create confirm button at the top left of the viewport
+        var buttonConfirm = document.createElement('button');
+        buttonConfirm.style.position = 'absolute';
+        buttonConfirm.style.left = '10px';
+        buttonConfirm.style.top = '10px';
+        buttonConfirm.style.zIndex = 9999;
+        buttonConfirm.textContent = 'Confirm';
+        buttonConfirm.className += ' btn btn-secondary btn-sm';
+        editor.appendChild(buttonConfirm);
+        buttonConfirm.addEventListener('click', function() {
+            // Get the canvas with image data from Cropper.js
+            var canvas = cropper.getCroppedCanvas({
+                width: 256,
+                height: 256
+            });
+            // Turn the canvas into a Blob (file object without a name)
+            canvas.toBlob(function(blob) {
+                // Create a new Dropzone file thumbnail
+                myDropZone.createThumbnail(
+                    blob,
+                    myDropZone.options.thumbnailWidth,
+                    myDropZone.options.thumbnailHeight,
+                    myDropZone.options.thumbnailMethod,
+                    false, 
+                    function(dataURL) {
+                    
+                    // Update the Dropzone file thumbnail
+                    myDropZone.emit('thumbnail', file, dataURL);
+                    // Return the file to Dropzone
+                    done(blob);
+                });
+            });
+            // Remove the editor from the view
+            document.body.removeChild(editor);
+        });
+
+        // Create an image node for Cropper.js
+        var image = new Image();
+        image.src = URL.createObjectURL(file);
+        editor.appendChild(image);
+        
+        // Create Cropper.js
+        var cropper = new Cropper(image, { aspectRatio: 1 });
+      },
+};
 
 init_badges();
 init_albume();
@@ -90,31 +161,6 @@ $(".card img").hover(function(){
 $(".card").mouseleave(function(){
     $(this).find(".hover-part").css("top","-200px")
 })
-
-function init_badges() {
-    // let card = $(".badge_card");
-    for (var i = 0;i<badges.length;i++){
-        let card = $("#created_badge_table_keeper .source").clone();
-        card.removeClass("source");
-        card.find(".card-title").text(badges[i].name);
-        card.find("img").attr("src",badges[i].src);
-        card.find(".font-weight-bold").text(badges[i].point);
-        card.insertAfter($("#created_badge_table_keeper .source"));
-    }
-}
-
-
-function init_albume() {
-    for (var i = 0;i<badges.length;i++){
-        let card = $("#badgeAlbume .source").clone();
-        card.removeClass("source");
-        card.css("display","block")
-        card.attr("src",badges[i].src);
-        card.insertAfter($("#badgeAlbume .source"));
-    }
-}
-
-
 
 $('#addBadgeCollapse').on('hidden.bs.collapse', function (e) {
     if ($("#created_badge_list_keeper").css("display")=="none"){
@@ -159,7 +205,31 @@ $('#addBadgeCollapse').on('shown.bs.collapse', function (e) {
     $("#addBadgeForm i.collaping-icon").text("remove_circle_outline");  
 });
 
-
 $("#badgeAlbume img").click(function(){
     $(".preview img").attr( "src",$(this).attr("src"))
 })
+
+function init_badges() {
+    // let card = $(".badge_card");
+    for (var i = 0;i<badges.length;i++){
+        let card = $("#created_badge_table_keeper .source").clone();
+        card.removeClass("source");
+        card.find(".card-title").text(badges[i].name);
+        card.find("img").attr("src",badges[i].src);
+        card.find(".font-weight-bold").text(badges[i].point);
+        card.insertAfter($("#created_badge_table_keeper .source"));
+    }
+}
+
+function init_albume() {
+    for (var i = 0;i<badges.length;i++){
+        let card = $("#badgeAlbume .source").clone();
+        card.removeClass("source");
+        card.css("display","block")
+        card.attr("src",badges[i].src);
+        card.insertAfter($("#badgeAlbume .source"));
+    }
+}
+
+
+
