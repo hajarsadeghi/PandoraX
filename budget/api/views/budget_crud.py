@@ -25,7 +25,7 @@ class Budget(View):
                 "created_date":budget['created_date'].strftime('%Y/%m/%d %H:%M:%S')
             }
             resp.append(tmp_budget)
-        return JsonResponse(resp, safe=False, status=201)
+        return JsonResponse(resp, safe=False, status=200)
 
 
     def post(self, request):

@@ -40,7 +40,8 @@ INSTALLED_APPS = [
 
     'user',
     'space',
-    'budget'
+    'budget',
+    'badge',
 ]
 
 MIDDLEWARE = [

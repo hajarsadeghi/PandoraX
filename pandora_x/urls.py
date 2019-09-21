@@ -24,6 +24,7 @@ api_urls = [
     path('user/', include(('user.api.urls', 'django'), namespace='user')),
     path('space/', include(('space.api.urls', 'django'), namespace='space')),
     path('budget/', include(('budget.api.urls', 'django'), namespace='budget')),
+    path('badge/', include(('badge.api.urls', 'django'), namespace='badge')),
 ]
 
 urlpatterns = [
