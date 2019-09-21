@@ -296,7 +296,7 @@
     #leaderboard {
 
         .top-three-container {
-            background-color: $tint-blue-color5;
+            background: $tint-blue-color5 url('/static/image/leaderboard.svg') no-repeat;
             color: $white;
             border-radius: .375rem 0 0 .375rem;
             .top {

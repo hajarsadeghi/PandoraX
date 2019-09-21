@@ -1,0 +1,45 @@
+{% extends './../base.html' %}
+{% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'webpack:dashboard.css' %}" />
+    <link rel="stylesheet" href="{% static 'webpack:profile.css' %}" />
+    <title>{% trans "Profile" %}</title>
+{% endblock %}
+
+{% block body %}
+    <!-- Header -->
+    
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" id="target" style="min-height: 600px; background-image: url(image/profile-cover.jpg); background-size: cover; background-position: center top;">
+        <!-- Mask -->
+        <label class="mask bg-gradient-default opacity-8" for="wallpaper">
+            <input type="file" id="wallpaper"> 
+        </label>
+        <span class="mask bg-gradient-default opacity-8"></span>
+        <!-- Header container -->
+        <div class="container-fluid d-flex align-items-center">
+            <div class="row">
+                <div class="col-lg-7 col-md-10">
+                    <h1 class="display-2 text-white" id="test">Hello Jesse</h1>
+                    <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
+                    <a href="#!" class="btn btn-info">Edit profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
+        <div class="row">
+            {% include 'profile/_user-card.html' %}
+            {% include 'profile/_user-content.html' %}
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block script %}
+    <script type="text/javascript" src="{% static 'webpack:dashboard.js' %}"></script>
+    <script type="text/javascript" src="{% static 'webpack:profile.js' %}"></script>
+{% endblock %}
