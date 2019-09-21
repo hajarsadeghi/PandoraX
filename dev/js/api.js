@@ -6,7 +6,7 @@ export const verify_email = (url, params, callback) => {
             body: JSON.stringify(params)
         }
     ).then(response => {
-        if (response.status >= 200 && response.status <= 299) {
+        if (response.ok) {
             response.json().then(res => {
                 callback(true, res);
             });
@@ -22,7 +22,7 @@ export const create_space = (url, params, callback) => {
                     body: JSON.stringify(params)
                 }
             ).then(response => {
-                if (response.status >= 200 && response.status <= 299) {
+                if (response.ok) {
                     response.json().then(res => {
                         callback(true, res);
                     });
@@ -44,7 +44,7 @@ export const create_budget = (url, params, callback) => {
             }
         }
     ).then(response => {
-        if (response.status >= 200 && response.status <= 299) {
+        if (response.ok) {
             response.json().then(res => {
                 callback(true, res);
             });
@@ -65,12 +65,55 @@ export const get_created_budget = (url, params, callback) => {
             }
         }
     ).then(response => {
-        if (response.status >= 200 && response.status <= 299) {
+        if (response.ok) {
             response.json().then(res => {
                 callback(true, res);
             });
         } else {
             callback(false, res);
+        }
+    })
+}
+// ... badge images
+export const get_budget_list = (callback) => {
+    return fetch(
+        '/api/badge/icon/',
+        {
+            method: 'GET',
+            headers:{
+                'Content-Type': 'application/json',
+                'Space-Id':space_id
+            }
+        }
+    ).then(response => {
+        if (response.ok) {
+            response.json().then(res => {
+                callback(true, res)
+            })
+        } else {
+            callback(false, res)
+        }
+    })
+}
+// ... new badge
+export const add_new_badge = (params, callback) => {
+    return fetch(
+        '/api/badge/',
+        {
+            method: 'POST',
+            body: JSON.stringify(params),
+            headers:{
+                'Content-Type': 'application/json',
+                'Space-Id':space_id
+            }
+        }
+    ).then(response => {
+        if (response.ok) {
+            response.json().then(res => {
+                callback(true, res)
+            })
+        } else {
+            callback(false, res)
         }
     })
 }
