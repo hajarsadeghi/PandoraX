@@ -75,9 +75,30 @@ export const get_created_budget = (url, params, callback) => {
     })
 }
 // ... badge images
-export const get_budget_list = (callback) => {
+export const get_badge_images = (callback) => {
     return fetch(
         '/api/badge/icon/',
+        {
+            method: 'GET',
+            headers:{
+                'Content-Type': 'application/json',
+                'Space-Id':space_id
+            }
+        }
+    ).then(response => {
+        if (response.ok) {
+            response.json().then(res => {
+                callback(true, res)
+            })
+        } else {
+            callback(false, res)
+        }
+    })
+}
+// ... badge list
+export const get_badge_list = (callback) => {
+    return fetch(
+        '/api/badge/',
         {
             method: 'GET',
             headers:{

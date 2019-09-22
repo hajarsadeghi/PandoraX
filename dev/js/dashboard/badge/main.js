@@ -1,15 +1,24 @@
 import { 
-        get_budget_list,
+        get_badge_images,
+        get_badge_list,
         add_new_badge
         } 
         from './../../api';
 let badge_obj = {};
 
 // ... get badge images
-get_budget_list((status, response) => {
+get_badge_images((status, response) => {
     if (status) {
-        console.log(response)
         init_albume(response);
+    }
+    else {
+        console.log('error')
+    }
+})
+// ... get badge list
+get_badge_list((status, response) => {
+    if (status) {
+        init_badges(response)
     }
     else {
         console.log('error')
@@ -103,13 +112,6 @@ $(document).on('click', '#addBadgeBtn', () => {
     })
 })
 
-$(".card img").hover(function(){
-    $(this).siblings(".hover-part").css("top","0")
-})
-$(".card").mouseleave(function(){
-    $(this).find(".hover-part").css("top","-200px")
-})
-
 $('#addBadgeCollapse').on('hidden.bs.collapse', function (e) {
     if ($("#created_badge_list_keeper").css("display")=="none"){
         $("#no_badge_animation").css("display","block");
@@ -161,22 +163,36 @@ $("#badgeAlbume img").click(function(){
     $(".preview img").attr( "src",$(this).attr("src"))
 })
 
-// function init_badges() {
-//     // let card = $(".badge_card");
-//     for (var i = 0;i<badges.length;i++){
-//         let card = $("#created_badge_table_keeper .source").clone();
-//         card.removeClass("source");
-//         card.find(".card-title").text(badges[i].name);
-//         card.find("img").attr("src",badges[i].src);
-//         card.find(".font-weight-bold").text(badges[i].point);
-//         card.insertAfter($("#created_badge_table_keeper .source"));
-//     }
-// }
-
 function init_albume(album) {
     for (var i = 0; i< album.length; i++){
         $('.albume').append(
             '<img id="'+ album[i].id +'" src="'+ album[i].image +'" alt="badge" />'
+        )
+    }
+}
+function init_badges(badges) {
+    for (var i = 0; i < badges.length; i++){
+        $('#created_badge_table_keeper').append(
+            ' <div class="card card-stats mb-4 mb-xl-0 badge-card source">' +
+                '<img src="'+ badges[i].icon +'" alt="badge icon">' +
+                '<div class="badge-label">' +
+                    '<h5 class="card-title text-uppercase text-muted mb-0">'+ badges[i].name +'</h5>' +
+                    '<span class="h2 font-weight-bold mb-0">'+ badges[i].point_amount +'</span>' +
+                '</div>' +
+                '<div class="hover-part pr-2 pl-2">' +
+                '<p class="mt-3 mb-1 text-white text-md description">'+ badges[i].description +'</p>' +
+                '<span class="hover-down">' +
+                    '<div class="down-details">' +
+                        '<i class="material-icons text-muted text-sm text-white">account_circle</i>' +
+                        '<span class="mt-0 mb-0 text-muted text-sm text-white" >'+ badges[i].creator.full_name +'</span>' +
+                    '</div>' +
+                    '<div class="down-details">' +
+                        '<i class="material-icons text-light text-sm">event</i>' +
+                        '<span class="text-muted text-sm text-white">'+ badges[i].created_date +'</span>' +
+                    '</div>' +
+                '</span>' +
+                '</div>' +
+            '</div>'
         )
     }
 }
