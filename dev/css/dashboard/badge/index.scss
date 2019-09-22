@@ -64,7 +64,7 @@ button.standard-btn {
         // }
         // display: flex;
         // background-color: red
-        #badgeFileUploader {
+        #badgeFileDropzone {
             width: 100%;
             height: 100%;
             border: 1px dashed #cad1d7;
@@ -172,6 +172,11 @@ button.standard-btn {
                         color: white !important;
                     }
                 }
+            }
+        }
+        &:hover {
+            .hover-part {
+                top: 0 !important;
             }
         }
     }
