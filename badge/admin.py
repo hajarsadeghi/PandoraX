@@ -1,3 +1,5 @@
 from django.contrib import admin
+from badge.models import Badge, Icon
 
-# Register your models here.
+admin.site.register(Icon)
+admin.site.register(Badge)

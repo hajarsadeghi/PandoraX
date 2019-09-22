@@ -3,6 +3,9 @@ from django.http import JsonResponse
 from badge.models import Badge as BadgeModel, Icon
 from decorators import is_authenticated, get_space
 from django.utils.decorators import method_decorator
+from pandora_x.settings import MEDIA_URL
+from os.path import join as path_join
+from django.db.models import Q
 import json
 
 
@@ -22,7 +25,7 @@ class Badge(View):
                 },
                 "point_amount": badge['point_amount'],
                 "description": badge['description'],
-                "icon": badge['icon__image'],
+                "icon": path_join(MEDIA_URL, badge['icon__image']),
                 "active": badge['active'],
                 "created_date":badge['created_date'].strftime('%Y/%m/%d %H:%M:%S')
             }
@@ -42,7 +45,7 @@ class Badge(View):
             return JsonResponse({"message": "bad request"}, status=400)
 
         try:
-            badge_icon = Icon.objects.get(id=badge_icon)
+            badge_icon = Icon.objects.get(Q(id=badge_icon), Q(space=request.space)|Q(is_global=True))
         except Icon.DoesNotExists:
             return JsonResponse({"message": "icon does not exits"}, status=400)
 

@@ -3,6 +3,9 @@ from django.http import JsonResponse
 from badge.models import Icon as IconModel
 from decorators import is_authenticated, get_space
 from django.utils.decorators import method_decorator
+from pandora_x.settings import MEDIA_URL
+from os.path import join as path_join
+from django.db.models import Q
 import json
 
 
@@ -10,12 +13,12 @@ import json
 @method_decorator(get_space, name='dispatch')
 class Icon(View):
     def get(self, request):
-        icons = IconModel.objects.filter(space=request.space, active=True).values('id', 'image')
+        icons = IconModel.objects.filter(Q(active=True), Q(space=request.space)|Q(is_global=True)).values('id', 'image')
         resp = []
         for icon in icons:
             tmp_icon = {
-                "id":icon['id'],
-                "image":icon['image']
+                "id": icon['id'],
+                "src": path_join(MEDIA_URL, icon['image'])
             }
             resp.append(tmp_icon)
         return JsonResponse(resp, safe=False, status=200)
@@ -35,4 +38,4 @@ class Icon(View):
         icon.save()
         icon.refresh_from_db()
 
-        return JsonResponse({'id': icon.id}, status=201)
+        return JsonResponse({'id':icon.id, 'src':icon.url}, status=201)
