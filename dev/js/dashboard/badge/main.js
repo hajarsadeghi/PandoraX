@@ -166,7 +166,7 @@ $("#badgeAlbume img").click(function(){
 function init_albume(album) {
     for (var i = 0; i< album.length; i++){
         $('.albume').append(
-            '<img id="'+ album[i].id +'" src="'+ album[i].image +'" alt="badge" />'
+            '<img id="'+ album[i].id +'" src="'+ album[i].src +'" alt="badge" />'
         )
     }
 }
