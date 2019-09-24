@@ -37,7 +37,7 @@ Dropzone.options.badgeFileDropzone = {
     acteptedFiles: 'image/*',
     addRemoveLinks: true,
     transformFile: function(file, done) {
-         // Create Dropzone reference for use in confirm button click handler
+        // Create Dropzone reference for use in confirm button click handler
         var myDropZone = this;
         // Create the image editor overlay
         var editor = document.createElement('div');
@@ -95,8 +95,9 @@ Dropzone.options.badgeFileDropzone = {
         var cropper = new Cropper(image, { aspectRatio: 1 });
     },
     success: (file, respone) => {
-        console.log(file,'file')
         badge_obj.icon_id = respone.id
+        badge_obj.icon_src = respone.src;
+        $("#previewImg").attr( "src", respone.src)
     }
 };
 // ... add new budget
@@ -158,15 +159,18 @@ $('#addBadgeCollapse').on('shown.bs.collapse', function (e) {
     $("#addBadgeForm i.collaping-icon").text("remove_circle_outline");  
 });
 
-$("#badgeAlbume img").click(function(){
-    badge_obj.icon_id = $(this).attr('id');
-    $(".preview img").attr( "src",$(this).attr("src"))
+$(document).on('click', '.badge-choice', function() {
+    badge_obj.icon_id = $(this).find('img').attr('id');
+    badge_obj.icon_src = $(this).find('img').attr('src');
+    $("#previewImg").attr( "src", badge_obj.icon_src)
 })
 
 function init_albume(album) {
     for (var i = 0; i< album.length; i++){
         $('.albume').append(
-            '<img id="'+ album[i].id +'" src="'+ album[i].src +'" alt="badge" />'
+            '<a href="#" class="badge-choice">' +
+                '<img id="'+ album[i].id +'" src="'+ album[i].src +'" alt="badge" />' +
+            '</a>'
         )
     }
 }

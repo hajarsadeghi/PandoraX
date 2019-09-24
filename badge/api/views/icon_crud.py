@@ -38,4 +38,4 @@ class Icon(View):
         icon.save()
         icon.refresh_from_db()
 
-        return JsonResponse({'id':icon.id, 'src':icon.url}, status=201)
+        return JsonResponse({'id':icon.id, 'src':icon.image.url}, status=201)
