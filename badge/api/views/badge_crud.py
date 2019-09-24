@@ -20,7 +20,7 @@ class Badge(View):
                 "id":badge['id'],
                 "name":badge['name'],
                 "creator":{
-                    "id":badge['id'],
+                    "id":badge['creator__id'],
                     "full_name":f"{'' if not badge['creator__first_name'] else badge['creator__first_name']} {'' if not badge['creator__last_name'] else badge['creator__last_name']}".strip()
                 },
                 "point_amount": badge['point_amount'],
@@ -58,5 +58,17 @@ class Badge(View):
         badge.icon = badge_icon
         badge.save()
         badge.refresh_from_db()
-
-        return JsonResponse({'id': badge.id}, status=201)
+        tmp_badge = {
+            "id":badge.id,
+            "name":badge.name,
+            "creator":{
+                "id":badge.creator.id,
+                "full_name":f"{'' if not badge.creator.first_name else badge.creator.first_name} {'' if not badge.creator.last_name else badge.creator.last_name}".strip()
+            },
+            "point_amount": badge.point_amount,
+            "description": badge.description,
+            "icon": badge.icon.image.url,
+            "active": badge.active,
+            "created_date":badge.created_date.strftime('%Y/%m/%d %H:%M:%S')
+        }
+        return JsonResponse(tmp_badge, status=201)
