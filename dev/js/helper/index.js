@@ -8,6 +8,18 @@ export default function Notif(msg) {
     });
 }
 
+$( ".dropdown-input.industry" ).on('focus', function() {
+    if (!$('.industry-dropdown').hasClass('d-block')) {
+        $(this).next().addClass('open')
+    }
+});
+
+$( ".dropdown-input.industry" ).on('blur', function() {
+    if ($('.industry-dropdown').hasClass('d-block')) {
+        $('.dropdown-caret').removeClass('open');
+    }
+});
+
 // export function LottieAnimation(arr, badge) {
 //     for (let i = 0; i < arr.length; i++) {
 //         lottie.loadAnimation({
