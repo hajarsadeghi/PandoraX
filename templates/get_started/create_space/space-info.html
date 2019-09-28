@@ -9,6 +9,7 @@
                 <h3 class="mb-4">{% trans "Please tell us more about your company?" %}</h3>
                 <div class="form-group forms dropdown-container">
                   <input type="text" class="form-control form-input dropdown-input industry" aria-describedby="{% trans 'Industry' %}" autocomplete="off">
+                  <span class="dropdown-caret"></span>
                   <span class="input-line" data-placeholder="Industry"></span>
                   <div class="industry-dropdown dropdown-custom-menu">
                     {% for industry in indutries %}

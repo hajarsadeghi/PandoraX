@@ -4,8 +4,6 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block head %}
-    <link rel="stylesheet" href="{% static 'css/lib/dropzone.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/lib/cropper.min.css' %}" />
     <link rel="stylesheet" href="{% static 'webpack:dashboard.css' %}" />
     <link rel="stylesheet" href="{% static 'webpack:badge.css' %}" />
     <title>{% trans "Badges" %}</title>
@@ -22,8 +20,6 @@
 {% endblock %}
 
 {% block script %}
-<script type="text/javascript" src="{% static 'js/lib/dropzone.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/lib/cropper.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/lib/lottie.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'webpack:dashboard.js' %}"></script>
 <script type="text/javascript" src="{% static 'webpack:badge.js' %}"></script>
