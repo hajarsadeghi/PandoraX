@@ -44,5 +44,6 @@ class Budget(View):
         budget.point_amount = budget_point_amount
         budget.save()
         budget.refresh_from_db()
+        budget.apply()
 
         return JsonResponse({'id': budget.id}, status=201)
