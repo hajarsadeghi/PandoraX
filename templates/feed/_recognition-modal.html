@@ -7,7 +7,7 @@
     <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="recognitionModalLabel">{% trans 'Recognition' %}</h5>
+            <h5 class="modal-title" id="recognitionModalLabel">{% trans 'Lets admire someone today:)' %}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -15,11 +15,11 @@
         <div class="modal-body">
             <div class="row">
                 <div class="col-12 recognition-container" id="recognizeWho">
-                    <div class="row">
-                        <div class="col-12 col-md-4 col-xl-6 align-self-center">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg col-xl-6 align-self-center">
                             <img class="img-fluid" src="{% static 'image/heart.svg' %}" />
                         </div>
-                        <div class="col-12 col-md-8 col-xl-6">
+                        <div class="col-12 col-lg col-xl-4">
                             <div class="form-group">
                                 <div class="input-group input-group-alternative mb-4">
                                     <input class="form-control form-control-alternative" placeholder="I wanna recognize my dear colleague Ex. Hajar" type="text">
@@ -37,7 +37,7 @@
                                                         <span class="text-dark">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
                                                     {% endif %}
                                                 </span>
-                                                <div class="media-body ml-2 d-none d-lg-block">
+                                                <div class="media-body ml-2">
                                                     <span class="mb-0 text-sm font-weight-bold">
                                                         {{request.user.get_full_name}}
                                                     </span>
@@ -66,7 +66,7 @@
                                                         <span class="text-dark">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
                                                     {% endif %}
                                                 </span>
-                                                <div class="media-body ml-2 d-none d-lg-block">
+                                                <div class="media-body ml-2">
                                                     <span class="mb-0 text-sm font-weight-bold">
                                                         {{request.user.get_full_name}}
                                                     </span>

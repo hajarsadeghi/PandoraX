@@ -15,11 +15,14 @@
                     <input type="text" class="form-control form-input" id="companySlug" aria-describedby="slug" autocomplete="off" >
                     <span class="bilono-slug">.bilono.com</span>
                     <span class="input-line" data-placeholder="Ex. arianalabs"></span>
-                    <span class="red-border d-none"></span>
+                    <span class="red-border d-none animated heartBeat"></span>
                 </div>
                 <button type="button" class="btn btn-block login-btn my-3 space-btn" id="spaceNameBtn" box="space-info-container ">{% trans "Next" %}</button>
-                <small class="text-muted">{% trans "By continiuing you're agreeing to our" %} <a href="#">{% trans "Customer Terms of Service" %}</a>,<a href="#">{% trans "Privacy Policy" %}</a>, {% trans "and" %} <a href="#">{% trans "Cookie Policy" %}</a>.</small>
-
+                <small class="text-muted">
+                    {% trans "By continiuing you're agreeing to our" %}
+                    <a href="#">{% trans "Customer Terms of Service" %}</a>,
+                    <a href="#">{% trans "Privacy Policy" %}</a>, {% trans "and" %} <a href="#">{% trans "Cookie Policy" %}</a>.
+                </small>
             </div>
         </div>
     </div>

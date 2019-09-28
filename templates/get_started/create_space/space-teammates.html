@@ -6,32 +6,34 @@
     <div class="row justify-content-center align-items-center">
         <div class="col-12 col-sm-10 col-md-8 col-xl-6">
             <div id="spaceTeammatesBox" class="space-box form animated fadeInLeft">
-                <h3 class="mb-4">{% trans "Who is on your team?" %}</h3>
-                <div class="form-group forms">
-                    <input type="email" class="form-control form-input" aria-describedby="email" autocomplete="off">
-                    <span class="input-line" data-placeholder="Ex. name@example.com"></span>
+                <div class="team-emails-outer">
+                    <div class="team-emails-inner">
+                        <h3 class="mb-4">{% trans "Who is on your team?" %}</h3>
+                        <div class="form-group forms">
+                            <input type="email" class="form-control form-input" aria-describedby="email" autocomplete="off">
+                            <span class="input-line" data-placeholder="Ex. name@example.com"></span>
+                        </div>
+                        <div class="form-group forms">
+                            <input type="email" class="form-control form-input" aria-describedby="email" autocomplete="off">
+                            <span class="input-line" data-placeholder="Ex. name@example.com"></span>
+                        </div>
+                        <div class="form-group forms">
+                            <input type="email" class="form-control form-input" aria-describedby="email" autocomplete="off">
+                            <span class="input-line" data-placeholder="Ex. name@example.com"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="add-teammate-link d-flex flex-row-reverse text-right">
+                            <a href="#" id="addAnother">{% trans "add another" %}</a>
+                            <i class="material-icons px-1">add_circle_outline</i>
+                        </div>
+                        <button type="button" class="space-btn btn btn-block login-btn my-3" id="addTeammatesBtn" box="space-alert-container">
+                            {% trans "Add Teammates" %}
+                        </button>
+                    </div>
+                    <br />
+                    {% trans "Or" %}, <a href="#" id="skipTeammates" box="space-alert-container">{% trans "Skip for now" %}</a>
                 </div>
-                <div class="form-group forms">
-                    <input type="email" class="form-control form-input" aria-describedby="email" autocomplete="off">
-                    <span class="input-line" data-placeholder="Ex. name@example.com"></span>
-                </div>
-                <div class="form-group forms">
-                    <input type="email" class="form-control form-input" aria-describedby="email" autocomplete="off">
-                    <span class="input-line" data-placeholder="Ex. name@example.com"></span>
-                </div>
-                <div class="add-teammate-link d-flex flex-row-reverse text-right">
-                    <a href="#" id="addAnother">{% trans "add another" %}</a>
-                    <i class="material-icons px-1">add_circle_outline</i>
-                </div>
-                <button type="button" class="space-btn btn btn-block login-btn my-3" id="addTeammatesBtn" box="space-alert-container">
-                    {% trans "Add Teammates" %}
-                </button>
-                <!-- <div class="add-teammate-link d-flex flex-row text-left">
-                    <i class="material-icons px-1">link</i>
-                    <a href="#">Get an invite link to share</a>
-                </div> -->
-                <br />
-                {% trans "Or" %}, <a href="#" id="skipTeammates" box="space-alert-container">{% trans "Skip for now" %}</a>
             </div>
         </div>
     </div>

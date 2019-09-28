@@ -181,7 +181,10 @@ function init_badges(badges) {
                 '<img src="'+ badges[i].icon +'" alt="badge icon">' +
                 '<div class="badge-label">' +
                     '<h5 class="card-title text-uppercase text-muted mb-0">'+ badges[i].name +'</h5>' +
-                    '<span class="h2 font-weight-bold mb-0">'+ badges[i].point_amount +'</span>' +
+                    '<span class="h2 font-weight-bold mb-0">'+ 
+                        badges[i].point_amount +
+                        '<small class="px-1 text-muted">pts</small>' +
+                    '</span>' +
                 '</div>' +
                 '<div class="hover-part pr-2 pl-2">' +
                 '<p class="mt-3 mb-1 text-white text-md description">'+ badges[i].description +'</p>' +

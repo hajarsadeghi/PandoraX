@@ -8,13 +8,13 @@
 
 {% block body %}
     <div class="container-fluid">
-        <div class="row space-row">
+        <div class="row space-row d-none">
             {% include './space-name.html' %}
         </div>
         <div class="row space-row space-info-container d-none">
             {% include './space-info.html' %}
         </div>
-        <div class="row space-row space-teammates-container d-none">
+        <div class="row space-row space-teammates-container">
             {% include './space-teammates.html' %}
         </div>
         <div class="row space-row space-alert-container d-none">

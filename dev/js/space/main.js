@@ -1,11 +1,11 @@
 import Dropdown from './../helper/dropdown.js';
-import Notif from './../helper/index.js';
+import { Notif, validateEmail } from './../helper';
 import {create_space} from './../api.js';
 
 // ... initialize dropdown ...
 new Dropdown({root: '.dropdown-container'});
 
-$('#spaceNameBtn').attr('disabled', true);
+$('.space-btn').not(':last-child').attr('disabled', true);
 
 // ... login form transition ...
 $('.form-input').on('keyup',function() {
@@ -77,6 +77,20 @@ function checkSlug(slug_value) {
         }
     }, 750)
 }
+
+$('.industry-dropdown, .members-count').on('click change keyup', function() {
+
+    let industry_id = $('.industry').attr('id'),
+        members = $('.members-count').val();
+
+    if (Boolean(industry_id && members)) {
+        $('#createSpaceBtn').attr('disabled', false);
+    }
+    else {
+        $('#createSpaceBtn').attr('disabled', true);
+    }
+})
+
 // ... check company slug
 $('#spaceNameBtn').on('click', function() {
     ToggleSpaceBoxes($(this));
@@ -113,6 +127,24 @@ $('#createSpaceBtn').on('click', function() {
     }
     
 });
+
+$('#spaceTeammatesBox input.form-input').on('keyup', function() {
+
+    let teammates_emails = $('#spaceTeammatesBox input.form-input'),
+        has_email = true;
+
+    for (let i = 0; i < teammates_emails.length; i++) {
+        if (!$(teammates_emails[i]).val() || !validateEmail($(teammates_emails[i]).val())) {
+            has_email = false;
+        }
+    }
+    if (has_email) {
+        $('#addTeammatesBtn').attr('disabled', false)
+    }
+    else {
+        $('#addTeammatesBtn').attr('disabled', true)
+    }
+})
 
 // ... add team mates
 $('#addTeammatesBtn').on('click', function() {
@@ -164,12 +196,19 @@ function ToggleSpaceBoxes($this) {
     $(box).addClass('d-flex');
 }
 
-$('#addAnother').click(function(event) {
+$('#addAnother').click(function() {
+    console.log($('#spaceTeammatesBox').innerHeight(), '========height before')
     $('#spaceTeammatesBox').find('.form-group.forms').last().after(`
         <div class="form-group forms">
             <input type="email" class="form-control form-input" aria-describedby="email" autocomplete="off">
             <span class="input-line" data-placeholder="Ex. name@example.com"></span>
         </div>
     `);
+    $('#spaceTeammatesBox').css('height', $('#spaceTeammatesBox').innerHeight())
+    let height_diff = Math.round($('.container-fluid').innerHeight() - $('nav').innerHeight() - $('#spaceTeammatesBox').innerHeight())
+    console.log(height_diff,'====diff')
+    if (height_diff < 145) {
+        $('#spaceTeammatesBox').css('overflow-y', 'scroll');
+    }
 });
 

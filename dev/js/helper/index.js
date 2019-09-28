@@ -1,4 +1,4 @@
-export default function Notif(msg) {
+export function Notif(msg) {
     iziToast.show({
         message: msg,
         backgroundColor: '#4a5cc5',
@@ -19,6 +19,12 @@ $( ".dropdown-input.industry" ).on('blur', function() {
         $('.dropdown-caret').removeClass('open');
     }
 });
+
+// ... email validation
+export function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
 
 // export function LottieAnimation(arr, badge) {
 //     for (let i = 0; i < arr.length; i++) {

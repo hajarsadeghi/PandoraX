@@ -58,7 +58,7 @@
                                         </i>
                                     </div>
                                     <div class="col">
-                                        {% trans 'Use Badge' %}
+                                        {% trans 'Send Badge' %}
                                     </div>
                                 </div>
                             </button>
@@ -73,6 +73,7 @@
                                 <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans 'Privacy' %}</button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="#">{% trans 'Public' %}</a>
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#privacyModal">{% trans 'My team' %}</a>
                                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#privacyModal">{% trans 'Colleagues except' %}</a>
                                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#privacyModal">{% trans 'Specific colleagues' %}</a>
                                 </div>
