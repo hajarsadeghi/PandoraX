@@ -5,7 +5,7 @@ import {create_space} from './../api.js';
 // ... initialize dropdown ...
 new Dropdown({root: '.dropdown-container'});
 
-$('.space-btn').not(':last-child').attr('disabled', true);
+$('.space-btn').not(':nth-child(3)').attr('disabled', true);
 
 // ... login form transition ...
 $('.form-input').on('keyup',function() {
@@ -178,7 +178,6 @@ $('#addTeammatesBtn').on('click', function() {
     else {
         Notif('Please Provide your teams email address');
     }
-    
 });
 
 $('#skipTeammates').on('click', function() {    
@@ -197,18 +196,20 @@ function ToggleSpaceBoxes($this) {
 }
 
 $('#addAnother').click(function() {
-    console.log($('#spaceTeammatesBox').innerHeight(), '========height before')
+    let height_diff = Math.round($('.container-fluid').innerHeight() - $('nav').innerHeight() - $('#spaceTeammatesBox').innerHeight()),
+        emails_length = $('#spaceTeammatesBox .team-emails-inner').find('.forms').length,
+        form_height = (Number(emails_length) * Number($('#spaceTeammatesBox .team-emails-inner').find('.forms').innerHeight())) + Number($('#spaceTeammatesBox .team-emails-inner').find('.forms').innerHeight());
+    
+        height_diff > 180 ? $('.team-emails-inner').css('height', form_height + 'px') : null;
+    
     $('#spaceTeammatesBox').find('.form-group.forms').last().after(`
         <div class="form-group forms">
             <input type="email" class="form-control form-input" aria-describedby="email" autocomplete="off">
             <span class="input-line" data-placeholder="Ex. name@example.com"></span>
         </div>
     `);
-    $('#spaceTeammatesBox').css('height', $('#spaceTeammatesBox').innerHeight())
-    let height_diff = Math.round($('.container-fluid').innerHeight() - $('nav').innerHeight() - $('#spaceTeammatesBox').innerHeight())
-    console.log(height_diff,'====diff')
-    if (height_diff < 145) {
-        $('#spaceTeammatesBox').css('overflow-y', 'scroll');
-    }
+    $('.team-emails-inner').animate({
+        scrollTop: $(".forms").last().offset().top
+    }, 1000);
 });
 

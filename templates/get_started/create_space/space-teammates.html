@@ -4,11 +4,11 @@
 
 <div class="col-12 col-lg col-sections align-self-center">
     <div class="row justify-content-center align-items-center">
-        <div class="col-12 col-sm-10 col-md-8 col-xl-6">
+        <div class="col-11 col-sm-10 col-md-8 col-xl-6">
             <div id="spaceTeammatesBox" class="space-box form animated fadeInLeft">
                 <div class="team-emails-outer">
-                    <div class="team-emails-inner">
-                        <h3 class="mb-4">{% trans "Who is on your team?" %}</h3>
+                    <h3 class="mb-4">{% trans "Who is on your team?" %}</h3>
+                    <div class="team-emails-inner overflow-auto">
                         <div class="form-group forms">
                             <input type="email" class="form-control form-input" aria-describedby="email" autocomplete="off">
                             <span class="input-line" data-placeholder="Ex. name@example.com"></span>
@@ -27,7 +27,7 @@
                             <a href="#" id="addAnother">{% trans "add another" %}</a>
                             <i class="material-icons px-1">add_circle_outline</i>
                         </div>
-                        <button type="button" class="space-btn btn btn-block login-btn my-3" id="addTeammatesBtn" box="space-alert-container">
+                        <button type="button" class="btn btn-block my-3 space-btn" id="addTeammatesBtn" box="space-alert-container">
                             {% trans "Add Teammates" %}
                         </button>
                     </div>
