@@ -1,0 +1,21 @@
+
+@import "..//utilities/variables";
+@import "../utilities/mixins";
+
+
+
+.bilono-spinner {
+    padding: 0 auto !important;
+    text-align: left;
+    &:focus, &:active {
+       opacity: .6;
+    }
+    .bilono-lottie {
+        position: fixed;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 40px;
+        height: auto;
+    }
+}
