@@ -138,3 +138,24 @@ export const add_new_badge = (params, callback) => {
         }
     })
 }
+// ... list of users 
+export const get_users = (params, callback) => {
+    return fetch(
+        '/api/space/members/' + $.param(params),
+        {
+            method: 'GET',
+            headers:{
+                'Content-Type': 'application/json',
+                'Space-Id':space_id
+            }
+        }
+        ).then(response => {
+            if (response.ok) {
+                response.json().then(res => {
+                    callback(true, res)
+                })
+            } else {
+                callback(false, response)
+            }
+        })
+}

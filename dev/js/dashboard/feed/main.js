@@ -1,7 +1,3 @@
-// import {LottieAnimation} from './../../helper/index';
-
-
-
 $(document).ready(function() {
     // ... initialize emoji
     $(".post-content").emojioneArea();
