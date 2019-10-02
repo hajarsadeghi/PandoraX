@@ -1,15 +1,7 @@
 import '../../css/helper/bilono-spinner.scss';
 
 
-$('.bilono-spinner').html( '<span>'+ $('.bilono-spinner').text() +'</span>' + '<div class="bilono-lottie mx-1 d-none" id="bilonoSpinner"></div>')
-
-lottie.loadAnimation({
-  container: document.getElementById('bilonoSpinner'),
-  path: button_spinner,
-  renderer: 'svg',
-  autoplay: true,
-  loop: true
-}); 
+$('.bilono-spinner').html( '<span>'+ $('.bilono-spinner').text() +'</span>' + '<img class="bilono-lottie mx-1 d-none" id="bilonoSpinner" src="'+ button_spinner +'" /> ')
 
 $('.bilono-spinner').on('click', function() {
   if ($(this).find('.bilono-lottie').hasClass('d-none')) {
