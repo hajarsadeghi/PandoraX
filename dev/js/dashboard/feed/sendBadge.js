@@ -28,12 +28,12 @@ function GetUsers(users) {
                 '<div class="px-3 align-self-center">' +
                     '<div class="media">' +
                         '<span class="avatar avatar-sm rounded-circle bg-white shadow-sm">' +
-                                '<img class="img-fluid" src="'+ users[i].profile_picture +'" alt="profile picture" /> ' +
-                                '<span class="text-dark"></span> ' +
+                            '<img class="img-fluid" src="'+ users[i].profile_picture +'" alt="profile picture" /> ' +
+                            '<span class="text-dark"></span> ' +
                         '</span> ' +
                         '<div class="media-body ml-2">' +
-                            '<span class="mb-0 text-sm font-weight-bold">'+ users[i].full_name +'</span> ' +
-                            '<small class="text-muted d-block"></small>' +
+                            '<span class="username mb-0 text-sm font-weight-bold">'+ users[i].full_name +'</span> ' +
+                            '<small class="occupation text-muted d-block"></small>' +
                         '</div>' +
                     '</div>' +
                 '</div>' +
