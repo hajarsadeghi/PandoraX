@@ -5,6 +5,8 @@ from django.db.models import Value as V
 from user.models import User
 from space.models import Space, Member
 from decorators import is_authenticated, get_space
+from pandora_x.settings import MEDIA_URL
+from os.path import join as path_join
 from django.core.paginator import Paginator
 import json
 
@@ -41,7 +43,7 @@ def get_members(request):
         tmp_member = {
             'id': member['user__id'],
             'full_name': f"{member['user__first_name']} {member['user__last_name']}",
-            'profile_picture': member['user__profile_picture']
+            'profile_picture': path_join(MEDIA_URL, member['user__profile_picture'])
         }
         res['data'].append(tmp_member)
 
