@@ -1,7 +1,3 @@
-// import {LottieAnimation} from './../../helper/index';
-
-
-
 $(document).ready(function() {
     // ... initialize emoji
     $(".post-content").emojioneArea();
@@ -39,9 +35,7 @@ $(document).ready(function() {
     
     // ... generate mock badges & users
     clone($('#privacyModal').find(".select-privacy:last-child"), 19);
-    clone($('#recognitionModal').find(".who-to-recognize-row:last-child"), 8);
     clone($('#recognitionModal #giveBadge').find(".card-stats:last-child"), 40);
-    // clone($('.feed-activity').find(".feed:last-child"), 4);
 
     $('.recognition-btn').on('click',() => {
         $('.recognition-container,.recognition-btn').toggleClass('d-none');
@@ -52,8 +46,14 @@ $(document).ready(function() {
         $('.who-to-recognize-container').find('.select-row-radio').removeClass('selected');
     });
 
-    $('.who-to-recognize-row').on('click', (e) => {
+    $('#recognitionModal').on('click', '.who-to-recognize-row', function(e) {
+        let username = $(this).find('.username').text(),
+            occupation = $(this).find('.occupation').text(),
+            img_src = $(this).find('img').attr('src');
         $('.who-to-recognize-container').find('.select-row-radio').removeClass('selected');
+        $('.recognized-person').find('.username').text(username);
+        $('.recognized-person').find('.occupation').text(occupation);
+        $('.recognized-person').find('img').attr('src', img_src);
         $('.recognized-person').removeClass('d-none');
         $(e.target).closest('.who-to-recognize-row').find('.select-row-radio').toggleClass('selected');
     });

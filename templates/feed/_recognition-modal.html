@@ -26,22 +26,18 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="recognized-person" username="{{request.user.get_full_name}}" occupation="Web Developer" >
+                                <div class="recognized-person d-none" username="" occupation="" >
                                     <div class="d-flex align-items-center mb-2">
                                         <div class="px-3">
                                             <div class="media align-items-center">
                                                 <span class="avatar avatar-sm rounded-circle bg-white shadow-sm">
-                                                    {% if request.user.profile_picture %}
-                                                        <img class="img-fluid" src="{{request.user.profile_picture.url}}" alt="profile picture" />
-                                                    {% else %}
-                                                        <span class="text-dark">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
-                                                    {% endif %}
+                                                    <img class="img-fluid" src="" alt="profile picture" />
+                                                    <span class="text-dark"></span>
                                                 </span>
                                                 <div class="media-body ml-2">
-                                                    <span class="mb-0 text-sm font-weight-bold">
-                                                        {{request.user.get_full_name}}
+                                                    <span class="mb-0 text-sm font-weight-bold username">
                                                     </span>
-                                                    <small class="text-muted d-block">Front-End develoer</small>
+                                                    <small class="text-muted d-block occupation"></small>
                                                 </div>
                                             </div>
                                         </div>
@@ -55,32 +51,7 @@
                                     </div>
                                     <hr class="my-3" />
                                 </div>
-                                <div class="who-to-recognize-container mb-2">
-                                    <div class="who-to-recognize-row d-flex my-1">
-                                        <div class="px-3 align-self-center">
-                                            <div class="media">
-                                                <span class="avatar avatar-sm rounded-circle bg-white shadow-sm">
-                                                    {% if request.user.profile_picture %}
-                                                        <img class="img-fluid" src="{{request.user.profile_picture.url}}" alt="profile picture" />
-                                                    {% else %}
-                                                        <span class="text-dark">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
-                                                    {% endif %}
-                                                </span>
-                                                <div class="media-body ml-2">
-                                                    <span class="mb-0 text-sm font-weight-bold">
-                                                        {{request.user.get_full_name}}
-                                                    </span>
-                                                    <small class="text-muted d-block">Front-End develoer</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="flex-grow-1 align-self-center mt-2">
-                                            <div class="text-right">
-                                                <span class="select-row-radio"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="who-to-recognize-container mb-2"></div>
                             </div>
                         </div>
                     </div>
