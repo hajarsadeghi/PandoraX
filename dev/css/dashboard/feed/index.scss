@@ -411,10 +411,15 @@
     &#recognitionModal {
         .modal-body {
             max-height: 600px;
-            overflow-y: scroll;
-            .who-to-recognize-row {
-                cursor: pointer;
-
+            overflow: auto;
+            .who-to-recognize-container {
+                .who-to-recognize-row {
+                    cursor: pointer;
+                    img {
+                        max-width: 50px;
+                        height: auto;
+                    }
+                }
             }
         }
     }

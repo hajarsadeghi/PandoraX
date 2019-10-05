@@ -141,7 +141,7 @@ export const add_new_badge = (params, callback) => {
 // ... list of users 
 export const get_users = (params, callback) => {
     return fetch(
-        '/api/space/members/' + $.param(params),
+        '/api/space/members/?' + $.param(params),
         {
             method: 'GET',
             headers:{
