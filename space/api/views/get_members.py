@@ -7,7 +7,7 @@ from space.models import Space, Member
 from decorators import is_authenticated, get_space
 from pandora_x.settings import MEDIA_URL
 from os.path import join as path_join
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, InvalidPage
 import json
 
 
@@ -33,10 +33,15 @@ def get_members(request):
     queryset = queryset.values('user__id','user__first_name', 'user__last_name', 'user__profile_picture')
     if pagin:
         paginator = Paginator(queryset, pagin['data_limit'])
-        queryset = paginator.get_page(pagin['page'])
+        try:
+            queryset = paginator.page(pagin['page'])
+            res['max_page'] = paginator.num_pages
+        except InvalidPage:
+            queryset = []
+            res['max_page'] = 0
         res['data_limit'] = pagin['data_limit']
         res['page'] = pagin['page']
-        res['max_page'] = paginator.num_pages
+
 
     res['data'] = []
     for member in queryset:
