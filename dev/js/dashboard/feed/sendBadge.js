@@ -28,6 +28,7 @@ $('#useBadgeBtn').on('click', function() {
 
 $('#chooseColleague').on('keyup', function() {
     clearTimeout(choose_colleage);
+    page_number = 1;
     search_value = $(this).val().toLowerCase();
     choose_colleage = setTimeout(function() {
         get_users({
@@ -68,18 +69,26 @@ $('#recognitionModal .modal-body').on('scroll', () => {
 })
 
 function GetUsers(users) {
+    
     for (let i = 0; i < users.length; i++) {
+        let profile = '';
+        if (user_picture) {
+            profile = '<img class="img-fluid" src="'+ user_picture +'" alt="profile picture" /> '
+        }
+        else {
+            profile = '<span class="text-dark">'+ users[i].full_name.split(' ')[0].charAt(0) + users[i].full_name.split(' ')[1].charAt(0) +'</span> ';
+        }
+
         $('.who-to-recognize-container').append(
             '<div class="who-to-recognize-row d-flex my-2" user_id="'+ users[i].id +'">' +
                 '<div class="px-3 align-self-center">' +
                     '<div class="media">' +
-                        '<span class="avatar avatar-sm rounded-circle bg-white shadow-sm">' +
-                            '<img class="img-fluid" src="'+ user_picture +'" alt="profile picture" /> ' +
-                            '<span class="text-dark"></span> ' +
+                        '<span class="avatar avatar-sm rounded-circle bg-white shadow-sm border">' +
+                            profile +
                         '</span> ' +
                         '<div class="media-body ml-2">' +
                             '<span class="username mb-0 text-sm font-weight-bold">'+ users[i].full_name +'</span> ' +
-                            '<small class="occupation text-muted d-block"></small>' +
+                            '<small class="occupation text-muted d-block">Developer</small>' +
                         '</div>' +
                     '</div>' +
                 '</div>' +

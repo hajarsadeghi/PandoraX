@@ -27,6 +27,7 @@
         display: inline-block;
         text-align: center;
         line-height: 50px;
+        border: 1px solid #e9ecef;
     }
 
     .lottie-animation {
@@ -412,6 +413,19 @@
         .modal-body {
             max-height: 600px;
             overflow: auto;
+            .recognition-modal-search {
+                position: -webkit-sticky;
+                position: sticky;
+                z-index: 9999;
+                top: -25px;
+                background-color: $white;
+            }
+            .sticky {
+                position: -webkit-sticky;
+                position: sticky;
+                z-index: 9999;
+                top: 0;
+            }
             .who-to-recognize-container {
                 .who-to-recognize-row {
                     cursor: pointer;
