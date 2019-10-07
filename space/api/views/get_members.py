@@ -49,7 +49,7 @@ def get_members(request):
         tmp_member = {
             'id': member['user__id'],
             'full_name': f"{member['user__first_name']} {member['user__last_name']}",
-            'profile_picture': path_join(MEDIA_URL, member['user__profile_picture'])
+            'profile_picture': path_join(MEDIA_URL, member['user__profile_picture']) if member['user__profile_picture'] else None
         }
         res['data'].append(tmp_member)
 
