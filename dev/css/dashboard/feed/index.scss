@@ -54,6 +54,14 @@
     .emojionearea.focused {
         box-shadow: none !important;
     }
+
+    .avatar {
+
+        border: 1px solid $border-color !important;
+        // img {
+        //     border-radius: 0;
+        // }
+    }
     
     .post {
 
@@ -188,16 +196,6 @@
                     &:focus {
                         width: 100px;
                     }
-                }
-            }
-        }
-
-        #recognitionExpanded {
-            .user-card {
-                img {
-                    width: 50px;
-                    height: 50px;
-                    border-radius: 50%;
                 }
             }
         }
@@ -384,11 +382,6 @@
         width: 100%;
         position: absolute;
         bottom: 0;
-    }
-    .avatar {
-        img {
-            border-radius: 0;
-        }
     }
 
     button {

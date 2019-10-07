@@ -1,4 +1,5 @@
-import { get_users } from './../../api';
+import { get_users, get_badge_list } from './../../api';
+import { load_badges } from './../../helper/badges';
 
 
 
@@ -8,23 +9,37 @@ let choose_colleage = '',
 
 
 $('#useBadgeBtn').on('click', function() {
+    let users_res = false,
+        badges_res = false;
     get_users(
         {
         pagin: true,
         data_limit: 15,
-        page: 1
+        page: 1,
+        exclude_myself: true
     }, (status, response) => {
         if (status) {
+            users_res = true;
             $('.who-to-recognize-container').empty();
             GetUsers(response.data)
-            $('#recognitionModal').modal('show');
+            openModal(users_res, badges_res)
         }
         else {
             console.log(response)
         }
     })
-})
 
+    get_badge_list((status, res) => {
+        if (status) {
+            badges_res = true;
+            load_badges(res);
+            openModal(users_res, badges_res)
+        }
+        else {
+            console.log(res)
+        }
+    })
+})
 
 $('#chooseColleague').on('keyup', function() {
     clearTimeout(choose_colleage);
@@ -68,22 +83,100 @@ $('#recognitionModal .modal-body').on('scroll', () => {
     }
 })
 
-function GetUsers(users) {
+$('.recognition-btn').on('click',() => {
+    $('.recognition-container,.recognition-btn').toggleClass('d-none');
+});
+
+$('.recognized-person').on('click', (e) => {
+    $(e.target).closest('.recognized-person').addClass('d-none');
+    $('.recognition-btn').attr('disabled', true);
+    $('.who-to-recognize-container').find('.select-row-radio').removeClass('selected');
+});
+
+$('#recognitionModal').on('click', '.who-to-recognize-row', function(e) {
+    let user_id     = $(this).attr('user_id'),
+        username    = $(this).find('.username').text(),
+        occupation  = $(this).find('.occupation').text(),
+        img_src     = $(this).find('img').attr('src'),
+        user_initial= $(this).find('.initials').text();
+
+    $('.recognized-person').find('.username').text(username);
+    $('.recognized-person').find('.occupation').text(occupation);
+    img_src ?
+    $('.recognized-person').find('.avatar').html('<img class="img-fluid" src="'+ img_src +'" alt="profile picture" />') :
+    $('.recognized-person').find('.avatar').html('<span class="text-dark initials">'+ user_initial +'</span> ')
+
+    $('.recognized-person').attr('user_id', user_id);
+    $('.recognized-person').attr('username', username);
+    $('.recognized-person').attr('occupation', occupation);
+    $('.recognized-person').attr('img-src', img_src ? img_src : undefined)
+    $('.recognized-person').attr('user-initials', user_initial ? user_initial : undefined)
     
+    $('.who-to-recognize-container').find('.select-row-radio').removeClass('selected');
+    $(e.target).closest('.who-to-recognize-row').find('.select-row-radio').toggleClass('selected');
+    $('.recognition-btn').attr('disabled', false);
+    $('.recognized-person').removeClass('d-none');
+});
+
+$('#recognitionModal').on('click', '.card-stats', (e) => {
+    let selectedCard = $(e.target).closest('.card-stats');
+    $('.card-stats').not(selectedCard).removeClass('selected-badge-border');
+    selectedCard.toggleClass('selected-badge-border');
+
+    let selected_user = $('.recognized-person');
+    let selected_user_obj = {
+        id:     selected_user.attr('user_id'),
+        name:   selected_user.attr('username'),
+        img_src:    selected_user.attr('img-src'),
+        user_initials: selected_user.attr('user-initials')
+    }
+    $('.selected-badge-container').find('.user-card').attr('user_id', selected_user_obj.id);
+    $('.selected-badge-container').find('.user-card .card-title').text(selected_user_obj.name);
+    selected_user_obj.img_src ?
+        $('.selected-badge-container').find('.user-card .avatar').html('<img class="img-fluid mx-auto" src="'+ selected_user_obj.img_src +'" alt="badge icon">') :
+        $('.selected-badge-container').find('.user-card .avatar').html('<span class="text-dark initials">'+ selected_user_obj.user_initials +'</span>')
+
+    let selected_badge = $('#giveBadge').find('.selected-badge-border');
+    let selected_badge_obj = {
+        name:   selected_badge.attr('badge-name'),
+        id:     selected_badge.attr('badge-id'), 
+        points: selected_badge.attr('badge-points'),
+        src:    selected_badge.attr('badge-src'),
+        des:    selected_badge.attr('badge-des')
+    }
+    $('.selected-badge-container').find('.badge-card').attr('id', selected_badge_obj.id);
+    $('.selected-badge-container').find('.badge-card img').attr('src', selected_badge_obj.src);
+    $('.selected-badge-container').find('.badge-card .card-title span').text(selected_badge_obj.name);
+    $('.selected-badge-container').find('.badge-card .card-title small').text(selected_badge_obj.points);
+    $('.selected-badge-container').removeClass('d-none');
+    
+    $('.use-badge-section').addClass('d-none')
+    $('.selected-badge-info').removeClass('d-none');
+    $('.post-recognition').removeClass('d-none');
+    $('#recognitionModal').modal('hide');
+});
+
+function openModal(status1, status2) {
+    if (status1 && status2) {
+        $('#recognitionModal').modal('show');        
+    }
+}
+
+function GetUsers(users) {
     for (let i = 0; i < users.length; i++) {
         let profile = '';
-        if (user_picture) {
-            profile = '<img class="img-fluid" src="'+ user_picture +'" alt="profile picture" /> '
+        if (users[i].profile_picture) {
+            profile = '<img class="img-fluid" src="'+ users[i].profile_picture +'" alt="profile picture" /> '
         }
         else {
-            profile = '<span class="text-dark">'+ users[i].full_name.split(' ')[0].charAt(0) + users[i].full_name.split(' ')[1].charAt(0) +'</span> ';
+            profile = '<span class="text-dark initials">'+ users[i].full_name.split(' ')[0].charAt(0) + users[i].full_name.split(' ')[1].charAt(0) +'</span> ';
         }
 
         $('.who-to-recognize-container').append(
             '<div class="who-to-recognize-row d-flex my-2" user_id="'+ users[i].id +'">' +
                 '<div class="px-3 align-self-center">' +
                     '<div class="media">' +
-                        '<span class="avatar avatar-sm rounded-circle bg-white shadow-sm border">' +
+                        '<span class="avatar avatar-sm rounded-circle bg-white shadow-sm">' +
                             profile +
                         '</span> ' +
                         '<div class="media-body ml-2">' +

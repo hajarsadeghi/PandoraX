@@ -4,6 +4,7 @@ import {
         add_new_badge
         } 
         from './../../api';
+import { load_badges } from './../../helper/badges';
 let badge_obj = {};
 
 // ... get badge images
@@ -18,7 +19,7 @@ get_badge_images((status, response) => {
 // ... get badge list
 get_badge_list((status, response) => {
     if (status) {
-        init_badges(response)
+        load_badges(response)
     }
     else {
         console.log('error')
@@ -174,35 +175,7 @@ function init_albume(album) {
         )
     }
 }
-function init_badges(badges) {
-    for (var i = 0; i < badges.length; i++){
-        $('#created_badge_table_keeper').append(
-            ' <div class="card card-stats mb-4 mb-xl-0 badge-card source">' +
-                '<img src="'+ badges[i].icon +'" alt="badge icon">' +
-                '<div class="badge-label">' +
-                    '<h5 class="card-title text-uppercase text-muted mb-0">'+ badges[i].name +'</h5>' +
-                    '<span class="h2 font-weight-bold mb-0">'+ 
-                        badges[i].point_amount +
-                        '<small class="px-1 text-muted">pts</small>' +
-                    '</span>' +
-                '</div>' +
-                '<div class="hover-part pr-2 pl-2">' +
-                '<p class="mt-3 mb-1 text-white text-md description">'+ badges[i].description +'</p>' +
-                '<span class="hover-down">' +
-                    '<div class="down-details">' +
-                        '<i class="material-icons text-muted text-sm text-white">account_circle</i>' +
-                        '<span class="mt-0 mb-0 text-muted text-sm text-white" >'+ badges[i].creator.full_name +'</span>' +
-                    '</div>' +
-                    '<div class="down-details">' +
-                        '<i class="material-icons text-light text-sm">event</i>' +
-                        '<span class="text-muted text-sm text-white">'+ badges[i].created_date +'</span>' +
-                    '</div>' +
-                '</span>' +
-                '</div>' +
-            '</div>'
-        )
-    }
-}
+
 
 
 
