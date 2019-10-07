@@ -16,18 +16,18 @@
             <div class="row">
                 <div class="col-12 recognition-container" id="recognizeWho">
                     <div class="row justify-content-center">
-                        <div class="col-12 col-lg col-xl-6 align-self-center">
-                            <img class="img-fluid" src="{% static 'image/heart.svg' %}" />
+                        <div class="col-12 col-lg col-xl-6">
+                            <img class="img-fluid sticky" src="{% static 'image/heart.svg' %}" />
                         </div>
                         <div class="col-12 col-lg col-xl-4">
-                            <div class="form-group">
-                                <div class="input-group input-group-alternative mb-4">
-                                    <input class="form-control form-control-alternative" id="chooseColleague" placeholder="Choose your colleague.." type="text">
+                            <div class="recognition-modal-search">
+                                <div class="form-group">
+                                    <div class="input-group input-group-alternative mb-4">
+                                        <input class="form-control form-control-alternative" id="chooseColleague" placeholder="Choose your colleague.." type="text">
+                                    </div>
                                 </div>
-                            </div>
-                            <div>
                                 <div class="recognized-person d-none" username="" occupation="" >
-                                    <div class="d-flex align-items-center mb-2">
+                                    <div class="d-flex align-items-center mb-2 px-2">
                                         <div class="px-3">
                                             <div class="media align-items-center">
                                                 <span class="avatar avatar-sm rounded-circle bg-white shadow-sm">
@@ -51,8 +51,8 @@
                                     </div>
                                     <hr class="my-3" />
                                 </div>
-                                <div class="who-to-recognize-container mb-2"></div>
                             </div>
+                            <div class="who-to-recognize-container mb-2 px-2"></div>
                         </div>
                     </div>
                 </div>
