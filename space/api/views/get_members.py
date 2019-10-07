@@ -18,6 +18,7 @@ def get_members(request):
     try:
         pagin = json.loads(request.GET.get('pagin', 'false'))
         search = request.GET.get('search', False)
+        exclude_myself = json.loads(request.GET.get('exclude_myself', 'false'))
         if pagin:
             pagin = {}
             pagin['data_limit'] = int(request.GET['data_limit'])
@@ -25,11 +26,11 @@ def get_members(request):
     except (KeyError, ValueError, TypeError):
         return JsonResponse({"message": "bad params"}, status=400)
     res = {}
-    queryset = request.space.member_set
+    queryset = request.space.member_set.all()
     if search:
         queryset = queryset.annotate(user__full_name=Concat('user__first_name', V(' '), 'user__last_name')).filter(Q(user__first_name__istartswith=search) | Q(user__last_name__istartswith=search) | Q(user__full_name__istartswith=search)).distinct()
-    else:
-        queryset = queryset.all()
+    if exclude_myself:
+        queryset = queryset.exclude(user__id=request.user.id)
     queryset = queryset.values('user__id','user__first_name', 'user__last_name', 'user__profile_picture')
     if pagin:
         paginator = Paginator(queryset, pagin['data_limit'])
