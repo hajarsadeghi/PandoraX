@@ -1,7 +1,7 @@
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
 from django.db.models.functions import Concat
-from django.db.models import Value as V
+from django.db.models import Value as V, Q
 from user.models import User
 from space.models import Space, Member
 from decorators import is_authenticated, get_space
@@ -27,7 +27,7 @@ def get_members(request):
     res = {}
     queryset = request.space.member_set
     if search:
-        queryset = queryset.annotate(user__full_name=Concat('user__first_name', V(' '), 'user__last_name')).filter(user__full_name__icontains=search)
+        queryset = queryset.annotate(user__full_name=Concat('user__first_name', V(' '), 'user__last_name')).filter(Q(user__first_name__istartswith=search) | Q(user__last_name__istartswith=search) | Q(user__full_name__istartswith=search)).distinct()
     else:
         queryset = queryset.all()
     queryset = queryset.values('user__id','user__first_name', 'user__last_name', 'user__profile_picture')
