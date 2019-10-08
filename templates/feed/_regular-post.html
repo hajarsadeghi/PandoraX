@@ -11,7 +11,7 @@
                 {% if request.user.profile_picture %}
                     <img class="img-fluid profile-pic" src="{{request.user.profile_picture.url}}" alt="profile picture" />
                 {% else %}
-                    <span class="text-dark">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
+                    <span class="text-dark profile-pic-text">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
                 {% endif %}
             </div>
             <div class="d-flex flex-column contentWrapper">
@@ -24,7 +24,7 @@
             <form>
                 <div class="row align-items-center mb-2">
                     <div class="col">
-                        <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
+                        <a href="#"class="badge badge-pill badge-primary mx-1 py-1" data-toggle="collapse" data-target="#postUpload" aria-expanded="false" aria-controls="postUpload">
                             <div class="row no-gutters align-items-center">
                                 <div class="col pr-1">
                                     <i class="material-icons md-18">
@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
+                        <!-- <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
                             <div class="row no-gutters align-items-center">
                                 <div class="col pr-1">
                                     <i class="material-icons md-18">
@@ -47,7 +47,7 @@
                                     {% trans 'Location' %}
                                 </div>
                             </div>
-                        </a>
+                        </a> -->
                         <a href="#"class="badge badge-pill badge-primary mx-1 py-1">
                             <div class="row no-gutters align-items-center">
                                 <div class="col pr-1">
@@ -60,6 +60,18 @@
                                 </div>
                             </div>
                         </a>
+                        <div class="collapse mt-3" id="postUpload">
+                            <div class="card card-body text-center border-0">
+                                <div class="dropzone" id="postFileDropzone">
+                                    <div class="dz-default dz-message">
+                                        <i class="material-icons">backup</i>
+                                        <p>{% trans "Drag and drop icon here" %}</p>
+                                        <p class="text-sm font-weight-bold mb-0">{% trans "OR" %}</p>
+                                        <button type="button" class="btn btn-secondary font-weight-bold">{% trans "Browse" %}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- <a href="#"class="badge badge-pill badge-primary mx-1 py-1 point-recognition" id="pointRecognition">
                             <div class="row no-gutters align-items-center">
                                 <div class="col pr-1">

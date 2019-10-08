@@ -11,6 +11,7 @@ let choose_colleage = '',
 $('#useBadgeBtn').on('click', function() {
     let users_res = false,
         badges_res = false;
+    $('#giveBadge').find('#created_badge_table_keeper').empty();
     get_users(
         {
         pagin: true,

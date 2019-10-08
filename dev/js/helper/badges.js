@@ -6,7 +6,7 @@ export const load_badges = (badges) => {
                 'badge-id       ="'+ badges[i].id +'"' +
                 'badge-points   ="'+ badges[i].point_amount +'"' +
                 'badge-src      ="'+ badges[i].icon +'"' +
-                'badge-des      ="'+ badges[i].description +'">recognitionModal' +
+                'badge-des      ="'+ badges[i].description +'">' +
                 '<img src       ="'+ badges[i].icon +'" alt="badge icon">' +
                 '<div class="badge-label">' +
                     '<h4 class="card-title text-uppercase text-muted mb-0">'+ badges[i].name +'</h4>' +
