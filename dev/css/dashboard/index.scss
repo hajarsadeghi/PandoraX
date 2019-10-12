@@ -7,18 +7,6 @@
 body {
     font-family: 'Roboto', sans-serif;
     background-color: $tint-blue-color1;
-    .container-fluid {
-
-        .bilino-main {
-            &.main-is-fully-visible {
-                width: 100%;
-            }
-            &.main-is-partially-visible {
-                width: 100%;
-                padding-left: $sidebar-width;
-            }
-        }
-    }
 
     .tinted {
         width: 100%;

@@ -157,6 +157,53 @@ $('#recognitionModal').on('click', '.card-stats', (e) => {
     $('#recognitionModal').modal('hide');
 });
 
+// ... load data on scroll in privacy modal
+$('#privacyModal .modal-body').on('scroll',() => {
+    if ($('.modal-body').scrollTop() + $('.modal-body').innerHeight() >= $('#privacyModal .modal-body')[0].scrollHeight) {
+        console.log('end of the scroll')    
+    }
+});
+
+// ... recognition modal
+
+// ... load animation using lottie ...
+LottieAnimation(['rewardBadge', 'rewardBadge1'])
+
+// ... generate mock badges & users
+clone($('#privacyModal').find(".select-privacy:last-child"), 19);
+
+// ... privacy setting 
+$('.selected-privacy').on('click', (e) => {
+    $(e.target).closest('.selected-privacy').addClass('d-none');
+    $('.select-privacy-container').find('.select-row-radio').removeClass('selected');
+});
+
+$('#privacyModal .select-privacy').on('click', (e) => {
+    $('.select-privacy-container').find('.select-row-radio').removeClass('selected');
+    $('.selected-privacy').removeClass('d-none');
+    $(e.target).closest('.select-privacy').find('.select-row-radio').toggleClass('selected');
+});
+
+// ... custom functions
+function clone(target, count) {
+    for (var i = 0;i < count;i++){
+        let user = target.clone(true);
+        user.insertAfter(target);
+    }
+}
+
+function LottieAnimation(array) {
+    for (let i = 0; i < array.length; i++) {
+        lottie.loadAnimation({
+            container: document.getElementById(array[i]),
+            path: reward_badge,
+            renderer: 'svg',
+            autoplay: true,
+            loop: true
+        }); 
+    }   
+}
+
 function openModal(status1, status2) {
     if (status1 && status2) {
         $('#recognitionModal').modal('show');        
