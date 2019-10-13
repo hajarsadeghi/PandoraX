@@ -20,7 +20,7 @@ class Badge(View):
                 "name":badge['name'],
                 "creator":{
                     "id":badge['creator__id'],
-                    "full_name": get_full_name(badge['creator__first_name'], ['creator__last_name']),
+                    "full_name": get_full_name(badge['creator__first_name'], badge['creator__last_name']),
                 },
                 "point_amount": badge['point_amount'],
                 "description": badge['description'],
