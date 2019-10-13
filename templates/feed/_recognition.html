@@ -6,7 +6,7 @@
 <div class="card-body">
     <div id="recognitionToggled" class="post-toggled" data-target="#recognitionExpanded" aria-expanded="false" aria-controls="recognitionExpanded">
         <div class="my-1" id="sharePost">
-            <div id="postLink" class="align-items-center d-flex flex-row">
+            <div id="postLink" class="d-flex flex-row">
             <div class="d-flex flex-column">
                 {% if request.user.profile_picture %}
                     <img class="img-fluid profile-pic" src="{{request.user.profile_picture.url}}" alt="profile picture" />
@@ -15,7 +15,7 @@
                 {% endif %}
             </div>
             <div class="d-flex flex-column contentWrapper">
-                <div id="recognitionContent" class="post-content px-3" contenteditable="true" data-placeholder="{% trans 'Whats on your mind today? :)' %}"></div>
+                <div id="recognitionContent" class="post-content recognition-post-content px-3" contenteditable data-placeholder="{% trans 'Whats on your mind today? :)' %}"></div>
             </div>
             </div>
         </div>

@@ -121,15 +121,11 @@
         .contentWrapper {
 
             width: calc(100% - 50px);
-            #postContent {
-
+            .post-content {
                 @include transition(all .4s ease-in);
+            
                 &:empty:before {
                     content: attr(data-placeholder);
-                }
-
-                &:focus {
-                    outline: 0 !important;
                 }
             }
 
@@ -165,6 +161,10 @@
                             color: $text !important;
                         }
                     }
+                }
+                
+                .emojionearea-button {
+                    visibility: hidden;
                 }
             }
         }
@@ -221,14 +221,14 @@
                             top: -30px;
                             z-index: 9999;
                             color: rgba(255,255,255,0.4);
-                            display: none;
+                            visibility: hidden;
                             .material-icons {
                                 cursor: pointer;
                             }
                         }
                         &:hover {
                             .dz-remove {
-                                display: block;
+                                visibility: visible;
                             }
                         }
                     }
