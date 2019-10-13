@@ -15,7 +15,7 @@
                             {% if request.user.profile_picture %}
                                 <img class="img-fluid top top-one" src="{{request.user.profile_picture.url}}" alt="profile picture" />
                             {% else %}
-                                <div class="top top-one border d-inline-block">{{request.user.first_name.0}}{{request.user.last_name.0}}</div>
+                                <div class="top top-one border d-inline-block">{{request.user.name_chars}}</div>
                             {% endif %}
                         </div>
                         <div class="top top-two border d-inline-block">SM</div>
@@ -26,7 +26,7 @@
                 {% if request.user.profile_picture %}
                     <img class="img-fluid top top-u" src="{{request.user.profile_picture.url}}" alt="profile picture" />
                 {% else %}
-                    <div class="text-dark top top-u border d-inline-block">{{request.user.first_name.0}}{{request.user.last_name.0}}</div>
+                    <div class="text-dark top top-u border d-inline-block">{{request.user.name_chars}}</div>
                 {% endif %}
                 <small class="d-block pt-1 top-u-points">1000</small>
                 <div class="font-weight-bold top-u-rank">#35</div>

@@ -5,8 +5,7 @@ from django.db.models import Value as V, Q
 from user.models import User
 from space.models import Space, Member
 from decorators import is_authenticated, get_space
-from pandora_x.settings import MEDIA_URL
-from os.path import join as path_join
+from utils import get_media_url, get_full_name, get_name_chars
 from django.core.paginator import Paginator, InvalidPage
 import json
 
@@ -34,12 +33,11 @@ def get_members(request):
     queryset = queryset.values('user__id','user__first_name', 'user__last_name', 'user__profile_picture')
     if pagin:
         paginator = Paginator(queryset, pagin['data_limit'])
+        res['max_page'] = paginator.num_pages
         try:
             queryset = paginator.page(pagin['page'])
-            res['max_page'] = paginator.num_pages
         except InvalidPage:
             queryset = []
-            res['max_page'] = 0
         res['data_limit'] = pagin['data_limit']
         res['page'] = pagin['page']
 
@@ -48,8 +46,9 @@ def get_members(request):
     for member in queryset:
         tmp_member = {
             'id': member['user__id'],
-            'full_name': f"{member['user__first_name']} {member['user__last_name']}",
-            'profile_picture': path_join(MEDIA_URL, member['user__profile_picture']) if member['user__profile_picture'] else None
+            'full_name': get_full_name(member['user__first_name'], member['user__last_name']),
+            'name_chars': get_name_chars(member['user__first_name'], member['user__last_name']),
+            'profile_picture': get_media_url(member['user__profile_picture'])
         }
         res['data'].append(tmp_member)
 

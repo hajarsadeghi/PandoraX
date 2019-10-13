@@ -3,8 +3,7 @@ from django.http import JsonResponse
 from badge.models import Badge as BadgeModel, Icon
 from decorators import is_authenticated, get_space
 from django.utils.decorators import method_decorator
-from pandora_x.settings import MEDIA_URL
-from os.path import join as path_join
+from utils import get_media_url, get_full_name
 from django.db.models import Q
 import json
 
@@ -21,11 +20,11 @@ class Badge(View):
                 "name":badge['name'],
                 "creator":{
                     "id":badge['creator__id'],
-                    "full_name":f"{'' if not badge['creator__first_name'] else badge['creator__first_name']} {'' if not badge['creator__last_name'] else badge['creator__last_name']}".strip()
+                    "full_name": get_full_name(badge['creator__first_name'], ['creator__last_name']),
                 },
                 "point_amount": badge['point_amount'],
                 "description": badge['description'],
-                "icon": path_join(MEDIA_URL, badge['icon__image']),
+                "icon": get_media_url(badge['icon__image']),
                 "active": badge['active'],
                 "created_date":badge['created_date'].strftime('%Y/%m/%d %H:%M:%S')
             }
@@ -63,7 +62,7 @@ class Badge(View):
             "name":badge.name,
             "creator":{
                 "id":badge.creator.id,
-                "full_name":f"{'' if not badge.creator.first_name else badge.creator.first_name} {'' if not badge.creator.last_name else badge.creator.last_name}".strip()
+                "full_name": get_full_name(badge.creator.first_name, badge.creator.last_name),
             },
             "point_amount": badge.point_amount,
             "description": badge.description,

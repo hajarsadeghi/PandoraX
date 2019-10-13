@@ -11,7 +11,7 @@
                   {% if request.user.profile_picture %}
                       <img class="img-fluid profile-pic" src="{{request.user.profile_picture.url}}" alt="profile picture" />
                   {% else %}
-                      <span class="text-dark profile-pic-text border">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
+                      <span class="text-dark profile-pic-text border">{{request.user.name_chars}}</span>
                   {% endif %}
               </div>
               <div class="flex-grow-1 px-2">
@@ -26,7 +26,7 @@
                     we're so glad we have you on board with us,<br>
                     you make such a difference and we're very grateful!
                 </p>
-            </div>  
+            </div>
             <div class="post-recognition-container">
                 <div class="d-flex justify-content-center align-items-center post-recognition">
                     <div class="selected-badge-info mx-2">
@@ -76,7 +76,7 @@
                         </span>
                     </div>
                     <div class="col text-right">
-                        <small class="cmts" data-toggle="tooltip" data-html="true" title="<span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br> <span>and 23 more ...</span><br>"> 
+                        <small class="cmts" data-toggle="tooltip" data-html="true" title="<span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br> <span>and 23 more ...</span><br>">
                             <a href="#" data-toggle="collapse" data-target="#commentsContainer" aria-expanded="false" aria-controls="commentsContainer">
                                 30 comments
                             </a>
@@ -108,7 +108,7 @@
                             {% if request.user.profile_picture %}
                                 <img class="img-fluid profile-pic" src="{{request.user.profile_picture.url}}" alt="profile picture" />
                             {% else %}
-                                <span class="text-dark profile-pic-text border">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
+                                <span class="text-dark profile-pic-text border">{{request.user.name_chars}}</span>
                             {% endif %}
                         </div>
                         <div class="flex-grow-1">
@@ -118,7 +118,7 @@
                     <div class="comment-row pb-3">
                         <div class="d-flex mx-3">
                             <div>
-                                <span class="text-dark profile-pic-text border">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
+                                <span class="text-dark profile-pic-text border">{{request.user.name_chars}}</span>
                             </div>
                             <div class="ml-2">
                                 <div class="comment-text border p-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi sequi provident nemo at quas error ipsum obcaecati vero minima eaque explicabo hic, porro ab! Dolorum minus sunt impedit aliquid dignissimos.</div>
@@ -130,7 +130,7 @@
                                 <div class="replies">
                                     <div class="d-flex">
                                         <div class="mr-1">
-                                            <div class="text-dark profile-pic-text border">{{request.user.first_name.0}}{{request.user.last_name.0}}</div>
+                                            <div class="text-dark profile-pic-text border">{{request.user.name_chars}}</div>
                                         </div>
                                         <div class="flex-grow-1">
                                             <div class="comment-text border p-2">This is a test reply for your comment.</div>
@@ -146,7 +146,7 @@
                                             {% if request.user.profile_picture %}
                                                 <img class="img-fluid profile-pic" src="{{request.user.profile_picture.url}}" alt="profile picture" />
                                             {% else %}
-                                                <span class="text-dark profile-pic-text border">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
+                                                <span class="text-dark profile-pic-text border">{{request.user.name_chars}}</span>
                                             {% endif %}
                                         </div>
                                         <div class="flex-grow-1">

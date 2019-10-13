@@ -3,8 +3,7 @@ from django.http import JsonResponse
 from badge.models import Icon as IconModel
 from decorators import is_authenticated, get_space
 from django.utils.decorators import method_decorator
-from pandora_x.settings import MEDIA_URL
-from os.path import join as path_join
+from utils import get_media_url
 from django.db.models import Q
 import json
 
@@ -18,7 +17,7 @@ class Icon(View):
         for icon in icons:
             tmp_icon = {
                 "id": icon['id'],
-                "src": path_join(MEDIA_URL, icon['image'])
+                "src": get_media_url(icon['image'])
             }
             resp.append(tmp_icon)
         return JsonResponse(resp, safe=False, status=200)

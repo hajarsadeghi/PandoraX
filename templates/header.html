@@ -61,7 +61,7 @@
                             {% if request.user.profile_picture %}
                                 <img class="img-fluid" src="{{request.user.profile_picture.url}}" alt="profile picture" />
                             {% else %}
-                                <span class="text-dark">{{request.user.first_name.0}}{{request.user.last_name.0}}</span>
+                                <span class="text-dark">{{request.user.name_chars}}</span>
                             {% endif %}
                         </span>
                         <div class="media-body ml-2 d-none d-lg-block">

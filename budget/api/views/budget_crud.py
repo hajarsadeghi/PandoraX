@@ -3,6 +3,8 @@ from django.http import JsonResponse
 from budget.models import Budget as BudgetModel
 from decorators import is_authenticated, get_space
 from django.utils.decorators import method_decorator
+from utils import get_full_name
+
 import json
 
 
@@ -18,7 +20,7 @@ class Budget(View):
                 "name":budget['name'],
                 "creator":{
                     "id":budget['id'],
-                    "full_name":f"{'' if not budget['creator__first_name'] else budget['creator__first_name']} {'' if not budget['creator__last_name'] else budget['creator__last_name']}".strip()
+                    "full_name": get_full_name(budget['creator__first_name'], budget['creator__last_name']),
                 },
                 "point_amount": budget['point_amount'],
                 "active": budget['active'],
