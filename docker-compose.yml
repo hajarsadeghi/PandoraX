@@ -50,8 +50,8 @@ services:
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_DATABASE: pandora_x
-      volumes:
-          - ./initial_database.sql:/docker-entrypoint-initdb.d/init.sql
+    volumes:
+        - ./initial_database.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
         test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
         timeout: 5s
