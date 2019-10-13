@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'transaction',
     'budget',
     'badge',
+    'activity',
 ]
 
 MIDDLEWARE = [
