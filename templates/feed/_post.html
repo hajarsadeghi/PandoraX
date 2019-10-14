@@ -4,20 +4,22 @@
 
 
 <div class="card shadow post">
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item m-1">
-      <a class="nav-link post-border-bottom active" id="recognition-tab" data-toggle="tab" href="#recognition" role="tab" aria-controls="recognition" aria-selected="true">{% trans 'Recognize' %}</a>
-    </li>
-    <li class="nav-item m-1">
-      <a class="nav-link post-border-bottom" id="regular-post-tab" data-toggle="tab" href="#regularPost" role="tab" aria-controls="regularPost" aria-selected="false">{% trans 'Post' %}</a>
-    </li>
-  </ul>
-  <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="recognition" role="tabpanel" aria-labelledby="recognition-tab">
-      {% include 'feed/_recognition.html' %}
-    </div>
-    <div class="tab-pane fade" id="regularPost" role="tabpanel" aria-labelledby="regular-post-tab">
-      {% include 'feed/_regular-post.html' %} 
+  <div class="custom-tabs">
+    <ul class="tabs-ul d-flex px-4" id="myTab">
+      <li class="nav-item m-2">
+        <a class="tabs-link post-border-bottom active" id="recognitionTab" related-tab="recognition">{% trans 'Recognize' %}</a>
+      </li>
+      <li class="nav-item m-2">
+        <a class="tabs-link post-border-bottom" id="regularPostTab" related-tab="regularPost">{% trans 'Post' %}</a>
+      </li>
+    </ul>
+    <div class="tabs-content" id="myTabContent">
+      <div class="tab-panel animated fadeIn show active" id="recognition">
+        {% include 'feed/_recognition.html' %}
+      </div>
+      <div class="tab-panel animated fadeIn d-none" id="regularPost">
+        {% include 'feed/_regular-post.html' %} 
+      </div>
     </div>
   </div>
 </div>
