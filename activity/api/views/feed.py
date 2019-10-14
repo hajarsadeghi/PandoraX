@@ -1,6 +1,6 @@
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
-from django.db.models import Count
+from django.db.models import Count, Q
 from activity.models import Activity, Media
 from decorators import is_authenticated, get_space
 from django.core.paginator import Paginator, InvalidPage
@@ -23,7 +23,7 @@ def feed(request):
         return JsonResponse({"message": "bad params"}, status=400)
     res = {}
     res['data'] = []
-    queryset = Activity.objects.filter(space=request.space).annotate(likes_count=Count('likes')).values(
+    queryset = Activity.objects.filter(space=request.space).annotate(likes_count=Count('likes'), is_liked=Count('likes', filter=Q(likes__id=request.user.id))).values(
         'id',
         'creator__id',
         'creator__first_name',
@@ -33,6 +33,7 @@ def feed(request):
         'text',
         'timestamp',
         'likes_count',
+        'is_liked',
 
         'recognition__id',
         'recognition__to_user__first_name',
@@ -72,6 +73,7 @@ def feed(request):
             'text': activity['text'],
             'timestamp': activity['timestamp'].strftime('%Y/%m/%d %H:%M:%S'),
             'likes_count': activity['likes_count'],
+            'is_liked': bool(activity['is_liked']),
             'recognition': None,
             'media': media[activity['id']] if activity['id'] in media else None
         }
