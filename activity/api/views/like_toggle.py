@@ -15,7 +15,7 @@ def like_toggle(request, activity_id):
         return JsonResponse({"message": "activity does not exists"}, status=400)
     res = {'activity_id':activity.id}
     try:
-        activity.likes.get(id=request.user)
+        activity.likes.get(id=request.user.id)
         activity.likes.remove(request.user)
         res['status'] = 'disliked'
     except User.DoesNotExist:
