@@ -12,17 +12,17 @@ import json
 @is_authenticated
 @get_space
 def new_activity(request):
-    # try:
-    data = json.loads(request.body)
-    activity_text = data['text']
-    activity_recognition = data.get('recognition')
-    if activity_recognition:
-        activity_recognition['user'] = Member.objects.get(space=request.space, user__id=activity_recognition['user'], user__is_active=True, active=True).user
-        activity_recognition['badge'] = Badge.objects.get(space=request.space, active=True, id=activity_recognition['badge'])
-    media = data.get('media', [])
-    activity_media = Media.objects.filter(id__in=media, user=request.user, activity=None)
-    # except (KeyError, ValueError, TypeError):
-    #     return JsonResponse({"message": "bad params"}, status=400)
+    try:
+        data = json.loads(request.body)
+        activity_text = data['text']
+        activity_recognition = data.get('recognition')
+        if activity_recognition:
+            activity_recognition['user'] = Member.objects.get(space=request.space, user__id=activity_recognition['user'], user__is_active=True, active=True).user
+            activity_recognition['badge'] = Badge.objects.get(space=request.space, active=True, id=activity_recognition['badge'])
+        media = data.get('media', [])
+        activity_media = Media.objects.filter(id__in=media, user=request.user, activity=None)
+    except (KeyError, ValueError, TypeError):
+        return JsonResponse({"message": "bad params"}, status=400)
     activity = Activity()
     activity.space = request.space
     activity.creator = request.user
