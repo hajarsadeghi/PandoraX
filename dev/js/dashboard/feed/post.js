@@ -3,36 +3,37 @@ import { get_users } from './../../api';
 
 
 // ... initialize emoji
-$(".post-content").emojioneArea({
-    pickerPosition: "right",
-    tonesStyle: "bullet",
-    autocomplete: true,
-    events: {
-        ready: function() {
-            this.editor.textcomplete([{
-                id: 'emojionearea',
-                match: /\B@([\-\d\w]*)$/,
-                search: function (term, callback) {
-                    // this code must be replaced with your
-                    // load mentions from ajax
-                    var mentions = ['Peter', 'Tom', 'Anne'];
-                    callback($.map(mentions, function (mention) {
-                    return mention.indexOf(term) === 0 ? mention : null;
-                }));
-                },
-                template: function (value) {
-                    return '<b>' + value + '</b>&nbsp;';
-                },
-                replace: function (value) {
-                    return '<b>@' + value + '</b>&nbsp;';
-                },
-                cache: true,
-                index: 1
-            }]);
-        }
-    }
-});
-$(".post-content").data("emojioneArea").enable();
+// $(".post-content").emojioneArea({
+//     pickerPosition: "right",
+//     tonesStyle: "bullet",
+//     autocomplete: true,
+//     events: {
+//         ready: function() {
+//             this.editor.textcomplete([{
+//                 id: 'emojionearea',
+//                 match: /\B@([\-\d\w]*)$/,
+//                 search: function (term, callback) {
+//                     // this code must be replaced with your
+//                     // load mentions from ajax
+//                     var mentions = ['Peter', 'Tom', 'Anne'];
+//                     callback($.map(mentions, function (mention) {
+//                     return mention.indexOf(term) === 0 ? mention : null;
+//                 }));
+//                 },
+//                 template: function (value) {
+//                     return '<b>' + value + '</b>&nbsp;';
+//                 },
+//                 replace: function (value) {
+//                     return '<b>@' + value + '</b>&nbsp;';
+//                 },
+//                 cache: true,
+//                 index: 1
+//             }]);
+//         }
+//     }
+// });
+// $(".post-content").data("emojioneArea").enable();
+
 
 $('.post-toggled').on('click', function() {
     // ... post collapse via js

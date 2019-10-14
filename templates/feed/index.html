@@ -4,7 +4,12 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block head %}
-    <link rel="stylesheet" href="{% static 'css/lib/emojionearea.min.css' %}" />
+    <!-- <link rel="stylesheet" href="{% static 'css/lib/emojionearea.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/lib/emojiarea/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lib/emojiarea/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lib/emojiarea/custom.css' %}"> -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{% static 'css/lib/emojiarea/emoji.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'webpack:dashboard.css' %}" />
     <link rel="stylesheet" href="{% static 'webpack:feed.css' %}" />
     <title>{% trans "Dashboard" %}</title>
@@ -38,12 +43,35 @@
 
 {% block script %}
   <script>
-      const reward_badge = "{% static 'js/animation/reward.json' %}";
+    const reward_badge = "{% static 'js/animation/reward.json' %}",
+          post_placeholder = "{% trans 'Whats on your mind today? :)' %}";
+
+    $(function() {
+      // Initializes and creates emoji set from sprite sheet
+      window.emojiPicker = new EmojiPicker({
+        emojiable_selector: '[data-emojiable=true]',
+        assetsPath: '{% static "css/lib/emojiarea/img" %}',
+        popupButtonClasses: 'fa fa-smile-o'
+      });
+      // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
+      // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
+      // It can be called as many times as necessary; previously converted input fields will not be converted again
+      window.emojiPicker.discover();
+      $('.emoji-wysiwyg-editor').attr('data-placeholder', post_placeholder)
+    });
   </script>
-  <script src="https://cdn.rawgit.com/yuku-t/jquery-textcomplete/v1.3.4/dist/jquery.textcomplete.js"></script>
+  <!-- <script src="https://cdn.rawgit.com/yuku-t/jquery-textcomplete/v1.3.4/dist/jquery.textcomplete.js"></script>
   <script type="text/javascript" src="{% static 'js/lib/emojione.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/lib/emojionearea.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/lib/emojiarea/jquery.emojiarea.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/lib/emojiarea/main.js' %}"></script> -->
+  <script type="text/javascript" src="{% static 'js/lib/emojiarea/config.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/lib/emojiarea/util.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/lib/emojiarea/jquery.emojiarea.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/lib/emojiarea/emoji-picker.js' %}"></script>
   <script type="text/javascript" src="{% static 'webpack:dashboard.js' %}"></script>
   <script type="text/javascript" src="{% static 'webpack:feed.js' %}"></script>
 {% endblock %}
+
+
 

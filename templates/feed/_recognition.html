@@ -3,7 +3,7 @@
 
 
 
-<div class="card-body">
+<div class="card-body pt-0">
     <div id="recognitionToggled" class="post-toggled" data-target="#recognitionExpanded" aria-expanded="false" aria-controls="recognitionExpanded">
         <div class="my-1" id="sharePost">
             <div id="postLink" class="d-flex flex-row">
@@ -15,7 +15,14 @@
                 {% endif %}
             </div>
             <div class="d-flex flex-column contentWrapper">
-                <div id="recognitionContent" class="post-content recognition-post-content px-3" contenteditable data-placeholder="{% trans 'Whats on your mind today? :)' %}"></div>
+                <!-- <div id="recognitionContent" class="post-content recognition-post-content px-3" contenteditable data-placeholder="{% trans 'Whats on your mind today? :)' %}"></div> -->
+                <!-- <div class="post-content-section" data-emojiarea data-type="unicode" data-global-picker="false">
+                    <div class="emoji-button">&#x1f604;</div>
+                    <div id="recognitionContent" class="post-content recognition-post-content px-3" contenteditable data-placeholder="{% trans 'Whats on your mind today? :)' %}"></div>
+                </div> -->
+                <div class="post-content-section emoji-picker-container">
+                    <textarea id="recognitionContent" class="post-content recognition-post-content px-3 form-control textarea-control" rows="3" data-placeholder="{% trans 'Whats on your mind today? :)' %}" data-emojiable="true" data-emoji-input="unicode"></textarea>
+                </div>
             </div>
             </div>
         </div>
