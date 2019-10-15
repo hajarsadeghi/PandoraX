@@ -1,6 +1,7 @@
-import { get_users, get_badge_list, new_post } from './../../api';
+import { get_users, get_badge_list, new_post, getFeed } from './../../api';
 import { load_badges } from './../../helper/badges';
 import { hideTintedBackdrop } from './../../helper';
+import { showFeed } from './feed';
 
 
 
@@ -174,17 +175,18 @@ $('#myTabContent').on('click', '#recognitionPostBtn', function() {
             user: $('#recognitionExpanded').find('.user-card').attr('user_id'),
             badge: $('#recognitionExpanded').find('.badge-card').attr('badge_id')
         }
-    }, (status, response) => {
+    }, (status) => {
         if (status) {
-            resetRecognitionPost();
+            getFeed((stat, res) => {
+                if (stat) {
+                    console.log(stat, 'stat', res, 'res')
+                    showFeed(res.data)
+                    resetRecognitionPost();
+                }
+            })
         }
     })
 })
-
-// ... recognition modal
-
-// ... load animation using lottie ...
-LottieAnimation(['rewardBadge', 'rewardBadge1'])
 
 // ... generate mock badges & users
 clone($('#privacyModal').find(".select-privacy:last-child"), 19);
@@ -209,17 +211,7 @@ function clone(target, count) {
     }
 }
 
-function LottieAnimation(array) {
-    for (let i = 0; i < array.length; i++) {
-        lottie.loadAnimation({
-            container: document.getElementById(array[i]),
-            path: reward_badge,
-            renderer: 'svg',
-            autoplay: true,
-            loop: true
-        }); 
-    }   
-}
+
 
 function openModal(status1, status2) {
     if (status1 && status2) {

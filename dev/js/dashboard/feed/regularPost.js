@@ -2,6 +2,7 @@ import { InitializePostDropzone } from '../../helper/dropzone';
 import { regular_post_media_ids } from './variables';
 import { hideTintedBackdrop } from './../../helper';
 import { new_post } from './../../api';
+import { showFeed } from './feed';
 
 
 
@@ -16,9 +17,14 @@ $('#myTabContent').on('click', '#regularPostBtn', function() {
     new_post({
         text: $('#myTabContent').find('#RegularPostContent').val(),
         media: regular_post_media_ids
-    }, (status, response) => {
+    }, (status) => {
         if (status) {
-            resetRegularPost();
+            getFeed((stat, res) => {
+                if (stat) {
+                    showFeed(res.data)
+                    resetRegularPost();
+                }
+            })
         }
     })
 })
