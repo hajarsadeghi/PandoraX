@@ -35,6 +35,11 @@ bash into app container
 docker container exec -it pandora_app sh
 ```
 
+dump from database
+```bash
+docker container exec -it pandora_db /usr/bin/mysqldump -u root --password= pandora_x > backup.sql
+```
+
 ## Built With
 
 * [Django](https://www.djangoproject.com/) - The web framework used
