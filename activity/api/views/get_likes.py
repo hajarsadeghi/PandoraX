@@ -3,13 +3,14 @@ from django.http import JsonResponse
 from activity.models import Activity
 from decorators import is_authenticated, get_space
 from utils import get_media_url, get_full_name, get_name_chars
+import json
 
 
 
 @require_http_methods(['GET'])
 @is_authenticated
 @get_space
-def get_likers(request, activity_id):
+def get_likes(request, activity_id):
     try:
         activity = Activity.objects.get(id=activity_id, space=request.space)
         pagin = json.loads(request.GET.get('pagin', 'false'))
