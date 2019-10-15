@@ -12,9 +12,9 @@ class FeedConsumer(AsyncWebsocketConsumer):
         self.group_name = f"feed_{self.space_slug}"
 
         # Authentication
-        # if not await self.check_auth():
-        #     self.close()
-        #     return
+        if not await self.check_auth():
+            self.close()
+            return
 
         # Join room group
         await self.channel_layer.group_add(
