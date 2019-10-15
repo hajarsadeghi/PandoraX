@@ -32,6 +32,20 @@ services:
         - GOOGLE_OAUTH_KEY=782858424709-h29sim71mnea99unbui9cjb61vffle1j.apps.googleusercontent.com
         - GOOGLE_OAUTH_SECRET=6YRqEOyAS-OIDFbJXX5t2a9B
 
+  ws:
+    build:
+      context: .
+      dockerfile: django.Dockerfile
+    container_name: pandora_ws
+    command: daphne -b 0.0.0.0 -p 8880 pandora_x.asgi:application
+    volumes:
+      - ./:/data/project
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
   webpack:
     build:
       context: .
