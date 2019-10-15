@@ -13,10 +13,6 @@
         }
     }
 
-    .emojionearea {
-        box-shadow: none;
-    }
-
     .profile-pic, .profile-pic-text {
         width: 50px;
         height: 50px;
@@ -51,16 +47,8 @@
         }
     }
 
-    .emojionearea.focused {
-        box-shadow: none !important;
-    }
-
     .avatar {
-
         border: 1px solid $border-color !important;
-        // img {
-        //     border-radius: 0;
-        // }
     }
     
     .post {
@@ -112,7 +100,7 @@
                 color: $white;
             }
 
-            &#postBtn {
+            &.post-btn {
                 background-color: $main-blue-color;   
                 color: $white;
             }
@@ -129,18 +117,11 @@
                 box-shadow: none !important;
                 min-height: 50px;
                 position: relative;
-                // &.emojionearea-disable {
-                    
-                //     background-color: $white;
-                //     &:before {
-                //         background-color: $white;
-                //         line-height: 100%;
-                //     }
-                // }
 
                 .post-content{
 
                     min-height: 50px;
+                    height: auto !important;
                     outline: 0;
                     position: relative;
                     top: 0;
@@ -164,14 +145,6 @@
                         }
                     }
                 }
-
-                // .emoji-button {
-                //     // visibility: hidden;
-                //     z-index: 9999;
-                //     position: absolute;
-                //     right: 15px;
-                //     top: 0;
-                // }
             }
         }
 

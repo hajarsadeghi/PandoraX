@@ -25,6 +25,17 @@ export function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 }
+// ... reset post after is added
+export function hideTintedBackdrop() {
+    if ($('.post-toggled').attr('aria-expanded') == 'true') {
+        $('.post-toggled').attr('aria-expanded', 'false');
+        $('.post-expanded').collapse('hide');
+        $('.emojionearea-button').css('visibility', 'hidden')
+        $('.tinted').css({'visibility':'hidden', 'opacity': '0'});
+        $('.selected-badge-container,.post-recognition').addClass('d-none');
+        $('.use-badge-section').removeClass('d-none');
+    }
+}
 
 // export function LottieAnimation(arr, badge) {
 //     for (let i = 0; i < arr.length; i++) {
