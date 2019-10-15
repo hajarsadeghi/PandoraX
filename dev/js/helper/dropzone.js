@@ -77,7 +77,7 @@ export const InitializeBadgeDropzone = function(callback) {
 export const InitializePostDropzone = function(callback) {
     Dropzone.autoDiscover = true;
     Dropzone.options.postFileDropzone = {
-        url: '/api/badge/icon/',
+        url: '/api/activity/upload_media/',
         paramName: 'image',
         headers: {
             'Space-Id':space_id
@@ -90,6 +90,8 @@ export const InitializePostDropzone = function(callback) {
         complete: (file, response) => {
             $(file.previewElement).find('.dz-remove').html('<i class="material-icons">cancel</i>')
             $(file.previewElement).addClass('dz-complete');
+        },
+        success: (file, response) => {
             callback(true, response);
         }
     };
