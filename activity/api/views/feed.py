@@ -23,6 +23,7 @@ def feed(request):
         return JsonResponse({"message": "bad params"}, status=400)
     res = {}
     res['data'] = []
+    
     queryset = Activity.objects.filter(space=request.space).annotate(likes_count=Count('likes'), is_liked=Count('likes', filter=Q(likes__id=request.user.id))).values(
         'id',
         'creator__id',
@@ -46,6 +47,8 @@ def feed(request):
         'recognition__badge__point_amount',
         'recognition__badge__icon__image'
     ).order_by('-id')
+
+    res['total_count'] = queryset.count()
 
     if pagin:
         paginator = Paginator(queryset, pagin['data_limit'])
