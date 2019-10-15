@@ -5,7 +5,11 @@ from space.models import Member
 from badge.models import Badge, BadgeLog
 from activity.models import Activity, Media
 from decorators import is_authenticated, get_space
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
 import json
+
+channel_layer = get_channel_layer()
 
 
 @require_http_methods(['POST'])
@@ -45,4 +49,13 @@ def new_activity(request):
         activity.refresh_from_db()
         activity_media.update(activity=activity)
 
+    async_to_sync(channel_layer.group_send)(f"feed_{request.space.slug}", {
+        "type": "default_message",
+        "message": {
+            'type': 'new_activity',
+            'data': {
+                'id': activity.id
+            }
+        },
+    })
     return JsonResponse({'id':activity.id}, status=201)

@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'channels',
+
     'user',
     'space',
     'transaction',
@@ -103,6 +105,18 @@ CACHES = {
             "CLIENT_CLASS": "django_redis.client.DefaultClient"
         },
     }
+}
+
+# Channels settings
+ASGI_APPLICATION = 'websocket.routing.application'
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [os.environ.get('REDIS_URL', 'redis://redis:6379/2')],
+            "capacity": 1000,
+        },
+    },
 }
 
 # Password validation
