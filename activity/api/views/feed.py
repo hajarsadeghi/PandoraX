@@ -59,7 +59,7 @@ def feed(request):
     tmp_media = Media.objects.filter(activity__id__in=[queryset.values_list('id', flat=True)]).values_list('activity__id', 'image')
     media = collections.defaultdict(list)
     for m in tmp_media:
-        media[m[0]].append(m[1])
+        media[m[0]].append(get_media_url(m[1]))
 
     for activity in queryset:
         tmp_activity = {
@@ -75,7 +75,7 @@ def feed(request):
             'likes_count': activity['likes_count'],
             'is_liked': bool(activity['is_liked']),
             'recognition': None,
-            'media': media[activity['id']] if activity['id'] in media else None
+            'media': media[activity['id']] if activity['id'] in media else []
         }
         if activity['recognition__id']:
             tmp_recognition = {
