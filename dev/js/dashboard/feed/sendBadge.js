@@ -1,5 +1,7 @@
-import { get_users, get_badge_list } from './../../api';
+import { get_users, get_badge_list, new_post } from './../../api';
 import { load_badges } from './../../helper/badges';
+import { hideTintedBackdrop } from './../../helper';
+
 
 
 
@@ -22,7 +24,7 @@ $('#useBadgeBtn').on('click', function() {
         if (status) {
             users_res = true;
             $('.who-to-recognize-container').empty();
-            GetUsers(response.data)
+            getUsers(response.data)
             openModal(users_res, badges_res)
         }
         else {
@@ -55,7 +57,7 @@ $('#chooseColleague').on('keyup', function() {
         }, (status, response) => {
             if (status) {
                 $('.who-to-recognize-container').empty();
-                GetUsers(response.data)
+                getUsers(response.data)
             }
             else {
                 console.log(response)
@@ -66,7 +68,7 @@ $('#chooseColleague').on('keyup', function() {
 
 // ... load data on scroll in privacy modal
 $('#recognitionModal .modal-body').on('scroll', () => {
-    if ($('#recognitionModal .modal-body').scrollTop() + $('#recognitionModal .modal-body').innerHeight() >= $('#recognitionModal .modal-body')[0].scrollHeight) {
+    if ($('#recognitionModal .modal-body').scrollTop() + $('#recognitionModal .modal-body').innerHeight() + 1 >= $('#recognitionModal .modal-body')[0].scrollHeight) {
         page_number++
         get_users({
             search: search_value,
@@ -75,7 +77,7 @@ $('#recognitionModal .modal-body').on('scroll', () => {
             page: page_number
         }, (status, response) => {
             if (status) {
-                GetUsers(response.data)
+                getUsers(response.data)
             }
             else {
                 console.log(response)
@@ -99,7 +101,7 @@ $('#recognitionModal').on('click', '.who-to-recognize-row', function(e) {
         username    = $(this).find('.username').text(),
         occupation  = $(this).find('.occupation').text(),
         img_src     = $(this).find('img').attr('src'),
-        user_initial= $(this).find('.initials').text();
+        user_initial= $(this).attr('user_initials');
 
     $('.recognized-person').find('.username').text(username);
     $('.recognized-person').find('.occupation').text(occupation);
@@ -111,7 +113,7 @@ $('#recognitionModal').on('click', '.who-to-recognize-row', function(e) {
     $('.recognized-person').attr('username', username);
     $('.recognized-person').attr('occupation', occupation);
     $('.recognized-person').attr('img-src', img_src ? img_src : undefined)
-    $('.recognized-person').attr('user-initials', user_initial ? user_initial : undefined)
+    $('.recognized-person').attr('user_initials', user_initial)
     
     $('.who-to-recognize-container').find('.select-row-radio').removeClass('selected');
     $(e.target).closest('.who-to-recognize-row').find('.select-row-radio').toggleClass('selected');
@@ -129,7 +131,7 @@ $('#recognitionModal').on('click', '.card-stats', (e) => {
         id:     selected_user.attr('user_id'),
         name:   selected_user.attr('username'),
         img_src:    selected_user.attr('img-src'),
-        user_initials: selected_user.attr('user-initials')
+        user_initials: selected_user.attr('user_initials')
     }
     $('.selected-badge-container').find('.user-card').attr('user_id', selected_user_obj.id);
     $('.selected-badge-container').find('.user-card .card-title').text(selected_user_obj.name);
@@ -145,7 +147,7 @@ $('#recognitionModal').on('click', '.card-stats', (e) => {
         src:    selected_badge.attr('badge-src'),
         des:    selected_badge.attr('badge-des')
     }
-    $('.selected-badge-container').find('.badge-card').attr('id', selected_badge_obj.id);
+    $('.selected-badge-container').find('.badge-card').attr('badge_id', selected_badge_obj.id);
     $('.selected-badge-container').find('.badge-card img').attr('src', selected_badge_obj.src);
     $('.selected-badge-container').find('.badge-card .card-title span').text(selected_badge_obj.name);
     $('.selected-badge-container').find('.badge-card .card-title small').text(selected_badge_obj.points);
@@ -163,6 +165,21 @@ $('#privacyModal .modal-body').on('scroll',() => {
         console.log('end of the scroll')    
     }
 });
+
+// ... New Recgonition
+$('#myTabContent').on('click', '#recognitionPostBtn', function() {
+    new_post({
+        text: $('#myTabContent').find('#recognitionContent').val(),
+        recognition: {
+            user: $('#recognitionExpanded').find('.user-card').attr('user_id'),
+            badge: $('#recognitionExpanded').find('.badge-card').attr('badge_id')
+        }
+    }, (status, response) => {
+        if (status) {
+            resetRecognitionPost();
+        }
+    })
+})
 
 // ... recognition modal
 
@@ -210,18 +227,18 @@ function openModal(status1, status2) {
     }
 }
 
-function GetUsers(users) {
+function getUsers(users) {
     for (let i = 0; i < users.length; i++) {
         let profile = '';
         if (users[i].profile_picture) {
             profile = '<img class="img-fluid" src="'+ users[i].profile_picture +'" alt="profile picture" /> '
         }
         else {
-            profile = '<span class="text-dark initials">'+ users[i].full_name.split(' ')[0].charAt(0) + users[i].full_name.split(' ')[1].charAt(0) +'</span> ';
+            profile = '<span class="text-dark initials">'+ users[i].name_chars +'</span> ';
         }
 
         $('.who-to-recognize-container').append(
-            '<div class="who-to-recognize-row d-flex my-2" user_id="'+ users[i].id +'">' +
+            '<div class="who-to-recognize-row d-flex my-2" user_id="'+ users[i].id +'" user_initials="'+ users[i].name_chars +'">' +
                 '<div class="px-3 align-self-center">' +
                     '<div class="media">' +
                         '<span class="avatar avatar-sm rounded-circle bg-white shadow-sm">' +
@@ -241,4 +258,16 @@ function GetUsers(users) {
             '</div>'
         )
     }
+}
+
+function resetRecognitionPost() {
+    $('#recognitionContent').val('');
+    $('#recognitionExpanded').find('.selected-badge-container').addClass('d-none');
+    $('#recognitionExpanded').find('.badge-card').removeAttr('badge_id');
+    $('#recognitionExpanded').find('.badge-card img').attr('src','');
+    $('#recognitionExpanded').find('.badge-card .card-title span, .badge-card .card-title small').text('')
+    $('#recognitionExpanded').find('.user-card').removeAttr('user_id');
+    $('#recognitionExpanded').find('.user-card img').attr('src','');
+    $('#recognitionExpanded').find('.initials, .card-title').text('')
+    hideTintedBackdrop();
 }
