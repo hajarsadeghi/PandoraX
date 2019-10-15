@@ -159,3 +159,26 @@ export const get_users = (params, callback) => {
             }
         })
 }
+// ... New Recognition / Post
+// ... list of users 
+export const new_post = (params, callback) => {
+    return fetch(
+        '/api/activity/new/',
+        {
+            method: 'POST',
+            body: JSON.stringify(params),
+            headers:{
+                'Content-Type': 'application/json',
+                'Space-Id':space_id
+            }
+        }
+        ).then(response => {
+            if (response.ok) {
+                response.json().then(res => {
+                    callback(true, res)
+                })
+            } else {
+                callback(false, response)
+            }
+        })
+}

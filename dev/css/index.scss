@@ -173,6 +173,12 @@ button, a {
     right: 0 !important;
 }
 
+.tabs-ul {
+    .nav-item {
+        list-style-type: none;
+    }
+}
+
 footer {
     width: 100%;
     height: auto !important;
