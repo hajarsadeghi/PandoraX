@@ -61,7 +61,7 @@ export const showFeed = (feed) => {
         }
 
         $('.feed-activity').append(
-            '<div class="card shadow feed mb-3">' +
+            '<div class="card shadow feed mb-3" feed-id="'+ feed[i].id +'">' +
                 '<div class="card-body p-0">' +
                     '<div class="card-title d-flex mb-0 p-3">' +
                         '<div>' + profile + '</div>' +
@@ -79,7 +79,7 @@ export const showFeed = (feed) => {
                             '<div class="row border-bottom mx-3 py-2">' +
                                 '<div class="col">' +
                                     '<small data-toggle="tooltip" data-html="true" title="">' +
-                                        '<a href="#">' + feed[i].likes_count + ' likes</a>' +
+                                        '<a href="" class="like-count">' + feed[i].likes_count + ' likes</a>' +
                                     '</small>' +
                                     '<span class="mutual-likes d-none d-lg-inline-block">' +
                                         // {% if request.user.profile_picture %}
@@ -95,7 +95,7 @@ export const showFeed = (feed) => {
                                 '</div>' +
                                 '<div class="col text-right">' +
                                     '<small class="cmts" data-toggle="tooltip" data-html="true" title="">' +
-                                        '<a href="#" data-toggle="collapse" data-target="#commentsContainer" aria-expanded="false" aria-controls="commentsContainer">' +
+                                        '<a href="" data-toggle="collapse" data-target="#commentsContainer" aria-expanded="false" aria-controls="commentsContainer">' +
                                             '30 comments' +
                                         '</a>' +
                                    '</small>' +
@@ -103,7 +103,7 @@ export const showFeed = (feed) => {
                             '</div>' +
                             '<div class="row m-3">' +
                                 '<div class="col">' +
-                                    '<a href="#">' +
+                                    '<a href="" class="like-link" is-liked="'+ feed[i].is_liked +'">' +
                                         '<span class="'+ liked_icon +' float-left">' +
                                             'thumb_up' +
                                         '</span>' +
@@ -111,7 +111,7 @@ export const showFeed = (feed) => {
                                     '</a>' +
                                 '</div>' +
                                 '<div class="col">' +
-                                    '<a class="float-right" href="#" data-toggle="collapse" data-target="#commentsContainer" aria-expanded="false" aria-controls="commentsContainer">' +
+                                    '<a class="float-right" href="" data-toggle="collapse" data-target="#commentsContainer" aria-expanded="false" aria-controls="commentsContainer">' +
                                         '<span class="material-icons float-left">' +
                                             'insert_comment' +
                                         '</span>' +
@@ -141,8 +141,8 @@ export const showFeed = (feed) => {
                         //                 <div class="ml-2">
                         //                     <div class="comment-text border p-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi sequi provident nemo at quas error ipsum obcaecati vero minima eaque explicabo hic, porro ab! Dolorum minus sunt impedit aliquid dignissimos.</div>
                         //                     <small>
-                        //                         <a class="pr-2" href="#">Like</a>
-                        //                         <a class="pr-2" href="#">Reply</a>
+                        //                         <a class="pr-2" href="">Like</a>
+                        //                         <a class="pr-2" href="">Reply</a>
                         //                         <span class="text-muted">15h</span>
                         //                     </small>
                         //                     <div class="replies">
@@ -153,8 +153,8 @@ export const showFeed = (feed) => {
                         //                             <div class="flex-grow-1">
                         //                                 <div class="comment-text border p-2">This is a test reply for your comment.</div>
                         //                                 <small>
-                        //                                     <a class="pr-2" href="#">Like</a>
-                        //                                     <a class="pr-2" href="#">Reply</a>
+                        //                                     <a class="pr-2" href="">Like</a>
+                        //                                     <a class="pr-2" href="">Reply</a>
                         //                                     <span class="text-muted">15h</span>
                         //                                 </small>
                         //                             </div>
@@ -183,8 +183,8 @@ export const showFeed = (feed) => {
                         //                 <div class="ml-2">
                         //                     <div class="comment-text border p-2">this is a test!</div>
                         //                     <small>
-                        //                         <a class="pr-2" href="#">Like</a>
-                        //                         <a class="pr-2" href="#">Reply</a>
+                        //                         <a class="pr-2" href="">Like</a>
+                        //                         <a class="pr-2" href="">Reply</a>
                         //                         <span class="text-muted">15h</span>
                         //                     </small>
                         //                 </div>
@@ -193,14 +193,14 @@ export const showFeed = (feed) => {
                         //         <hr class="m-0" />
                         //         <div class="d-flex view-more-comments align-items-center px-3 py-1">
                         //             <div>
-                        //                 <a class="view-more-comments-link" href="#">View more comments</a>
+                        //                 <a class="view-more-comments-link" href="">View more comments</a>
                         //             </div>
                         //             <div class="flex-grow-1">
                         //                 <img class="d-none" src="{% static 'image/load_more_comments.gif' %}" />
                         //             </div>
                         //         </div>
                         //         <div class="write-a-comment align-items-center px-3 py-1">
-                        //             <a class="write-a-comment-link" href="#">Write a comment</a>
+                        //             <a class="write-a-comment-link" href="">Write a comment</a>
                         //         </div>
                         //     </div>
                         '</div>' +

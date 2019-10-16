@@ -202,3 +202,26 @@ export const getFeed = (callback) => {
             }
         })
 }
+
+// ... toggle like
+export const toggleLike = (params, callback) => {
+    return fetch(
+        '/api/activity/'+ params.activity_id +'/like_toggle/',
+        {
+            method: 'POST',
+            body: JSON.stringify(params),
+            headers:{
+                'Content-Type': 'application/json',
+                'Space-Id':space_id
+            }
+        }
+        ).then(response => {
+            if (response.ok) {
+                response.json().then(res => {
+                    callback(true, res)
+                })
+            } else {
+                callback(false, response)
+            }
+        })
+}
