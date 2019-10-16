@@ -19,7 +19,7 @@ class Like(View):
         ObjectModel = apps.get_model(object_model)
         query_kwargs = {
             'id': object_id,
-            space_validator: request.space
+            space_validator: request.space.id
         }
         try:
             object = ObjectModel.objects.get(**query_kwargs)
@@ -64,7 +64,7 @@ class Like(View):
         ObjectModel = apps.get_model(object_model)
         query_kwargs = {
             'id': object_id,
-            space_validator: request.space
+            space_validator: request.space.id
         }
         try:
             object = ObjectModel.objects.get(**query_kwargs)
