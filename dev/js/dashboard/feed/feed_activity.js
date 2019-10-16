@@ -3,19 +3,21 @@ import { getFeed, toggleLike } from './../../api';
 import { showFeed } from './feed'
 
 
-getFeed((status, response) => {
-    if (status) {
-        $('.feed-activity').html('');
-        showFeed(response.data);
-    }
-})
-
 $(document).ready(function() {
+    // ... show feed
+    getFeed((status, response) => {
+        if (status) {
+            $('.feed-activity').html('');
+            showFeed(response.data);
+            $('.like-link').bind('click', event => toggleLikeAction(event))
+        }
+    })
+    
     // ... toggle like
-    $('.like-link').on('click', function(e) {
-        e.preventDefault()
+    function toggleLikeAction(e) {
+        e.preventDefault(e)
 
-        let like_link = $(this).closest('.like-link')
+        let like_link = $(e.target).closest('.like-link')
         toggleLike({
             activity_id: like_link.closest('.feed').attr('feed-id'),
             status: like_link.attr('is-liked') ? 'liked' : 'disliked',
@@ -33,7 +35,7 @@ $(document).ready(function() {
                 }
             }
         })
-    })
+    }
 
     $('.view-more-comments-link').click(() => {
         $('.view-more-comments').find('img').removeClass('d-none');

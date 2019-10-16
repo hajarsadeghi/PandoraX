@@ -6,6 +6,7 @@
 {% block head %}
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="{% static 'css/lib/emojiarea/emoji.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/unitegallery/unite-gallery.css' %}" rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="{% static 'webpack:dashboard.css' %}" />
     <link rel="stylesheet" href="{% static 'webpack:feed.css' %}" />
     <title>{% trans "Dashboard" %}</title>
@@ -60,6 +61,8 @@
   <script type="text/javascript" src="{% static 'js/lib/emojiarea/util.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/lib/emojiarea/jquery.emojiarea.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/lib/emojiarea/emoji-picker.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/lib/unitegallery/unitegallery.js' %}"></script>
+  <script type='text/javascript' src="{% static 'js/lib/unitegallery/themes/tiles/ug-theme-tiles.js' %}" ></script>
   <script type="text/javascript" src="{% static 'webpack:dashboard.js' %}"></script>
   <script type="text/javascript" src="{% static 'webpack:feed.js' %}"></script>
 {% endblock %}

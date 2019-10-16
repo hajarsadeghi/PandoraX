@@ -52,6 +52,17 @@ export const showFeed = (feed) => {
                             '</div>' +
                         '</div>' 
         }
+        else {
+            let imgs = '';
+            for (let j = 0; j < feed[i].media.length; j++) {
+                imgs += '<img class="img-responsive" alt="img" width="100%" height="auto" src="'+ feed[i].media[j] +'"  data-image="'+ feed[i].media[j] +'" data-description="Description">' 
+            }
+            recognition =   '<div class="row">' +
+                                '<div class="col-12">' +
+                                    '<div id="gallery_'+ i +'" class="gallery">'+ imgs +'</div>' +
+                                '</div>' +
+                            '</div>';
+        }
 
         if (feed[i].is_liked) {
             liked_icon = 'material-icons'
@@ -103,12 +114,12 @@ export const showFeed = (feed) => {
                             '</div>' +
                             '<div class="row m-3">' +
                                 '<div class="col">' +
-                                    '<a href="" class="like-link" is-liked="'+ feed[i].is_liked +'">' +
+                                    '<div class="like-link" is-liked="'+ feed[i].is_liked +'">' +
                                         '<span class="'+ liked_icon +' float-left">' +
                                             'thumb_up' +
                                         '</span>' +
                                         '<span class="px-1">Like</span>' +
-                                    '</a>' +
+                                    '</div>' +
                                 '</div>' +
                                 '<div class="col">' +
                                     '<a class="float-right" href="" data-toggle="collapse" data-target="#commentsContainer" aria-expanded="false" aria-controls="commentsContainer">' +
@@ -208,6 +219,7 @@ export const showFeed = (feed) => {
                 '</div>' +
             '</div>'
         ) 
+        initializeUnitegallery($("#gallery_" + i))
     }
     // ... load animation using lottie ...
     LottieAnimation(lottie_array);
@@ -224,4 +236,12 @@ const LottieAnimation = (array) => {
             loop: true
         }); 
     }   
+}
+
+const initializeUnitegallery = (elem) => {
+    elem.unitegallery({
+        gallery_theme: "tiles",
+        tiles_justified_row_height: 120,
+        tiles_type: "justified",				
+    });
 }
