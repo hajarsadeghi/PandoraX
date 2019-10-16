@@ -179,7 +179,7 @@ $('#myTabContent').on('click', '#recognitionPostBtn', function() {
         if (status) {
             getFeed((stat, res) => {
                 if (stat) {
-                    console.log(stat, 'stat', res, 'res')
+                    $('.feed-activity').html('');
                     showFeed(res.data)
                     resetRecognitionPost();
                 }

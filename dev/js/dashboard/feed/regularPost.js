@@ -1,7 +1,7 @@
 import { InitializePostDropzone } from '../../helper/dropzone';
 import { regular_post_media_ids } from './variables';
 import { hideTintedBackdrop } from './../../helper';
-import { new_post } from './../../api';
+import { getFeed, new_post } from './../../api';
 import { showFeed } from './feed';
 
 
@@ -21,6 +21,7 @@ $('#myTabContent').on('click', '#regularPostBtn', function() {
         if (status) {
             getFeed((stat, res) => {
                 if (stat) {
+                    $('.feed-activity').html('');
                     showFeed(res.data)
                     resetRegularPost();
                 }

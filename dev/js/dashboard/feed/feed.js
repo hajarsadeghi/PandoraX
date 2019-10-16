@@ -3,8 +3,8 @@ export const showFeed = (feed) => {
     let profile = '',
         recognition = '',
         recognitition_user_profile = '',
+        liked_icon = '',
         lottie_array = ['rewardBadge'];
-    $('.feed-activity').html('');
 
     for (let i = 0; i < feed.length; i++) {
         recognition = '';
@@ -53,6 +53,13 @@ export const showFeed = (feed) => {
                         '</div>' 
         }
 
+        if (feed[i].is_liked) {
+            liked_icon = 'material-icons'
+        }
+        else {
+            liked_icon = 'material-icons-outlined'
+        }
+
         $('.feed-activity').append(
             '<div class="card shadow feed mb-3">' +
                 '<div class="card-body p-0">' +
@@ -71,9 +78,9 @@ export const showFeed = (feed) => {
                         '<div class="likes-and-comments">' +
                             '<div class="row border-bottom mx-3 py-2">' +
                                 '<div class="col">' +
-                                    // '<small data-toggle="tooltip" data-html="true" title="<span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br> <span>and 23 more ...</span><br>">' +
-                                        '<a href="#">' + feed[i].likes_count + '</a>' +
-                                    // '</small>' +
+                                    '<small data-toggle="tooltip" data-html="true" title="">' +
+                                        '<a href="#">' + feed[i].likes_count + ' likes</a>' +
+                                    '</small>' +
                                     '<span class="mutual-likes d-none d-lg-inline-block">' +
                                         // {% if request.user.profile_picture %}
                                         //     <img class="img-fluid profile-pic" src="{{request.user.profile_picture.url}}" alt="profile picture" />
@@ -87,17 +94,17 @@ export const showFeed = (feed) => {
                                     '</span>' +
                                 '</div>' +
                                 '<div class="col text-right">' +
-                                    // <small class="cmts" data-toggle="tooltip" data-html="true" title="<span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br> <span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br><span>name lastname</span><br> <span>and 23 more ...</span><br>">
+                                    '<small class="cmts" data-toggle="tooltip" data-html="true" title="">' +
                                         '<a href="#" data-toggle="collapse" data-target="#commentsContainer" aria-expanded="false" aria-controls="commentsContainer">' +
                                             '30 comments' +
                                         '</a>' +
-                                    // </small>
+                                   '</small>' +
                                 '</div>' +
                             '</div>' +
                             '<div class="row m-3">' +
                                 '<div class="col">' +
                                     '<a href="#">' +
-                                        '<span class="material-icons float-left">' +
+                                        '<span class="'+ liked_icon +' float-left">' +
                                             'thumb_up' +
                                         '</span>' +
                                         '<span class="px-1">Like</span>' +
