@@ -236,6 +236,10 @@
                         }
                     }
 
+                    .gallery {
+                        width: 100%;
+                    }
+
                     .likes-and-comments {
                         small {
                             a {
@@ -251,6 +255,15 @@
                                 margin: 0 .01rem;
                             }
                         }
+
+                        .like-link {
+                            cursor: pointer;
+                            color: $main-blue-color;
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+
                         #commentsContainer {
                             .comment-row {
                                 .profile-pic {

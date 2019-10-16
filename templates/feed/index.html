@@ -4,12 +4,9 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block head %}
-    <!-- <link rel="stylesheet" href="{% static 'css/lib/emojionearea.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/lib/emojiarea/reset.css' %}">
-    <link rel="stylesheet" href="{% static 'css/lib/emojiarea/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/lib/emojiarea/custom.css' %}"> -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="{% static 'css/lib/emojiarea/emoji.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/unitegallery/unite-gallery.css' %}" rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="{% static 'webpack:dashboard.css' %}" />
     <link rel="stylesheet" href="{% static 'webpack:feed.css' %}" />
     <title>{% trans "Dashboard" %}</title>
@@ -60,15 +57,12 @@
       $('.emoji-wysiwyg-editor').attr('data-placeholder', post_placeholder)
     });
   </script>
-  <!-- <script src="https://cdn.rawgit.com/yuku-t/jquery-textcomplete/v1.3.4/dist/jquery.textcomplete.js"></script>
-  <script type="text/javascript" src="{% static 'js/lib/emojione.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/lib/emojionearea.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/lib/emojiarea/jquery.emojiarea.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/lib/emojiarea/main.js' %}"></script> -->
   <script type="text/javascript" src="{% static 'js/lib/emojiarea/config.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/lib/emojiarea/util.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/lib/emojiarea/jquery.emojiarea.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/lib/emojiarea/emoji-picker.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/lib/unitegallery/unitegallery.js' %}"></script>
+  <script type='text/javascript' src="{% static 'js/lib/unitegallery/themes/tiles/ug-theme-tiles.js' %}" ></script>
   <script type="text/javascript" src="{% static 'webpack:dashboard.js' %}"></script>
   <script type="text/javascript" src="{% static 'webpack:feed.js' %}"></script>
 {% endblock %}
