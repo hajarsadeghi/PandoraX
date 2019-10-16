@@ -267,7 +267,7 @@ const LottieAnimation = (array) => {
 const initializeUnitegallery = (elem) => {
     elem.unitegallery({
         gallery_theme: "tiles",
-        tiles_justified_row_height: 220,
+        tiles_justified_row_height: 120,
         tiles_type: "justified"				
     });
 }
