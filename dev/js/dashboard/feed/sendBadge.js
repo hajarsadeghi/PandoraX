@@ -1,7 +1,7 @@
 import { get_users, get_badge_list, new_post, getFeed } from './../../api';
 import { load_badges } from './../../helper/badges';
 import { hideTintedBackdrop } from './../../helper';
-import { showFeed } from './feed';
+import { showFeed, toggleLikeAction } from './feed';
 
 
 
@@ -181,6 +181,7 @@ $('#myTabContent').on('click', '#recognitionPostBtn', function() {
                 if (stat) {
                     $('.feed-activity').html('');
                     showFeed(res.data)
+                    $('.like-link').bind('click', event => toggleLikeAction(event))
                     resetRecognitionPost();
                 }
             })

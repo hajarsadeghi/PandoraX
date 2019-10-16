@@ -2,7 +2,7 @@ import { InitializePostDropzone } from '../../helper/dropzone';
 import { regular_post_media_ids } from './variables';
 import { hideTintedBackdrop } from './../../helper';
 import { getFeed, new_post } from './../../api';
-import { showFeed } from './feed';
+import { showFeed, toggleLikeAction } from './feed';
 
 
 
@@ -23,6 +23,7 @@ $('#myTabContent').on('click', '#regularPostBtn', function() {
                 if (stat) {
                     $('.feed-activity').html('');
                     showFeed(res.data)
+                    $('.like-link').bind('click', event => toggleLikeAction(event))
                     resetRegularPost();
                 }
             })
