@@ -162,7 +162,7 @@ export const get_users = (params, callback) => {
 // ... New Recognition / Post
 export const new_post = (params, callback) => {
     return fetch(
-        '/api/activity/new/',
+        '/api/activity/',
         {
             method: 'POST',
             body: JSON.stringify(params),
@@ -185,7 +185,7 @@ export const new_post = (params, callback) => {
 // ... Get Feed
 export const getFeed = (callback) => {
     return fetch(
-        '/api/activity/feed/',
+        '/api/activity/',
         {
             headers:{
                 'Content-Type': 'application/json',
@@ -204,12 +204,11 @@ export const getFeed = (callback) => {
 }
 
 // ... toggle like
-export const toggleLike = (params, callback) => {
+export const toggleLike = (id, callback) => {
     return fetch(
-        '/api/activity/'+ params.activity_id +'/like_toggle/',
+        '/api/activity/'+ id +'/like/',
         {
             method: 'POST',
-            body: JSON.stringify(params),
             headers:{
                 'Content-Type': 'application/json',
                 'Space-Id':space_id

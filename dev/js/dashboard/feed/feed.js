@@ -233,11 +233,7 @@ export const toggleLikeAction = (e) => {
     e.preventDefault(e)
 
     let like_link = $(e.target).closest('.like-link')
-    toggleLike({
-        activity_id: like_link.closest('.feed').attr('feed-id'),
-        status: like_link.attr('is-liked') ? 'liked' : 'disliked',
-        like_cound: 1
-    }, (status, res) => {
+    toggleLike(like_link.closest('.feed').attr('feed-id'), (status, res) => {
         if (status) {
             like_link.closest('.feed').find('.like-count').text(res.like_count + ' likes')
             if (res.like_count === 1) {
