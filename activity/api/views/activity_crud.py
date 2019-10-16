@@ -59,7 +59,6 @@ class Activity(View):
             'recognition__badge__icon__image'
         ).order_by('-id')
 
-        res['total_count'] = queryset.count()
 
         if pagin:
             paginator = Paginator(queryset, pagin['data_limit'])
@@ -70,7 +69,11 @@ class Activity(View):
                 queryset = []
             res['data_limit'] = pagin['data_limit']
             res['page'] = pagin['page']
-        tmp_media = Media.objects.filter(activity__id__in=[queryset.values_list('id', flat=True)]).values_list('activity__id', 'image')
+            res['total_count'] = paginator.count
+        else:
+            res['total_count'] = queryset.count()
+
+        tmp_media = Media.objects.filter(activity__id__in=[ac['id'] for ac in queryset]).values_list('activity__id', 'image')
         media = collections.defaultdict(list)
         for m in tmp_media:
             media[m[0]].append(get_media_url(m[1]))
