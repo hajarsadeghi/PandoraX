@@ -112,9 +112,7 @@ export const showFeed = (feed) => {
                                 '</div>' +
                                 '<div class="col text-right">' +
                                     '<small class="cmts" data-toggle="tooltip" data-html="true" title="">' +
-                                        '<a href="" data-toggle="collapse" data-target="#commentsContainer" aria-expanded="false" aria-controls="commentsContainer">' +
-                                            '30 comments' +
-                                        '</a>' +
+                                        '<a href="" data-toggle="collapse" data-target="#commentsContainer" aria-expanded="false" aria-controls="commentsContainer">' + feed[i].comments_count + ' comments' + '</a>' +
                                    '</small>' +
                                 '</div>' +
                             '</div>' +
