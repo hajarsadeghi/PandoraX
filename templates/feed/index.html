@@ -42,6 +42,8 @@
   <script>
     const reward_badge = "{% static 'js/animation/reward.json' %}",
           post_placeholder = "{% trans 'Whats on your mind today? :)' %}";
+    
+    var feed_pagin = 1;      
 
     $(function() {
       // Initializes and creates emoji set from sprite sheet

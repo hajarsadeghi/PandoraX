@@ -1,13 +1,16 @@
 import { toggleLike } from './../../api';
 
 
+$(document).ready(function() {
+    LottieAnimation(['rewardBadge'])
+})
 
 export const showFeed = (feed) => {
     let profile = '',
         recognition = '',
         recognitition_user_profile = '',
         liked_icon = '',
-        lottie_array = ['rewardBadge'];
+        lottie_array = [];
 
     for (let i = 0; i < feed.length; i++) {
         recognition = '';
@@ -21,7 +24,7 @@ export const showFeed = (feed) => {
 
         if (feed[i].recognition) {
 
-            lottie_array.push('rewardBadge_' + i);
+            lottie_array.push('rewardBadge_' + feed[i].id);
             if (feed[i].recognition.to_user.profile_picture) {
                 recognitition_user_profile = '<img class="img-fluid mx-auto profile-pic" src="'+ feed[i].recognition.to_user.profile_picture +'" alt="profile picture" />';
             }
@@ -43,7 +46,7 @@ export const showFeed = (feed) => {
                                         '</div>' +
                                     '</div>' +
                                 '</div>' +
-                                '<div class="lottie-animation" id="rewardBadge_'+ i +'"></div>' +
+                                '<div class="lottie-animation" id="rewardBadge_'+ feed[i].id +'"></div>' +
                                 '<div class="selected-badge-info mx-2">' +
                                     '<div class="card user-card selected-badge-card border-1 p-1">' +
                                         recognitition_user_profile +
@@ -62,7 +65,7 @@ export const showFeed = (feed) => {
             }
             recognition =   '<div class="row">' +
                                 '<div class="col-12">' +
-                                    '<div id="gallery_'+ i +'" class="gallery">'+ imgs +'</div>' +
+                                    '<div id="gallery_'+ feed[i].id +'" class="gallery">'+ imgs +'</div>' +
                                 '</div>' +
                             '</div>';
         }
@@ -222,7 +225,7 @@ export const showFeed = (feed) => {
                 '</div>' +
             '</div>'
         ) 
-        initializeUnitegallery($("#gallery_" + i))
+        initializeUnitegallery($("#gallery_" + feed[i].id))
     }
     // ... load animation using lottie ...
     LottieAnimation(lottie_array);

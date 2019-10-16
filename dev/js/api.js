@@ -183,10 +183,11 @@ export const new_post = (params, callback) => {
 }
 
 // ... Get Feed
-export const getFeed = (callback) => {
+export const getFeed = (params, callback) => {
     return fetch(
-        '/api/activity/',
+        '/api/activity?' + $.param(params),
         {
+            data_type: 'json',
             headers:{
                 'Content-Type': 'application/json',
                 'Space-Id':space_id

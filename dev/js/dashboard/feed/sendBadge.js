@@ -177,7 +177,12 @@ $('#myTabContent').on('click', '#recognitionPostBtn', function() {
         }
     }, (status) => {
         if (status) {
-            getFeed((stat, res) => {
+            feed_pagin = 1;
+            getFeed({
+                pagin: true,
+                data_limit: 3,
+                page: feed_pagin
+            },(stat, res) => {
                 if (stat) {
                     $('.feed-activity').html('');
                     showFeed(res.data)
