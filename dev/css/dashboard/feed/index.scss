@@ -46,10 +46,6 @@
             max-width: 7rem;
         }
     }
-
-    .avatar {
-        border: 1px solid $border-color !important;
-    }
     
     .post {
 
@@ -241,6 +237,15 @@
                     }
 
                     .likes-and-comments {
+
+                        .small-link {
+                            color: $text;
+                            cursor: pointer;
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+
                         small {
                             a {
                                 color: $text;

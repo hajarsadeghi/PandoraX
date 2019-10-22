@@ -225,3 +225,23 @@ export const toggleLike = (id, callback) => {
             }
         })
 }
+// ... get likers detail
+export const listOfLikers = (id, callback) => {
+    return fetch(
+        '/api/activity/'+ id +'/like/',
+        {
+            headers:{
+                'Content-Type': 'application/json',
+                'Space-Id':space_id
+            }
+        }
+        ).then(response => {
+            if (response.ok) {
+                response.json().then(res => {
+                    callback(true, res)
+                })
+            } else {
+                callback(false, response)
+            }
+        })
+}

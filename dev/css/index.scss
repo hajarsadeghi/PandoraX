@@ -209,6 +209,10 @@ footer {
     }
 }
 
+.avatar {
+    border: 1px solid $border-color !important;
+}
+
 @media (min-width: 992px) {
     .modal-lg, .modal-xl {
         max-width: 800px;

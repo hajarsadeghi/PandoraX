@@ -1,6 +1,7 @@
 
-import { getFeed } from './../../api';
-import { showFeed, toggleLikeAction } from './feed'
+import { getFeed, listOfLikers } from './../../api';
+import { showFeed, toggleLikeAction } from './feed';
+import { usersList } from './../../helper/usersList';
 
 
 $(document).ready(function() {
@@ -41,7 +42,21 @@ $(document).ready(function() {
         }
     });
 
+    $(document).on('click', '.like-count', function(e) {
+        listOfLikers(
+            $(this).attr('activity_id')
+            , (status, response) => {
+            if (status) {
+                usersList(response.data, (users) => {
+                    $('#likersModal').find('.modal-body').html(users);
+                    $('#likersModal').modal('show');
+                })
+            }
+        })
+    })
+
     $('.view-more-comments-link').click(() => {
         $('.view-more-comments').find('img').removeClass('d-none');
     });
 })
+

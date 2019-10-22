@@ -95,8 +95,8 @@ export const showFeed = (feed) => {
                         '<div class="likes-and-comments">' +
                             '<div class="row border-bottom mx-3 py-2">' +
                                 '<div class="col">' +
-                                    '<small data-toggle="tooltip" data-html="true" title="">' +
-                                        '<a href="" class="like-count">' + feed[i].likes_count + ' likes</a>' +
+                                    '<small data-toggle="tooltip" data-html="true" title="" class="like-count small-link" activity_id="'+ feed[i].id +'">' +
+                                        feed[i].likes_count + ' likes' +
                                     '</small>' +
                                     '<span class="mutual-likes d-none d-lg-inline-block">' +
                                         // {% if request.user.profile_picture %}
