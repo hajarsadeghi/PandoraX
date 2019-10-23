@@ -2,7 +2,7 @@ export const usersList = (list, callback) => {
     var users = '',
         avatar = '';
     
-    list.forEach((li) => {
+    list.forEach(li => {
         li.profile_picture ?
         avatar = '<img class="img-fluid" src="'+ li.profile_picture +'" alt="profile picture" />' :
         avatar = '<span class="text-dark">'+ li.name_chars +'</span>'

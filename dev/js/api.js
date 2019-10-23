@@ -267,3 +267,23 @@ export const postComment = (id, params, callback) => {
             }
         })
 }
+// ... view comment
+export const viewComment = (id, callback) => {
+    return fetch(
+        '/api/activity/'+ id +'/comment/',
+        {
+            headers:{
+                'Content-Type': 'application/json',
+                'Space-Id':space_id
+            }
+        }
+        ).then(response => {
+            if (response.ok) {
+                response.json().then(res => {
+                    callback(true, res)
+                })
+            } else {
+                callback(false, response)
+            }
+        })
+}

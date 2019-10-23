@@ -106,8 +106,8 @@ export const showFeed = (feed) => {
                                     '</span>' +
                                 '</div>' +
                                 '<div class="col text-right">' +
-                                    '<small class="cmts" data-toggle="tooltip" data-html="true" title="">' +
-                                        '<a href="" data-toggle="collapse" data-target="#commentsContainer_'+ feed[i].id +'" aria-expanded="false" aria-controls="commentsContainer_'+ feed[i].id +'">' + feed[i].comments_count + ' comments' + '</a>' +
+                                    '<small class="small-link open-cmts" data-toggle="tooltip" data-html="true" title="">' +
+                                        feed[i].comments_count + ' comments' +
                                    '</small>' +
                                 '</div>' +
                             '</div>' +
@@ -121,17 +121,40 @@ export const showFeed = (feed) => {
                                     '</div>' +
                                 '</div>' +
                                 '<div class="col">' +
-                                    '<a class="float-right" href="" data-toggle="collapse" data-target="#commentsContainer_'+ feed[i].id +'" aria-expanded="false" aria-controls="#commentsContainer_'+ feed[i].id +'">' +
+                                    '<div class="float-right comment-link open-cmts">' +
                                         '<span class="material-icons float-left">' +
                                             'insert_comment' +
                                         '</span>' +
                                         '<span class="px-1">Comment</span>' +
-                                    '</a>' +
+                                    '</div>' +
                                 '</div>' +
                             '</div>' +
                             '<div class="collapse comments-container" id="commentsContainer_'+ feed[i].id +'">' +
                                 '<hr class="my-3" />' +
-                                comments(feed[i], feed[i].id) +
+                                '<div class="comment-row d-flex align-items-center mx-3 pb-3">' +
+                                    '<div>' + profile +'</div>' +
+                                    '<div class="flex-grow-1">' +
+                                        '<div class="emoji-picker-container add-comment border ml-2">' +
+                                            '<textarea id="commentOnPost_'+ feed[i].id +'" class="comment-content main-comment-content px-3 form-control textarea-control" rows="3" data-placeholder="'+ write_cmt_placeholder +'" data-emojiable="true" data-emoji-input="unicode"></textarea>' +
+                                        '</div>' +
+                                        // '<div class="add-comment post-content border ml-2" contenteditable="true" data-placeholder="Write a comment..."></div>' +
+                                    '</div>' +
+                                '</div>' +
+                                '<div class="cmts-container">' +
+                                    // comments(feed[i], profile, feed[i].id) +
+                                '</div>' +
+                                '<hr class="m-0" />' +
+                                '<div class="d-flex view-more-comments align-items-center px-3 py-1">' +
+                                    '<div>' +
+                                        '<a class="view-more-comments-link" href="">View more comments</a>' +
+                                    '</div>' +
+                                    '<div class="flex-grow-1">' +
+                                        '<img class="d-none" src="" />' +
+                                    '</div>' +
+                                '</div>' +
+                                ' <div class="write-a-comment align-items-center px-3 py-1">' +
+                                    '<a class="write-a-comment-link" href="">Write a comment</a>' +
+                                '</div>' +
                             ' </div>' +
                         '</div>' +
                     '</div>' +
@@ -145,84 +168,53 @@ export const showFeed = (feed) => {
     initializeEmoji();
 }
 
-function comments(feed, index) {
-    let user_profile = '';
-    feed.user.profile_picture ?
-    user_profile = '<img class="img-fluid profile-pic" src="'+ feed.user.profile_picture +'" alt="profile picture" />' :
-    user_profile = '<span class="text-dark profile-pic-text border">'+ feed.user.name_chars +'</span>'
+export function comments(comments, user_profile, activity_id, callback) {
+    let commenter_profile = '',
+        comment_row = '';
 
-    return  '<div class="comment-row d-flex align-items-center mx-3 pb-3" index="'+ index +'">' +
-                '<div>' + user_profile +'</div>' +
-                '<div class="flex-grow-1">' +
-                    '<div class="emoji-picker-container add-comment border ml-2">' +
-                        '<textarea id="commentOnPost_'+index+'" class="comment-content main-comment-content px-3 form-control textarea-control" rows="3" data-placeholder="Whats on your mind today? :)" data-emojiable="true" data-emoji-input="unicode"></textarea>' +
-                    '</div>' +
-                    // '<div class="add-comment post-content border ml-2" contenteditable="true" data-placeholder="Write a comment..."></div>' +
-                '</div>' +
-            '</div>' +
-            '<div class="comment-row pb-3">' +
-                '<div class="d-flex mx-3">' +
-                    ' <div>' +
-                        '<span class="text-dark profile-pic-text border"></span>' +
-                    '</div>' +
-                    '<div class="ml-2">' +
-                        '<div class="comment-text border p-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi sequi provident nemo at quas error ipsum obcaecati vero minima eaque explicabo hic, porro ab! Dolorum minus sunt impedit aliquid dignissimos.</div>' +
-                        '<small>' +
-                            '<a class="pr-2" href="">Like</a>' +
-                            '<a class="pr-2" href="">Reply</a>' +
-                            '<span class="text-muted">15h</span>' +
-                        '</small>' +
-                        '<div class="replies">' +
-                            '<div class="d-flex">' +
-                                '<div class="mr-1">' +
-                                    '<div class="text-dark profile-pic-text border"></div>' +
-                                '</div>' +
-                                '<div class="flex-grow-1">' +
-                                    '<div class="comment-text border p-2">This is a test reply for your comment.</div>' +
+    comments.forEach(cmt => {
+        cmt.user.profile_picture ?
+        commenter_profile = '<img class="img-fluid profile-pic" src="'+ cmt.user.profile_picture +'" alt="profile picture" />' :
+        commenter_profile = '<span class="text-dark profile-pic-text border">'+ cmt.user.name_chars +'</span>'
+        
+        comment_row += '<div class="comment-row pb-3" comment-id="'+ cmt.id +'">' +
+                            '<div class="d-flex mx-3">' +
+                                ' <div>' + commenter_profile + '</div>' +
+                                '<div class="ml-2">' +
+                                    '<div class="comment-text border p-2">'+ cmt.text +'</div>' +
                                     '<small>' +
                                         '<a class="pr-2" href="">Like</a>' +
                                         '<a class="pr-2" href="">Reply</a>' +
-                                        '<span class="text-muted">15h</span>' +
+                                        '<span class="text-muted">'+ cmt.timestamp +'</span>' +
                                     '</small>' +
+                                    '<div class="replies d-none">' +
+                                        '<div class="d-flex">' +
+                                            '<div class="mr-1">' +
+                                                '<div class="text-dark profile-pic-text border"></div>' +
+                                            '</div>' +
+                                            '<div class="flex-grow-1">' +
+                                                '<div class="comment-text border p-2">This is a test reply for your comment.</div>' +
+                                                '<small>' +
+                                                    '<a class="pr-2" href="">Like</a>' +
+                                                    '<a class="pr-2" href="">Reply</a>' +
+                                                    '<span class="text-muted">15h</span>' +
+                                                '</small>' +
+                                            '</div>' +
+                                        '</div>' +
+                                        '<div class="comment-row d-flex align-items-center pb-3">' +
+                                            '<div>' + user_profile +'</div>' +
+                                            ' <div class="flex-grow-1">' +
+                                                '<div class="add-comment post-content border ml-2" contenteditable="true" data-placeholder="'+ write_cmt_placeholder +'"></div>' +
+                                            '</div>' +
+                                        '</div>' +
+                                    '</div>' +
                                 '</div>' +
                             '</div>' +
-                            '<div class="comment-row d-flex align-items-center pb-3">' +
-                                '<div>' + user_profile +'</div>' +
-                                ' <div class="flex-grow-1">' +
-                                    '<div class="add-comment post-content border ml-2" contenteditable="true" data-placeholder="Write a comment..."></div>' +
-                                '</div>' +
-                            '</div>' +
-                        '</div>' +
-                    '</div>' +
-                '</div>' +
-            '</div>' +
-            '<div class="comment-row pb-3">' +
-                '<div class="d-flex mx-3">' +
-                    '<div>' +
-                        '<span class="text-dark profile-pic-text border">HB</span>' +
-                    '</div>' +
-                    '<div class="ml-2">' +
-                        '<div class="comment-text border p-2">this is a test!</div>' +
-                        '<small>' +
-                            '<a class="pr-2" href="">Like</a>' +
-                            '<a class="pr-2" href="">Reply</a>' +
-                            '<span class="text-muted">15h</span>' +
-                        '</small>' +
-                    '</div>' +
-                '</div>' +
-            '</div>' +
-            '<hr class="m-0" />' +
-            '<div class="d-flex view-more-comments align-items-center px-3 py-1">' +
-                '<div>' +
-                    '<a class="view-more-comments-link" href="">View more comments</a>' +
-                '</div>' +
-                '<div class="flex-grow-1">' +
-                    '<img class="d-none" src="" />' +
-                '</div>' +
-            '</div>' +
-            ' <div class="write-a-comment align-items-center px-3 py-1">' +
-                '<a class="write-a-comment-link" href="">Write a comment</a>' +
-            '</div>'
+                        '</div>'
+    })
+
+    $('#commentsContainer_' + activity_id).find('.cmts-container').append(comment_row);
+    callback()
 }
 
 function initializeEmoji() {

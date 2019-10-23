@@ -261,7 +261,7 @@
                             }
                         }
 
-                        .like-link {
+                        .like-link, .comment-link {
                             cursor: pointer;
                             color: $main-blue-color;
                             &:hover {
