@@ -6,3 +6,4 @@ import './post';
 import './feed_activity.js';
 import './sendBadge';
 import './regularPost';
+import './comment';

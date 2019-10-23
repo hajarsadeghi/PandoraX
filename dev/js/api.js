@@ -245,3 +245,25 @@ export const listOfLikers = (id, callback) => {
             }
         })
 }
+// ... comment
+export const postComment = (id, params, callback) => {
+    return fetch(
+        '/api/activity/'+ id +'/comment/',
+        {
+            method: 'POST',
+            body: JSON.stringify(params),
+            headers:{
+                'Content-Type': 'application/json',
+                'Space-Id':space_id
+            }
+        }
+        ).then(response => {
+            if (response.ok) {
+                response.json().then(res => {
+                    callback(true, res)
+                })
+            } else {
+                callback(false, response)
+            }
+        })
+}

@@ -269,7 +269,7 @@
                             }
                         }
 
-                        #commentsContainer {
+                        .comments-container {
                             .comment-row {
                                 .profile-pic {
                                     width:30px;
@@ -283,6 +283,17 @@
                                 .add-comment, .comment-text {
                                     border-radius: 20px;
                                     background-color: $gray;
+                                    .comment-content {
+                                        height: auto !important;
+                                        outline: 0;
+                                        position: relative;
+                                        top: 0;
+                                        resize: none;
+                                        border: 0;
+                                        box-shadow: none;
+                                        border-radius: 20px;
+                                        background-color: $gray;
+                                    }
                                 }
                                 .comment-text {
                                     width: auto;
@@ -527,6 +538,10 @@
             border: 1px solid $main-red-color;
         }
     }
+}
+
+.emoji-picker-icon {
+    right: 28px !important;
 }
 
 // Small to Large devices (desktops, 992px and up)

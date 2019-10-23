@@ -42,23 +42,11 @@
 {% block script %}
   <script>
     const reward_badge = "{% static 'js/animation/reward.json' %}",
-          post_placeholder = "{% trans 'Whats on your mind today? :)' %}";
+          post_placeholder = "{% trans 'Whats on your mind today? :)' %}",
+          assets_path = "{% static 'css/lib/emojiarea/img' %}";
     
-    var feed_pagin = 1;      
-
-    $(function() {
-      // Initializes and creates emoji set from sprite sheet
-      window.emojiPicker = new EmojiPicker({
-        emojiable_selector: '[data-emojiable=true]',
-        assetsPath: '{% static "css/lib/emojiarea/img" %}',
-        popupButtonClasses: 'fa fa-smile-o'
-      });
-      // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
-      // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
-      // It can be called as many times as necessary; previously converted input fields will not be converted again
-      window.emojiPicker.discover();
-      $('.emoji-wysiwyg-editor').attr('data-placeholder', post_placeholder)
-    });
+    var feed_pagin = 1;   
+    
   </script>
   <script type="text/javascript" src="{% static 'js/lib/emojiarea/config.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/lib/emojiarea/util.js' %}"></script>
