@@ -287,3 +287,25 @@ export const viewComment = (id, callback) => {
             }
         })
 }
+
+// ... like comment
+export const likeComment = (id, cmt_id, callback) => {
+    return fetch(
+        '/api/activity/'+ id +'/comment/' + cmt_id + '/like/',
+        {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json',
+                'Space-Id': space_id
+            }
+        }
+        ).then(response => {
+            if (response.ok) {
+                response.json().then(res => {
+                    callback(true, res)
+                })
+            } else {
+                callback(false, response)
+            }
+        })
+}
