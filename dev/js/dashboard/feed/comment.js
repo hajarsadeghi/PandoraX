@@ -75,4 +75,10 @@ $(document).ready(function() {
             }
         })
     })
+
+    $(document).on('click', '.reply-cmt', function() {
+        let $this = $(this);
+        $this.closest('.comment-row').find('.reply-row').removeClass('d-none')
+        $this.closest('.comment-row').find('.reply-row').addClass('d-flex')
+    })
 })

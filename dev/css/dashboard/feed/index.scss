@@ -280,10 +280,10 @@
                                     height: 30px;
                                     line-height: 30px;
                                 }
-                                .add-comment, .comment-text {
+                                .add-comment, .comment-text, .add-reply {
                                     border-radius: 20px;
                                     background-color: $gray;
-                                    .comment-content {
+                                    .comment-content, .reply-content {
                                         height: auto !important;
                                         outline: 0;
                                         position: relative;
@@ -564,8 +564,15 @@
     }
 }
 
-.emoji-picker-icon {
-    right: 28px !important;
+.emoji-picker-container {
+    border: 0 !important;
+    .emoji-picker-icon {
+        right: 28px !important;
+    }
+}
+
+.emoji-wysiwyg-editor {
+    min-height: initial !important;
 }
 
 .like-icon {

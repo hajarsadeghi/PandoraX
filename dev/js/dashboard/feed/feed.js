@@ -5,9 +5,9 @@ $(document).ready(function() {
     LottieAnimation(['rewardBadge'])
 })
 
+let user_self_profile = '';
 export const showFeed = (feed) => {
     let profile = '',
-        user_self_profile = '',
         recognition = '',
         recognitition_user_profile = '',
         liked_icon = '',
@@ -181,14 +181,15 @@ export function comments(comments, user_profile, activity_id, callback) {
         cmt_reply = '';
 
     comments.forEach(cmt => {
+        // ... logged in user profile picture
         cmt.user.profile_picture ?
         commenter_profile = '<img class="img-fluid profile-pic" src="'+ cmt.user.profile_picture +'" alt="profile picture" />' :
         commenter_profile = '<span class="text-dark profile-pic-text border">'+ cmt.user.name_chars +'</span>'
-
+        // ... material icon class
         cmt.is_liked ?
         cmt_like_class = '':
         cmt_like_class = ' material-icons-outlined ';
-
+        // ... comment like count element
         cmt.likes_count ?
         cmt_likes = '<span class="d-flex cmts-badge like-cmts-badge ml-5">' +
                         '<i class="material-icons '+ cmt_like_class +' md-18 like css">thumb_up</i>' +
@@ -198,7 +199,7 @@ export function comments(comments, user_profile, activity_id, callback) {
                         '<i class="material-icons '+ cmt_like_class +' md-18">thumb_up</i>' +
                         '<span>'+ cmt.likes_count +'</span>' +
                     '</span>';
-        
+        // ... comment reply count element
         cmt.reply_count ?
         cmt_reply = '<span class="d-flex cmts-badge reply-cmts-badge mr-5">' +
                         '<i class="material-icons material-icons-outlined md-18">mode_comment</i>' +
@@ -212,7 +213,7 @@ export function comments(comments, user_profile, activity_id, callback) {
         comment_row += '<div class="comment-row pb-1" comment-id="'+ cmt.id +'">' +
                             '<div class="d-flex mx-3">' +
                                 ' <div>' + commenter_profile + '</div>' +
-                                '<div class="ml-2">' +
+                                '<div class="flex-grow-1 ml-2">' +
                                     '<div class="comment-text border p-1 mb-2">'+
                                         '<span>'+ cmt.text +'</span>' +
                                         cmt_likes +
@@ -223,24 +224,26 @@ export function comments(comments, user_profile, activity_id, callback) {
                                         '<span class="cmt-links reply-cmt pr-2">Reply</span>' +
                                         '<span class="text-muted">'+ moment(moment(cmt.timestamp)).startOf('day').fromNow() +'</span>' +
                                     '</small>' +
-                                    '<div class="replies d-none">' +
-                                        '<div class="d-flex">' +
-                                            '<div class="mr-1">' +
-                                                '<div class="text-dark profile-pic-text border"></div>' +
-                                            '</div>' +
-                                            '<div class="flex-grow-1">' +
-                                                '<div class="comment-text border p-2">This is a test reply for your comment.</div>' +
-                                                '<small>' +
-                                                    '<a class="pr-2" href="">Like</a>' +
-                                                    '<a class="pr-2" href="">Reply</a>' +
-                                                    '<span class="text-muted">15h</span>' +
-                                                '</small>' +
-                                            '</div>' +
-                                        '</div>' +
-                                        '<div class="comment-row d-flex align-items-center pb-3">' +
-                                            '<div>' + user_profile +'</div>' +
+                                    '<div class="replies">' +
+                                        // '<div class="d-flex">' +
+                                        //     '<div class="mr-1">' +
+                                        //         '<div class="text-dark profile-pic-text border"></div>' +
+                                        //     '</div>' +
+                                        //     '<div class="flex-grow-1">' +
+                                        //         '<div class="comment-text border px-2 py-1">This is a test reply for your comment.</div>' +
+                                        //         '<small>' +
+                                        //             '<a class="pr-2" href="">Like</a>' +
+                                        //             '<a class="pr-2" href="">Reply</a>' +
+                                        //             '<span class="text-muted">15h</span>' +
+                                        //         '</small>' +
+                                        //     '</div>' +
+                                        // '</div>' +
+                                        '<div class="reply-row d-none align-items-center pb-3 animated fadeIn">' +
+                                            '<div>' + user_self_profile +'</div>' +
                                             ' <div class="flex-grow-1">' +
-                                                '<div class="add-comment post-content border ml-2" contenteditable="true" data-placeholder="'+ write_cmt_placeholder +'"></div>' +
+                                                '<div class="emoji-picker-container add-reply border ml-2">' +
+                                                    '<textarea id="replyOnCmt_'+ cmt.id +'" class="reply-content px-3 form-control textarea-control" rows="3" data-placeholder="'+ write_cmt_placeholder +'" data-emojiable="true" data-emoji-input="unicode"></textarea>' +
+                                                '</div>' +
                                             '</div>' +
                                         '</div>' +
                                     '</div>' +
