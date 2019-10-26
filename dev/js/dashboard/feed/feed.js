@@ -79,7 +79,7 @@ export const showFeed = (feed) => {
                         '<div>' + profile + '</div>' +
                         '<div class="flex-grow-1 px-2">' +
                             '<h4 class="font-weight-bold m-0">'+ feed[i].user.full_name +'</h4>' +
-                            '<small class="text-muted">'+ feed[i].timestamp +'</small>' +
+                            '<small class="text-muted">'+ moment(moment(feed[i].timestamp).format('YYYYMMDD'),'YYYYMMDD').fromNow() +'</small>' +
                         '</div>' +
                     '</div>' +
                     '<div class="card-text"> ' +
@@ -170,22 +170,42 @@ export const showFeed = (feed) => {
 
 export function comments(comments, user_profile, activity_id, callback) {
     let commenter_profile = '',
-        comment_row = '';
+        comment_row = '',
+        cmt_likes = '',
+        cmt_reply = '';
 
     comments.forEach(cmt => {
         cmt.user.profile_picture ?
         commenter_profile = '<img class="img-fluid profile-pic" src="'+ cmt.user.profile_picture +'" alt="profile picture" />' :
         commenter_profile = '<span class="text-dark profile-pic-text border">'+ cmt.user.name_chars +'</span>'
+
+        cmt.like_count ?
+        cmt_likes = '<span class="d-flex cmts-badge like-cmts-badge ml-5">' +
+                        '<i class="material-icons material-icons-outlined md-18">thumb_up</i>' +
+                        '<span>'+ cmt.likes_count +'</span>' +
+                    '</span>' :
+                    '';
+        
+                    cmt.like_count ?
+        cmt_reply = '<span class="d-flex cmts-badge reply-cmts-badge mr-5">' +
+                        '<i class="material-icons material-icons-outlined md-18">mode_comment</i>' +
+                        '<span>'+ cmt.reply_count +'</span>' +
+                    '</span>' :
+                    '';
         
         comment_row += '<div class="comment-row pb-3" comment-id="'+ cmt.id +'">' +
                             '<div class="d-flex mx-3">' +
                                 ' <div>' + commenter_profile + '</div>' +
                                 '<div class="ml-2">' +
-                                    '<div class="comment-text border p-2">'+ cmt.text +'</div>' +
+                                    '<div class="comment-text border p-1 mb-2">'+
+                                        '<span>'+ cmt.text +'</span>' +
+                                        cmt_likes +
+                                        cmt_reply +
+                                     '</div>' +
                                     '<small>' +
                                         '<a class="pr-2" href="">Like</a>' +
                                         '<a class="pr-2" href="">Reply</a>' +
-                                        '<span class="text-muted">'+ cmt.timestamp +'</span>' +
+                                        '<span class="text-muted">'+ moment(moment(cmt.timestamp)).startOf('day').fromNow() +'</span>' +
                                     '</small>' +
                                     '<div class="replies d-none">' +
                                         '<div class="d-flex">' +
