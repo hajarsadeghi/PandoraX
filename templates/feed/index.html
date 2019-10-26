@@ -45,7 +45,15 @@
           post_placeholder = "{% trans 'Whats on your mind today? :)' %}",
           assets_path = "{% static 'css/lib/emojiarea/img' %}",
           write_cmt_placeholder = "{% trans 'Write a comment...' %}";
-    
+
+    let user_profile = {};
+    "{% if request.user.profile_picture %}"
+      user_profile.has = true;
+      user_profile.src = "{{request.user.profile_picture.url}}"
+    "{% else %}"
+      user_profile.has = false;
+      user_profile.initials = "{{request.user.name_chars}}"
+    "{% endif %}"    
     var feed_pagin = 1;   
     
   </script>

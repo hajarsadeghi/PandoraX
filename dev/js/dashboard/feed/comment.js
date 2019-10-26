@@ -1,4 +1,4 @@
-import { postComment, viewComment } from './../../api';
+import { postComment, viewComment, likeComment } from './../../api';
 import { comments } from './feed';
 
 
@@ -33,6 +33,7 @@ $(document).ready(function() {
         let activityId = $(this).closest('.feed').attr('feed-id'),
             $collapseElem = $(this).closest('.feed').find('.comments-container');
         if (!$collapseElem.hasClass('show')) {
+            $(this).closest('.feed').find('.cmts-container').empty()
             viewComment(activityId,
                 (status, response) => {
                     if (status) {
@@ -45,5 +46,33 @@ $(document).ready(function() {
         else {
             $collapseElem.collapse('hide')
         }
+    })
+
+    $(document).on('click', '.like-cmt', function() {
+        let $this = $(this),
+            feed_id = $this.closest('.feed').attr('feed-id'),
+            comment_id = $this.closest('.comment-row').attr('comment-id');
+        likeComment(
+            feed_id,
+            comment_id,
+            (status, response) => {
+            if (status) {
+                if (response.like_count) {
+                    $this.closest('.comment-row').find('.like-cmts-badge').addClass('d-flex')
+                    $this.closest('.comment-row').find('.like-cmts-badge').removeClass('d-none')
+                    $this.closest('.comment-row').find('.like-cmts-badge span').text(response.like_count);
+                    if (response.status === 'liked') {
+                        $this.closest('.comment-row').find('.like-cmts-badge i').attr('class', 'material-icons md-18 like css animated')
+                    }
+                    else {
+                        $this.closest('.comment-row').find('.like-cmts-badge i').attr('class', 'material-icons material-icons-outlined md-18 like css')
+                    }
+                }
+                else {
+                    $this.closest('.comment-row').find('.like-cmts-badge').removeClass('d-flex')
+                    $this.closest('.comment-row').find('.like-cmts-badge').addClass('d-none')
+                }
+            }
+        })
     })
 })

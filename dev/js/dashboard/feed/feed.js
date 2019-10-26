@@ -7,10 +7,15 @@ $(document).ready(function() {
 
 export const showFeed = (feed) => {
     let profile = '',
+        user_self_profile = '',
         recognition = '',
         recognitition_user_profile = '',
         liked_icon = '',
         lottie_array = [];
+
+    user_profile.has ?
+    user_self_profile = '<img class="img-fluid profile-pic" src="'+ user_profile.src +'" alt="profile picture" />' :
+    user_self_profile = '<span class="text-dark profile-pic-text border">'+ user_profile.initials +'</span>'
 
     for (let i = 0; i < feed.length; i++) {
         recognition = '';
@@ -132,7 +137,7 @@ export const showFeed = (feed) => {
                             '<div class="collapse comments-container" id="commentsContainer_'+ feed[i].id +'">' +
                                 '<hr class="my-3" />' +
                                 '<div class="comment-row d-flex align-items-center mx-3 pb-3">' +
-                                    '<div>' + profile +'</div>' +
+                                    '<div>' + user_self_profile +'</div>' +
                                     '<div class="flex-grow-1">' +
                                         '<div class="emoji-picker-container add-comment border ml-2">' +
                                             '<textarea id="commentOnPost_'+ feed[i].id +'" class="comment-content main-comment-content px-3 form-control textarea-control" rows="3" data-placeholder="'+ write_cmt_placeholder +'" data-emojiable="true" data-emoji-input="unicode"></textarea>' +
@@ -172,6 +177,7 @@ export function comments(comments, user_profile, activity_id, callback) {
     let commenter_profile = '',
         comment_row = '',
         cmt_likes = '',
+        cmt_like_class = '',
         cmt_reply = '';
 
     comments.forEach(cmt => {
@@ -179,21 +185,31 @@ export function comments(comments, user_profile, activity_id, callback) {
         commenter_profile = '<img class="img-fluid profile-pic" src="'+ cmt.user.profile_picture +'" alt="profile picture" />' :
         commenter_profile = '<span class="text-dark profile-pic-text border">'+ cmt.user.name_chars +'</span>'
 
-        cmt.like_count ?
+        cmt.is_liked ?
+        cmt_like_class = '':
+        cmt_like_class = ' material-icons-outlined ';
+
+        cmt.likes_count ?
         cmt_likes = '<span class="d-flex cmts-badge like-cmts-badge ml-5">' +
-                        '<i class="material-icons material-icons-outlined md-18">thumb_up</i>' +
+                        '<i class="material-icons '+ cmt_like_class +' md-18 like css">thumb_up</i>' +
                         '<span>'+ cmt.likes_count +'</span>' +
                     '</span>' :
-                    '';
+        cmt_likes = '<span class="d-none cmts-badge like-cmts-badge ml-5 like css">' +
+                        '<i class="material-icons '+ cmt_like_class +' md-18">thumb_up</i>' +
+                        '<span>'+ cmt.likes_count +'</span>' +
+                    '</span>';
         
-                    cmt.like_count ?
+        cmt.reply_count ?
         cmt_reply = '<span class="d-flex cmts-badge reply-cmts-badge mr-5">' +
                         '<i class="material-icons material-icons-outlined md-18">mode_comment</i>' +
                         '<span>'+ cmt.reply_count +'</span>' +
                     '</span>' :
-                    '';
+        cmt_reply = '<span class="d-none cmts-badge reply-cmts-badge mr-5">' +
+                        '<i class="material-icons material-icons-outlined md-18">mode_comment</i>' +
+                        '<span>'+ cmt.reply_count +'</span>' +
+                    '</span>';
         
-        comment_row += '<div class="comment-row pb-3" comment-id="'+ cmt.id +'">' +
+        comment_row += '<div class="comment-row pb-1" comment-id="'+ cmt.id +'">' +
                             '<div class="d-flex mx-3">' +
                                 ' <div>' + commenter_profile + '</div>' +
                                 '<div class="ml-2">' +
@@ -203,8 +219,8 @@ export function comments(comments, user_profile, activity_id, callback) {
                                         cmt_reply +
                                      '</div>' +
                                     '<small>' +
-                                        '<a class="pr-2" href="">Like</a>' +
-                                        '<a class="pr-2" href="">Reply</a>' +
+                                        '<span class="cmt-links like-cmt pr-2">Like</span>' +
+                                        '<span class="cmt-links reply-cmt pr-2">Reply</span>' +
                                         '<span class="text-muted">'+ moment(moment(cmt.timestamp)).startOf('day').fromNow() +'</span>' +
                                     '</small>' +
                                     '<div class="replies d-none">' +

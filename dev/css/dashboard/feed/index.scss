@@ -313,10 +313,8 @@
                                         }
 
                                         // &.like-cmts-badge {
-                                        //     right: 5px;
                                         // }
                                         // &.reply-cmts-badge {
-                                        //     right: 55px;
                                         // }
                                     }
                                 }
@@ -324,8 +322,12 @@
                                     min-height: 30px;
                                 }
                                 small {
-                                    a {
+                                    .cmt-links {
                                         color: $main-blue-color;
+                                        &:hover {
+                                            text-decoration: underline;
+                                            cursor: pointer;
+                                        }
                                     }
                                 }
                                 .replies {
@@ -564,6 +566,44 @@
 
 .emoji-picker-icon {
     right: 28px !important;
+}
+
+.like-icon {
+    @include transform(scale(1));
+    @include transform-origin(center center);
+    @include transition(all 1s); 
+}
+.like.css {  
+    @include animation-delay(1s);
+}
+.like.animated {
+    @include animation(thumbs_up_animation 1s ease-in-out)
+}
+
+@keyframes thumbs_up_animation {
+    0% { transform: scale(1); }
+    50% { transform: scale(2); }
+    100% { transform: scale(1); }
+}
+@-webkit-keyframes thumbs_up_animation {
+    0% { -webkit-transform: scale(1); }
+    50% { -webkit-transform: scale(2); }
+    100% { -webkit-transform: scale(1); }
+}
+@-moz-keyframes thumbs_up_animation {
+    0% { -moz-transform: scale(1); }
+    50% { -moz-transform: scale(2); }
+    100% { -moz-transform: scale(1); }  
+}
+@-ms-keyframes thumbs_up_animation {
+    0% { -ms-transform: scale(1); }
+    50% { -ms-transform: scale(2); }
+    100% { -ms-transform: scale(1); }  
+}
+@-o-keyframes thumbs_up_animation {
+    0% { -o-transform: scale(1); }
+    50% { -o-transform: scale(2); }
+    100% { -o-transform: scale(1); }  
 }
 
 // Small to Large devices (desktops, 992px and up)

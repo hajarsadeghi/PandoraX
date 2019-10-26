@@ -22,6 +22,22 @@
     transition: $property;
 }
 
+@mixin animation($property) {
+    -webkit-animation: $property;
+    -moz-animation: $property;
+    -ms-animation: $property;
+    -o-animation: $property;
+    animation: $property;
+}
+
+@mixin animation-delay($property) {
+    -webkit-animation-delay: $property;
+    -moz-animation-delay: $property;
+    -ms-animation-delay: $property;
+    -o-animation-delay: $property;
+    animation-delay: $property;
+}
+
 @mixin input-placeholder($color) {
     &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
         color: $color !important;
