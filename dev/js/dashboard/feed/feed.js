@@ -151,7 +151,7 @@ export const showFeed = (feed) => {
                                 '<hr class="m-0" />' +
                                 '<div class="d-flex view-more-comments align-items-center px-3">' +
                                     '<div>' +
-                                        '<span class="cmt-links view-more-comments-link" pagin="1">View more comments</span>' +
+                                        '<span class="cmt-links view-more-comments-link" pagin="1" max-comments="1">View more comments</span>' +
                                     '</div>' +
                                     '<div class="flex-grow-1">' +
                                         '<img class="invisible" src="'+ load_more_src +'" />' +
@@ -233,8 +233,14 @@ export function comments(comments, user_profile, activity_id, callback) {
                                                 '</div>' +
                                             '</div>' +
                                         '</div>' +
-                                        '<div class="d-none">' +
-                                            '<a class="view-more-replies-link" href="">View more replies</a>' +
+                                        '<div class="replies-box"></div>' +
+                                        '<div class="d-none view-more-comments align-items-center px-3">' +
+                                            '<div>' +
+                                                '<span class="cmt-links view-more-comments-link view-more-replies-link" pagin="1" max-comments="0">View more replies</span>' +
+                                            '</div>' +
+                                            '<div class="flex-grow-1">' +
+                                                '<img class="invisible" src="'+ load_more_src +'" />' +
+                                            '</div>' +
                                         '</div>' +
                                     '</div>' +
                                 '</div>' +
@@ -255,18 +261,18 @@ export function replies(container, comments, callback) {
         commenter_profile = '<span class="text-dark profile-pic-text border">'+ cmt.user.name_chars +'</span>'
 
         replies += '<div class="d-flex">' +
-                    '<div class="mr-1">' +
-                        commenter_profile +
-                    '</div>' +
-                    '<div class="flex-grow-1">' +
-                        '<div class="comment-text border px-2 py-1">'+ cmt.text +'</div>' +
-                        '<small>' +
-                            '<a class="pr-2" href="">Like</a>' +
-                            '<a class="pr-2" href="">Reply</a>' +
-                            '<span class="text-muted">'+ moment(moment(cmt.timestamp)).startOf('day').fromNow() +'</span>' +
-                        '</small>' +
-                    '</div>' +
-                '</div>'
+                        '<div class="mr-1">' +
+                            commenter_profile +
+                        '</div>' +
+                        '<div class="flex-grow-1">' +
+                            '<div class="comment-text border px-2 py-1">'+ cmt.text +'</div>' +
+                            '<small>' +
+                                '<a class="pr-2" href="">Like</a>' +
+                                '<a class="pr-2" href="">Reply</a>' +
+                                '<span class="text-muted">'+ moment(moment(cmt.timestamp)).startOf('day').fromNow() +'</span>' +
+                            '</small>' +
+                        '</div>' +
+                    '</div>'
     })
     container.append(replies);
     callback()
