@@ -44,7 +44,8 @@
     const reward_badge = "{% static 'js/animation/reward.json' %}",
           post_placeholder = "{% trans 'Whats on your mind today? :)' %}",
           assets_path = "{% static 'css/lib/emojiarea/img' %}",
-          write_cmt_placeholder = "{% trans 'Write a comment...' %}";
+          write_cmt_placeholder = "{% trans 'Write a comment...' %}",
+          load_more_src = "{% static 'image/load_more_comments.gif' %}"
 
     let user_profile = {};
     "{% if request.user.profile_picture %}"

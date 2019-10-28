@@ -149,15 +149,15 @@ export const showFeed = (feed) => {
                                     // comments(feed[i], profile, feed[i].id) +
                                 '</div>' +
                                 '<hr class="m-0" />' +
-                                '<div class="d-flex view-more-comments align-items-center px-3 py-1">' +
+                                '<div class="d-flex view-more-comments align-items-center px-3">' +
                                     '<div>' +
-                                        '<a class="view-more-comments-link" href="">View more comments</a>' +
+                                        '<span class="cmt-links view-more-comments-link" pagin="1">View more comments</span>' +
                                     '</div>' +
                                     '<div class="flex-grow-1">' +
-                                        '<img class="d-none" src="" />' +
+                                        '<img class="invisible" src="'+ load_more_src +'" />' +
                                     '</div>' +
                                 '</div>' +
-                                ' <div class="write-a-comment align-items-center px-3 py-1">' +
+                                ' <div class="write-a-comment align-items-center px-3">' +
                                     '<a class="write-a-comment-link" href="">Write a comment</a>' +
                                 '</div>' +
                             ' </div>' +
@@ -225,26 +225,16 @@ export function comments(comments, user_profile, activity_id, callback) {
                                         '<span class="text-muted">'+ moment(moment(cmt.timestamp)).startOf('day').fromNow() +'</span>' +
                                     '</small>' +
                                     '<div class="replies">' +
-                                        // '<div class="d-flex">' +
-                                        //     '<div class="mr-1">' +
-                                        //         '<div class="text-dark profile-pic-text border"></div>' +
-                                        //     '</div>' +
-                                        //     '<div class="flex-grow-1">' +
-                                        //         '<div class="comment-text border px-2 py-1">This is a test reply for your comment.</div>' +
-                                        //         '<small>' +
-                                        //             '<a class="pr-2" href="">Like</a>' +
-                                        //             '<a class="pr-2" href="">Reply</a>' +
-                                        //             '<span class="text-muted">15h</span>' +
-                                        //         '</small>' +
-                                        //     '</div>' +
-                                        // '</div>' +
-                                        '<div class="reply-row d-none align-items-center pb-3 animated fadeIn">' +
+                                        '<div class="d-none reply-row align-items-center pb-3 animated fadeIn">' +
                                             '<div>' + user_self_profile +'</div>' +
                                             ' <div class="flex-grow-1">' +
                                                 '<div class="emoji-picker-container add-reply border ml-2">' +
-                                                    '<textarea id="replyOnCmt_'+ cmt.id +'" class="reply-content px-3 form-control textarea-control" rows="3" data-placeholder="'+ write_cmt_placeholder +'" data-emojiable="true" data-emoji-input="unicode"></textarea>' +
+                                                    '<textarea id="replyOnCmt_'+ cmt.id +'" class="reply-content comment-content px-3 form-control textarea-control" rows="3" data-placeholder="'+ write_cmt_placeholder +'" data-emojiable="true" data-emoji-input="unicode"></textarea>' +
                                                 '</div>' +
                                             '</div>' +
+                                        '</div>' +
+                                        '<div class="d-none">' +
+                                            '<a class="view-more-replies-link" href="">View more replies</a>' +
                                         '</div>' +
                                     '</div>' +
                                 '</div>' +
@@ -256,7 +246,33 @@ export function comments(comments, user_profile, activity_id, callback) {
     callback()
 }
 
-function initializeEmoji() {
+export function replies(container, comments, callback) {
+    let replies = '',
+        commenter_profile = '';
+    comments.forEach(cmt => {
+        cmt.user.profile_picture ?
+        commenter_profile = '<img class="img-fluid profile-pic" src="'+ cmt.user.profile_picture +'" alt="profile picture" />' :
+        commenter_profile = '<span class="text-dark profile-pic-text border">'+ cmt.user.name_chars +'</span>'
+
+        replies += '<div class="d-flex">' +
+                    '<div class="mr-1">' +
+                        commenter_profile +
+                    '</div>' +
+                    '<div class="flex-grow-1">' +
+                        '<div class="comment-text border px-2 py-1">'+ cmt.text +'</div>' +
+                        '<small>' +
+                            '<a class="pr-2" href="">Like</a>' +
+                            '<a class="pr-2" href="">Reply</a>' +
+                            '<span class="text-muted">'+ moment(moment(cmt.timestamp)).startOf('day').fromNow() +'</span>' +
+                        '</small>' +
+                    '</div>' +
+                '</div>'
+    })
+    container.append(replies);
+    callback()
+}
+
+export function initializeEmoji() {
     // Initializes and creates emoji set from sprite sheet
     window.emojiPicker = new EmojiPicker({
         emojiable_selector: '[data-emojiable=true]',

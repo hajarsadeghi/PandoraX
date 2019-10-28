@@ -1,5 +1,5 @@
 import { postComment, viewComment, likeComment } from './../../api';
-import { comments, initializeEmoji } from './feed';
+import { comments, replies, initializeEmoji } from './feed';
 
 
 
@@ -21,7 +21,8 @@ $(document).ready(function() {
                 (status) => {
                 if (status) {
                     $($('#' + elemId)[0]).siblings('div.textarea-control').html('')
-                    viewComment(activityId,
+                    viewComment(
+                        '/api/activity/'+ activityId +'/comment/',
                         (status, response) => {
                             if (status) {
                                 $('#commentsContainer_' + activityId).find('.cmts-container').html('')
@@ -40,21 +41,42 @@ $(document).ready(function() {
             $collapseElem = $(this).closest('.feed').find('.comments-container');
         if (!$collapseElem.hasClass('show')) {
             $(this).closest('.feed').find('.cmts-container').empty()
-            viewComment(activityId,
+            viewComment(
+                '/api/activity/'+ activityId +'/comment/?' + $.param({
+                    pagin: true,
+                    data_limit: 3,
+                    page: 1
+                }),
                 (status, response) => {
                     if (status) {
                         comments(response.data, undefined, activityId, () => {
                             initializeEmoji();
-                            $collapseElem.collapse('show')
+                            $collapseElem.collapse('show');
+                            $(this).closest('.likes-and-comments').find('.view-more-comments-link').attr('max-comments', response.max_page)
                         })
                     }
                 })
         }
         else {
             $collapseElem.collapse('hide')
+            $('.view-more-comments-link').attr('pagin', 1)
+            $('.view-more-comments-link').attr('max-comments', 1)
         }
     })
-
+    // ... view replies
+    $(document).on('click', '.reply-cmts-badge', function () {
+        let $this = $(this),
+            activityId = $this.closest('.feed').attr('feed-id'),
+            parent_id = $this.closest('.comment-row').attr('comment-id');
+        viewComment(
+            '/api/activity/'+ activityId +'/comment/?' + $.param({parent_id}),
+            (status, response) => {
+                if (status) {
+                    replies($this.closest('.comment-row').find('.replies'),response.data, () => {})
+                }
+            })
+    })
+    // ... like comment
     $(document).on('click', '.like-cmt', function() {
         let $this = $(this),
             feed_id = $this.closest('.feed').attr('feed-id'),
@@ -82,10 +104,36 @@ $(document).ready(function() {
             }
         })
     })
-
+    // ... show reply box
     $(document).on('click', '.reply-cmt', function() {
         let $this = $(this);
         $this.closest('.comment-row').find('.reply-row').removeClass('d-none')
         $this.closest('.comment-row').find('.reply-row').addClass('d-flex')
+    })
+    // ... load more comments
+    $(document).on('click', '.view-more-comments-link', function() {
+        let $this = $(this),
+            activityId = $this.closest('.feed').attr('feed-id'),
+            pagin = $this.attr('pagin'),
+            max_comments = $this.attr('max-comments'); 
+
+        if (pagin < max_comments) {
+            $('.view-more-comments').find('img').removeClass('invisible');
+            viewComment(
+                '/api/activity/'+ activityId +'/comment/?' + $.param({
+                    pagin: true,
+                    data_limit: 3,
+                    page: Number(pagin) + 1
+                }),
+                (status, response) => {
+                    if (status) {
+                        $this.attr('pagin', Number(pagin) + 1)
+                        comments(response.data, undefined, activityId, () => {
+                            initializeEmoji();
+                        })
+                        $('.view-more-comments').find('img').addClass('invisible');
+                    }
+                })   
+        }
     })
 })

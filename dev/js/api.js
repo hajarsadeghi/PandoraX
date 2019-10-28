@@ -268,9 +268,9 @@ export const postComment = (id, params, callback) => {
         })
 }
 // ... view comment
-export const viewComment = (id, callback) => {
+export const viewComment = (url, callback) => {
     return fetch(
-        '/api/activity/'+ id +'/comment/',
+        url,
         {
             headers:{
                 'Content-Type': 'application/json',
