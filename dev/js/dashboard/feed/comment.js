@@ -1,9 +1,10 @@
 import { postComment, viewComment, likeComment } from './../../api';
-import { comments } from './feed';
+import { comments, initializeEmoji } from './feed';
 
 
 
 $(document).ready(function() {
+    // ... comment and reply
     $(document).on('keyup change', '.comment-content', function(e) {
         let $this = $(this),
             activityId = $this.closest('.feed').attr('feed-id'),
@@ -12,22 +13,27 @@ $(document).ready(function() {
             // console.log($($('#' + $id)[0]).siblings('div.textarea-control').html().replace(/<\/div>/g,"\n"))
         if (e.code === 'Enter') {
             postComment(
-                activityId,{
-                text: text
-            },(status) => {
+                activityId,
+                {
+                    parent_id: $this.hasClass('reply-content') ? $this.closest('.comment-row').attr('comment-id') : null,
+                    text: text
+                },
+                (status) => {
                 if (status) {
                     $($('#' + elemId)[0]).siblings('div.textarea-control').html('')
                     viewComment(activityId,
                         (status, response) => {
                             if (status) {
                                 $('#commentsContainer_' + activityId).find('.cmts-container').html('')
-                                comments(response.data, undefined, activityId)
+                                comments(response.data, undefined, activityId, () => {
+                                    initializeEmoji();
+                                })
                             }
                         })
                 }
             })
         }
-    })  
+    }) 
     // ... view comments
     $(document).on('click','.open-cmts', function(e) {
         let activityId = $(this).closest('.feed').attr('feed-id'),
@@ -38,6 +44,7 @@ $(document).ready(function() {
                 (status, response) => {
                     if (status) {
                         comments(response.data, undefined, activityId, () => {
+                            initializeEmoji();
                             $collapseElem.collapse('show')
                         })
                     }
