@@ -5,7 +5,8 @@ import { usersList } from './../../helper/usersList';
 
 
 $(document).ready(function() {
-    let loading = true;
+    let loading = true,
+        feed_max_page = 2;
 
     // ... show feed
     getFeed({
@@ -23,7 +24,7 @@ $(document).ready(function() {
     // ... load more feed on scroll down
     $(window).scroll(function() {
         if($(window).scrollTop() + $(window).height() > ($(document).height() - 50)) {
-            if (loading) {
+            if (loading && feed_pagin < feed_max_page) {
                 feed_pagin = feed_pagin + 1;
                 loading = false;
                 // ... show feed
@@ -33,6 +34,7 @@ $(document).ready(function() {
                     page: feed_pagin
                 }, (status, response) => {
                     if (status) {
+                        feed_max_page = response.max_page;
                         loading = true;
                         showFeed(response.data);
                         $('.like-link').bind('click', event => toggleLikeAction(event))
@@ -60,5 +62,8 @@ $(document).ready(function() {
             $this_emoji = $this.prev();
         $(document).find('.emoji-menu').not($this_emoji).css('display', 'none');
     })
+    // ... Web Socket 
+    var webSocket = new WebSocket('ws://localhost/ws/feed/'+ space_id +'/');
+    console.log(webSocket, '=== websocket')
 })
 

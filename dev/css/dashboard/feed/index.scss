@@ -214,6 +214,9 @@
 
     .feed-activity {
         .feed {
+            &.card {
+                position: initial !important;
+            }
             .card-body {
                 .card-title {
                     h4 {
