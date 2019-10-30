@@ -37,22 +37,30 @@ export const showFeed = (feed) => {
                             '<div class="d-flex justify-content-center align-items-center post-recognition">' +
                                 '<div class="selected-badge-info mx-2">' +
                                     '<div class="card badge-card selected-badge-card border-1 p-1">' +
-                                        '<img class="img-fluid mx-auto" src="'+ feed[i].recognition.badge.icon +'" alt="badge icon">' +
-                                        '<div class="badge-label text-center">' +
-                                            '<h5 class="card-title text-muted my-1">' +
-                                                '<span>'+ feed[i].recognition.badge.name +'</span>' +
-                                                '<small class="pl-1">'+ feed[i].recognition.badge.point_amount +'</small>' +
-                                            '</h5>' +
+                                        '<div class="row h-100">' +
+                                            '<div class="col-12 align-self-start text-center">' +
+                                                '<img class="img-fluid mx-auto" src="'+ feed[i].recognition.badge.icon +'" alt="badge icon">' +
+                                            '</div>' +
+                                            '<div class="col-12 badge-label align-self-end text-center">' +
+                                                '<h5 class="card-title text-muted my-1">' +
+                                                    '<span>'+ feed[i].recognition.badge.name +'</span>' +
+                                                    '<small class="pl-1">'+ feed[i].recognition.badge.point_amount +'</small>' +
+                                                '</h5>' +
+                                            '</div>' +
                                         '</div>' +
                                     '</div>' +
                                 '</div>' +
                                 '<div class="lottie-animation" id="rewardBadge_'+ feed[i].id +'"></div>' +
                                 '<div class="selected-badge-info mx-2">' +
                                     '<div class="card user-card selected-badge-card border-1 p-1">' +
-                                        recognitition_user_profile +
-                                       '<div class="badge-label text-center">' +
-                                            '<h5 class="card-title text-muted my-1">'+ feed[i].recognition.to_user.full_name +'</h5>' +
-                                        '</div>' +
+                                        '<div class="row h-100">' +
+                                            '<div class="col-12 align-self-start text-center">' +
+                                                recognitition_user_profile +
+                                            '</div>' +
+                                            '<div class="col-12 badge-label text-center align-self-end">' +
+                                                '<h5 class="card-title text-muted my-1">'+ feed[i].recognition.to_user.full_name +'</h5>' +
+                                            '</div>' +
+                                       '</div>' +
                                     '</div>' +
                                 '</div>' +
                             '</div>' +
