@@ -297,38 +297,21 @@
                                 }
                                 .comment-text {
                                     width: auto;
-                                    position: relative;
                                     .cmts-badge {
-                                        position: absolute;
-                                        bottom: -12px;
                                         background: $white;
                                         box-shadow: 2px 2px 1px 0px $gray;
                                         padding: 0 5px;
                                         border-radius: 20px;
                                         font-size: 10px;
-                                        right: 0;
                                         cursor: pointer;
 
                                         .material-icons {
                                             font-size: 14px;
                                         }
-
-                                        // &.like-cmts-badge {
-                                        // }
-                                        // &.reply-cmts-badge {
-                                        // }
                                     }
                                 }
                                 .emojionearea-editor {
                                     min-height: 30px;
-                                }
-                                .replies {
-                                    // .profile-pic, .profile-pic-text {
-                                    //     width: 20px;
-                                    //     height: 20px;
-                                    //     line-height: 20px;
-                                    //     font-size: 10px;
-                                    // }
                                 }
                             }
 

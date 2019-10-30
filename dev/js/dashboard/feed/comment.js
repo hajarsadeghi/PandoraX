@@ -122,7 +122,10 @@ $(document).ready(function() {
     })
     // ... show reply box
     $(document).on('click', '.reply-cmt', function() {
-        let $this = $(this);
+        let $this = $(this),
+            $this_reply = $this.closest('.comment-row').find('.reply-row');
+        $(document).find('.reply-row').not($this_reply).removeClass('d-flex')
+        $(document).find('.reply-row').not($this_reply).addClass('d-none')
         $this.closest('.comment-row').find('.reply-row').removeClass('d-none')
         $this.closest('.comment-row').find('.reply-row').addClass('d-flex')
     })

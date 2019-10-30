@@ -213,7 +213,7 @@ img.emoji {
 .emoji-menu .emoji-items-wrap {
     position: relative;
     height: 174px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .emoji-menu .emoji-items {

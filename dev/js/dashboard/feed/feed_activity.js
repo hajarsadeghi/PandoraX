@@ -54,5 +54,11 @@ $(document).ready(function() {
             }
         })
     })
+
+    $(document).on('click', '.emoji-picker', function() {
+        let $this = $(this),
+            $this_emoji = $this.prev();
+        $(document).find('.emoji-menu').not($this_emoji).css('display', 'none');
+    })
 })
 

@@ -191,21 +191,21 @@ export function comments(comments, user_profile, activity_id, callback) {
         cmt_like_class = ' material-icons-outlined ';
         // ... comment like count element
         cmt.likes_count ?
-        cmt_likes = '<span class="d-flex cmts-badge like-cmts-badge ml-5">' +
+        cmt_likes = '<span class="d-flex cmts-badge like-cmts-badge mx-1">' +
                         '<i class="material-icons '+ cmt_like_class +' md-18 like css">thumb_up</i>' +
                         '<span>'+ cmt.likes_count +'</span>' +
                     '</span>' :
-        cmt_likes = '<span class="d-none cmts-badge like-cmts-badge ml-5 like css">' +
+        cmt_likes = '<span class="d-none cmts-badge like-cmts-badge mx-1 like css">' +
                         '<i class="material-icons '+ cmt_like_class +' md-18">thumb_up</i>' +
                         '<span>'+ cmt.likes_count +'</span>' +
                     '</span>';
         // ... comment reply count element
         cmt.reply_count ?
-        cmt_reply = '<span class="d-flex cmts-badge reply-cmts-badge mr-5">' +
+        cmt_reply = '<span class="d-flex cmts-badge reply-cmts-badge mx-1">' +
                         '<i class="material-icons material-icons-outlined md-18">mode_comment</i>' +
                         '<span>'+ cmt.reply_count +'</span>' +
                     '</span>' :
-        cmt_reply = '<span class="d-none cmts-badge reply-cmts-badge mr-5">' +
+        cmt_reply = '<span class="d-none cmts-badge reply-cmts-badge mx-1">' +
                         '<i class="material-icons material-icons-outlined md-18">mode_comment</i>' +
                         '<span>'+ cmt.reply_count +'</span>' +
                     '</span>';
@@ -216,8 +216,10 @@ export function comments(comments, user_profile, activity_id, callback) {
                                 '<div class="flex-grow-1 ml-2">' +
                                     '<div class="comment-text border p-1 mb-2">'+
                                         '<span>'+ cmt.text +'</span>' +
-                                        cmt_likes +
-                                        cmt_reply +
+                                        '<div class="d-flex float-right mt-3">' +
+                                            cmt_reply +
+                                            cmt_likes +
+                                        '</div>' +
                                      '</div>' +
                                     '<small>' +
                                         '<span class="cmt-links like-cmt pr-2">Like</span>' +
@@ -236,7 +238,7 @@ export function comments(comments, user_profile, activity_id, callback) {
                                         '<div class="replies-box"></div>' +
                                         '<div class="d-none view-more-comments align-items-center px-3">' +
                                             '<div>' +
-                                                '<span class="cmt-links view-more-comments-link view-more-replies-link" pagin="1" max-comments="0">View more replies</span>' +
+                                                '<small class="cmt-links view-more-comments-link view-more-replies-link text-muted" pagin="1" max-comments="0">View more replies</small>' +
                                             '</div>' +
                                             '<div class="flex-grow-1">' +
                                                 '<img class="invisible" src="'+ load_more_src +'" />' +
