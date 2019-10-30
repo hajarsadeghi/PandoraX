@@ -1,7 +1,7 @@
 import { InitializePostDropzone } from '../../helper/dropzone';
 import { regular_post_media_ids } from './variables';
 import { hideTintedBackdrop } from './../../helper';
-import { getFeed, new_post } from './../../api';
+import { getFeed, newPost } from './../../api';
 import { showFeed, toggleLikeAction } from './feed';
 
 
@@ -14,7 +14,7 @@ InitializePostDropzone((status, res) => {
 
 // ... New Regular post 
 $('#myTabContent').on('click', '#regularPostBtn', function() {
-    new_post({
+    newPost({
         text: $('#myTabContent').find('#RegularPostContent').val(),
         media: regular_post_media_ids
     }, (status) => {

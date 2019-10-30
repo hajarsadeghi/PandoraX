@@ -1,7 +1,7 @@
 import { 
-        get_badge_images,
-        get_badge_list,
-        add_new_badge
+        getBadgeImages,
+        getBadgeList,
+        addNewBadge
         } 
         from './../../api';
 import { load_badges } from './../../helper/badges';
@@ -12,7 +12,7 @@ import { InitializeBadgeDropzone } from './../../helper/dropzone';
 let badge_obj = {};
 
 // ... get badge images
-get_badge_images((status, response) => {
+getBadgeImages((status, response) => {
     if (status) {
         init_albume(response);
     }
@@ -21,7 +21,7 @@ get_badge_images((status, response) => {
     }
 })
 // ... get badge list
-get_badge_list((status, response) => {
+getBadgeList((status, response) => {
     if (status) {
         load_badges(response)
     }
@@ -39,7 +39,7 @@ InitializeBadgeDropzone((status, res) => {
 });
 // ... add new budget
 $(document).on('click', '#addBadgeBtn', () => {
-    add_new_badge( badge_obj, (status, response) => {
+    addNewBadge( badge_obj, (status, response) => {
         if (status) {
             $('form').find('input').val('');
             badge_obj = {};

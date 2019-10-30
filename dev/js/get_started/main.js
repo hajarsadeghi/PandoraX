@@ -1,5 +1,5 @@
 import CountDown from './../helper/countdown';
-const API = require('./../api.js');
+import { verifyEmail } from './../api';
 
 var $inputs = $(".digit-cell");
 var intRegex = /^\d+$/;
@@ -116,7 +116,7 @@ function pasteValues(element) {
 };
 // ... request otp
 function RequestOtp(params, countdownElement) {
-    API.verify_email(
+    verifyEmail(
         '/api/user/login/otp/request/',
         params,
         (status, res) => {
@@ -131,7 +131,7 @@ function RequestOtp(params, countdownElement) {
 }
 // ... verify otp
 function checkVerification(params, callback) {
-    API.verify_email(
+    verifyEmail(
         '/api/user/login/otp/verify/',
         params,
         (status, res) => {

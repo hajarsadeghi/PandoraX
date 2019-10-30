@@ -1,4 +1,4 @@
-import { get_users, get_badge_list, new_post, getFeed } from './../../api';
+import { getUsers, getBadgeList, newPost, getFeed } from './../../api';
 import { load_badges } from './../../helper/badges';
 import { hideTintedBackdrop } from './../../helper';
 import { showFeed, toggleLikeAction } from './feed';
@@ -15,7 +15,7 @@ $('#useBadgeBtn').on('click', function() {
     let users_res = false,
         badges_res = false;
     $('#giveBadge').find('#created_badge_table_keeper').empty();
-    get_users(
+    getUsers(
         {
         pagin: true,
         data_limit: 15,
@@ -25,7 +25,7 @@ $('#useBadgeBtn').on('click', function() {
         if (status) {
             users_res = true;
             $('.who-to-recognize-container').empty();
-            getUsers(response.data)
+            getUsersList(response.data)
             openModal(users_res, badges_res)
         }
         else {
@@ -33,7 +33,7 @@ $('#useBadgeBtn').on('click', function() {
         }
     })
 
-    get_badge_list((status, res) => {
+    getBadgeList((status, res) => {
         if (status) {
             badges_res = true;
             load_badges(res);
@@ -50,7 +50,7 @@ $('#chooseColleague').on('keyup', function() {
     page_number = 1;
     search_value = $(this).val().toLowerCase();
     choose_colleage = setTimeout(function() {
-        get_users({
+        getUsers({
             search: search_value,
             pagin: true,
             data_limit: 12,
@@ -71,14 +71,14 @@ $('#chooseColleague').on('keyup', function() {
 $('#recognitionModal .modal-body').on('scroll', () => {
     if ($('#recognitionModal .modal-body').scrollTop() + $('#recognitionModal .modal-body').innerHeight() + 1 >= $('#recognitionModal .modal-body')[0].scrollHeight) {
         page_number++
-        get_users({
+        getUsers({
             search: search_value,
             pagin: true,
             data_limit: 12,
             page: page_number
         }, (status, response) => {
             if (status) {
-                getUsers(response.data)
+                getUsersList(response.data)
             }
             else {
                 console.log(response)
@@ -169,7 +169,7 @@ $('#privacyModal .modal-body').on('scroll',() => {
 
 // ... New Recgonition
 $('#myTabContent').on('click', '#recognitionPostBtn', function() {
-    new_post({
+    newPost({
         text: $('#myTabContent').find('#recognitionContent').val(),
         recognition: {
             user: $('#recognitionExpanded').find('.user-card').attr('user_id'),
@@ -225,7 +225,7 @@ function openModal(status1, status2) {
     }
 }
 
-function getUsers(users) {
+function getUsersList(users) {
     for (let i = 0; i < users.length; i++) {
         let profile = '';
         if (users[i].profile_picture) {

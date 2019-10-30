@@ -1,4 +1,4 @@
-export const verify_email = (url, params, callback) => {
+export const verifyEmail = (url, params, callback) => {
     return fetch(
         url,
         {
@@ -14,7 +14,7 @@ export const verify_email = (url, params, callback) => {
     })
 }
 // ... check company slug, create space, add teammates
-export const create_space = (url, params, callback) => {
+export const createSpace = (url, params, callback) => {
     return fetch(
                 url,
                 {
@@ -32,7 +32,7 @@ export const create_space = (url, params, callback) => {
             })
 }
 
-export const create_budget = (url, params, callback) => {
+export const createBudget = (url, params, callback) => {
     return fetch(
         url,
         {
@@ -54,7 +54,7 @@ export const create_budget = (url, params, callback) => {
     })
 }
 
-export const get_created_budget = (url, params, callback) => {
+export const getCreatedBudget = (url, params, callback) => {
     return fetch(
         url,
         {
@@ -75,7 +75,7 @@ export const get_created_budget = (url, params, callback) => {
     })
 }
 // ... badge images
-export const get_badge_images = (callback) => {
+export const getBadgeImages = (callback) => {
     return fetch(
         '/api/badge/icon/',
         {
@@ -96,7 +96,7 @@ export const get_badge_images = (callback) => {
     })
 }
 // ... badge list
-export const get_badge_list = (callback) => {
+export const getBadgeList = (callback) => {
     return fetch(
         '/api/badge/',
         {
@@ -117,7 +117,7 @@ export const get_badge_list = (callback) => {
     })
 }
 // ... new badge
-export const add_new_badge = (params, callback) => {
+export const addNewBadge = (params, callback) => {
     return fetch(
         '/api/badge/',
         {
@@ -139,7 +139,7 @@ export const add_new_badge = (params, callback) => {
     })
 }
 // ... list of users 
-export const get_users = (params, callback) => {
+export const getUsers = (params, callback) => {
     return fetch(
         '/api/space/members/?' + $.param(params),
         {
@@ -160,7 +160,7 @@ export const get_users = (params, callback) => {
         })
 }
 // ... New Recognition / Post
-export const new_post = (params, callback) => {
+export const newPost = (params, callback) => {
     return fetch(
         '/api/activity/',
         {

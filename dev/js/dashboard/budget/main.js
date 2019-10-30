@@ -1,4 +1,4 @@
-const API = require("../../api");
+import { getCreatedBudget } from '../../api';
 
 get_budget_list()
 
@@ -8,7 +8,7 @@ $("#create_budget_submit").click(function(){
             name:$("#budgetName").val(),
             point_amount:$("#budgetPoints").val()
         }
-        API.create_budget(
+        createBudget(
             '/api/budget/',
             params,
             (status, res) => {
@@ -25,7 +25,7 @@ $("#create_budget_submit").click(function(){
 })
 
 function get_budget_list(){
-    API.get_created_budget(
+    getCreatedBudget(
         '/api/budget/',
         null,
         (status, res) => {
