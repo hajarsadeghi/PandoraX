@@ -158,7 +158,7 @@ export const showFeed = (feed) => {
                                     '</div>' +
                                 '</div>' +
                                 ' <div class="write-a-comment align-items-center px-3">' +
-                                    '<a class="write-a-comment-link" href="">Write a comment</a>' +
+                                    '<a class="write-a-comment-link" href="#commentsContainer_'+ feed[i].id +'">Write a comment</a>' +
                                 '</div>' +
                             ' </div>' +
                         '</div>' +
