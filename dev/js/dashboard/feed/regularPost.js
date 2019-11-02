@@ -1,5 +1,4 @@
 import { InitializePostDropzone } from '../../helper/dropzone';
-import { regular_post_media_ids } from './variables';
 import { hideTintedBackdrop } from './../../helper';
 import { getFeed, newPost } from './../../api';
 import { showFeed, toggleLikeAction } from './feed';
@@ -36,9 +35,10 @@ $('#myTabContent').on('click', '#regularPostBtn', function() {
     })
 })
 
-function resetRegularPost() {
+export function resetRegularPost() {
     regular_post_media_ids.push([]);
     $('#RegularPostContent').val('');
+    $('.regular-post-content').text('');
     $('#postUpload').find('.dropzone').removeClass('.dz-preview');
     $('#postUpload').find('.dz-preview').remove();
     hideTintedBackdrop();

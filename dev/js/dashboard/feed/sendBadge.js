@@ -258,8 +258,9 @@ function getUsersList(users) {
     }
 }
 
-function resetRecognitionPost() {
+export function resetRecognitionPost() {
     $('#recognitionContent').val('');
+    $('.recognition-post-content').text('');
     $('#recognitionExpanded').find('.selected-badge-container').addClass('d-none');
     $('#recognitionExpanded').find('.badge-card').removeAttr('badge_id');
     $('#recognitionExpanded').find('.badge-card img').attr('src','');

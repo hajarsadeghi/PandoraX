@@ -62,8 +62,42 @@ $(document).ready(function() {
             $this_emoji = $this.prev();
         $(document).find('.emoji-menu').not($this_emoji).css('display', 'none');
     })
+    
     // ... Web Socket 
-    var webSocket = new WebSocket('ws://localhost/ws/feed/'+ space_id +'/');
-    console.log(webSocket, '=== websocket')
+    var feedWebSocket = new WebSocket('ws://localhost/ws/feed/'+ space_slug +'/');
+    feedWebSocket.onmessage = function(event) {
+        setTimeout(function() {
+            if (JSON.parse(event.data).type === 'new_activity' && JSON.parse(event.data).data.id !== $('.feed-activity').find('.feed:first-child').attr('feed-id')) {
+                if ($(window).scrollTop() > $(window).height()) {
+                    $('.feed-web-socket').removeClass('d-none');
+                }
+                else {
+                    loadFeedFromStart()
+                }
+            }
+        }, 500)
+    };
 })
+
+$(document).on('click', '.feed-web-socket', function() {
+    loadFeedFromStart()
+})
+
+function loadFeedFromStart() {
+    // ... show feed
+    getFeed({
+        pagin: true,
+        data_limit: 3,
+        page: 1
+    }, (status, response) => {
+        if (status) {
+            $('.feed-web-socket').addClass('d-none')
+            $('.feed-activity').html('');
+            showFeed(response.data);
+            $('.like-link').bind('click', event => toggleLikeAction(event))
+        }
+    })
+}
+
+
 

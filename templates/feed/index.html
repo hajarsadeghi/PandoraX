@@ -14,7 +14,7 @@
 
 {% block body %}
   {% include 'feed/_header.html' %}
-  <div class="container-fluid feed-container mt--8">
+  <div class="container-fluid feed-container mt--8" id="feedContainer">
     <div class="row">
       <div class="col-12 d-block d-lg-none">
           {% include 'feed/_cards.html' %}
@@ -55,7 +55,9 @@
       user_profile.has = false;
       user_profile.initials = "{{request.user.name_chars}}"
     "{% endif %}"    
-    var feed_pagin = 1;   
+
+    var feed_pagin = 1,
+        regular_post_media_ids = [];
     
   </script>
   <script type="text/javascript" src="{% static 'js/lib/emojiarea/config.js' %}"></script>

@@ -27,9 +27,15 @@
         {% block body %}{% endblock %}
     </div>
     <div class="tinted"></div>
+    <div class="feed-web-socket d-none">
+        <div id="feedWebSocket" class="text-center">
+            <a href="#feedActivityContainer">New Feed</a>
+        </div>
+    </div>
 </body>
 <script>
     const   space_id = "{{ space.id }}",
+            space_slug = "{{ space.name }}",
             button_spinner = "{% static '/image/spinner.svg' %}";
 </script>
 <script type="text/javascript" src="{% static 'js/lib/jquery.min.js' %}"></script>

@@ -181,7 +181,6 @@ export const newPost = (params, callback) => {
             }
         })
 }
-
 // ... Get Feed
 export const getFeed = (params, callback) => {
     return fetch(
@@ -203,7 +202,6 @@ export const getFeed = (params, callback) => {
             }
         })
 }
-
 // ... toggle like
 export const toggleLike = (id, callback) => {
     return fetch(
@@ -287,7 +285,6 @@ export const viewComment = (url, callback) => {
             }
         })
 }
-
 // ... like comment
 export const likeComment = (id, cmt_id, callback) => {
     return fetch(

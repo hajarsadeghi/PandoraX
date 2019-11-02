@@ -1,5 +1,4 @@
 import { hideTintedBackdrop } from './../../helper'; 
-// import { get_users } from './../../api';
 
 
 
@@ -17,6 +16,7 @@ $('.post-toggled').on('click', function() {
         $('.post-toggled').attr('aria-expanded', 'true');
         $('.post-expanded').collapse('show');
         $('.tinted').css({'visibility':'visible', 'opacity': '1'});
+        regular_post_media_ids = [];
     }
 });
 // ... post backdrop
