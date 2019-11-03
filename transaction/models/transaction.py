@@ -32,7 +32,7 @@ class Transaction(models.Model):
             SELECT
             	id,
             	point_amount,
-            	CASE WHEN cumsum >= {self.total_point_amount} THEN (point_amount - (cumsum-{self.total_point_amount})) ELSE point_amount END AS `diff`
+            	CASE WHEN cumsum >= {self.total_point_amount} THEN (point_amount - (cumsum-{self.total_point_amount})) ELSE point_amount END AS `sub`
             FROM cte
             JOIN (
                 select min(cumsum) as first_row
@@ -41,16 +41,16 @@ class Transaction(models.Model):
             ) T2
             WHERE cumsum <= `T2`.`first_row`;
         '''
-        columns = ['id','point_amount', 'diff']
+        columns = ['id','point_amount', 'sub']
         source_wallets = raw_query(query, columns=columns)
         if not source_wallets: return False
 
         with transaction_atomic():
             for source_wallet in source_wallets:
                 tmp_wallet = Wallet.objects.get(id=source_wallet['id'])
-                tmp_wallet.point_amount = F('point_amount') - source_wallet['diff']
+                tmp_wallet.point_amount = F('point_amount') - source_wallet['sub']
                 tmp_wallet.save(update_fields=['point_amount'])
-                Source.objects.create(transaction=self, wallet=tmp_wallet, point_amount=source_wallet['diff'])
+                Source.objects.create(transaction=self, wallet=tmp_wallet, point_amount=source_wallet['sub'])
 
             dest_earned_wallet = Wallet.objects.get_or_create(user=self.dest_user, space=self.space, type=Wallet.EARNED_TYPE)[0]
             dest_earned_wallet.point_amount = F('point_amount') + self.total_point_amount
