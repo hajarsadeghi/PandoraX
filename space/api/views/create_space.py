@@ -2,6 +2,7 @@ from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
 from user.models import User
 from space.models import Space, Industry, Member
+from transaction.models import Wallet
 from decorators import is_authenticated
 import json
 
@@ -30,6 +31,7 @@ def create_space(request):
     space.members_count = members_count
     space.save()
     space.refresh_from_db()
-    Member.objects.create(space=space, user=request.user)
 
+    Member.objects.create(space=space, user=request.user)
+    Wallet.objects.create(user=request.user, space=space, type=Wallet.EARNED_TYPE)
     return JsonResponse({'id': space.id}, status=201)

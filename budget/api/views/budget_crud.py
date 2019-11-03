@@ -4,7 +4,7 @@ from budget.models import Budget as BudgetModel
 from decorators import is_authenticated, get_space
 from django.utils.decorators import method_decorator
 from utils import get_full_name
-
+from django.utils import timezone
 import json
 
 
@@ -24,7 +24,7 @@ class Budget(View):
                 },
                 "point_amount": budget['point_amount'],
                 "active": budget['active'],
-                "created_date":budget['created_date'].strftime('%Y/%m/%d %H:%M:%S')
+                "created_date":timezone.localtime(budget['created_date']).isoformat()
             }
             resp.append(tmp_budget)
         return JsonResponse(resp, safe=False, status=200)

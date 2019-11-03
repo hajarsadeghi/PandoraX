@@ -1,5 +1,8 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from transaction.models import Wallet
+from django.db.models import Q, Sum
+from datetime import datetime
 
 
 class User(AbstractUser):
@@ -12,6 +15,29 @@ class User(AbstractUser):
     @property
     def name_chars(self):
         return f"{self.first_name[0] if self.first_name else ''}{self.last_name[0] if self.last_name else ''}"
-    
+
     class Meta:
         app_label = 'user'
+
+    def budget_point_amount(self, space):
+        tmp_point_amount = Wallet.objects.filter(
+                    Q(user=self),
+                    Q(space=space),
+                    Q(type=Wallet.BUDGET_TYPE),
+                    Q(expire=None)|Q(expire__gte=datetime.now())
+                ).aggregate(sum=Sum('point_amount'))['sum']
+        return tmp_point_amount if tmp_point_amount else 0
+
+    def earned_point_amount(self, space):
+        return Wallet.objects.get_or_create(user=self, space=space, type=Wallet.EARNED_TYPE)[0].point_amount
+
+
+    def can_pay(self, point_amount, space):
+        total_point_amount = Wallet.objects.filter(
+            Q(user=self),
+            Q(space=space),
+            Q(expire=None)|Q(expire__gte=datetime.now())
+        ).aggregate(sum=Sum('point_amount'))['sum']
+        if total_point_amount:
+            if total_point_amount >= point_amount: return True
+        return False

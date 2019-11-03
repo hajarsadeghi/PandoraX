@@ -6,6 +6,7 @@ from django.core.paginator import Paginator, InvalidPage
 from utils import get_media_url, get_full_name, get_name_chars
 from django.db.models import Q, Count
 from django.http import JsonResponse
+from django.utils import timezone
 import json
 
 
@@ -72,7 +73,7 @@ class Comment(View):
                     'profile_picture': get_media_url(comment['user__profile_picture'])
                 },
                 'text': comment['text'],
-                'timestamp': comment['timestamp'].strftime('%Y/%m/%d %H:%M:%S'),
+                'timestamp': timezone.localtime(comment['timestamp']).isoformat(),
                 'likes_count': comment['likes_count'],
                 'reply_count': comment['reply_count'],
                 'is_liked': bool(comment['is_liked']),

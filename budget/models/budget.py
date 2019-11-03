@@ -1,11 +1,8 @@
 from django.db import models
 from django.db import transaction
 from django.db.models import F
-from django.contrib.contenttypes.models import ContentType
-
-from transaction.models import Transaction
 from space.models import Member
-from user.models import User
+from transaction.models import Wallet
 
 
 class Budget(models.Model):
@@ -20,21 +17,16 @@ class Budget(models.Model):
         app_label = 'budget'
 
     def apply(self):
-        user_content_type = ContentType.objects.get_for_model(User)
-        queryset = self.space.member_set.all().values('id', 'user__id')
-        transaction_list = []
-        members = []
-        for member in queryset:
-            tmp_transaction = Transaction()
-            tmp_transaction.type = Transaction.BUDGET_TYPE
-            tmp_transaction.space = self.space
-            tmp_transaction.source = self
-            tmp_transaction.destination_content_type = user_content_type
-            tmp_transaction.destination_object_id = member['user__id']
-            tmp_transaction.point_amount = self.point_amount
-            transaction_list.append(tmp_transaction)
-            members.append(member['id'])
-        print(transaction_list)
+        queryset = self.space.member_set.all().values_list('user__id', flat=True)
+        wallet_list = []
+        for user in queryset:
+            tmp_wallet = Wallet()
+            tmp_wallet.user_id = user
+            tmp_wallet.space_id = self.space.id
+            tmp_wallet.type = Wallet.BUDGET_TYPE
+            tmp_wallet.budget_id = self.id
+            tmp_wallet.point_amount = self.point_amount
+            tmp_wallet.expire = None
+            wallet_list.append(tmp_wallet)
         with transaction.atomic():
-            Member.objects.filter(id__in=members).update(budget_point_amount=F('budget_point_amount')+self.point_amount)
-            Transaction.objects.bulk_create(transaction_list)
+            Wallet.objects.bulk_create(wallet_list)

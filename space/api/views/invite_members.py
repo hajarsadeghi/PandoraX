@@ -2,6 +2,7 @@ from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
 from user.models import User
 from space.models import Space, Member
+from transaction.models import Wallet
 from decorators import is_authenticated
 import json
 
@@ -21,5 +22,5 @@ def invite_members(request):
     for member in members:
         user = User.objects.get_or_create(defaults={'email':member, 'username':member}, email=member)[0]
         Member.objects.get_or_create(user=user, space=space)
-
+        Wallet.objects.get_or_create(user=user, space=space, type=Wallet.EARNED_TYPE)
     return JsonResponse({'message': 'invited'}, status=200)

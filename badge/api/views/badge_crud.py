@@ -4,6 +4,7 @@ from badge.models import Badge as BadgeModel, Icon
 from decorators import is_authenticated, get_space
 from django.utils.decorators import method_decorator
 from utils import get_media_url, get_full_name
+from django.utils import timezone
 from django.db.models import Q
 import json
 
@@ -26,7 +27,7 @@ class Badge(View):
                 "description": badge['description'],
                 "icon": get_media_url(badge['icon__image']),
                 "active": badge['active'],
-                "created_date":badge['created_date'].strftime('%Y/%m/%d %H:%M:%S')
+                "created_date":timezone.localtime(badge['created_date']).isoformat()
             }
             resp.append(tmp_badge)
         return JsonResponse(resp, safe=False, status=200)
@@ -68,6 +69,6 @@ class Badge(View):
             "description": badge.description,
             "icon": badge.icon.image.url,
             "active": badge.active,
-            "created_date":badge.created_date.strftime('%Y/%m/%d %H:%M:%S')
+            "created_date":timezone.localtime(badge.created_date).isoformat()
         }
         return JsonResponse(tmp_badge, status=201)

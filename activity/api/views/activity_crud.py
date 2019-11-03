@@ -12,6 +12,7 @@ from utils import get_media_url, get_full_name, get_name_chars
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 import json, collections
+from django.utils import timezone
 
 channel_layer = get_channel_layer()
 
@@ -31,9 +32,9 @@ class Activity(View):
         res = {}
         res['data'] = []
         queryset = ActivityModel.objects.filter(space=request.space).annotate(
-            likes_count=Count('likes'),
-            is_liked=Count('likes', filter=Q(likes__id=request.user.id)),
-            comments_count=Count('comment', filter=Q(comment__parent__isnull=True))
+            likes_count=Count('likes', distinct=True),
+            is_liked=Count('likes', distinct=True, filter=Q(likes__id=request.user.id)),
+            comments_count=Count('comment', distinct=True, filter=Q(comment__parent__isnull=True))
         ).values(
             'id',
             'creator__id',
@@ -88,7 +89,7 @@ class Activity(View):
                     'profile_picture': get_media_url(activity['creator__profile_picture'])
                 },
                 'text': activity['text'],
-                'timestamp': activity['timestamp'].strftime('%Y/%m/%d %H:%M:%S'),
+                'timestamp': timezone.localtime(activity['timestamp']).isoformat(),
                 'likes_count': activity['likes_count'],
                 'comments_count': activity['comments_count'],
                 'is_liked': bool(activity['is_liked']),
@@ -149,7 +150,8 @@ class Activity(View):
             activity.save()
             activity.refresh_from_db()
             activity_media.update(activity=activity)
-
+        if activity_recognition:
+            recognition_obj.apply()
         async_to_sync(channel_layer.group_send)(f"feed_{request.space.slug}", {
             "type": "default_message",
             "message": {
