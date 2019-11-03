@@ -3,6 +3,7 @@ from django.db import models
 from transaction.models import Wallet
 from django.db.models import Q, Sum
 from datetime import datetime
+from utils import raw_query
 
 
 class User(AbstractUser):
@@ -41,3 +42,24 @@ class User(AbstractUser):
         if total_point_amount:
             if total_point_amount >= point_amount: return True
         return False
+
+    def my_rank(self, space):
+        query = f'''
+            SELECT
+            	FIND_IN_SET(
+            		`transaction_wallet`.`point_amount`,
+            		(
+            			SELECT
+            			GROUP_CONCAT(`transaction_wallet`.`point_amount` ORDER BY `transaction_wallet`.`point_amount` DESC)
+            			FROM `transaction_wallet`
+            			WHERE `transaction_wallet`.`type` = 0
+            		)
+            	) AS `rank`.
+                `transaction_wallet`.`point_amount`
+            FROM
+            	`transaction_wallet`
+            WHERE
+            	`transaction_wallet`.`type` = 0 AND `transaction_wallet`.`space_id` = {space.id} AND `transaction_wallet`.`user_id` = {self.id};
+        '''
+        result = raw_query(query,['rank', 'point_amount'])
+        return result[0] if result else None
