@@ -46,7 +46,7 @@ class FeedConsumer(AsyncWebsocketConsumer):
 
     @database_sync_to_async
     def check_auth(self):
-        if not self.scope["user"].is_authenticated(): return False
+        if not self.scope["user"].is_authenticated: return False
         try:
             space = self.scope["user"].member_set.get(space__slug__iexact=self.space_slug).space
         except ObjectDoesNotExist:
