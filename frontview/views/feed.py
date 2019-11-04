@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from decorators import get_space
+from transaction.models import Wallet
 
 
 @login_required
@@ -13,4 +14,9 @@ def feed(request):
         'budget_point_amount': request.user.budget_point_amount(space=request.space),
         'earned_point_amount': request.user.earned_point_amount(space=request.space)
     }
+    context['leaderboard'] = {
+        'my_rank': request.user.my_rank(space=request.space),
+        'others': Wallet.objects.get_leaderboard(space=request.space, limit=3)
+    }
+    print(context)
     return render(request, 'feed/index.html', context=context)

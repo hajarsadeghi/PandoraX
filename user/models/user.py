@@ -54,12 +54,11 @@ class User(AbstractUser):
             			FROM `transaction_wallet`
             			WHERE `transaction_wallet`.`type` = 0
             		)
-            	) AS `rank`.
-                `transaction_wallet`.`point_amount`
+            	) AS `rank`
             FROM
             	`transaction_wallet`
             WHERE
             	`transaction_wallet`.`type` = 0 AND `transaction_wallet`.`space_id` = {space.id} AND `transaction_wallet`.`user_id` = {self.id};
         '''
-        result = raw_query(query,['rank', 'point_amount'])
-        return result[0] if result else None
+        result = raw_query(query,['rank'])
+        return result[0]['rank'] if result else 0
