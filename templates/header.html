@@ -17,7 +17,7 @@
                         {% else %}
                             <span style="cursor:text">{{space.name}}</span>
                         {% endif %}
-                        
+
                     </div>
                 </a>
                 {% if space_list|length > 1 %}
@@ -75,7 +75,7 @@
                     <div class=" dropdown-header noti-title">
                         <h6 class="text-overflow m-0">{% trans "Welcome" %}!</h6>
                     </div>
-                    <a href="{% url 'frontview:dashboard:profile' space.slug %}" class="dropdown-item">
+                    <a href="{% url 'frontview:dashboard:profile' space.slug request.user.id %}" class="dropdown-item">
                         <i class="ni ni-single-02"></i>
                         <span>{% trans "My profile" %}</span>
                     </a>
