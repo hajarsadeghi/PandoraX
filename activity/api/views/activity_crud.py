@@ -150,8 +150,13 @@ class Activity(View):
             activity.save()
             activity.refresh_from_db()
             activity_media.update(activity=activity)
+        res = {'id':activity.id}
         if activity_recognition:
             recognition_obj.apply()
+            res['wallet'] = {
+                'budget_point_amount': request.user.budget_point_amount(space=request.space),
+                'earned_point_amount': request.user.earned_point_amount(space=request.space)
+            }
         async_to_sync(channel_layer.group_send)(f"feed_{request.space.slug}", {
             "type": "default_message",
             "message": {
@@ -161,4 +166,4 @@ class Activity(View):
                 }
             },
         })
-        return JsonResponse({'id':activity.id}, status=201)
+        return JsonResponse(res, status=201)

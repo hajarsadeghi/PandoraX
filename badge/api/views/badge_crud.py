@@ -5,7 +5,8 @@ from decorators import is_authenticated, get_space
 from django.utils.decorators import method_decorator
 from utils import get_media_url, get_full_name
 from django.utils import timezone
-from django.db.models import Q
+from django.db.models import Q, Sum
+from transaction.models import Wallet
 import json
 
 
@@ -14,6 +15,8 @@ import json
 class Badge(View):
     def get(self, request):
         badges = BadgeModel.objects.filter(space=request.space).values('id', 'name', 'creator__id', 'creator__first_name', 'creator__last_name', 'creator__id', 'point_amount', 'description', 'icon__image', 'active', 'created_date')
+        user_total_point_amount = Wallet.objects.filter(space=request.space, user=request.user).aggregate(total_point_amount=Sum('point_amount'))['total_point_amount']
+        user_total_point_amount = user_total_point_amount if user_total_point_amount else 0
         resp = []
         for badge in badges:
             tmp_badge = {
@@ -24,6 +27,7 @@ class Badge(View):
                     "full_name": get_full_name(badge['creator__first_name'], badge['creator__last_name']),
                 },
                 "point_amount": badge['point_amount'],
+                "has_credit": True if badge['point_amount'] <= user_total_point_amount else False,
                 "description": badge['description'],
                 "icon": get_media_url(badge['icon__image']),
                 "active": badge['active'],
