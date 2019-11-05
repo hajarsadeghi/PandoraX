@@ -126,7 +126,8 @@
                     box-shadow: none;
                     @include transition(all .4s ease-in);
 
-                    &.emoji-wysiwyg-editor.recognition-post-content:empty:before {
+                    &.emoji-wysiwyg-editor.recognition-post-content:empty:before, 
+                    &.emoji-wysiwyg-editor.regular-post-content:empty:before {
                         content: attr(data-placeholder);
                         color: $text !important;
                         line-height: 100%;

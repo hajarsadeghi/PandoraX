@@ -92,7 +92,7 @@ export const showFeed = (feed) => {
                         '<div>' + profile + '</div>' +
                         '<div class="flex-grow-1 px-2">' +
                             '<h4 class="font-weight-bold m-0">'+ feed[i].user.full_name +'</h4>' +
-                            '<small class="text-muted">'+ moment(moment(feed[i].timestamp).format('YYYYMMDD'),'YYYYMMDD').fromNow() +'</small>' +
+                            '<small class="text-muted">'+ moment(feed[i].timestamp).fromNow() +'</small>' +
                         '</div>' +
                     '</div>' +
                     '<div class="card-text"> ' +
@@ -232,7 +232,7 @@ export function comments(comments, user_profile, activity_id, callback) {
                                     '<small>' +
                                         '<span class="cmt-links like-cmt pr-2">Like</span>' +
                                         '<span class="cmt-links reply-cmt pr-2">Reply</span>' +
-                                        '<span class="text-muted">'+ moment(moment(cmt.timestamp)).startOf('day').fromNow() +'</span>' +
+                                        '<span class="text-muted">'+ moment(cmt.timestamp).fromNow() +'</span>' +
                                     '</small>' +
                                     '<div class="replies">' +
                                         '<div class="d-none reply-row align-items-center pb-3 animated fadeIn">' +
@@ -279,7 +279,7 @@ export function replies(container, comments, callback) {
                             '<small>' +
                                 '<a class="pr-2" href="">Like</a>' +
                                 '<a class="pr-2" href="">Reply</a>' +
-                                '<span class="text-muted">'+ moment(moment(cmt.timestamp)).startOf('day').fromNow() +'</span>' +
+                                '<span class="text-muted">'+ moment(cmt.timestamp).fromNow() +'</span>' +
                             '</small>' +
                         '</div>' +
                     '</div>'
@@ -299,7 +299,7 @@ export function initializeEmoji() {
     // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
     // It can be called as many times as necessary; previously converted input fields will not be converted again
     window.emojiPicker.discover();
-    $('.emoji-wysiwyg-editor').attr('data-placeholder', post_placeholder)
+    $('.post-content').attr('data-placeholder', post_placeholder)
 }
 
 // ... toggle like
