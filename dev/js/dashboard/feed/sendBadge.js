@@ -58,7 +58,7 @@ $('#chooseColleague').on('keyup', function() {
         }, (status, response) => {
             if (status) {
                 $('.who-to-recognize-container').empty();
-                getUsers(response.data)
+                getUsersList(response.data)
             }
             else {
                 console.log(response)

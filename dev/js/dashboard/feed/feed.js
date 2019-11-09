@@ -307,19 +307,25 @@ export const toggleLikeAction = (e) => {
     e.preventDefault(e)
 
     let like_link = $(e.target).closest('.like-link')
-    toggleLike(like_link.closest('.feed').attr('feed-id'), (status, res) => {
-        if (status) {
-            like_link.closest('.feed').find('.like-count').text(res.like_count + ' likes')
-            if (res.like_count === 1) {
-                like_link.find('span:first-child').removeClass('material-icons-outlined');
-                like_link.find('span:first-child').addClass('material-icons')
+    
+    if (!like_link.hasClass('disabled')) {
+        like_link.addClass('disabled');
+        toggleLike(like_link.closest('.feed').attr('feed-id'), (status, res) => {
+            like_link.removeClass('disabled');
+            if (status) {
+                like_link.closest('.feed').find('.like-count').text(res.like_count + ' likes')
+                if (res.status === 'liked') {
+                    like_link.attr('is-liked', true);
+                    like_link.find('span:first-child').removeClass('material-icons-outlined');
+                    like_link.find('span:first-child').addClass('material-icons')
+                }
+                else {
+                    like_link.find('span:first-child').removeClass('material-icons');
+                    like_link.find('span:first-child').addClass('material-icons-outlined')
+                }
             }
-            else {
-                like_link.find('span:first-child').removeClass('material-icons');
-                like_link.find('span:first-child').addClass('material-icons-outlined')
-            }
-        }
-    })
+        })
+    }
 }
 
 const LottieAnimation = (array) => {
