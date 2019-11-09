@@ -27,7 +27,7 @@ class Transaction(models.Model):
             		SUM(`transaction_wallet`.`point_amount`) OVER (ORDER BY type DESC, id) AS `cumsum`
               FROM `transaction_wallet`
             	WHERE
-            		(`transaction_wallet`.`space_id` = {self.space.id} AND `transaction_wallet`.`user_id` = {self.source_user.id})
+            		(`transaction_wallet`.`space_id` = {self.space.id} AND `transaction_wallet`.`user_id` = {self.source_user.id} AND `transaction_wallet`.`point_amount` > 0)
             )
             SELECT
             	id,
@@ -47,6 +47,7 @@ class Transaction(models.Model):
 
         with transaction_atomic():
             for source_wallet in source_wallets:
+                print(source_wallet)
                 tmp_wallet = Wallet.objects.get(id=source_wallet['id'])
                 tmp_wallet.point_amount = F('point_amount') - source_wallet['sub']
                 tmp_wallet.save(update_fields=['point_amount'])
