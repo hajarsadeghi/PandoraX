@@ -24,26 +24,27 @@ def payment_info(request):
         		`budget_budget`.`name` as budget_name,
         		SUM(`transaction_wallet`.`point_amount`) OVER (ORDER BY type DESC, id) AS `cumsum`
           FROM `transaction_wallet`
-          INNER JOIN `budget_budget` ON (`transaction_wallet`.`budget_id` = `budget_budget`.`id`)
+          LEFT OUTER JOIN `budget_budget` ON (`transaction_wallet`.`budget_id` = `budget_budget`.`id`)
         	WHERE
-        		(`transaction_wallet`.`space_id` = {self.space.id} AND `transaction_wallet`.`user_id` = {self.source_user.id})
+        		(`transaction_wallet`.`space_id` = {request.space.id} AND `transaction_wallet`.`user_id` = {request.user.id})
         )
         SELECT
         	point_amount,
             type,
             budget_name,
-        	CASE WHEN cumsum >= {self.total_point_amount} THEN (point_amount - (cumsum-{self.total_point_amount})) ELSE point_amount END AS `sub`
+        	CASE WHEN cumsum >= {point_amount} THEN (point_amount - (cumsum-{point_amount})) ELSE point_amount END AS `sub`
         FROM cte
         JOIN (
             select min(cumsum) as first_row
             from cte
-            where cumsum >= {self.total_point_amount}
+            where cumsum >= {point_amount}
         ) T2
         WHERE cumsum <= `T2`.`first_row`;
     '''
     columns = ['point_amount', 'type', 'budget_name', 'sub']
     target_wallets = raw_query(query, columns=columns)
-    if source_wallets:
+    print(target_wallets)
+    if target_wallets:
         res['payable'] = True
         for target in target_wallets:
             tmp_target = {
