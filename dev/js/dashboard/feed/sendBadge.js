@@ -101,7 +101,7 @@ $('#recognitionModal').on('click', '.who-to-recognize-row', function(e) {
     let user_id     = $(this).attr('user_id'),
         username    = $(this).find('.username').text(),
         occupation  = $(this).find('.occupation').text(),
-        img_src     = $(this).find('img').attr('src'),
+        img_src     = $(this).find('img').attr('src') ? $(this).find('img').attr('src') : null,
         user_initial= $(this).attr('user_initials');
 
     $('.recognized-person').find('.username').text(username);
@@ -113,7 +113,7 @@ $('#recognitionModal').on('click', '.who-to-recognize-row', function(e) {
     $('.recognized-person').attr('user_id', user_id);
     $('.recognized-person').attr('username', username);
     $('.recognized-person').attr('occupation', occupation);
-    $('.recognized-person').attr('img-src', img_src ? img_src : undefined)
+    $('.recognized-person').attr('img-src', img_src)
     $('.recognized-person').attr('user_initials', user_initial)
     
     $('.who-to-recognize-container').find('.select-row-radio').removeClass('selected');
@@ -160,6 +160,8 @@ $('#recognitionModal').on('click', '.card-stats', function(e) {
         $('.selected-badge-info').removeClass('d-none');
         $('.post-recognition').removeClass('d-none');
         $('#recognitionModal').modal('hide');   
+        $('#recognitionModal').find('#recognizeWho, #nextBtn').removeClass('d-none');
+        $('#recognitionModal').find('#giveBadge, #previouseBtn').addClass('d-none')
     }
 });
 
@@ -269,9 +271,9 @@ export function resetRecognitionPost() {
     $('#recognitionExpanded').find('.selected-badge-container').addClass('d-none');
     $('#recognitionExpanded').find('.badge-card').removeAttr('badge_id');
     $('#recognitionExpanded').find('.badge-card img').attr('src','');
-    $('#recognitionExpanded').find('.badge-card .card-title span, .badge-card .card-title small').text('')
+    $('#recognitionExpanded').find('.badge-card .card-title span, .badge-card .card-title small').html('')
     $('#recognitionExpanded').find('.user-card').removeAttr('user_id');
     $('#recognitionExpanded').find('.user-card img').attr('src','');
-    $('#recognitionExpanded').find('.initials, .card-title').text('')
+    $('#recognitionExpanded').find('.initials').text('')
     hideTintedBackdrop();
 }
