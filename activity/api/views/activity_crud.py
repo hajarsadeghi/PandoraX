@@ -8,7 +8,7 @@ from activity.models import Activity as ActivityModel, Media
 from decorators import is_authenticated, get_space
 from django.db.models import Count, Q
 from django.core.paginator import Paginator, InvalidPage
-from utils import get_media_url, get_full_name, get_name_chars
+from utils import get_media_url, user_serializer
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 import json, collections
@@ -82,12 +82,13 @@ class Activity(View):
         for activity in queryset:
             tmp_activity = {
                 'id': activity['id'],
-                'user': {
-                    'id': activity['creator__id'],
-                    'full_name': get_full_name(activity['creator__first_name'], activity['creator__last_name']),
-                    'name_chars': get_name_chars(activity['creator__first_name'], activity['creator__last_name']),
-                    'profile_picture': get_media_url(activity['creator__profile_picture'])
-                },
+                'user': user_serializer(
+                    activity['creator__id'],
+                    request.space,
+                    activity['creator__first_name'],
+                    activity['creator__last_name'],
+                    activity['creator__profile_picture'],
+                ),
                 'text': activity['text'],
                 'timestamp': timezone.localtime(activity['timestamp']).isoformat(),
                 'likes_count': activity['likes_count'],
@@ -99,12 +100,13 @@ class Activity(View):
             if activity['recognition__id']:
                 tmp_recognition = {
                     'from_user': tmp_activity['user'],
-                    'to_user': {
-                        'id': activity['recognition__to_user__id'],
-                        'full_name': get_full_name(activity['recognition__to_user__first_name'], activity['recognition__to_user__last_name']),
-                        'name_chars': get_name_chars(activity['recognition__to_user__first_name'], activity['recognition__to_user__last_name']),
-                        'profile_picture': get_media_url(activity['recognition__to_user__profile_picture'])
-                    },
+                    'to_user': user_serializer(
+                        activity['recognition__to_user__id'],
+                        request.space,
+                        activity['recognition__to_user__first_name'],
+                        activity['recognition__to_user__last_name'],
+                        activity['recognition__to_user__profile_picture'],
+                    ),
                     'badge': {
                         'id': activity['recognition__badge__id'],
                         'name': activity['recognition__badge__name'],

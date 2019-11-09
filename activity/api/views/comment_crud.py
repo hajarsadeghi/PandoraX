@@ -3,7 +3,7 @@ from django.utils.decorators import method_decorator
 from activity.models import Activity, Comment as CommentModel
 from decorators import is_authenticated, get_space
 from django.core.paginator import Paginator, InvalidPage
-from utils import get_media_url, get_full_name, get_name_chars
+from utils import user_serializer
 from django.db.models import Q, Count
 from django.http import JsonResponse
 from django.utils import timezone
@@ -66,12 +66,13 @@ class Comment(View):
         for comment in queryset:
             tmp_comment = {
                 'id': comment['id'],
-                'user': {
-                    'id': comment['user__id'],
-                    'full_name': get_full_name(comment['user__first_name'], comment['user__last_name']),
-                    'name_chars': get_name_chars(comment['user__first_name'], comment['user__last_name']),
-                    'profile_picture': get_media_url(comment['user__profile_picture'])
-                },
+                'user': user_serializer(
+                    comment['user__id'],
+                    request.space,
+                    comment['user__first_name'],
+                    comment['user__last_name'],
+                    comment['user__profile_picture'],
+                ),
                 'text': comment['text'],
                 'timestamp': timezone.localtime(comment['timestamp']).isoformat(),
                 'likes_count': comment['likes_count'],

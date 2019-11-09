@@ -6,7 +6,7 @@ from django.db.models import Q
 from decorators import is_authenticated, get_space
 from django.core.paginator import Paginator, InvalidPage
 from django.db.models import ObjectDoesNotExist
-from utils import get_media_url, get_full_name, get_name_chars
+from utils import user_serializer
 import json
 
 
@@ -50,12 +50,13 @@ class Like(View):
             res['data_limit'] = pagin['data_limit']
             res['page'] = pagin['page']
         for like in queryset:
-            tmp_like = {
-                'id': like['id'],
-                'full_name': get_full_name(like['first_name'], like['last_name']),
-                'name_chars': get_name_chars(like['first_name'], like['last_name']),
-                'profile_picture': get_media_url(like['profile_picture'])
-            }
+            tmp_like = user_serializer(
+                    like['id'],
+                    request.space,
+                    like['first_name'],
+                    like['last_name'],
+                    like['profile_picture'],
+            )
             res['data'].append(tmp_like)
         return JsonResponse(res, status=200)
 

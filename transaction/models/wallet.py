@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models import Window, F
 from django.db.models.functions import RowNumber
-from utils import get_media_url, get_full_name, get_name_chars
+from utils import user_serializer
 
 
 class WalletManager(models.Manager):
@@ -17,14 +17,15 @@ class WalletManager(models.Manager):
             'point_amount'
         ).order_by('rank')[:limit]
         for rank in other_ranks:
-            tmp_rank = {
-                'id': rank['user__id'],
-                'rank': rank['rank'],
-                'point_amount': rank['point_amount'],
-                'full_name': get_full_name(rank['user__first_name'], rank['user__last_name']),
-                'name_chars': get_name_chars(rank['user__first_name'], rank['user__last_name']),
-                'profile_picture': get_media_url(rank['user__profile_picture'])
-            }
+            tmp_rank = user_serializer(
+                rank['user__id'],
+                space,
+                rank['user__first_name'],
+                rank['user__last_name'],
+                rank['user__profile_picture'],
+            )
+            tmp_rank['rank'] = rank['rank'],
+            tmp_rank['point_amount'] = rank['point_amount'],
             queryset.append(tmp_rank)
         return queryset
 
