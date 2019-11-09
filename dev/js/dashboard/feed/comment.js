@@ -94,6 +94,7 @@ $(document).ready(function() {
     })
     // ... like comment
     $(document).on('click', '.like-cmt', function() {
+        console.log('clicked')
         let $this = $(this),
             feed_id = $this.closest('.feed').attr('feed-id'),
             comment_id = $this.closest('.comment-row').attr('comment-id');
