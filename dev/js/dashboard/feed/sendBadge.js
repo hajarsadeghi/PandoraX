@@ -178,9 +178,11 @@ $('#myTabContent').on('click', '#recognitionPostBtn', function() {
             user: $('#recognitionExpanded').find('.user-card').attr('user_id'),
             badge: $('#recognitionExpanded').find('.badge-card').attr('badge_id')
         }
-    }, (status) => {
+    }, (status, response) => {
         if (status) {
             feed_pagin = 1;
+            $('.wallet').find('#budgetPoints').text(response.wallet.budget_point_amount);
+            $('.wallet').find('#earnedPoints').text(response.wallet.earned_point_amount);
             getFeed({
                 pagin: true,
                 data_limit: 3,

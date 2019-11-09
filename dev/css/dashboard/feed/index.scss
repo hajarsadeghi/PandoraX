@@ -6,6 +6,10 @@
 
 .feed-container {
 
+    .position-sticky {
+        top: 0;
+    }
+
     a {
         color: $main-blue-color;
         &:hover {
@@ -41,7 +45,7 @@
         }
     }
 
-    .feed-cards {
+    .wallet {
         img {
             max-width: 7rem;
         }
