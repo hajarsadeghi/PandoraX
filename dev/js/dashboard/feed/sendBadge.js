@@ -122,42 +122,45 @@ $('#recognitionModal').on('click', '.who-to-recognize-row', function(e) {
     $('.recognized-person').removeClass('d-none');
 });
 
-$('#recognitionModal').on('click', '.card-stats', (e) => {
-    let selectedCard = $(e.target).closest('.card-stats');
-    $('.card-stats').not(selectedCard).removeClass('selected-badge-border');
-    selectedCard.toggleClass('selected-badge-border');
+$('#recognitionModal').on('click', '.card-stats', function(e) {
+    let $this = $(this),
+        selectedCard = $this.closest('.card-stats');
+    if ($this.attr('has-credit') === 'true') {
+        $('.card-stats').not(selectedCard).removeClass('selected-badge-border');
+        selectedCard.toggleClass('selected-badge-border');
 
-    let selected_user = $('.recognized-person');
-    let selected_user_obj = {
-        id:     selected_user.attr('user_id'),
-        name:   selected_user.attr('username'),
-        img_src:    selected_user.attr('img-src'),
-        user_initials: selected_user.attr('user_initials')
-    }
-    $('.selected-badge-container').find('.user-card').attr('user_id', selected_user_obj.id);
-    $('.selected-badge-container').find('.user-card .card-title').text(selected_user_obj.name);
-    selected_user_obj.img_src ?
-        $('.selected-badge-container').find('.user-card .avatar').html('<img class="img-fluid mx-auto" src="'+ selected_user_obj.img_src +'" alt="badge icon">') :
-        $('.selected-badge-container').find('.user-card .avatar').html('<span class="text-dark initials">'+ selected_user_obj.user_initials +'</span>')
+        let selected_user = $('.recognized-person');
+        let selected_user_obj = {
+            id:     selected_user.attr('user_id'),
+            name:   selected_user.attr('username'),
+            img_src:    selected_user.attr('img-src'),
+            user_initials: selected_user.attr('user_initials')
+        }
+        $('.selected-badge-container').find('.user-card').attr('user_id', selected_user_obj.id);
+        $('.selected-badge-container').find('.user-card .card-title').text(selected_user_obj.name);
+        selected_user_obj.img_src ?
+            $('.selected-badge-container').find('.user-card .avatar').html('<img class="img-fluid mx-auto" src="'+ selected_user_obj.img_src +'" alt="badge icon">') :
+            $('.selected-badge-container').find('.user-card .avatar').html('<span class="text-dark initials">'+ selected_user_obj.user_initials +'</span>')
 
-    let selected_badge = $('#giveBadge').find('.selected-badge-border');
-    let selected_badge_obj = {
-        name:   selected_badge.attr('badge-name'),
-        id:     selected_badge.attr('badge-id'), 
-        points: selected_badge.attr('badge-points'),
-        src:    selected_badge.attr('badge-src'),
-        des:    selected_badge.attr('badge-des')
+        let selected_badge = $('#giveBadge').find('.selected-badge-border');
+        let selected_badge_obj = {
+            name:   selected_badge.attr('badge-name'),
+            id:     selected_badge.attr('badge-id'), 
+            points: selected_badge.attr('badge-points'),
+            src:    selected_badge.attr('badge-src'),
+            des:    selected_badge.attr('badge-des')
+        }
+        $('.selected-badge-container').find('.badge-card').attr('badge_id', selected_badge_obj.id);
+        $('.selected-badge-container').find('.badge-card img').attr('src', selected_badge_obj.src);
+        $('.selected-badge-container').find('.badge-card .card-title span').text(selected_badge_obj.name);
+        $('.selected-badge-container').find('.badge-card .card-title small').text(selected_badge_obj.points);
+        $('.selected-badge-container').removeClass('d-none');
+        
+        $('.use-badge-section').addClass('d-none')
+        $('.selected-badge-info').removeClass('d-none');
+        $('.post-recognition').removeClass('d-none');
+        $('#recognitionModal').modal('hide');   
     }
-    $('.selected-badge-container').find('.badge-card').attr('badge_id', selected_badge_obj.id);
-    $('.selected-badge-container').find('.badge-card img').attr('src', selected_badge_obj.src);
-    $('.selected-badge-container').find('.badge-card .card-title span').text(selected_badge_obj.name);
-    $('.selected-badge-container').find('.badge-card .card-title small').text(selected_badge_obj.points);
-    $('.selected-badge-container').removeClass('d-none');
-    
-    $('.use-badge-section').addClass('d-none')
-    $('.selected-badge-info').removeClass('d-none');
-    $('.post-recognition').removeClass('d-none');
-    $('#recognitionModal').modal('hide');
 });
 
 // ... load data on scroll in privacy modal
