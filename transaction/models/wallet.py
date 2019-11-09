@@ -24,8 +24,8 @@ class WalletManager(models.Manager):
                 rank['user__last_name'],
                 rank['user__profile_picture'],
             )
-            tmp_rank['rank'] = rank['rank'],
-            tmp_rank['point_amount'] = rank['point_amount'],
+            tmp_rank['rank'] = rank['rank']
+            tmp_rank['point_amount'] = rank['point_amount']
             queryset.append(tmp_rank)
         return queryset
 

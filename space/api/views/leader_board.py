@@ -16,5 +16,5 @@ def leader_board(request):
         return JsonResponse({"message": "bad params"}, status=400)
 
     res = {'my_rank': request.user.my_rank(space=request.space)}
-    res['others'] = Wallet.objects.get_leaderboard(space=request.space, limit=limit)
+    res['others'] = Wallet.objects.get_leaderboard(space=request.space, limit=leader_board_limit)
     return JsonResponse(res, status=200, safe=False)
