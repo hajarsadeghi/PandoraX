@@ -306,3 +306,24 @@ export const likeComment = (id, cmt_id, callback) => {
             }
         })
 }
+// ... wallet 
+export const getWallet = (callback) => {
+    return fetch(
+        '/api/transaction/wallet_status/',
+        {
+            method: 'GET',
+            headers:{
+                'Content-Type': 'application/json',
+                'Space-Id': space_id
+            }
+        }
+        ).then(response => {
+            if (response.ok) {
+                response.json().then(res => {
+                    callback(true, res)
+                })
+            } else {
+                callback(false, response)
+            }
+        })
+}
