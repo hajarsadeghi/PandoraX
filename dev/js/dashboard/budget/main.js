@@ -1,6 +1,8 @@
-import { getCreatedBudget } from '../../api';
+import { getCreatedBudget, createBudget } from '../../api';
 
-get_budget_list()
+$(document).ready(function() {
+    get_budget_list()
+})
 
 $("#create_budget_submit").click(function(){
     if (create_budget_validation()){
@@ -29,35 +31,34 @@ function get_budget_list(){
         '/api/budget/',
         null,
         (status, res) => {
-            console.log(status,res)
             if (status) {
-                sibs = $("#created_budget_list_keeper .source").siblings();
-                for (let i=0;i<sibs.length;i++){
-                    sibs[i].remove();
-                }
-                if (res.length>0){
-                    $("#created_budget_list_keeper").css("display","block");
-                    $("#no_budget_animation").css("display","none");
-                    $(".no-budget-desc").css("display","none");
-                    for (let i=0;i<res.length;i++){
-                        let date = new Date(res[i].created_date);
-                        let element = $("#created_budget_list_keeper .source").clone();
-                        element.removeClass("source");
-                        element.css("display","table-row");
-                        if (!res[i].active){
-                            element.css("background-color","rgba(255,255,255,0.35)");
-                            element.css("background-color","rgb(224,224,224)");
-                            element.find("td[type='status'] i").text("cancel").css("color","#63636354");
-                        }else{
-                            element.find("td[type='status'] i").text("check_circle").css("color","#63636354");
-                        }
-                        element.find("span").text(res[i].name);
-                        element.find("small").text("Created by "+res[i].creator.full_name);
-                        element.find("td[type='points']").text(res[i].point_amount);
-                        element.find("td[type='date']").text(date.getFullYear()+"/"+(date.getMonth()+1)+"/"+date.getDate());
-                        element.insertAfter($("#created_budget_list_keeper .source"))
+                $("#created_budget_list_keeper").find('tbody').empty();
+                if (res.length > 0) {
+                    $('#created_budget_list_keeper').removeClass('d-none');
+                    for (let i = 0; i < res.length; i++) {
+                        let date = new Date(res[i].created_date),
+                            material_icons = res[i].active ? 'check_circle' : 'cancel';
+                        $("#created_budget_list_keeper").find('tbody').append(
+                            '<tr>' +
+                                '<th>' +
+                                    '<span>'+ res[i].name +'</span>' +
+                                    '<small class="d-block text-muted">"Created by "'+ res[i].creator.full_name +'"</small>' +
+                                '</th>' +
+                                '<td >all</td>' +
+                                '<td type="points">' +
+                                    res[i].point_amount +
+                                '</td>' +
+                                '<td type="date" >' +
+                                    date.getFullYear()+"/"+(date.getMonth()+1)+"/"+date.getDate() +
+                                '</td>' +
+                                '<td type="status" >' +
+                                    '<i class="material-icons">'+ material_icons +'</i>' +
+                                '</td>' +
+                            '</tr>'
+                        )
                     }
-                }else{
+                }
+                else {
                     $("#no_budget_animation").css("display","block");
                     $(".no-budget-desc").css("display","block");
                     lottie.loadAnimation({
