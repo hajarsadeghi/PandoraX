@@ -5,7 +5,7 @@ from django.db.models import Value as V, Q
 from user.models import User
 from space.models import Space, Member
 from decorators import is_authenticated, get_space
-from utils import get_media_url, get_full_name, get_name_chars
+from utils import user_serializer
 from django.core.paginator import Paginator, InvalidPage
 import json
 
@@ -44,12 +44,13 @@ def get_members(request):
 
     res['data'] = []
     for member in queryset:
-        tmp_member = {
-            'id': member['user__id'],
-            'full_name': get_full_name(member['user__first_name'], member['user__last_name']),
-            'name_chars': get_name_chars(member['user__first_name'], member['user__last_name']),
-            'profile_picture': get_media_url(member['user__profile_picture'])
-        }
+        tmp_member = user_serializer(
+            member['user__id'],
+            request.space,
+            member['user__first_name'],
+            member['user__last_name'],
+            member['profile_picture']
+        )
         res['data'].append(tmp_member)
 
     return JsonResponse(res, status=200, safe=False)
