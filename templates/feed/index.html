@@ -47,10 +47,12 @@
           write_cmt_placeholder = "{% trans 'Write a comment...' %}",
           load_more_src = "{% static 'image/load_more_comments.gif' %}"
 
-    let user_profile = {};
+    let user_profile = {
+      url: "{% url 'frontview:dashboard:profile' space.slug request.user.id %}"
+    };
     "{% if request.user.profile_picture %}"
       user_profile.has = true;
-      user_profile.src = "{{request.user.profile_picture.url}}"
+      user_profile.src = "{{request.user.profile_picture.url}}";
     "{% else %}"
       user_profile.has = false;
       user_profile.initials = "{{request.user.name_chars}}"

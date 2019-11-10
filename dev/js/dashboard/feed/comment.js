@@ -26,7 +26,7 @@ $(document).ready(function() {
                         (status, response) => {
                             if (status) {
                                 $('#commentsContainer_' + activityId).find('.cmts-container').html('')
-                                comments(response.data, undefined, activityId, () => {
+                                comments(response.data, user_profile, activityId, () => {
                                     initializeEmoji();
                                 })
                             }
@@ -50,7 +50,7 @@ $(document).ready(function() {
                 }),
                 (status, response) => {
                     if (status) {
-                        comments(response.data, undefined, activityId, () => {
+                        comments(response.data, user_profile, activityId, () => {
                             initializeEmoji();
                             $this.closest('.likes-and-comments').find('.view-more-comments-link').attr('max-comments', response.max_page)
                             if (response.max_page <= 1) {
@@ -153,7 +153,7 @@ $(document).ready(function() {
                         
                         $this.hasClass('view-more-replies-link') ?
                         replies($this.closest('.comment-row').find('.replies .replies-box'),response.data, () => {}): 
-                        comments(response.data, undefined, activityId, () => {
+                        comments(response.data, user_profile, activityId, () => {
                             initializeEmoji();
                         });
 

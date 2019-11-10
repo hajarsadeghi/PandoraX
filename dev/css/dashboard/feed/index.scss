@@ -419,6 +419,12 @@
                     border: 2px solid $white !important;
                 }
 
+                .user-ranks-name {
+                    a {
+                        color: $active-text;
+                    }
+                }
+
                 &.number-one {
                     background-color: $gold;
                 }
@@ -657,6 +663,7 @@
 
     .feed-container {
         .leader-board-header {
+            
             .top-three-container {
 
                 color: $white;
@@ -687,10 +694,6 @@
                     line-height: 35px;
                 }
             }
-
-            .card:last-child {
-                margin-bottom: 100px !important;
-            }
         }
     }
     .card {
@@ -713,27 +716,32 @@
         margin-left: auto !important;
 
         .leader-board-header {
-            .top-three-container {
-                .top {
-                    &.top-one {
-                        width: 65px;
-                        height: 65px;
-                        line-height: 65px;
+            .leader-board-title {
+                .top-three-container {
+                    a {
+                        color: $white;
                     }
-    
-                    &.top-two, &.top-three {
-                        width: 40px;
-                        height: 40px;
-                        line-height: 40px;
+                    .top {
+                        &.top-one {
+                            width: 65px;
+                            height: 65px;
+                            line-height: 65px;
+                        }
+        
+                        &.top-two, &.top-three {
+                            width: 40px;
+                            height: 40px;
+                            line-height: 40px;
+                        }
                     }
-                }
-                .crown {
-                    width: 32px;
-                    top: -20px;
-                    right: 16.5px;
+                    .crown {
+                        width: 32px;
+                        top: -20px;
+                        right: 16.5px;
+                    }
                 }
             }
-    
+            
             .top-u-container {
                 .top-u {
                     width: 50px;

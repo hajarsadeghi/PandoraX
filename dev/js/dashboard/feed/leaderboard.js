@@ -53,8 +53,14 @@ function cardBoards(index, user) {
                                 '<div class="d-flex align-items-center">' +
                                     '<div class="flex-grow-1">' +
                                         '<span class="index font-weight-bold">#'+ Number(index + 1) +'</span>' +
-                                        user_profile +
-                                        '<div class="user-ranks-name d-inline-block">'+ user.full_name +'</div>' +
+                                        '<a href="'+ user.url +'">' +
+                                            user_profile +
+                                        '</a>' +
+                                        '<div class="user-ranks-name d-inline-block">' + 
+                                            '<a href="'+ user.url +'">' +
+                                                user.full_name +
+                                                '</a>' +
+                                        '</div>' +
                                     '</div>' +
                                     '<div>' +
                                         '<span class="user-ranks-points">'+ user.point_amount +' pts</span>' +

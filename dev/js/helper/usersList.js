@@ -10,9 +10,13 @@ export const usersList = (list, callback) => {
         users += '<div class="select-privacy align-items-center mb-2">' +
                     '<div class="px-3">' +
                         '<div class="media align-items-center">' +
-                            '<span class="avatar avatar-sm rounded-circle bg-white shadow-sm">' + avatar + '</span>' +
+                            '<a href="'+ li.url +'">' +
+                                '<span class="avatar avatar-sm rounded-circle bg-white shadow-sm">' + avatar + '</span>' +
+                            '</a>' +
                             '<div class="media-body ml-2 d-none d-lg-block">' +
-                                '<span class="mb-0 text-sm font-weight-bold">' + li.full_name + '</span>' +
+                                '<a href="'+ li.url +'">' +
+                                    '<span class="mb-0 text-sm font-weight-bold">' + li.full_name + '</span>' +
+                                '</a>' +
                                 '<small class="text-muted d-block">Front-End develoer</small>' +
                             '</div>' +
                         '</div>' +

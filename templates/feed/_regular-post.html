@@ -8,11 +8,13 @@
         <div class="my-1" id="sharePost">
             <div id="postLink" class="d-flex flex-row">
             <div class="d-flex flex-column">
-                {% if request.user.profile_picture %}
-                    <img class="img-fluid profile-pic" src="{{request.user.profile_picture.url}}" alt="profile picture" />
-                {% else %}
-                    <span class="text-dark profile-pic-text">{{request.user.name_chars}}</span>
-                {% endif %}
+                <a href="{% url 'frontview:dashboard:profile' space.slug request.user.id %}">
+                    {% if request.user.profile_picture %}
+                        <img class="img-fluid profile-pic" src="{{request.user.profile_picture.url}}" alt="profile picture" />
+                    {% else %}
+                        <span class="text-dark profile-pic-text">{{request.user.name_chars}}</span>
+                    {% endif %}
+                </a>
             </div>
             <div class="d-flex flex-column contentWrapper">
                 <!-- <div id="RegularPostContent" class="post-content regular-post-content px-3" contenteditable data-placeholder="Whats on your mind today? :)"></div> -->

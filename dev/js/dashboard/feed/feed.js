@@ -14,24 +14,24 @@ export const showFeed = (feed) => {
         lottie_array = [];
 
     user_profile.has ?
-    user_self_profile = '<img class="img-fluid profile-pic" src="'+ user_profile.src +'" alt="profile picture" />' :
+    user_self_profile = '<img class="img-fluid profile-pic" src="'+ user_profile.src +'" alt="profile picture" />':
     user_self_profile = '<span class="text-dark profile-pic-text border">'+ user_profile.initials +'</span>'
 
     for (let i = 0; i < feed.length; i++) {
         recognition = '';
         
         feed[i].user.profile_picture ?
-        profile = '<img class="img-fluid profile-pic" src="'+ feed[i].user.profile_picture +'" alt="profile picture" />' :
+        profile = '<img class="img-fluid profile-pic" src="'+ feed[i].user.profile_picture +'" alt="profile picture" />':
         profile = '<span class="text-dark profile-pic-text border">'+ feed[i].user.name_chars +'</span>'
 
         if (feed[i].recognition) {
 
             lottie_array.push('rewardBadge_' + feed[i].id);
             feed[i].recognition.to_user.profile_picture ?
-            recognitition_user_profile = '<img class="img-fluid mx-auto profile-pic" src="'+ feed[i].recognition.to_user.profile_picture +'" alt="profile picture" />' :
-            recognitition_user_profile = '<span class="avatar avatar-sm rounded-circle bg-white shadow-sm align-self-center">' +
-                                            '<span class="text-dark mx-auto my-1">'+ feed[i].recognition.to_user.name_chars +'</span>' +
-                                        '</span>'
+            recognitition_user_profile =    '<img class="img-fluid mx-auto profile-pic" src="'+ feed[i].recognition.to_user.profile_picture +'" alt="profile picture" />' :
+            recognitition_user_profile =    '<span class="avatar avatar-sm rounded-circle bg-white shadow-sm align-self-center">' +
+                                                '<span class="text-dark mx-auto my-1">'+ feed[i].recognition.to_user.name_chars +'</span>' +
+                                            '</span>'
 
             recognition = '<div class="post-recognition-container">' +
                             '<div class="d-flex justify-content-center align-items-center post-recognition">' +
@@ -55,10 +55,12 @@ export const showFeed = (feed) => {
                                     '<div class="card user-card selected-badge-card border-1 p-1">' +
                                         '<div class="row h-100">' +
                                             '<div class="col-12 align-self-start text-center">' +
-                                                recognitition_user_profile +
+                                                '<a href="'+ feed[i].recognition.to_user.url +'">' + recognitition_user_profile + '</a>' +
                                             '</div>' +
                                             '<div class="col-12 badge-label text-center align-self-end">' +
-                                                '<h5 class="card-title text-muted my-1">'+ feed[i].recognition.to_user.full_name +'</h5>' +
+                                                '<a href="'+ feed[i].recognition.to_user.url +'">' +
+                                                    '<h5 class="card-title text-muted my-1">'+ feed[i].recognition.to_user.full_name +'</h5>' +
+                                                    '</a>' +
                                             '</div>' +
                                        '</div>' +
                                     '</div>' +
@@ -89,9 +91,11 @@ export const showFeed = (feed) => {
             '<div class="card shadow feed mb-3" feed-id="'+ feed[i].id +'">' +
                 '<div class="card-body p-0">' +
                     '<div class="card-title d-flex mb-0 p-3">' +
-                        '<div>' + profile + '</div>' +
+                        '<a href="'+ feed[i].user.url +'">' + profile + '</a>' +
                         '<div class="flex-grow-1 px-2">' +
-                            '<h4 class="font-weight-bold m-0">'+ feed[i].user.full_name +'</h4>' +
+                            '<a href="'+ feed[i].user.url +'">' +
+                                '<h4 class="font-weight-bold m-0">'+ feed[i].user.full_name +'</h4>' +
+                            '</a>' +
                             '<small class="text-muted">'+ moment(feed[i].timestamp).fromNow() +'</small>' +
                         '</div>' +
                     '</div>' +
@@ -145,7 +149,7 @@ export const showFeed = (feed) => {
                             '<div class="collapse comments-container" id="commentsContainer_'+ feed[i].id +'">' +
                                 '<hr class="my-3" />' +
                                 '<div class="comment-row d-flex align-items-center mx-3 pb-3">' +
-                                    '<div>' + user_self_profile +'</div>' +
+                                    '<a href="'+ user_profile.url +'">' + user_self_profile +'</a>' +
                                     '<div class="flex-grow-1">' +
                                         '<div class="emoji-picker-container add-comment border ml-2">' +
                                             '<textarea id="commentOnPost_'+ feed[i].id +'" class="comment-content main-comment-content px-3 form-control textarea-control" rows="3" data-placeholder="'+ write_cmt_placeholder +'" data-emojiable="true" data-emoji-input="unicode"></textarea>' +
@@ -220,7 +224,7 @@ export function comments(comments, user_profile, activity_id, callback) {
         
         comment_row += '<div class="comment-row pb-1" comment-id="'+ cmt.id +'">' +
                             '<div class="d-flex mx-3">' +
-                                ' <div>' + commenter_profile + '</div>' +
+                                ' <a href="'+ cmt.user.url +'">' + commenter_profile + '</a>' +
                                 '<div class="flex-grow-1 ml-2">' +
                                     '<div class="comment-text border p-1 mb-2">'+
                                         '<span>'+ cmt.text +'</span>' +
@@ -236,7 +240,7 @@ export function comments(comments, user_profile, activity_id, callback) {
                                     '</small>' +
                                     '<div class="replies">' +
                                         '<div class="d-none reply-row align-items-center pb-3 animated fadeIn">' +
-                                            '<div>' + user_self_profile +'</div>' +
+                                            '<a href="'+ user_profile.url +'">' + user_self_profile +'</a>' +
                                             ' <div class="flex-grow-1">' +
                                                 '<div class="emoji-picker-container add-reply border ml-2">' +
                                                     '<textarea id="replyOnCmt_'+ cmt.id +'" class="reply-content comment-content px-3 form-control textarea-control" rows="3" data-placeholder="'+ write_cmt_placeholder +'" data-emojiable="true" data-emoji-input="unicode"></textarea>' +
@@ -271,9 +275,9 @@ export function replies(container, comments, callback) {
         commenter_profile = '<span class="text-dark profile-pic-text border">'+ cmt.user.name_chars +'</span>'
 
         replies += '<div class="d-flex">' +
-                        '<div class="mr-1">' +
+                        '<a href="'+ user_profile.url +'" class="mr-1">' +
                             commenter_profile +
-                        '</div>' +
+                        '</a>' +
                         '<div class="flex-grow-1">' +
                             '<div class="comment-text border px-2 py-1">'+ cmt.text +'</div>' +
                             '<small>' +
