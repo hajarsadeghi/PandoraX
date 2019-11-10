@@ -327,3 +327,24 @@ export const getWallet = (callback) => {
             }
         })
 }
+// ... leaderboard 
+export const getLeaderboard = (callback) => {
+    return fetch(
+        '/api/space/leader_board/',
+        {
+            method: 'GET',
+            headers:{
+                'Content-Type': 'application/json',
+                'Space-Id': space_id
+            }
+        }
+        ).then(response => {
+            if (response.ok) {
+                response.json().then(res => {
+                    callback(true, res)
+                })
+            } else {
+                callback(false, response)
+            }
+        })
+}
