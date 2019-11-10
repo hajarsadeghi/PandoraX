@@ -16,3 +16,11 @@ $(document).ready(() => {
         console.log('on drag enter')
     });
 })
+
+$('.showMoreBtn').click(function(){
+    let txt = $(this).text();
+    if(txt === 'Show more')
+        $(this).text('Show less');
+    else
+        $(this).text('Show more');
+})

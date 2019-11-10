@@ -48,8 +48,8 @@
                 <i class="ni business_briefcase-24 mr-2"></i>{{profile.job_title}}
             </div>
             <hr class="my-4" />
-            <p>{{profile.bio}}</p>
-            <a href="#">Show more</a>
+            <p>{{profile.bio|slice:":100"}}<span class="collapse" id="full-bio">{{profile.bio|slice:"100:"}}</span></p>
+            <a data-toggle="collapse" data-target="#full-bio" href="#" class="showMoreBtn">Show more</a>
         </div>
         </div>
     </div>
