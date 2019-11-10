@@ -23,7 +23,7 @@ $(document).ready(function() {
   
     // ... load more feed on scroll down
     $(window).scroll(function() {
-        if($(window).scrollTop() + $(window).height() > ($(document).height() - 50)) {
+        if($(window).scrollTop() + $(window).height() > ($(document).height() - 2)) {
             if (loading && feed_pagin < feed_max_page) {
                 feed_pagin = feed_pagin + 1;
                 loading = false;

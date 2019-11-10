@@ -1,79 +1,27 @@
- // ... leatherboard
- let topRanks = [
-    {
-        fullName: 'Tina Smith',
-        firstName: 'Tina',
-        lastName: 'Smith',
-        points: '1065',
-        img: null
-    },
-    {
-        fullName: 'Ross Gellar',
-        firstName: 'Ross',
-        lastName: 'Geller',
-        points: '985',
-        img: null
-    },
-    {
-        fullName: 'Rachel Green',
-        firstName: 'Rachel',
-        lastName: 'Green',
-        points: '754',
-        img: null
-    },
-    {
-        fullName: 'Joey Tribbiani',
-        firstName: 'Joey',
-        lastName: 'Tribbiani',
-        points: '445',
-        img: null
-    },
-    {
-        fullName: 'Chandler Bing',
-        firstName: 'Chandler',
-        lastName: 'Bing',
-        points: '440',
-        img: null
-    },
-    {
-        fullName: 'Monica Geller',
-        firstName: 'Monica',
-        lastName: 'Geller',
-        points: '350',
-        img: null
-    },
-    {
-        fullName: 'Pheobe Buffay',
-        firstName: 'Pheobe',
-        lastName: 'Buffay',
-        points: '245',
-        img: null
-    },
-    {
-        fullName: 'Emily Waltham',
-        firstName: 'Emily',
-        lastName: 'Waltham',
-        points: '205',
-        img: null
-    },
-    {
-        fullName: 'Jill Green',
-        firstName: 'Jill',
-        lastName: 'Green',
-        points: '158',
-        img: null
-    },
-    {
-        fullName: 'Janice Hosenstein',
-        firstName: 'Janice',
-        lastName: 'Hosenstein',
-        points: '125',
-        img: null
-    }
-];
-for (let i = 0; i < topRanks.length; i++) {
-    $('.top-ten-container').append(cardBoards(i, topRanks[i]));
-}
+ import { getLeaderboard } from './../../api';
+
+
+ $(document).ready(function() {
+    $(document).on('click','.leader-board-header', function() {
+        let $this = $(this);
+        if ($this.attr('aria-expanded') === 'false') {
+            getLeaderboard((status, response) => {
+                if (status) {
+                    $('.top-ten-container').html('');
+                    $this.attr('aria-expanded', true);
+                    for (let i = 0; i < response.others.length; i++) {
+                        $('.top-ten-container').append(cardBoards(i, response.others[i]));
+                    }
+                    $('.leader-board-header').find('.collapse').collapse('show');
+                }
+            })
+        }
+        else {
+            $('.leader-board-header').find('.collapse').collapse('hide')
+            $this.attr('aria-expanded', false)
+        }
+    })
+})
 
 function cardBoards(index, user) {
     let color_class = '';
@@ -90,16 +38,26 @@ function cardBoards(index, user) {
         color_class = 'number-n';
     }
 
-    return ('<div class="card '+ color_class +' m-2 ">' +
+    let user_profile = '';
+    if (user.profile_picture) {
+        user_profile =  '<img class="img-fluid mx-2 profile-pic" src="'+ user.profile_picture +'" alt="profile picture" />'
+    }
+    else {
+        user_profile =  '<span class="avatar avatar-sm rounded-circle bg-white shadow-sm align-self-center mx-2">' +
+                            '<span class="text-dark mx-auto my-1">'+ user.name_chars +'</span>' +
+                        '</span>'
+    }
+
+    return ('<div class="card '+ color_class +' m-2 " user_id="'+ user.id +'">' +
                             '<div class="card-body p-3">' +
-                                '<div class="d-flex">' +
+                                '<div class="d-flex align-items-center">' +
                                     '<div class="flex-grow-1">' +
                                         '<span class="index font-weight-bold">#'+ Number(index + 1) +'</span>' +
-                                        '<div class="text-dark user-ranks-img border d-inline-block mx-3">'+ user.firstName.charAt(0) + user.lastName.charAt(0) +'</div>' +
-                                        '<span class="user-ranks-name">'+ user.fullName +'</span>' +
+                                        user_profile +
+                                        '<div class="user-ranks-name d-inline-block">'+ user.full_name +'</div>' +
                                     '</div>' +
                                     '<div>' +
-                                        '<span class="user-ranks-points">'+ user.points +' pts</span>' +
+                                        '<span class="user-ranks-points">'+ user.point_amount +' pts</span>' +
                                     '</div>' +
                                 '</div>' +
                             '</div>' +

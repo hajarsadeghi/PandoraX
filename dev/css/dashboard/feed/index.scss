@@ -352,7 +352,7 @@
         }
     }
 
-    #leaderboard {
+    .leader-board-header {
 
         .top-three-container {
             background: $tint-blue-color5 url('/static/image/leaderboard.svg') no-repeat;
@@ -408,7 +408,7 @@
             }
         }
 
-        #topTen {
+        #leaderBoardBody {
             .card {
                 .user-ranks-img {
                     width: 35px;
@@ -656,7 +656,7 @@
 @media (min-width: 992px) { 
 
     .feed-container {
-        #leaderboard {
+        .leader-board-header {
             .top-three-container {
 
                 color: $white;
@@ -687,6 +687,10 @@
                     line-height: 35px;
                 }
             }
+
+            .card:last-child {
+                margin-bottom: 100px !important;
+            }
         }
     }
     .card {
@@ -708,7 +712,7 @@
         margin-right: auto !important;
         margin-left: auto !important;
 
-        #leaderboard {
+        .leader-board-header {
             .top-three-container {
                 .top {
                     &.top-one {
@@ -746,8 +750,7 @@
 
 @media (min-width: 1500px) { 
     .feed-container {
-
-        #leaderboard {
+        .leader-board-header {
             .position-relative {
                 margin: 0 1rem !important;
             }
