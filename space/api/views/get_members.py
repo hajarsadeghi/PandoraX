@@ -49,7 +49,7 @@ def get_members(request):
             request.space,
             member['user__first_name'],
             member['user__last_name'],
-            member['profile_picture']
+            member['user__profile_picture']
         )
         res['data'].append(tmp_member)
 
