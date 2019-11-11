@@ -32,8 +32,6 @@ export function hideTintedBackdrop() {
         $('.post-expanded').collapse('hide');
         $('.emojionearea-button').css('visibility', 'hidden')
         $('.tinted').css({'visibility':'hidden', 'opacity': '0'});
-        $('.selected-badge-container,.post-recognition').addClass('d-none');
-        $('.use-badge-section').removeClass('d-none');
     }
 }
 

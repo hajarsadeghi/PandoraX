@@ -36,7 +36,7 @@ $('#useBadgeBtn').on('click', function() {
     getBadgeList((status, res) => {
         if (status) {
             badges_res = true;
-            load_badges(res);
+            load_badges(false, res);
             openModal(users_res, badges_res)
         }
         else {

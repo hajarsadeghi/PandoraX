@@ -23,7 +23,7 @@ getBadgeImages((status, response) => {
 // ... get badge list
 getBadgeList((status, response) => {
     if (status) {
-        load_badges(response)
+        load_badges(true, response)
     }
     else {
         console.log('error')
