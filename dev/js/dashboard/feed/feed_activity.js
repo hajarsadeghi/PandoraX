@@ -98,7 +98,7 @@ function loadFeedFromStart() {
 
             let login_user_id = $('.user-info-dropdown').attr('user-id');
             for (let i = 0; i < response.data.length; i++) {
-                if (Number(response.data[i].recognition.to_user.id) === Number(login_user_id)) {
+                if (response.data[i].recognition && (Number(response.data[i].recognition.to_user.id) === Number(login_user_id))) {
                     getWallet((status, response) => {
                         if (status) {
                             $('.wallet').find('#budgetPoints').text(response.budget_point_amount);
