@@ -67,7 +67,7 @@ services:
       MYSQL_DATABASE: pandora_x
     volumes:
       - ./initial_database.sql:/docker-entrypoint-initdb.d/init.sql:ro
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       timeout: 5s
