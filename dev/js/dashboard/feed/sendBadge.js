@@ -172,6 +172,26 @@ $('#privacyModal .modal-body').on('scroll',() => {
     }
 });
 
+$('.post').on('click', '.selected-badge-info', function() {
+    $('.recognized-person').removeClass('d-none');
+    if ($(this).find('.card').hasClass('badge-card')) {
+        $('#recognizeWho').addClass('d-none');
+        $('#giveBadge').removeClass('d-none');
+        $('#nextBtn').addClass('d-none');
+        $('#previouseBtn').removeClass('d-none')
+    }
+    else {
+        $('#giveBadge').addClass('d-none');
+        $('#recognizeWho').removeClass('d-none');
+        $('#previouseBtn').addClass('d-none');
+        $('#nextBtn').removeClass('d-none')
+    }
+})
+
+$('.post').on('click', '.remove-recognition', function() {
+    resetRecognitionPost();
+})
+
 // ... New Recgonition
 $('#myTabContent').on('click', '#recognitionPostBtn', function() {
     newPost({
@@ -274,6 +294,9 @@ export function resetRecognitionPost() {
     $('#recognitionExpanded').find('.badge-card .card-title span, .badge-card .card-title small').html('')
     $('#recognitionExpanded').find('.user-card').removeAttr('user_id');
     $('#recognitionExpanded').find('.user-card img').attr('src','');
-    $('#recognitionExpanded').find('.initials').text('')
+    $('#recognitionExpanded').find('.initials').text('');
+    $('.selected-badge-container,.post-recognition').addClass('d-none');
+    $('.use-badge-section').removeClass('d-none');
+    $('#recognitionModal').find('.recognized-person').addClass('d-none');
     hideTintedBackdrop();
 }
