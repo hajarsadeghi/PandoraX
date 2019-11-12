@@ -5,9 +5,14 @@ import { showFeed, toggleLikeAction } from './feed';
 
 
 
-InitializePostDropzone((status, res) => {
-    if (status) {
+InitializePostDropzone((status, elem, res, removed_img_id) => {
+    if (status === 'added') {
+        $(elem).attr('img-id', res.id)
         regular_post_media_ids.push(res.id)
+    }
+    else if (status === 'removed') {
+        let index = regular_post_media_ids.indexOf(Number(removed_img_id));
+        index > -1 ? regular_post_media_ids.splice(index, 1) : null;
     }
 })
 
@@ -39,7 +44,7 @@ export function resetRegularPost() {
     regular_post_media_ids.push([]);
     $('#RegularPostContent').val('');
     $('.regular-post-content').text('');
-    $('#postUpload').find('.dropzone').removeClass('.dz-preview');
+    $('#postUpload').find('.dropzone').removeClass('dz-started');
     $('#postUpload').find('.dz-preview').remove();
     hideTintedBackdrop();
 }
