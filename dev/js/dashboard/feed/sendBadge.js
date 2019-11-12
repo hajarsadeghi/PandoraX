@@ -1,7 +1,8 @@
-import { getUsers, getBadgeList, newPost, getFeed } from './../../api';
+import { getUsers, getBadgeList, newPost, getFeed, getLeaderboard } from './../../api';
 import { load_badges } from './../../helper/badges';
 import { hideTintedBackdrop } from './../../helper';
 import { showFeed, toggleLikeAction } from './feed';
+import { topRecords } from './leaderboard';
 
 
 
@@ -205,6 +206,7 @@ $('#myTabContent').on('click', '#recognitionPostBtn', function() {
             feed_pagin = 1;
             $('.wallet').find('#budgetPoints').text(response.wallet.budget_point_amount);
             $('.wallet').find('#earnedPoints').text(response.wallet.earned_point_amount);
+            // ... update feed
             getFeed({
                 pagin: true,
                 data_limit: 3,
@@ -216,6 +218,10 @@ $('#myTabContent').on('click', '#recognitionPostBtn', function() {
                     $('.like-link').bind('click', event => toggleLikeAction(event))
                     resetRecognitionPost();
                 }
+            })
+            // ... update leaderboard
+            getLeaderboard((status, response) => {
+                status ? topRecords(response) : null;
             })
         }
     })

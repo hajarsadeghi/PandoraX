@@ -69,3 +69,22 @@ function cardBoards(index, user) {
                             '</div>' +
                         '</div>');
 }
+
+export function topRecords(records) {
+    // ... my rank
+    $('.top-u-container').find('.top-u-rank').text('#' + records.my_rank);
+
+    let others = records.others;
+    //... number one
+    others[0].profile_picture ? 
+    $('.top-three-container').find('.top-one-img').attr('src', others[0].profile_picture) : 
+    $('.top-three-container').find('.top-one-name').text(others[0].name_chars)
+    // ... number two
+    others[1].profile_picture ? 
+    $('.top-three-container').find('.top-two-img').attr('src', others[1].profile_picture) : 
+    $('.top-three-container').find('.top-two-name').text(others[1].name_chars)
+    // ... number three
+    others[2].profile_picture ? 
+    $('.top-three-container').find('.top-three-img').attr('src', others[2].profile_picture) : 
+    $('.top-three-container').find('.top-three-name').text(others[2].name_chars)
+}
