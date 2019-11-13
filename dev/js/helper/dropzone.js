@@ -87,13 +87,19 @@ export const InitializePostDropzone = function(callback) {
         acteptedFiles: 'image/*',
         addRemoveLinks: true,
         dictCancelUploadConfirmation: 'upload is canceled',
-        complete: (file, response) => {
+        // complete: (file, response) => {
+        //     $(file.previewElement).find('.dz-remove').html('<i class="material-icons">cancel</i>')
+        //     $(file.previewElement).addClass('dz-complete');
+        // },
+        success: (file, response) => {
             $(file.previewElement).find('.dz-remove').html('<i class="material-icons">cancel</i>')
             $(file.previewElement).addClass('dz-complete');
+            callback('added', file.previewElement, response, null);
         },
-        success: (file, response) => {
-            callback(true, response);
-        }
+        removedfile: (file) => {
+            callback('removed', file.previewElement, null, $(file.previewElement).attr('img-id'))
+            file.previewElement.remove()
+        },
     };
 
     

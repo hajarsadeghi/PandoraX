@@ -9,33 +9,33 @@
             <div class="col-12 col-lg-8 top-three-container">
                 <div class="row no-gutters pt-3">
                     <div class="col text-center px-3 py-4">
-                        {% if leaderboard.others|length == 3 %}
-                            {% if leaderboard.others.2.profile_picture %}
-                                <img class="img-fluid top top-three" src="{{leaderboard.others.2.profile_picture}}" alt="profile picture" />
+                        {% if leaderboard.others|length >= 2 %}
+                            {% if leaderboard.others.1.profile_picture %}
+                                <img class="img-fluid top top-two top-two-img" src="{{leaderboard.others.1.profile_picture}}" alt="profile picture" />
                             {% else %}
-                                <div class="top top-three border d-inline-block">{{leaderboard.others.2.name_chars}}</div>
+                                <div class="top top-two top-two-name border d-inline-block">{{leaderboard.others.1.name_chars}}</div>
                             {% endif %}
                         {% endif %}
                         <div class="d-inline-block position-relative mx-3 mx-lg-0">
                             <img class="img-fluid crown" src="{% static 'image/crown.png' %}" alt="number one" />
                             {% if leaderboard.others.0.profile_picture %}
-                                <img class="img-fluid top top-one" src="{{leaderboard.others.0.profile_picture}}" alt="profile picture" />
+                                <img class="img-fluid top top-one top-one-img" src="{{leaderboard.others.0.profile_picture}}" alt="profile picture" />
                             {% else %}
-                                <div class="top top-one border d-inline-block">{{leaderboard.others.0.name_chars}}</div>
+                                <div class="top top-one top-one-name border d-inline-block">{{leaderboard.others.0.name_chars}}</div>
                             {% endif %}
                         </div>
-                        {% if leaderboard.others|length >= 2 %}
-                            {% if leaderboard.others.1.profile_picture %}
-                                <img class="img-fluid top top-two" src="{{leaderboard.others.1.profile_picture}}" alt="profile picture" />
+                        {% if leaderboard.others|length == 3 %}
+                            {% if leaderboard.others.2.profile_picture %}
+                                <img class="img-fluid top top-three top-three-img" src="{{leaderboard.others.2.profile_picture}}" alt="profile picture" />
                             {% else %}
-                                <div class="top top-two border d-inline-block">{{leaderboard.others.1.name_chars}}</div>
+                                <div class="top top-three top-three-name border d-inline-block">{{leaderboard.others.2.name_chars}}</div>
                             {% endif %}
                         {% endif %}
                     </div>
                 </div>
             </div>
             <div class="col-12 col-lg-4 text-center p-3 top-u-container">
-                <a href="{{leaderboard.others.0.url}}">
+                <a href="{% url 'frontview:dashboard:profile' space.slug request.user.id %}">
                     {% if request.user.profile_picture %}
                         <img class="img-fluid top top-u" src="{{request.user.profile_picture.url}}" alt="profile picture" />
                     {% else %}

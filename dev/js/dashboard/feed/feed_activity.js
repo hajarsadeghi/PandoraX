@@ -1,7 +1,8 @@
 
-import { getFeed, listOfLikers, getWallet } from './../../api';
+import { getFeed, listOfLikers, getWallet, getLeaderboard } from './../../api';
 import { showFeed, toggleLikeAction } from './feed';
 import { usersList } from './../../helper/usersList';
+import { topRecords } from './leaderboard';
 
 
 $(document).ready(function() {
@@ -66,6 +67,10 @@ $(document).ready(function() {
     // ... Web Socket 
     var feedWebSocket = new WebSocket('ws://localhost/ws/feed/'+ space_slug +'/');
     feedWebSocket.onmessage = function(event) {
+        // ... update leaderboard
+        getLeaderboard((status, response) => {
+            status ? topRecords(response) : null;
+        })
         setTimeout(function() {
             if (JSON.parse(event.data).type === 'new_activity' && JSON.parse(event.data).data.id !== $('.feed-activity').find('.feed:first-child').attr('feed-id')) {
                 if ($(window).scrollTop() > $(window).height()) {
