@@ -37,7 +37,7 @@
     }
 
     .lottie-animation {
-        width: 100px;
+        width: 14%;
         height: auto;
     }
 
@@ -194,6 +194,30 @@
                 }
             }
         }  
+
+        #recognitionExpanded {
+            .recognition-box-shadow {
+                width: 85%;
+                box-shadow: 1px 1px 5px 2px $gray;
+                margin: auto;
+                position: relative;
+
+                &:hover .material-icons {
+                    display: inline-block;
+                }
+                
+                .material-icons {
+                    position: absolute;
+                    right: -12px;
+                    top: -12px;
+                    display: none;
+                    @include transition(all .2s ease-in-out)
+                }
+                .selected-badge-info {
+                    width: 40%;
+                }
+            }
+        }
 
         #postExpanded {
             #postUpload {

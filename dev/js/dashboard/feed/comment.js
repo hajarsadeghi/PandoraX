@@ -5,13 +5,14 @@ import { comments, replies, initializeEmoji } from './feed';
 
 $(document).ready(function() {
     // ... comment and reply
-    $(document).on('keyup change', '.comment-content', function(e) {
+    $(document).on('keydown change', '.comment-content', function(e) {
         let $this = $(this),
             activityId = $this.closest('.feed').attr('feed-id'),
             elemId = $($this.siblings('textarea.comment-content')).attr('id'),
             text = $($('#' + elemId)[0]).siblings('div.textarea-control').text();
             // console.log($($('#' + $id)[0]).siblings('div.textarea-control').html().replace(/<\/div>/g,"\n"))
-        if (e.code === 'Enter') {
+        if (e.code === 'Enter' && !e.shiftKey) {
+            e.preventDefault()
             postComment(
                 activityId,
                 {
@@ -21,16 +22,22 @@ $(document).ready(function() {
                 (status) => {
                 if (status) {
                     $($('#' + elemId)[0]).siblings('div.textarea-control').html('')
-                    viewComment(
-                        '/api/activity/'+ activityId +'/comment/',
-                        (status, response) => {
+                    if ($this.hasClass('reply-content')) {
+                        showReplies($this)            
+                    }
+                    else {
+                        viewComment(
+                            '/api/activity/'+ activityId +'/comment/',
+                            (status, response) => {
                             if (status) {
                                 $('#commentsContainer_' + activityId).find('.cmts-container').html('')
+                                $this.closest('.likes-and-comments').find('.cmt-count').text(response.total_count + ' comments')
                                 comments(response.data, user_profile, activityId, () => {
                                     initializeEmoji();
                                 })
                             }
                         })
+                    }
                 }
             })
         }
@@ -70,31 +77,10 @@ $(document).ready(function() {
     })
     // ... view replies
     $(document).on('click', '.reply-cmts-badge', function () {
-        let $this = $(this),
-            activityId = $this.closest('.feed').attr('feed-id'),
-            parent_id = $this.closest('.comment-row').attr('comment-id');
-        viewComment(
-            '/api/activity/'+ activityId +'/comment/?' + $.param({
-                parent_id,
-                pagin: true,
-                data_limit: 3,
-                page: 1
-            }),
-            (status, response) => {
-                if (status) {
-                    $this.closest('.comment-row').find('.replies .replies-box').empty();
-                    $this.closest('.comment-row').find('.view-more-replies-link').attr('max-comments', response.max_page)
-                    if (response.max_page > $this.closest('.comment-row').find('.view-more-replies-link').attr('pagin')) {
-                        $this.closest('.comment-row').find('.view-more-comments').removeClass('d-none')
-                        $this.closest('.comment-row').find('.view-more-comments').addClass('d-flex') 
-                    }
-                    replies($this.closest('.comment-row').find('.replies .replies-box'),response.data, () => {})
-                }
-            })
+        showReplies($(this))
     })
     // ... like comment
     $(document).on('click', '.like-cmt', function() {
-        console.log('clicked')
         let $this = $(this),
             feed_id = $this.closest('.feed').attr('feed-id'),
             comment_id = $this.closest('.comment-row').attr('comment-id');
@@ -168,4 +154,30 @@ $(document).ready(function() {
                 })   
         }
     })
+    // ... call replies
+    function showReplies($this) {
+        let activityId = $this.closest('.feed').attr('feed-id'),
+            parent_id = $this.closest('.comment-row').attr('comment-id');
+        viewComment(
+            '/api/activity/'+ activityId +'/comment/?' + $.param({
+                parent_id,
+                pagin: true,
+                data_limit: 3,
+                page: 1
+            }),
+            (status, response) => {
+                if (status) {
+                    $this.closest('.comment-row').find('.replies .replies-box').empty();
+                    $this.closest('.comment-row').find('.comment-text .reply-cmts-badge span').text(response.total_count);
+                    $this.closest('.comment-row').find('.comment-text .reply-cmts-badge').removeClass('d-none')
+                    $this.closest('.comment-row').find('.comment-text .reply-cmts-badge').addClass('d-flex') 
+                    $this.closest('.comment-row').find('.view-more-replies-link').attr('max-comments', response.max_page)
+                    replies($this.closest('.comment-row').find('.replies .replies-box'),response.data, () => {})
+                    if (response.max_page > $this.closest('.comment-row').find('.view-more-replies-link').attr('pagin')) {
+                        $this.closest('.comment-row').find('.view-more-comments').removeClass('d-none')
+                        $this.closest('.comment-row').find('.view-more-comments').addClass('d-flex') 
+                    }
+                }
+            })
+    }
 })

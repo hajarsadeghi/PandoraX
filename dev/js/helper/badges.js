@@ -1,14 +1,18 @@
-export const load_badges = (badges) => {
+export const load_badges = (is_admin, badges) => {
     for (var i = 0; i < badges.length; i++){
-        let has_hover_section = 'd-none',
+        let has_hover_section = '',
             has_disabled_section = 'd-none',
-            has_disabled_class = '';
-        badges[i].has_credit ?
+            has_disabled_class = '',
+            is_admin_html = '';
+
+        badges[i].has_credit && !is_admin ?
         (has_hover_section = 'd-block', has_disabled_class = '') :
         (has_disabled_section = 'd-block', has_disabled_class = 'insufficient-credit');
 
+        is_admin_html = is_admin ? '' : ('<div class="badge-is-disabled '+ has_disabled_section +'"></div>')
 
-        $('#created_badge_table_keeper').append(
+
+        $('.created-badge-table').append(
             ' <div class="card card-stats mb-4 mb-xl-0 badge-card '+ has_disabled_class +'" ' +
                 'badge-name   ="'+ badges[i].name +'"'  +
                 'badge-id     ="'+ badges[i].id +'"' +
@@ -36,7 +40,7 @@ export const load_badges = (badges) => {
                         '</div>' +
                     '</span>' +
                 '</div>' +
-                '<div class="badge-is-disabled '+ has_disabled_section +'"></div>' +
+                is_admin_html +
             '</div>'
         )
     }

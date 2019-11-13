@@ -1,7 +1,8 @@
-import { getUsers, getBadgeList, newPost, getFeed } from './../../api';
+import { getUsers, getBadgeList, newPost, getFeed, getLeaderboard } from './../../api';
 import { load_badges } from './../../helper/badges';
 import { hideTintedBackdrop } from './../../helper';
 import { showFeed, toggleLikeAction } from './feed';
+import { topRecords } from './leaderboard';
 
 
 
@@ -36,7 +37,7 @@ $('#useBadgeBtn').on('click', function() {
     getBadgeList((status, res) => {
         if (status) {
             badges_res = true;
-            load_badges(res);
+            load_badges(false, res);
             openModal(users_res, badges_res)
         }
         else {
@@ -172,6 +173,26 @@ $('#privacyModal .modal-body').on('scroll',() => {
     }
 });
 
+$('.post').on('click', '.selected-badge-info', function() {
+    $('.recognized-person').removeClass('d-none');
+    if ($(this).find('.card').hasClass('badge-card')) {
+        $('#recognizeWho').addClass('d-none');
+        $('#giveBadge').removeClass('d-none');
+        $('#nextBtn').addClass('d-none');
+        $('#previouseBtn').removeClass('d-none')
+    }
+    else {
+        $('#giveBadge').addClass('d-none');
+        $('#recognizeWho').removeClass('d-none');
+        $('#previouseBtn').addClass('d-none');
+        $('#nextBtn').removeClass('d-none')
+    }
+})
+
+$('.post').on('click', '.remove-recognition', function() {
+    resetRecognitionPost();
+})
+
 // ... New Recgonition
 $('#myTabContent').on('click', '#recognitionPostBtn', function() {
     newPost({
@@ -185,6 +206,7 @@ $('#myTabContent').on('click', '#recognitionPostBtn', function() {
             feed_pagin = 1;
             $('.wallet').find('#budgetPoints').text(response.wallet.budget_point_amount);
             $('.wallet').find('#earnedPoints').text(response.wallet.earned_point_amount);
+            // ... update feed
             getFeed({
                 pagin: true,
                 data_limit: 3,
@@ -196,6 +218,10 @@ $('#myTabContent').on('click', '#recognitionPostBtn', function() {
                     $('.like-link').bind('click', event => toggleLikeAction(event))
                     resetRecognitionPost();
                 }
+            })
+            // ... update leaderboard
+            getLeaderboard((status, response) => {
+                status ? topRecords(response) : null;
             })
         }
     })
@@ -274,6 +300,9 @@ export function resetRecognitionPost() {
     $('#recognitionExpanded').find('.badge-card .card-title span, .badge-card .card-title small').html('')
     $('#recognitionExpanded').find('.user-card').removeAttr('user_id');
     $('#recognitionExpanded').find('.user-card img').attr('src','');
-    $('#recognitionExpanded').find('.initials').text('')
+    $('#recognitionExpanded').find('.initials').text('');
+    $('.selected-badge-container,.post-recognition').addClass('d-none');
+    $('.use-badge-section').removeClass('d-none');
+    $('#recognitionModal').find('.recognized-person').addClass('d-none');
     hideTintedBackdrop();
 }
