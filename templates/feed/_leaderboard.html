@@ -18,15 +18,13 @@
                                 {% endif %}
                             {% endif %}
                         </div>
-                        <div class="top-1 d-inline-block">
-                            <div class="d-inline-block position-relative mx-3 mx-lg-0">
-                                <img class="img-fluid crown" src="{% static 'image/crown.png' %}" alt="number one" />
-                                {% if leaderboard.others.0.profile_picture %}
-                                    <img class="img-fluid top top-one top-one-img" src="{{leaderboard.others.0.profile_picture}}" alt="profile picture" />
-                                {% else %}
-                                    <div class="top top-one top-one-name border d-inline-block">{{leaderboard.others.0.name_chars}}</div>
-                                {% endif %}
-                            </div>
+                        <div class="top-1 d-inline-block position-relative mx-3 mx-lg-0">
+                            <img class="img-fluid crown" src="{% static 'image/crown.png' %}" alt="number one" />
+                            {% if leaderboard.others.0.profile_picture %}
+                                <img class="img-fluid top top-one top-one-img" src="{{leaderboard.others.0.profile_picture}}" alt="profile picture" />
+                            {% else %}
+                                <div class="top top-one top-one-name border d-inline-block">{{leaderboard.others.0.name_chars}}</div>
+                            {% endif %}
                         </div>
                         <div class="top-3 d-inline-block">
                             {% if leaderboard.others|length == 3 %}

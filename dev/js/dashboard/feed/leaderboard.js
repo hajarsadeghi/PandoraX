@@ -59,7 +59,8 @@ function cardBoards(index, user) {
                                         '<div class="user-ranks-name d-inline-block">' + 
                                             '<a href="'+ user.url +'">' +
                                                 user.full_name +
-                                                '</a>' +
+                                            '</a>' +
+                                            '<small class="d-block">'+ user.jobj_title +'</small>' +
                                         '</div>' +
                                     '</div>' +
                                     '<div>' +
