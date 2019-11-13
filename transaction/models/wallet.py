@@ -1,19 +1,22 @@
 from django.db import models
-from django.db.models import Window, F
+from django.db.models import Window, F, OuterRef, Subquery
 from django.db.models.functions import RowNumber
 from utils import user_serializer
+from space.models import Member
 
 
 class WalletManager(models.Manager):
     def get_leaderboard(self, space, limit=10):
         queryset = []
         rank_window_function = Window(expression=RowNumber(), order_by=F('point_amount').desc())
-        other_ranks = super(WalletManager, self).filter(space=space, type=Wallet.EARNED_TYPE).annotate(rank=rank_window_function).values(
+        user_info = Member.objects.filter(space_id=space, user_id=OuterRef('user_id')).values('job_title')
+        other_ranks = super(WalletManager, self).filter(space=space, type=Wallet.EARNED_TYPE).annotate(rank=rank_window_function, user__job_title=Subquery(user_info)).values(
             'rank',
             'user__id',
             'user__first_name',
             'user__last_name',
             'user__profile_picture',
+            'user__job_title',
             'point_amount'
         ).order_by('rank')[:limit]
         for rank in other_ranks:
@@ -23,6 +26,7 @@ class WalletManager(models.Manager):
                 rank['user__first_name'],
                 rank['user__last_name'],
                 rank['user__profile_picture'],
+                rank['user__job_title'],
             )
             tmp_rank['rank'] = rank['rank']
             tmp_rank['point_amount'] = rank['point_amount']

@@ -30,7 +30,7 @@ def get_members(request):
         queryset = queryset.annotate(user__full_name=Concat('user__first_name', V(' '), 'user__last_name')).filter(Q(user__first_name__istartswith=search) | Q(user__last_name__istartswith=search) | Q(user__full_name__istartswith=search)).distinct()
     if exclude_myself:
         queryset = queryset.exclude(user__id=request.user.id)
-    queryset = queryset.values('user__id','user__first_name', 'user__last_name', 'user__profile_picture')
+    queryset = queryset.values('user__id','user__first_name', 'user__last_name', 'user__profile_picture', 'job_title')
     if pagin:
         paginator = Paginator(queryset, pagin['data_limit'])
         res['max_page'] = paginator.num_pages
@@ -49,7 +49,8 @@ def get_members(request):
             request.space,
             member['user__first_name'],
             member['user__last_name'],
-            member['user__profile_picture']
+            member['user__profile_picture'],
+            member['job_title']
         )
         res['data'].append(tmp_member)
 
