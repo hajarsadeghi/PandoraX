@@ -6,6 +6,8 @@ class BadgeLog(models.Model):
     to_user = models.ForeignKey('user.User', on_delete=models.CASCADE, related_name='received_badge')
     badge = models.ForeignKey('badge.Badge', on_delete=models.CASCADE)
     space = models.ForeignKey('space.Space', on_delete=models.CASCADE)
+    transaction = models.ForeignKey('transaction.Transaction', on_delete=models.CASCADE, null=True, blank=True)
+    point_amount = models.PositiveIntegerField()
     point_transferred = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
 
@@ -17,12 +19,13 @@ class BadgeLog(models.Model):
             space=self.space,
             source_user=self.from_user,
             dest_user=self.to_user,
-            total_point_amount=self.badge.point_amount
+            total_point_amount=self.point_amount
         )
         transaction.refresh_from_db()
         applied = transaction.apply()
         if applied:
             self.point_transferred = True
-            self.save(update_fields=['point_transferred'])
+            self.transaction = transaction
+            self.save(update_fields=['point_transferred', 'transaction'])
             return True
         return False

@@ -54,6 +54,7 @@ class Activity(View):
             'comments_count',
 
             'recognition__id',
+            'recognition__point_amount',
             'recognition__to_user__first_name',
             'recognition__to_user__last_name',
             'recognition__to_user__id',
@@ -62,7 +63,6 @@ class Activity(View):
 
             'recognition__badge__id',
             'recognition__badge__name',
-            'recognition__badge__point_amount',
             'recognition__badge__icon__image'
         ).order_by('-id')
 
@@ -118,7 +118,7 @@ class Activity(View):
                     'badge': {
                         'id': activity['recognition__badge__id'],
                         'name': activity['recognition__badge__name'],
-                        'point_amount': activity['recognition__badge__point_amount'],
+                        'point_amount': activity['recognition__point_amount'],
                         'icon': get_media_url(activity['recognition__badge__icon__image']),
                     }
                 }
@@ -149,6 +149,7 @@ class Activity(View):
             recognition_obj.from_user = request.user
             recognition_obj.to_user = activity_recognition['user']
             recognition_obj.badge = activity_recognition['badge']
+            recognition_obj.point_amount = activity_recognition['badge'].point_amount
             recognition_obj.space = request.space
 
 

@@ -14,7 +14,7 @@ import json
 @method_decorator(get_space, name='dispatch')
 class Badge(View):
     def get(self, request):
-        badges = BadgeModel.objects.filter(space=request.space).values('id', 'name', 'creator__id', 'creator__first_name', 'creator__last_name', 'creator__id', 'point_amount', 'description', 'icon__image', 'active', 'created_date')
+        badges = BadgeModel.objects.filter(space=request.space, active=True).values('id', 'name', 'creator__id', 'creator__first_name', 'creator__last_name', 'creator__id', 'point_amount', 'description', 'icon__image', 'active', 'created_date')
         user_total_point_amount = Wallet.objects.filter(space=request.space, user=request.user).aggregate(total_point_amount=Sum('point_amount'))['total_point_amount']
         user_total_point_amount = user_total_point_amount if user_total_point_amount else 0
         resp = []
