@@ -6,7 +6,7 @@ from space.models import Member
 from badge.models import Badge, BadgeLog
 from activity.models import Activity as ActivityModel, Media
 from decorators import is_authenticated, get_space
-from django.db.models import Count, Q
+from django.db.models import Count, Q, OuterRef, Subquery
 from django.core.paginator import Paginator, InvalidPage
 from utils import get_media_url, user_serializer
 from asgiref.sync import async_to_sync
@@ -31,16 +31,21 @@ class Activity(View):
             return JsonResponse({"message": "bad params"}, status=400)
         res = {}
         res['data'] = []
+        creator_info = Member.objects.filter(space_id=OuterRef('space_id'), user_id=OuterRef('creator_id')).values('job_title')
+        recognition_user_info = Member.objects.filter(space_id=OuterRef('space_id'), user_id=OuterRef('recognition__to_user__id')).values('job_title')
         queryset = ActivityModel.objects.filter(space=request.space).annotate(
             likes_count=Count('likes', distinct=True),
             is_liked=Count('likes', distinct=True, filter=Q(likes__id=request.user.id)),
-            comments_count=Count('comment', distinct=True, filter=Q(comment__parent__isnull=True))
+            comments_count=Count('comment', distinct=True, filter=Q(comment__parent__isnull=True)),
+            creator__job_title=Subquery(creator_info),
+            recognition__to_user__job_title=Subquery(recognition_user_info)
         ).values(
             'id',
             'creator__id',
             'creator__first_name',
             'creator__last_name',
             'creator__profile_picture',
+            'creator__job_title',
 
             'text',
             'timestamp',
@@ -53,6 +58,7 @@ class Activity(View):
             'recognition__to_user__last_name',
             'recognition__to_user__id',
             'recognition__to_user__profile_picture',
+            'recognition__to_user__job_title',
 
             'recognition__badge__id',
             'recognition__badge__name',
@@ -88,6 +94,7 @@ class Activity(View):
                     activity['creator__first_name'],
                     activity['creator__last_name'],
                     activity['creator__profile_picture'],
+                    activity['creator__job_title'],
                 ),
                 'text': activity['text'],
                 'timestamp': timezone.localtime(activity['timestamp']).isoformat(),
@@ -106,6 +113,7 @@ class Activity(View):
                         activity['recognition__to_user__first_name'],
                         activity['recognition__to_user__last_name'],
                         activity['recognition__to_user__profile_picture'],
+                        activity['recognition__to_user__job_title'],
                     ),
                     'badge': {
                         'id': activity['recognition__badge__id'],

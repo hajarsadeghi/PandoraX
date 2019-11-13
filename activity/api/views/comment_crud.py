@@ -1,10 +1,11 @@
 from django.views import View
 from django.utils.decorators import method_decorator
 from activity.models import Activity, Comment as CommentModel
+from space.models import Member
 from decorators import is_authenticated, get_space
 from django.core.paginator import Paginator, InvalidPage
 from utils import user_serializer
-from django.db.models import Q, Count
+from django.db.models import Q, Count, OuterRef, Subquery
 from django.http import JsonResponse
 from django.utils import timezone
 import json
@@ -35,16 +36,19 @@ class Comment(View):
         res = {}
         res['data'] = []
 
+        user_info = Member.objects.filter(space_id=OuterRef('space_id'), user_id=OuterRef('user_id')).values('job_title')
         queryset = CommentModel.objects.filter(activity=activity, parent=parent).annotate(
             reply_count=Count('reply_set', distinct=True)).annotate(
             likes_count=Count('likes', distinct=True)).annotate(
-            is_liked=Count('likes', distinct=True, filter=Q(likes__id=request.user.id))
+            is_liked=Count('likes', distinct=True, filter=Q(likes__id=request.user.id)),
+            user__job_title=Subquery(user_info)
         ).values(
             'id',
             'user__id',
             'user__first_name',
             'user__last_name',
             'user__profile_picture',
+            'user__job_title',
 
             'text',
             'timestamp',
@@ -72,6 +76,7 @@ class Comment(View):
                     comment['user__first_name'],
                     comment['user__last_name'],
                     comment['user__profile_picture'],
+                    comment['user__job_title'],
                 ),
                 'text': comment['text'],
                 'timestamp': timezone.localtime(comment['timestamp']).isoformat(),

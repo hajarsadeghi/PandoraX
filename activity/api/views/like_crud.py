@@ -2,10 +2,11 @@ from django.views import View
 from django.utils.decorators import method_decorator
 from django.http import JsonResponse
 from django.apps import apps
-from django.db.models import Q
+from django.db.models import Q, OuterRef, Subquery
 from decorators import is_authenticated, get_space
 from django.core.paginator import Paginator, InvalidPage
 from django.db.models import ObjectDoesNotExist
+from space.models import Member
 from utils import user_serializer
 import json
 
@@ -37,7 +38,8 @@ class Like(View):
         res['data'] = []
         res['object_id'] = object.id
 
-        queryset = object.likes.values('id', 'first_name', 'last_name', 'profile_picture')
+        user_info = Member.objects.filter(space_id=request.space, user_id=OuterRef('id')).values('job_title')
+        queryset = object.likes.annotate(job_title=Subquery(user_info)).values('id', 'first_name', 'last_name', 'profile_picture', 'job_title')
         res['total_count'] = queryset.count()
 
         if pagin:
@@ -56,6 +58,7 @@ class Like(View):
                     like['first_name'],
                     like['last_name'],
                     like['profile_picture'],
+                    like['job_title'],
             )
             res['data'].append(tmp_like)
         return JsonResponse(res, status=200)
