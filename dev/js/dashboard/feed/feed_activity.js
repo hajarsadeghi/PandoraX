@@ -67,12 +67,12 @@ $(document).ready(function() {
     // ... Web Socket 
     var feedWebSocket = new WebSocket('ws://localhost/ws/feed/'+ space_slug +'/');
     feedWebSocket.onmessage = function(event) {
-        // ... update leaderboard
-        getLeaderboard((status, response) => {
-            status ? topRecords(response) : null;
-        })
         setTimeout(function() {
-            if (JSON.parse(event.data).type === 'new_activity' && JSON.parse(event.data).data.id !== $('.feed-activity').find('.feed:first-child').attr('feed-id')) {
+            if (JSON.parse(event.data).type === 'new_activity' && Number(JSON.parse(event.data).data.id) !== Number($('.feed-activity').find('.feed:first-child').attr('feed-id'))) {
+                // ... update leaderboard
+                getLeaderboard((status, response) => {
+                    status ? topRecords(response) : null;
+                })
                 if ($(window).scrollTop() > $(window).height()) {
                     $('.feed-web-socket').removeClass('d-none');
                 }

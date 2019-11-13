@@ -45,7 +45,8 @@
           post_placeholder = "{% trans 'Whats on your mind today? :)' %}",
           assets_path = "{% static 'css/lib/emojiarea/img' %}",
           write_cmt_placeholder = "{% trans 'Write a comment...' %}",
-          load_more_src = "{% static 'image/load_more_comments.gif' %}"
+          load_more_src = "{% static 'image/load_more_comments.gif' %}",
+          crown_img = "{% static 'image/crown.png' %}";
 
     let user_profile = {
       url: "{% url 'frontview:dashboard:profile' space.slug request.user.id %}"

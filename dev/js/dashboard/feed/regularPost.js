@@ -46,6 +46,7 @@ export function resetRegularPost() {
     $('.regular-post-content').text('');
     $('#postUpload').find('.dropzone').removeClass('dz-started');
     $('#postUpload').find('.dz-preview').remove();
+    $('#postUpload').collapse('hide');
     hideTintedBackdrop();
 }
 

@@ -17,7 +17,7 @@ export const usersList = (list, callback) => {
                                 '<a href="'+ li.url +'">' +
                                     '<span class="mb-0 text-sm font-weight-bold">' + li.full_name + '</span>' +
                                 '</a>' +
-                                '<small class="text-muted d-block">Front-End develoer</small>' +
+                                '<small class="text-muted d-block">'+ li.job_title +'</small>' +
                             '</div>' +
                         '</div>' +
                     '</div>' +
