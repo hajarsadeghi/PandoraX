@@ -123,7 +123,7 @@ export const showFeed = (feed) => {
                                     '</span>' +
                                 '</div>' +
                                 '<div class="col text-right">' +
-                                    '<small class="small-link open-cmts" data-toggle="tooltip" data-html="true" title="">' +
+                                    '<small class="small-link cmt-count open-cmts" data-toggle="tooltip" data-html="true" title="">' +
                                         feed[i].comments_count + ' comments' +
                                    '</small>' +
                                 '</div>' +

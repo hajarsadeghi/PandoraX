@@ -5,13 +5,14 @@ import { comments, replies, initializeEmoji } from './feed';
 
 $(document).ready(function() {
     // ... comment and reply
-    $(document).on('keyup change', '.comment-content', function(e) {
+    $(document).on('keydown change', '.comment-content', function(e) {
         let $this = $(this),
             activityId = $this.closest('.feed').attr('feed-id'),
             elemId = $($this.siblings('textarea.comment-content')).attr('id'),
             text = $($('#' + elemId)[0]).siblings('div.textarea-control').text();
             // console.log($($('#' + $id)[0]).siblings('div.textarea-control').html().replace(/<\/div>/g,"\n"))
-        if (e.code === 'Enter') {
+        if (e.code === 'Enter' && !e.shiftKey) {
+            e.preventDefault()
             postComment(
                 activityId,
                 {
@@ -29,6 +30,7 @@ $(document).ready(function() {
                                 comments(response.data, user_profile, activityId, () => {
                                     initializeEmoji();
                                 })
+                                $this.closest('.likes-and-comments').find('.cmt-count').text(response.total_count + ' comments')
                             }
                         })
                 }
