@@ -19,6 +19,13 @@ $(document).ready(function() {
             $('.feed-activity').html('');
             showFeed(response.data);
             $('.like-link').bind('click', event => toggleLikeAction(event))
+            new Readmore('.post-context', {
+                speed: 75,
+                collapsedHeight: 100,
+                startOpen: false,
+                lessLink: '<a class="px-3 py-2 text-muted" href="#">Read less</a>',
+                moreLink: '<a class="px-3 py-2 text-muted" href="#">Read more</a>'
+            });
         }
     })
   

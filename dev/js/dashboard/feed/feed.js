@@ -100,9 +100,7 @@ export const showFeed = (feed) => {
                         '</div>' +
                     '</div>' +
                     '<div class="card-text"> ' +
-                        '<div class="post-context px-3">' +
-                            '<p>' + feed[i].text + '</p>' +
-                        '</div>' +
+                        '<div class="post-context px-3">' + feed[i].text + '</div>' +
                         recognition +
                         '<div class="likes-and-comments">' +
                             '<div class="row border-bottom mx-3 py-2">' +
