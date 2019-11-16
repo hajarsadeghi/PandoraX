@@ -1,6 +1,11 @@
 @import "./../../utilities/variables";
 @import "./../../utilities/mixins";
 
+
+.navbar.navbar-top {
+    background: linear-gradient(87deg,#5e72e4,#825ee4)!important
+}
+
 button.standard-btn {
     background-color: $main-red-color;
     color: $white;
