@@ -277,7 +277,7 @@ function getUsersList(users) {
                         '</span> ' +
                         '<div class="media-body ml-2">' +
                             '<span class="username mb-0 text-sm font-weight-bold">'+ users[i].full_name +'</span> ' +
-                            '<small class="occupation text-muted d-block">Developer</small>' +
+                            '<small class="occupation text-muted d-block">'+ users[i].job_title +'</small>' +
                         '</div>' +
                     '</div>' +
                 '</div>' +

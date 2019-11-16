@@ -60,7 +60,7 @@ function cardBoards(index, user) {
                                             '<a href="'+ user.url +'">' +
                                                 user.full_name +
                                             '</a>' +
-                                            '<small class="d-block">'+ user.jobj_title +'</small>' +
+                                            '<small class="d-block">'+ user.job_title +'</small>' +
                                         '</div>' +
                                     '</div>' +
                                     '<div>' +
