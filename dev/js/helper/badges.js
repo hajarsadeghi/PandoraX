@@ -36,7 +36,7 @@ export const load_badges = (is_admin, badges) => {
                         '</div>' +
                         '<div class="down-details">' +
                             '<i class="material-icons text-light text-sm">event</i>' +
-                            '<span class="text-muted text-sm text-white">'+ badges[i].created_date +'</span>' +
+                            '<span class="text-muted text-sm text-white">'+ moment(badges[i].created_date).format("ddd, MMM Do YYYY, h:mm:ss a") +'</span>' +
                         '</div>' +
                     '</span>' +
                 '</div>' +
