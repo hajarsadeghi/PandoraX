@@ -31,8 +31,8 @@ class Activity(View):
             return JsonResponse({"message": "bad params"}, status=400)
         res = {}
         res['data'] = []
-        creator_info = Member.objects.filter(space_id=OuterRef('space_id'), user_id=OuterRef('creator_id')).values('job_title')
-        recognition_user_info = Member.objects.filter(space_id=OuterRef('space_id'), user_id=OuterRef('recognition__to_user__id')).values('job_title')
+        creator_info = Member.objects.filter(space_id=request.space.id, user_id=OuterRef('creator_id')).values('job_title')
+        recognition_user_info = Member.objects.filter(space_id=request.space.id, user_id=OuterRef('recognition__to_user__id')).values('job_title')
         queryset = ActivityModel.objects.filter(space=request.space).annotate(
             likes_count=Count('likes', distinct=True),
             is_liked=Count('likes', distinct=True, filter=Q(likes__id=request.user.id)),

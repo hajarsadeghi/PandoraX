@@ -36,7 +36,7 @@ class Comment(View):
         res = {}
         res['data'] = []
 
-        user_info = Member.objects.filter(space_id=OuterRef('space_id'), user_id=OuterRef('user_id')).values('job_title')
+        user_info = Member.objects.filter(space_id=request.space.id, user_id=OuterRef('user_id')).values('job_title')
         queryset = CommentModel.objects.filter(activity=activity, parent=parent).annotate(
             reply_count=Count('reply_set', distinct=True)).annotate(
             likes_count=Count('likes', distinct=True)).annotate(
