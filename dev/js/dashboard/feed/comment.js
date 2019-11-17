@@ -26,17 +26,7 @@ $(document).ready(function() {
                         showReplies($this)            
                     }
                     else {
-                        viewComment(
-                            '/api/activity/'+ activityId +'/comment/',
-                            (status, response) => {
-                            if (status) {
-                                $('#commentsContainer_' + activityId).find('.cmts-container').html('')
-                                $this.closest('.likes-and-comments').find('.cmt-count').text(response.total_count + ' comments')
-                                comments(response.data, user_profile, activityId, () => {
-                                    initializeEmoji();
-                                })
-                            }
-                        })
+                        showComments($this);
                     }
                 }
             })
@@ -61,8 +51,12 @@ $(document).ready(function() {
                             initializeEmoji();
                             $this.closest('.likes-and-comments').find('.view-more-comments-link').attr('max-comments', response.max_page)
                             if (response.max_page <= 1) {
-                                $this.closest('.likes-and-comments').find('.view-more-comments').removeClass('d-flex')
-                                $this.closest('.likes-and-comments').find('.view-more-comments').addClass('d-none')   
+                                $this.closest('.likes-and-comments').find('.cmts-load-more').removeClass('d-flex')
+                                $this.closest('.likes-and-comments').find('.cmts-load-more').addClass('d-none')   
+                            }
+                            else {
+                                $this.closest('.likes-and-comments').find('.cmts-load-more').removeClass('d-none')
+                                $this.closest('.likes-and-comments').find('.cmts-load-more').addClass('d-flex')  
                             }
                             $collapseElem.collapse('show');
                         })
@@ -118,6 +112,7 @@ $(document).ready(function() {
     })
     // ... load more comments & replies
     $(document).on('click', '.view-more-comments-link', function() {
+        console.log('link clicked')
         let $this = $(this),
             activityId = $this.closest('.feed').attr('feed-id'),
             pagin = $this.attr('pagin'),
@@ -129,7 +124,15 @@ $(document).ready(function() {
             }
             $this.hasClass('view-more-replies-link') ? comment_obj.parent_id = $this.closest('.comment-row').attr('comment-id') : null;
 
-        if (pagin < max_comments) {
+            console.log(Number(pagin),'===pagin')
+            console.log(Number(max_comments),'====max comments')
+
+        if (Number(max_comments) === Number(pagin)) {
+            console.log('hi')
+            $this.closest('.view-more-comments').removeClass('d-flex')
+            $this.closest('.view-more-comments').addClass('d-none') 
+        }
+        if (Number(pagin) < Number(max_comments)) {
             $this.closest('.view-more-comments').find('img').removeClass('invisible');
             viewComment(
                 '/api/activity/'+ activityId +'/comment/?' + $.param(comment_obj),
@@ -143,17 +146,36 @@ $(document).ready(function() {
                             initializeEmoji();
                         });
 
-                        if (response.max_page == $this.attr('pagin')) {
-                            $this.closest('.view-more-comments').removeClass('d-flex')
-                            $this.closest('.view-more-comments').addClass('d-none') 
-                        }
-                        
-
                         $this.closest('.view-more-comments').find('img').addClass('invisible');
                     }
                 })   
         }
     })
+    // ... call comments 
+    function showComments($this) {
+        let activityId = $this.closest('.feed').attr('feed-id');
+        viewComment(
+            '/api/activity/'+ activityId +'/comment/?' + $.param({
+                pagin: true,
+                data_limit: 3,
+                page: 1
+            }),
+            (status, response) => {
+            if (status) {
+                $('#commentsContainer_' + activityId).find('.cmts-container').html('')
+                $this.closest('.likes-and-comments').find('.cmt-count').text(response.total_count + ' comments')
+                comments(response.data, user_profile, activityId, () => {
+                    initializeEmoji();
+                })
+                if (response.max_page > $this.closest('.likes-and-comments').find('.view-more-comments-link').attr('pagin')) {
+                    $this.closest('.likes-and-comments').find('.cmts-load-more').removeClass('d-none')
+                    $this.closest('.likes-and-comments').find('.cmts-load-more').addClass('d-flex') 
+                }
+                $this.closest('.likes-and-comments').find('.view-more-comments-link').attr('pagin', 1)
+            }
+        })
+    }
+
     // ... call replies
     function showReplies($this) {
         let activityId = $this.closest('.feed').attr('feed-id'),

@@ -159,7 +159,7 @@ export const showFeed = (feed) => {
                                     // comments(feed[i], profile, feed[i].id) +
                                 '</div>' +
                                 '<hr class="m-0" />' +
-                                '<div class="d-flex view-more-comments align-items-center px-3">' +
+                                '<div class="d-flex view-more-comments cmts-load-more align-items-center px-3">' +
                                     '<div>' +
                                         '<span class="cmt-links view-more-comments-link" pagin="1" max-comments="1">View more comments</span>' +
                                     '</div>' +

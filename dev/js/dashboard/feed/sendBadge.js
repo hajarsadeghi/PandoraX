@@ -304,5 +304,6 @@ export function resetRecognitionPost() {
     $('.selected-badge-container,.post-recognition').addClass('d-none');
     $('.use-badge-section').removeClass('d-none');
     $('#recognitionModal').find('.recognized-person').addClass('d-none');
+    $('#recognitionModal').find('#giveBadge .card-stats').removeClass('selected-badge-border');
     hideTintedBackdrop();
 }
