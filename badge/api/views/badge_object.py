@@ -32,8 +32,10 @@ class BadgeObject(View):
             return JsonResponse({"message": "badge not found"}, safe=False, status=400)
         except (KeyError, ValueError, TypeError):
             return JsonResponse({"message": "bad json"}, status=400)
-        badge.save(update_fields=update_fields)
-        return JsonResponse({'message': 'updated'}, safe=False, status=200)
+        if update_fields:
+            badge.save(update_fields=update_fields)
+            return JsonResponse({'message': 'updated'}, safe=False, status=200)
+        return JsonResponse({}, safe=False, status=204)
 
 
     def delete(self, request, badge_id):
@@ -43,4 +45,4 @@ class BadgeObject(View):
             return JsonResponse({"message": "badge not found"}, safe=False, status=400)
         badge.active = False
         badge.save(update_fields=['active'])
-        return JsonResponse(tmp_badge, status=201)
+        return JsonResponse({'message':'deleted'}, status=200)
