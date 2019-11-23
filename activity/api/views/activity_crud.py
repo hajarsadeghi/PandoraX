@@ -22,6 +22,9 @@ channel_layer = get_channel_layer()
 class Activity(View):
     def get(self, request):
         try:
+            creator = request.GET.get('creator_id', None)
+            if creator:
+                creator = Member.objects.get(user_id=int(creator), space=request.space).user
             pagin = json.loads(request.GET.get('pagin', 'false'))
             if pagin:
                 pagin = {}
@@ -29,11 +32,18 @@ class Activity(View):
                 pagin['page'] = int(request.GET['page'])
         except (KeyError, ValueError, TypeError):
             return JsonResponse({"message": "bad params"}, status=400)
+        except Member.DoesNotExist:
+            return JsonResponse({"message": "creator does not exists"}, status=400)
+
         res = {}
         res['data'] = []
         creator_info = Member.objects.filter(space_id=request.space.id, user_id=OuterRef('creator_id')).values('job_title')
         recognition_user_info = Member.objects.filter(space_id=request.space.id, user_id=OuterRef('recognition__to_user__id')).values('job_title')
-        queryset = ActivityModel.objects.filter(space=request.space).annotate(
+        filters = Q(space=request.space)
+        if creator:
+            filter = filter & Q(creator=creator)
+
+        queryset = ActivityModel.objects.filter(filter).annotate(
             likes_count=Count('likes', distinct=True),
             is_liked=Count('likes', distinct=True, filter=Q(likes__id=request.user.id)),
             comments_count=Count('comment', distinct=True, filter=Q(comment__parent__isnull=True)),
