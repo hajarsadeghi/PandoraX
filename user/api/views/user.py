@@ -11,12 +11,22 @@ import json
 @method_decorator(get_space, name='dispatch')
 class User(View):
     def get(self, request):
+        sort_map = {
+            'status': 'active',
+            'earned_point_amount': 'earned_point_amount',
+            'budget_point_amount': 'budget_point_amount',
+        }
+        try:
+            sort_key = request.GET.get('sort', '')
+            sort_key = f"{'-' if (sort_key.replace('-', '') in sort_map and sort_key.find('-') == 0) else ''}{sort_map.get(sort_key.replace('-', ''), '-id')}"
+        except (KeyError, ValueError, TypeError):
+            return JsonResponse({"message": "bad params"}, status=400)
         res = {}
         queryset = request.space.member_set.all().annotate(
             earned_point_amount=Sum('user__wallet__point_amount', filter=Q(user__wallet__space=request.space, user__wallet__type=Wallet.EARNED_TYPE), distict=True),
             budget_point_amoun=Sum('user__wallet__point_amount', filter=Q(user__wallet__space=request.space, user__wallet__type=Wallet.BUDGET_TYPE), distict=True),
         )
-        queryset = queryset.values('user__id','user__first_name', 'user__last_name', 'user__profile_picture', 'job_title', 'active', 'user__email', 'earned_point_amount', 'budget_point_amount')
+        queryset = queryset.values('user__id','user__first_name', 'user__last_name', 'user__profile_picture', 'job_title', 'active', 'user__email', 'earned_point_amount', 'budget_point_amount').order_by(sort_key)
 
         res['data'] = []
         for member in queryset:
