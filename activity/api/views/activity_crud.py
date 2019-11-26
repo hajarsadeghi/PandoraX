@@ -39,11 +39,11 @@ class Activity(View):
         res['data'] = []
         creator_info = Member.objects.filter(space_id=request.space.id, user_id=OuterRef('creator_id')).values('job_title')
         recognition_user_info = Member.objects.filter(space_id=request.space.id, user_id=OuterRef('recognition__to_user__id')).values('job_title')
-        filters = Q(space=request.space)
+        filters = [Q(space=request.space)]
         if creator:
-            filter = filter & Q(creator=creator)
+            filters.append(Q(creator=creator))
 
-        queryset = ActivityModel.objects.filter(filter).annotate(
+        queryset = ActivityModel.objects.filter(*filters).annotate(
             likes_count=Count('likes', distinct=True),
             is_liked=Count('likes', distinct=True, filter=Q(likes__id=request.user.id)),
             comments_count=Count('comment', distinct=True, filter=Q(comment__parent__isnull=True)),
