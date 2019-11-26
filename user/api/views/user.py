@@ -2,7 +2,8 @@ from django.views import View
 from django.http import JsonResponse
 from decorators import is_authenticated, get_space
 from django.utils.decorators import method_decorator
-from django.db.models import Q, Sum, Concat, V
+from django.db.models.functions import Concat
+from django.db.models import Q, Sum, Value as V
 from utils import user_serializer
 import json
 
@@ -22,6 +23,7 @@ class User(View):
             sort_key = f"{'-' if (sort_key.replace('-', '') in sort_map and sort_key.find('-') == 0) else ''}{sort_map.get(sort_key.replace('-', ''), '-id')}"
             search_email = request.GET.get('email')
             search_full_name = request.GET.get('full_name')
+            status_filter = request.GET.get('status')
         except (KeyError, ValueError, TypeError):
             return JsonResponse({"message": "bad params"}, status=400)
 
@@ -37,7 +39,8 @@ class User(View):
             filters.append(Q(user__full_name__istartswith=search_full_name) | Q(user__last_name__istartswith=search_full_name))
         if search_email:
             filters.append(Q(user__email__istartswith=search_email))
-
+        if status_filter:
+            filters.append(Q(active=True if status_filter == 'active' else False))
         queryset = request.space.member_set.annotate(**annotates)
 
         if filters:
