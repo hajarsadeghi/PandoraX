@@ -4,6 +4,7 @@ from decorators import is_authenticated, get_space
 from django.utils.decorators import method_decorator
 from django.db.models.functions import Concat
 from django.db.models import Q, Sum, Value as V
+from django.core.paginator import Paginator, InvalidPage
 from utils import user_serializer
 import json
 
@@ -19,6 +20,11 @@ class User(View):
         }
 
         try:
+            pagin = json.loads(request.GET.get('pagin', 'false'))
+            if pagin:
+                pagin = {}
+                pagin['data_limit'] = int(request.GET['data_limit'])
+                pagin['page'] = int(request.GET['page'])
             sort_key = request.GET.get('sort', '')
             sort_key = f"{'-' if (sort_key.replace('-', '') in sort_map and sort_key.find('-') == 0) else ''}{sort_map.get(sort_key.replace('-', ''), '-id')}"
             search_email = request.GET.get('email')
@@ -57,6 +63,17 @@ class User(View):
             'earned_point_amount',
             'budget_point_amount'
         ).order_by(sort_key).distinct()
+
+        if pagin:
+            paginator = Paginator(queryset, pagin['data_limit'])
+            res['max_page'] = paginator.num_pages
+            try:
+                queryset = paginator.page(pagin['page'])
+            except InvalidPage:
+                queryset = []
+            res['data_limit'] = pagin['data_limit']
+            res['page'] = pagin['page']
+            res['total_count'] = paginator.count
 
         res['data'] = []
         for member in queryset:
