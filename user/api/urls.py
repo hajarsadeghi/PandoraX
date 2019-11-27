@@ -16,6 +16,7 @@ login_urls = [
 
 urlpatterns = [
     path('', views.User.as_view(), name='crud'),
+    path('toggle_active', views.user_toggle_active, name='toggle_active'),
     path('<int:user_id>/', include((user_urls, 'user'), namespace='user_object')),
     path('oauth/', include(('social_django.urls', 'user'), namespace='oauth')),
     path('login/', include((login_urls, 'user'), namespace='login')),
