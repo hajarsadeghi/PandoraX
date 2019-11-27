@@ -27,6 +27,7 @@ api_urls = [
     path('badge/', include(('badge.api.urls', 'django'), namespace='badge')),
     path('activity/', include(('activity.api.urls', 'django'), namespace='activity')),
     path('transaction/', include(('transaction.api.urls', 'django'), namespace='transaction')),
+    path('team/', include(('team.api.urls', 'django'), namespace='team')),
 ]
 
 urlpatterns = [
