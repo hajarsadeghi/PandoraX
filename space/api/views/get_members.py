@@ -25,9 +25,9 @@ def get_members(request):
     except (KeyError, ValueError, TypeError):
         return JsonResponse({"message": "bad params"}, status=400)
     res = {}
-    queryset = request.space.member_set.all()
+    queryset = request.space.member_set.filter(active=True)
     if search:
-        queryset = queryset.annotate(user__full_name=Concat('user__first_name', V(' '), 'user__last_name')).filter(Q(user__first_name__istartswith=search) | Q(user__last_name__istartswith=search) | Q(user__full_name__istartswith=search)).distinct()
+        queryset = queryset.annotate(user__full_name=Concat('user__first_name', V(' '), 'user__last_name')).filter(Q(user__full_name__istartswith=search) | Q(user__last_name__istartswith=search)).distinct()
     if exclude_myself:
         queryset = queryset.exclude(user__id=request.user.id)
     queryset = queryset.values('user__id','user__first_name', 'user__last_name', 'user__profile_picture', 'job_title')
