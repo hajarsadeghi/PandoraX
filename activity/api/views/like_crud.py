@@ -14,8 +14,6 @@ import json
 @method_decorator(is_authenticated, name='dispatch')
 @method_decorator(get_space, name='dispatch')
 class Like(View):
-    object_model = 'activity.Activity'
-
     def get(self, request, object_id, object_model, space_validator):
         ObjectModel = apps.get_model(object_model)
         query_kwargs = {
