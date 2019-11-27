@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'budget',
     'badge',
     'activity',
+    'team',
 ]
 
 MIDDLEWARE = [
