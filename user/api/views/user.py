@@ -6,6 +6,7 @@ from django.db.models.functions import Concat
 from django.db.models import Q, Sum, Value as V
 from django.core.paginator import Paginator, InvalidPage
 from utils import user_serializer
+from datetime import date
 import json
 
 
@@ -92,3 +93,38 @@ class User(View):
             res['data'].append(tmp_member)
 
         return JsonResponse(res, status=200, safe=False)
+
+    def post(self, request):
+        "create user"
+        try:
+            request_json = json.loads(request.body)
+            email = request_json['email']
+            first_name = request_json.get('first_name')
+            last_name = request_json.get('last_name')
+            job_title = request_json.get('job_title')
+            birth_date = request_json.get('birth_date')
+            if birth_date: birth_date = date.strptime(birth_date, '%Y/%m/%d').date()
+            teams = request_json.get('teams', [])
+        except (KeyError, ValueError, TypeError):
+            return JsonResponse({"message": "bad request"}, status=400)
+
+        if Member.objects.filter(user__email__iexact=email, space=request.space).exists():
+            return JsonResponse({"message": "this user alreaady exists in this space"}, status=400)
+
+        user = User.objects.get_or_create(defaults={
+            'email':email,
+            'username':email,
+            'first_name':first_name,
+            'last_name':last_name,
+            'birth_date': birth_date
+        }, email__iexact=email)[0]
+        member = Member.objects.create(user=user, space=request.space, job_title=job_title)
+        Wallet.objects.create(user=user, space=request.space, type=Wallet.EARNED_TYPE)
+
+        team_member_through_model = Team.members.through
+        if teams:
+            teams = Team.objects.filter(id__in=teams).values_list('id', flat=True)
+            team_objs = [team_member_through_model(member_id=member.id, team_id=team_id) for team_id in teams]
+            if team_objs:
+                team_member_through_model.objects.bulk_create(team_objs)
+        return JsonResponse({'id': user.id}, status=201)
