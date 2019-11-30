@@ -19,8 +19,11 @@ class UserObject(View):
                 'user__first_name',
                 'user__last_name',
                 'user__profile_picture',
+                'bio',
+                'birth_date',
                 'job_title',
                 'active',
+                'joined_date'
                 'user__email',
             ).get(user_id=user_id, space=request.space)
         except Member.DoesNotExist:
