@@ -17,7 +17,7 @@ class Team(View):
             team_name = request_json['name']
             team_members = request_json['members']
             if team_members:
-                team_members = Member.objects.filter(id__in=team_members, space=request.space, active=True).values_list('user_id', flat=True)
+                team_members = Member.objects.filter(id__in=team_members, space=request.space, active=True).values_list('id', flat=True)
             team_lead = request_json.get('team_lead_id')
             if team_lead:
                 team_lead = Member.objects.get(user_id=team_lead, space=request.space, active=True).user
