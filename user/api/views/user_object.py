@@ -5,6 +5,7 @@ from django.utils.decorators import method_decorator
 from space.models import Member
 from team.models import Team
 from utils import user_serializer
+from django.utils import timezone
 import json
 
 
@@ -19,12 +20,12 @@ class UserObject(View):
                 'user__first_name',
                 'user__last_name',
                 'user__profile_picture',
-                'bio',
-                'birth_date',
+                'user__bio',
+                'user__birth_date',
+                'user__email',
                 'job_title',
                 'active',
                 'joined_date'
-                'user__email',
             ).get(user_id=user_id, space=request.space)
         except Member.DoesNotExist:
             return JsonResponse({"message": "user does not exists"}, status=400)
@@ -40,5 +41,8 @@ class UserObject(View):
         )
         res['status'] = 'active' if user['active'] else 'deactive'
         res['email'] = user['user__email']
+        res['birth_date'] = timezone.localtime(user['user__birth_date']).isoformat()
+        res['joined_date'] = timezone.localtime(user['joined_date']).isoformat()
+        res['bio'] = user['user__bio']
         res['teams'] = teams
         return JsonResponse(res, status=200)
