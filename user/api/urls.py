@@ -7,6 +7,7 @@ login_otp_urls = [
 ]
 
 user_urls = [
+    path('', views.UserObject.as_view(), name='detail'),
     path('received_badges/', views.received_badges, name='received_badges'),
 ]
 
