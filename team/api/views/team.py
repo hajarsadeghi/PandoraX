@@ -13,11 +13,27 @@ import json
 @method_decorator(get_space, name='dispatch')
 class Team(View):
     def get(self, request):
+        try:
+            search_name = request.GET.get('name')
+            search_team_leader = request.GET.get('team_leader')
+            filter_active = json.loads(request.GET.get('active', 'false'))
+        except (KeyError, ValueError, TypeError):
+            return JsonResponse({"message": "bad params"}, status=400)
+
         res = {}
         filters = [Q(space=request.space)]
         annotates = {
             'members_count' : Count('members', distict=True),
         }
+
+        if search_name:
+            filters.append(Q(name__icontains=search_name))
+        if search_team_leader:
+            annotates['team_leader__full_name'] = Concat('team_leader__first_name', V(' '), 'team_leader__last_name')
+            filters.append(Q(team_leader__full_name__istartswith=search_team_leader) | Q(team_leader__last_name__istartswith=search_team_leader))
+        if filter_active:
+            filters.append(Q(active=filter_active))
+
         queryset = TeamModel.objects.annotate(**annotates)
 
         if filters:
