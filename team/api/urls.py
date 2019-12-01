@@ -2,6 +2,7 @@ from django.urls import path, include
 from team.api import views
 
 team_urls = [
+    path('', views.TeamObject.as_view(), name='detail'),
     path('members/', views.team_members, name='members'),
 ]
 
