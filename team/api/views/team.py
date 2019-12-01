@@ -4,7 +4,8 @@ from decorators import is_authenticated, get_space
 from django.utils.decorators import method_decorator
 from team.models import Team as TeamModel
 from space.models import Member
-from django.db.models import Q, Count
+from django.db.models import Q, Count, Value as V
+from django.core.paginator import Paginator, InvalidPage
 from utils import user_serializer
 import json
 
@@ -19,6 +20,11 @@ class Team(View):
             'members_count': 'members_count',
         }
         try:
+            pagin = json.loads(request.GET.get('pagin', 'false'))
+            if pagin:
+                pagin = {}
+                pagin['data_limit'] = int(request.GET['data_limit'])
+                pagin['page'] = int(request.GET['page'])
             search_name = request.GET.get('name')
             search_team_leader = request.GET.get('team_leader')
             filter_active = json.loads(request.GET.get('active', 'false'))
@@ -56,6 +62,17 @@ class Team(View):
             'team_lead__last_name',
             'team_lead__profile_picture',
         ).order_by(sort_key).distict()
+
+        if pagin:
+            paginator = Paginator(queryset, pagin['data_limit'])
+            res['max_page'] = paginator.num_pages
+            try:
+                queryset = paginator.page(pagin['page'])
+            except InvalidPage:
+                queryset = []
+            res['data_limit'] = pagin['data_limit']
+            res['page'] = pagin['page']
+            res['total_count'] = paginator.count
 
         res['data'] = []
         for team in queryset:
