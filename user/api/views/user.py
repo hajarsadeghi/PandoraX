@@ -123,7 +123,7 @@ class User(View):
 
         team_member_through_model = Team.members.through
         if teams:
-            teams = Team.objects.filter(id__in=teams).values_list('id', flat=True)
+            teams = Team.objects.filter(id__in=teams, space=request.space, active=True).values_list('id', flat=True)
             team_objs = [team_member_through_model(member_id=member.id, team_id=team_id) for team_id in teams]
             if team_objs:
                 team_member_through_model.objects.bulk_create(team_objs)
