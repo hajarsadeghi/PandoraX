@@ -13,10 +13,17 @@ import json
 @method_decorator(get_space, name='dispatch')
 class Team(View):
     def get(self, request):
+        sort_map = {
+            'active': 'active',
+            'name': 'name',
+            'members_count': 'members_count',
+        }
         try:
             search_name = request.GET.get('name')
             search_team_leader = request.GET.get('team_leader')
             filter_active = json.loads(request.GET.get('active', 'false'))
+            sort_key = request.GET.get('sort', '')
+            sort_key = f"{'-' if (sort_key.replace('-', '') in sort_map and sort_key.find('-') == 0) else ''}{sort_map.get(sort_key.replace('-', ''), '-id')}"
         except (KeyError, ValueError, TypeError):
             return JsonResponse({"message": "bad params"}, status=400)
 
@@ -48,7 +55,7 @@ class Team(View):
             'team_lead__first_name',
             'team_lead__last_name',
             'team_lead__profile_picture',
-        )
+        ).order_by(sort_key).distict()
 
         res['data'] = []
         for team in queryset:
