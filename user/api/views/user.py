@@ -6,7 +6,11 @@ from django.db.models.functions import Concat
 from django.db.models import Q, Sum, Value as V
 from django.core.paginator import Paginator, InvalidPage
 from utils import user_serializer
-from datetime import date
+from datetime import datetime
+from space.models import Member
+from team.models import Team
+from user.models import User as UserModel
+from transaction.models import Wallet
 import json
 
 
@@ -103,7 +107,7 @@ class User(View):
             last_name = request_json.get('last_name')
             job_title = request_json.get('job_title')
             birth_date = request_json.get('birth_date')
-            if birth_date: birth_date = date.strptime(birth_date, '%Y/%m/%d').date()
+            if birth_date: birth_date = datetime.strptime(birth_date, '%Y/%m/%d').date()
             teams = request_json.get('teams', [])
         except (KeyError, ValueError, TypeError):
             return JsonResponse({"message": "bad request"}, status=400)
@@ -111,7 +115,7 @@ class User(View):
         if Member.objects.filter(user__email__iexact=email, space=request.space).exists():
             return JsonResponse({"message": "this user alreaady exists in this space"}, status=400)
 
-        user = User.objects.get_or_create(defaults={
+        user = UserModel.objects.get_or_create(defaults={
             'email':email,
             'username':email,
             'first_name':first_name,
