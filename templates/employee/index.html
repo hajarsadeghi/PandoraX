@@ -86,7 +86,37 @@
                                 </form>
                             </div>
                             <div class="tab-pane fade" id="tabs-icons-bulk" role="tabpanel" aria-labelledby="employee-tabs-bulk">
-                                <p class="description">Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                                <div class="bulk-add">
+                                    <div>
+                                        <h1>Instructions</h1>
+                                        <p>To upload a list of employees, first download our Excel template. Then copy over the necessary employee information and upload the completed template.</p>
+                                    </div>
+                                    <div>
+                                        <h2>Step 1</h2>
+                                        <a class="btn btn-primary btn-lg px-4 py-2" href="{% static '/excel/Bilono_Employee Bulk_Upload_Template.xlsx' %}" download>
+                                            <i class="material-icons">
+                                                cloud_download
+                                            </i>
+                                            <span>Download our template</span>
+                                        </a>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h2>Step 2</h2>
+                                        <h4>Upload your file</h4>
+                                        <div class="row">
+                                            <div class="col-12 col-lg-6">
+                                                <div class="dropzone" id="postFileDropzone">
+                                                    <div class="dz-default dz-message">
+                                                        <i class="material-icons">backup</i>
+                                                        <p>{% trans "Drag and drop icon here" %}</p>
+                                                        <p class="text-sm font-weight-bold mb-0">{% trans "OR" %}</p>
+                                                        <button type="button" class="btn btn-secondary font-weight-bold">{% trans "Browse" %}</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
