@@ -1,4 +1,4 @@
 import '../../../css/dashboard/employee/index.scss';
-import './main.js.js';
+import './main.js';
 import '../../helper/spinnerButton';
 

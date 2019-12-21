@@ -16,33 +16,81 @@
                 <h4 class="font-weight-bold d-inline">{% trans "Employees List" %}</h4>
             </div>
         </div>
-            <div id="addBudgetForm" class="card mt-2 shadow">
-            <div class="card-body pr-0 row align-items-center" data-toggle="collapse" data-target="#addBudgetCollapse" aria-expanded="false" aria-controls="addBudgetCollapse">
+        <div id="addBudgetForm" class="card mt-2 shadow">
+            <div class="card-body pr-0 row align-items-center" data-toggle="collapse" data-target="#addEmployeeCollapse" aria-expanded="false" aria-controls="addEmployeeCollapse">
                 <p class="text-sm mb-0 col"> {% trans "Add a new employee. Fill the form and add a new one" %} </p>
                 <i style="color:#aaa" class="material-icons text-md text-xl col-1 text-center">add_circle_outline</i>
             </div>
-            <div class="collapse" id="addBudgetCollapse">
-                <!-- <div class="card card-body">
-                    <form>
-                        <div class="form-row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="budgetName">{% trans "Budget Name" %}</label>
-                                    <input type="text" class="form-control" id="budgetName" aria-describedby="budgetName" placeholder="{% trans 'Enter a descriptive name for your budget' %}">
-                                    <p class="text-danger"></p>
-                                </div>
+            <div class="collapse" id="addEmployeeCollapse">
+                <div class="nav-wrapper">
+                    <div class="row justify-content-center px-4">
+                        <div class="col">
+                            <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link mb-sm-3 mb-md-0 active" id="employee-tabs-manual" data-toggle="tab" href="#tabs-icons-manual" role="tab" aria-controls="tabs-icons-manual" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>Manual</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link mb-sm-3 mb-md-0" id="employee-tabs-bulk" data-toggle="tab" href="#tabs-icons-bulk" role="tab" aria-controls="tabs-icons-bulk" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>Bulk Add</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card shadow">
+                    <div class="card-body">
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="tabs-icons-manual" role="tabpanel" aria-labelledby="employee-tabs-manual">
+                                <form>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="firstName">{% trans "First Name" %}</label>
+                                                <input type="text" class="form-control" id="firstName" aria-describedby="firstName" placeholder="{% trans 'Enter name' %}">
+                                                <p class="text-danger"></p>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="lastName">{% trans "Last Name" %}</label>
+                                                <input type="number" class="form-control" id="lastName" min=1 aria-describedby="lastName" placeholder="Enter last name">
+                                                <p class="text-danger"></p> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="email">{% trans "Email" %}</label>
+                                                <input type="text" class="form-control" id="email" aria-describedby="email" placeholder="{% trans 'Enter email address' %}">
+                                                <p class="text-danger"></p>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="jobTitle">{% trans "Job Title" %}</label>
+                                                <input type="number" class="form-control" id="jobTitle" min=1 aria-describedby="jobTitle" placeholder="Enter user's job title">
+                                                <p class="text-danger"></p> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="email">{% trans "Birthday" %}</label>
+                                                <input type="text" class="form-control" id="email" aria-describedby="email" placeholder="{% trans 'Enter email address' %}">
+                                                <p class="text-danger"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button id="add-employee" type="button" class="btn standard-btn bilono-spinner">Add Employee</button>
+                                </form>
                             </div>
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="budgetPoints">{% trans "Give points amount" %}</label>
-                                    <input type="number" class="form-control" id="budgetPoints" min=1 aria-describedby="budgetPoints" placeholder="Enter a descriptive name for your budget">
-                                    <p class="text-danger"></p> 
-                                </div>
+                            <div class="tab-pane fade" id="tabs-icons-bulk" role="tabpanel" aria-labelledby="employee-tabs-bulk">
+                                <p class="description">Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
                             </div>
                         </div>
-                        <button id="create_budget_submit" type="button" class="btn standard-btn bilono-spinner">Add Employee</button>
-                    </form>
-                </div> -->
+                    </div>
+                </div>
             </div>
         </div>
         <div style="display:none;height: 500px;margin-top: 10vh;" id="no_budget_animation">
@@ -51,17 +99,17 @@
 
 
 
-        <div id="created_budget_list_keeper" class="card shadow d-none mt-5">
-            <div class="card-header border-0">
+        <!-- <div id="created_budget_list_keeper" class="card shadow d-none mt-5"> -->
+            <!-- <div class="card-header border-0">
                 <div class="row align-items-center">
                 <div class="col">
                     <h3 class="mb-0">{% trans "List of Employee" %}</h3>
                 </div>
                 </div>
-            </div>
-            <div class="table-responsive">
+            </div> -->
+            <!-- <div class="table-responsive"> -->
                 <!-- Projects table -->
-                <table class="table align-items-center table-flush">
+                <!-- <table class="table align-items-center table-flush">
                     <thead class="thead-light">
                         <tr>
                         <th scope="col-4">{% trans "Name" %}</th>
@@ -74,11 +122,11 @@
                     <tbody>
                         
                     </tbody>
-                </table>
-            </div>
-        </div>
+                </table> -->
+            <!-- </div> -->
+        <!-- </div> -->
         <!-- modal -->
-        <div class="modal fade mt-5" id="budgetModal" tabindex="-1" role="dialog" aria-labelledby="budgetModalLabel" aria-hidden="true">
+        <!-- <div class="modal fade mt-5" id="budgetModal" tabindex="-1" role="dialog" aria-labelledby="budgetModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -94,7 +142,7 @@
                 </div>
               </div>
             </div>
-        </div>
+        </div> -->
     </div>
 {% endblock %}
 

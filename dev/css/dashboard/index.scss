@@ -20,4 +20,18 @@ body {
         opacity: 0;
         @include transition (all .4s ease-in);
     }
+
+    .container {
+        button.standard-btn {
+            background-color: $main-red-color;
+            color: $white;
+            border: none;
+    
+            &:hover, &:focus {
+                color: $white;
+                background-color: $tint-red-color5;
+                --box-shadow-color: $tint-red-color5;
+            }
+        }
+    }
 }
