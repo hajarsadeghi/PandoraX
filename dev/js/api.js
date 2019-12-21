@@ -348,3 +348,26 @@ export const getLeaderboard = (callback) => {
             }
         })
 }
+// ... Employees
+// ... leaderboard 
+export const AddEmployee = (params, callback) => {
+    return fetch(
+        '/api/user/',
+        {
+            method: 'POST',
+            body: JSON.stringify(params),
+            headers:{
+                'Content-Type': 'application/json',
+                'Space-Id': space_id
+            }
+        }
+        ).then(response => {
+            if (response.ok) {
+                response.json().then(res => {
+                    callback(true, res)
+                })
+            } else {
+                callback(false, response)
+            }
+        })
+}

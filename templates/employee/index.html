@@ -52,7 +52,7 @@
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="lastName">{% trans "Last Name" %}</label>
-                                                <input type="number" class="form-control" id="lastName" min=1 aria-describedby="lastName" placeholder="Enter last name">
+                                                <input type="text" class="form-control" id="lastName" min=1 aria-describedby="lastName" placeholder="Enter last name">
                                                 <p class="text-danger"></p> 
                                             </div>
                                         </div>
@@ -61,14 +61,14 @@
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="email">{% trans "Email" %}</label>
-                                                <input type="text" class="form-control" id="email" aria-describedby="email" placeholder="{% trans 'Enter email address' %}">
+                                                <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="{% trans 'Enter email address' %}">
                                                 <p class="text-danger"></p>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="jobTitle">{% trans "Job Title" %}</label>
-                                                <input type="number" class="form-control" id="jobTitle" min=1 aria-describedby="jobTitle" placeholder="Enter user's job title">
+                                                <input type="text" class="form-control" id="jobTitle" min=1 aria-describedby="jobTitle" placeholder="Enter user's job title">
                                                 <p class="text-danger"></p> 
                                             </div>
                                         </div>
@@ -76,13 +76,13 @@
                                     <div class="form-row">
                                         <div class="col-6">
                                             <div class="form-group">
-                                                <label for="email">{% trans "Birthday" %}</label>
-                                                <input type="text" class="form-control" id="email" aria-describedby="email" placeholder="{% trans 'Enter email address' %}">
+                                                <label for="birthday">{% trans "Birthday" %}</label>
+                                                <input type="text" class="form-control" id="birthday" aria-describedby="birthday" placeholder="{% trans 'Enter birthday' %}">
                                                 <p class="text-danger"></p>
                                             </div>
                                         </div>
                                     </div>
-                                    <button id="add-employee" type="button" class="btn standard-btn bilono-spinner">Add Employee</button>
+                                    <button id="addEmployeeBtn" type="button" class="btn standard-btn bilono-spinner">Add Employee</button>
                                 </form>
                             </div>
                             <div class="tab-pane fade" id="tabs-icons-bulk" role="tabpanel" aria-labelledby="employee-tabs-bulk">
