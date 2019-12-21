@@ -1,4 +1,5 @@
 import { AddEmployee } from './../../api';
+import { InitializeEmployeeBulkAddDropzone } from './../../helper/dropzone';
 import { defaultButton, inprogressButton } from '../../helper/spinnerButton';
 
 
@@ -33,4 +34,13 @@ $(document).on('click', '#addEmployeeBtn', function(){
                 }
             }
         )
+})
+// ... bulk add
+InitializeEmployeeBulkAddDropzone((status, res) => {
+    if (status) {
+        console.log('Uploaded..!')
+    }
+    else {
+        console.log('Removed..!')
+    }
 })

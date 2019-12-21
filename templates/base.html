@@ -34,9 +34,11 @@
     </div>
 </body>
 <script>
-    const   space_id = "{{ space.id }}",
-            space_slug = "{{ space.name }}",
-            button_spinner = "{% static '/image/spinner.svg' %}";
+    const   space_id        = "{{ space.id }}",
+            space_slug      = "{{ space.name }}",
+            button_spinner  = "{% static '/image/spinner.svg' %}",
+            upload_failed   = "Couldn't upload the file!",
+            remove_file     = "Remove file";
 </script>
 <script type="text/javascript" src="{% static 'js/lib/jquery.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/lib/popper.min.js' %}"></script>
