@@ -1,0 +1,107 @@
+{% extends './../base.html' %}
+{% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'webpack:dashboard.css' %}" />
+    <link rel="stylesheet" href="{% static 'webpack:employee.css' %}" />
+    <title>{% trans "Employees" %}</title>
+{% endblock %}
+
+{% block body %}
+    <div class="container p-3" style="padding-top: 100px !important">
+        <div class="row align-items-center clearfix">
+            <div class="col">
+                <h4 class="font-weight-bold d-inline">{% trans "Employees List" %}</h4>
+            </div>
+        </div>
+            <div id="addBudgetForm" class="card mt-2 shadow">
+            <div class="card-body pr-0 row align-items-center" data-toggle="collapse" data-target="#addBudgetCollapse" aria-expanded="false" aria-controls="addBudgetCollapse">
+                <p class="text-sm mb-0 col"> {% trans "Add a new employee. Fill the form and add a new one" %} </p>
+                <i style="color:#aaa" class="material-icons text-md text-xl col-1 text-center">add_circle_outline</i>
+            </div>
+            <div class="collapse" id="addBudgetCollapse">
+                <!-- <div class="card card-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="budgetName">{% trans "Budget Name" %}</label>
+                                    <input type="text" class="form-control" id="budgetName" aria-describedby="budgetName" placeholder="{% trans 'Enter a descriptive name for your budget' %}">
+                                    <p class="text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="budgetPoints">{% trans "Give points amount" %}</label>
+                                    <input type="number" class="form-control" id="budgetPoints" min=1 aria-describedby="budgetPoints" placeholder="Enter a descriptive name for your budget">
+                                    <p class="text-danger"></p> 
+                                </div>
+                            </div>
+                        </div>
+                        <button id="create_budget_submit" type="button" class="btn standard-btn bilono-spinner">Add Employee</button>
+                    </form>
+                </div> -->
+            </div>
+        </div>
+        <div style="display:none;height: 500px;margin-top: 10vh;" id="no_budget_animation">
+        </div>
+        <p style="display:none;margin-top:20px;text-align:center" class="no-budget-desc">{% trans "There is no Employee, add now ..." %}</p>
+
+
+
+        <div id="created_budget_list_keeper" class="card shadow d-none mt-5">
+            <div class="card-header border-0">
+                <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="mb-0">{% trans "List of Employee" %}</h3>
+                </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <!-- Projects table -->
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                        <th scope="col-4">{% trans "Name" %}</th>
+                        <th scope="col">{% trans "Recipients" %}</th>
+                        <th scope="col">{% trans "Pointes per month" %}</th>
+                        <th scope="col">{% trans "Creation Date" %}</th>
+                        <th scope="col">{% trans "Active" %}</th>                        
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- modal -->
+        <div class="modal fade mt-5" id="budgetModal" tabindex="-1" role="dialog" aria-labelledby="budgetModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="budgetModalLabel">create a custome budget</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    
+                </div>
+                <div class="modal-footer justify-content-center">
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+<script>
+    const   no_budget_anim = "{% static 'js/animation/nobudget.json' %}";
+</script>
+<script type="text/javascript" src="{% static 'webpack:dashboard.js' %}"></script>
+<script type="text/javascript" src="{% static 'webpack:employee.js' %}"></script>
+{% endblock %}

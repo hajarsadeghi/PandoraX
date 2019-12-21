@@ -13,6 +13,7 @@ module.exports = {
       feed:         './dev/js/dashboard/feed/index.js',
       budget:       './dev/js/dashboard/budget/index.js',
       badge:        './dev/js/dashboard/badge/index.js',
+      employee:     './dev/js/dashboard/employee/index.js',
       profile:      './dev/js/dashboard/profile/index.js'
   },
   output: {
