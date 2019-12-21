@@ -2,6 +2,7 @@ import { AddEmployee } from './../../api';
 import { defaultButton, inprogressButton } from '../../helper/spinnerButton';
 
 
+
 $(document).on('click', '#addEmployeeBtn', function(){
     let $this       = $(this),
         first_name  = $('#tabs-icons-manual').find('#firstName').val(),

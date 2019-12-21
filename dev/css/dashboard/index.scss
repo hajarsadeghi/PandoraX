@@ -33,5 +33,11 @@ body {
                 --box-shadow-color: $tint-red-color5;
             }
         }
+
+        .dropzone {
+            border-width: 1px;
+            border-color: $border-color !important;
+            border-radius: $radius !important;
+        }
     }
 }
