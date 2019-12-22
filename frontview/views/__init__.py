@@ -1,6 +1,7 @@
 from .feed import feed
 from .budget import budget
 from .badge import badge
+from .employee import employee
 from .login import login
 from .profile import profile
 from .verify_email import verify_email

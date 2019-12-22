@@ -3,10 +3,20 @@ import { getFeed, listOfLikers, getWallet, getLeaderboard } from './../../api';
 import { showFeed, toggleLikeAction } from './feed';
 import { usersList } from './../../helper/usersList';
 import { topRecords } from './leaderboard';
-import { viewMore } from './../../helper/viewmore';
 
 
 $(document).ready(function() {
+
+    // ... open collapse on tabs ...
+    $('.post').on('click', '.tabs-link', function() {
+        let $this = $(this);
+        if ($this.attr('id') === 'recognitionTab') {
+            console.log(1)
+        }
+        else if ($this.attr('id') === 'regularPostTab') {
+            console.log(2)
+        }
+    })
     let loading = true,
         feed_max_page = 2;
 

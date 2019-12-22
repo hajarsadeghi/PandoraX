@@ -27,4 +27,16 @@ $(document).ready(function() {
             $('.bilino-main').addClass('main-is-partially-visible');
         }
     });
+
+    $(document).on('click', '.collapse-link', function() {
+        let open_key = $(this).find('.material-icons').attr('is-open');
+        if (open_key === 'false') {
+            $(this).find('.material-icons').attr('is-open', true)
+            $(this).find('.material-icons').text('remove_circle_outline')
+        }
+        else {
+            $(this).find('.material-icons').attr('is-open', false)
+            $(this).find('.material-icons').text('add_circle_outline')
+        }
+    })
 });

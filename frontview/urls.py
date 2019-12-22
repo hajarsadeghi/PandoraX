@@ -13,6 +13,7 @@ dashboard_urls = [
     path('', views.feed, name='feed'),
     path('budget/', views.budget, name='budget'),
     path('badge/', views.badge, name='badge'),
+    path('employee/', views.employee, name='employee'),
     path('profile/<int:user_id>/', views.profile, name='profile'),
 ]
 

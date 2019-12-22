@@ -101,6 +101,27 @@ export const InitializePostDropzone = function(callback) {
             file.previewElement.remove()
         },
     };
-
-    
+}
+// ... enable add employees dropzone
+export const InitializeEmployeeBulkAddDropzone = function(callback) {
+    Dropzone.autoDiscover = true;
+    Dropzone.options.employeeBulkDropzone = {
+        url: '/api/badge/icon/',
+        paramName: 'image',
+        headers: {
+            'Space-Id':space_id
+        },
+        maxFiles: 1,
+        dictResponseError: upload_failed,
+        dictCancelUpload: remove_file,
+        acteptedFiles: 'text/csv,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        addRemoveLinks: true,
+        success: (file, response) => {
+            callback(true, response);
+        },
+        removedfile: (file, response) => {
+            callback(false, response)
+            file.previewElement.remove()
+        }
+    };
 }
