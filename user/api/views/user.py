@@ -42,7 +42,7 @@ class User(View):
         filters = []
         annotates = {
             'earned_point_amount' : Sum('user__wallet__point_amount', filter=Q(user__wallet__space=request.space, user__wallet__type=Wallet.EARNED_TYPE), distict=True),
-            'budget_point_amoun' : Sum('user__wallet__point_amount', filter=Q(user__wallet__space=request.space, user__wallet__type=Wallet.BUDGET_TYPE), distict=True),
+            'budget_point_amount' : Sum('user__wallet__point_amount', filter=Q(user__wallet__space=request.space, user__wallet__type=Wallet.BUDGET_TYPE), distict=True),
         }
 
         if search_full_name:
