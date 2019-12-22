@@ -1,0 +1,30 @@
+{% load static %}
+{% load i18n %}
+
+
+<div id="employeesTable" class="card shadow mt-5">
+    <div class="card-header border-0">
+        <div class="row align-items-center">
+        <div class="col">
+            <h3 class="mb-0">{% trans "List of Employees" %}</h3>
+        </div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col-4">{% trans "Name" %}</th>
+                    <th scope="col">{% trans "Role" %}</th>
+                    <th scope="col">{% trans "Email" %}</th>
+                    <th scope="col">{% trans "Budget" %}</th>
+                    <th scope="col">{% trans "Earned Points" %}</th>      
+                    <th scope="col">{% trans "Active" %}</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
+</div>

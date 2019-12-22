@@ -1,0 +1,111 @@
+{% load static %}
+{% load i18n %}
+
+
+<div id="addBudgetForm" class="card mt-2 shadow">
+    <div class="card-body pr-0 row align-items-center collapse-link" data-toggle="collapse" data-target="#addEmployeeCollapse" aria-expanded="false" aria-controls="addEmployeeCollapse">
+        <p class="text-sm mb-0 col"> {% trans "Add a new employee. Fill the form and add a new one" %} </p>
+        <i style="color:#aaa" class="material-icons text-md text-xl col-1 text-center" is-open="false">add_circle_outline</i>
+    </div>
+    <div class="collapse" id="addEmployeeCollapse">
+        <div class="nav-wrapper">
+            <div class="row justify-content-center px-4">
+                <div class="col">
+                    <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link mb-sm-3 mb-md-0 active" id="employee-tabs-manual" data-toggle="tab" href="#tabs-icons-manual" role="tab" aria-controls="tabs-icons-manual" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>Manual</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mb-sm-3 mb-md-0" id="employee-tabs-bulk" data-toggle="tab" href="#tabs-icons-bulk" role="tab" aria-controls="tabs-icons-bulk" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>Bulk Add</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card shadow">
+            <div class="card-body">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="tabs-icons-manual" role="tabpanel" aria-labelledby="employee-tabs-manual">
+                        <form>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="firstName">{% trans "First Name" %}</label>
+                                        <input type="text" class="form-control" id="firstName" aria-describedby="firstName" placeholder="{% trans 'Enter name' %}">
+                                        <p class="text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="lastName">{% trans "Last Name" %}</label>
+                                        <input type="text" class="form-control" id="lastName" min=1 aria-describedby="lastName" placeholder="Enter last name">
+                                        <p class="text-danger"></p> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="email">{% trans "Email" %}</label>
+                                        <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="{% trans 'Enter email address' %}">
+                                        <p class="text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="jobTitle">{% trans "Job Title" %}</label>
+                                        <input type="text" class="form-control" id="jobTitle" min=1 aria-describedby="jobTitle" placeholder="Enter user's job title">
+                                        <p class="text-danger"></p> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="birthday">{% trans "Birthday" %}</label>
+                                        <input type="text" class="form-control" id="birthday" aria-describedby="birthday" placeholder="{% trans 'Enter birthday' %}">
+                                        <p class="text-danger"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="addEmployeeBtn" type="button" class="btn standard-btn bilono-spinner">Add Employee</button>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="tabs-icons-bulk" role="tabpanel" aria-labelledby="employee-tabs-bulk">
+                        <div class="bulk-add">
+                            <div>
+                                <h1>Instructions</h1>
+                                <p>To upload a list of employees, first download our Excel template. Then copy over the necessary employee information and upload the completed template.</p>
+                            </div>
+                            <div>
+                                <h2>Step 1</h2>
+                                <a class="btn btn-primary btn-lg px-4 py-2" href="{% static '/excel/Bilono_Employee Bulk_Upload_Template.xlsx' %}" download>
+                                    <i class="material-icons">
+                                        cloud_download
+                                    </i>
+                                    <span>Download our template</span>
+                                </a>
+                            </div>
+                            <div class="mt-4">
+                                <h2>Step 2</h2>
+                                <h4>Upload your file</h4>
+                                <div class="row">
+                                    <div class="col-12 col-lg-6">
+                                        <div class="dropzone text-center" id="employeeBulkDropzone">
+                                            <div class="dz-default dz-message">
+                                                <i class="material-icons">backup</i>
+                                                <p>{% trans "Drag and drop icon here" %}</p>
+                                                <p class="text-sm font-weight-bold mb-0">{% trans "OR" %}</p>
+                                                <button type="button" class="btn btn-secondary font-weight-bold">{% trans "Browse" %}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
